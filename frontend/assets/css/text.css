@@ -166,3 +166,77 @@ h1, .h1 {
         padding: 2rem 3.5rem;
     }
 }
+
+/* Estilos para la sección de comentarios */
+.comments-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.comments-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.comment-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.comment-form .form-control {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: vertical;
+}
+
+.comment-form .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-form .btn:hover {
+    background-color: #0056b3;
+}
+
+.comments-list {
+    margin-top: 2rem;
+}
+
+.comment {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.comment-author-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-text {
+    color: #555;
+}
