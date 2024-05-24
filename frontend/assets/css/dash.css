@@ -1,0 +1,38 @@
+.popular-posts {
+    margin-top: 20px;
+}
+
+.post-item {
+    border-bottom: 1px solid #e1e4e8;
+    padding: 10px 0;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-index {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6c757d;
+}
+
+.post-content {
+    flex-grow: 1;
+}
+
+.post-title {
+    font-size: 16px;
+    margin: 0;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.post-meta .comments-count,
+.post-meta .upvotes-count {
+    margin-right: 15px;
+}
+
