@@ -372,90 +372,55 @@
     </ul>
 </aside>
 <!-- End Sidebar-->
-
 <main id="main" class="main">
-<div class="pagetitle">
-    <h1>Dashboard</h1>
-    <nav>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-        <li class="breadcrumb-item active">Preguntas</li>
-    </ol>
-    </nav>
-</div><!-- End Page Title -->
-
 <section class="section dashboard">
-    <div class="container">
-        <h1>Haz una pregunta pública</h1>
-        <div class="info-box">
-            <h2>Escribiendo una buena pregunta</h2>
-            <p>Está listo para hacer una pregunta relacionada con la programación y este formulario lo guiará a través del proceso. ¿Quiere hacer una pregunta que no sea de programación? Consulte los temas <a href="#">aquí</a> para encontrar un sitio relevante.</p>
-            <h3>Pasos</h3>
-            <ul>
-                <li>Resuma su problema en un título de una línea.</li>
-                <li>Describa tu problema con más detalle.</li>
-                <li>Describa lo que intentaste y lo que esperabas que sucediera.</li>
-                <li>Agregue "etiquetas" que ayuden a hacer llegar su pregunta a los miembros de la comunidad.</li>
-                <li>Revise su pregunta y publíquela en el sitio.</li>
-            </ul>
-        </div>
-        <div class="form-box">
-            <label for="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" placeholder="por ejemplo, ¿existe una función R para encontrar el índice de un elemento en un vector?">
-            <button type="submit">Próximo</button>
-        </div>
-        <div class="contenedor11"> <h1 class="titulo11">Detalles del problema</h1> <form action="#">
-            <div class="grupo-formulario1"> <label class="etiqueta1" for="problema">Describa el problema:</label> <textarea id="problema" name="problema" rows="5" required class="campo-texto"></textarea> </div>
-            <div class="grupo-formulario1"> <label class="etiqueta1" for="informacion-adicional">Información adicional:</label> <textarea id="informacion-adicional" name="informacion-adicional" rows="3" class="campo-texto"></textarea> </div>
-            <button type="submit" class="boton">Proximo</button> </form>
-        </div>
-        <div class="contenedor11"> <h1 class="titulo11">Detalles del problema</h1> <form action="#">
-            <div class="grupo-formulario1"> <label class="etiqueta1" for="problema">Describa el problema:</label> <textarea id="problema" name="problema" rows="5" required class="campo-texto"></textarea> </div>
-            <div class="grupo-formulario1"> <label class="etiqueta1" for="informacion-adicional">Información adicional:</label> <textarea id="informacion-adicional" name="informacion-adicional" rows="3" class="campo-texto"></textarea> </div>
-            <button type="submit" class="boton">Proximo</button> </form>
-        </div>
-        <div class="container">
-            <h1>Etiquetas</h1>
-    
-            <form action="#">
-                <div class="form-group22">
-                    <label for="etiqueta">Etiqueta:</label>
-                    <input type="text" id="etiqueta" name="etiqueta" required>
-                </div>
-                <div class="form-group22">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
-                </div>
-                <button type="submit">Proximo</button>
-            </form>
-        </div>
-        <div class="container22">
-            <h1>Revise las preguntas que ya están en Stack Overflow para ver si su pregunta está duplicada22</h1>
-            <p>Al hacer clic en estas preguntas, se abrirán en una nueva pestaña para que las revise. Tu progreso aquí se guardará para que puedas regresar y continuar.</p>
-        
-            <div class="preguntas22">
-            <h2>¿Alguna de estas publicaciones responde a tu pregunta?22</h2>
-            <ul>
-                <li><a href="#">Pregunta 1</a></li>
-                <li><a href="#">Pregunta 2</a></li>
-                <li><a href="#">Pregunta 3</a></li>
-            </ul>
-            <p>No se encontraron preguntas duplicadas.</p>
-            </div>
-        
-            <div class="form22">
-            <h2>Revisa tu pregunta22</h2>
-            <form action="#">
-                <textarea id="pregunta" name="pregunta" rows="10" required></textarea>
-                <button type="submit">Publicar</button>
-            </form>
-            </div>
-        </div>
+  <div class="form-container">
+    <div class="form-group">
+        <h1 class="title-publicar">Nueva publicación</h1>
+        <label for="post-title">Título de la publicación</label>
+        <input type="text" id="post-title" placeholder="Escribe el título aquí...">
     </div>
+    <div class="form-group">
+        <label for="post-text">Texto y enlaces de la publicación</label>
+        <textarea id="post-text" rows="4" placeholder="Escribe aquí..."></textarea>
+    </div>
+    <div class="form-group">
+        <label>Contenido multimedia</label>
+        <button>Agregar foto</button>
+    </div>
+    <div class="form-group">
+      <label for="carrera">Carrera</label>
+      <select id="carrera" class="dropdown">
+          <option value="">Selecciona una carrera</option>
+          <option value="derecho">Derecho</option>
+          <option value="psicologia">Psicología</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cursos">Cursos</label>
+      <select id="cursos" class="dropdown">
+          <option value="">Selecciona un curso</option>
+          <option value="curso1">Curso 1</option>
+          <option value="curso2">Curso 2</option>
+          <option value="curso3">Curso 3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="ciclo">Ciclo</label>
+      <select id="ciclo" class="dropdown">
+          <option value="">Selecciona un ciclo</option>
+          <option value="ciclo1">Ciclo 1</option>
+          <option value="ciclo2">Ciclo 2</option>
+          <option value="ciclo3">Ciclo 3</option>
+      </select>
+    </div>
+    <div class="btn-group">
+        <button>Publicar</button>
+        <button>Cancelar</button>
+    </div>
+  </div>
 </section>
     
-</section>
-</section>
 </main>
 <!-- End #main -->
 

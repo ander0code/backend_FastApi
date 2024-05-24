@@ -1,4 +1,4 @@
-/* Importar la fuente */
+/* Importar la fuente de Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
 /* Estilos globales */
@@ -195,7 +195,8 @@ p {
 }
 
 .form-box input[type="text"],
-.form-box textarea {
+.form-box textarea,
+.form-box select {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -352,59 +353,44 @@ p {
     background-color: #0056b3;
 }
 
+/* Ajustes adicionales */
+.dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-group button {
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+
+.title-publicar {
+    color: #012970;
+}
+
 /* Nueva clase para el contenedor */
-.contenedor11 {
-    width: 90%;
+.form-container {
+    order: -1; /* Este valor mueve el contenedor arriba */
+    width: 95%; /* Ancho ajustado */
+    max-width: 1300px; /* Ancho máximo */
     margin: 2rem auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+    margin-bottom: 2rem; /* Agrega margen inferior opcional */
 }
 
-.titulo11 {
+.form-group {
+    margin-bottom: 15px;
+}
+
+.title-publicar {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.5rem;
-}
-
-.grupo-formulario1 {
-    margin-bottom: 15px;
-}
-
-.etiqueta1 {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-}
-
-.campo-texto {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    resize: vertical;
-}
-
-.boton {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.boton:hover {
-    background-color:#007bff;
-}
-
-/* Formulario general */
-.form-group {
-    margin-bottom: 15px;
 }
 
 label {
@@ -414,7 +400,8 @@ label {
 }
 
 input[type="text"],
-textarea {
+textarea,
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -434,105 +421,17 @@ button {
 }
 
 button:hover {
-    background-color: #007bff;
+    background-color: #0056b3;
 }
 
-/* Nueva clase para el contenedor 22 */
-.container22 {
-    width: 90%;
-    margin: 2rem auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+.btn-group button {
+    margin-right: 10px;
+    padding: 10px 20px;
 }
 
-h1.titulo22, h2.subtitulo22 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.preguntas22 {
-    margin-bottom: 20px;
-}
-
-.preguntas22 ul {
-    list-style: none;
-    padding: 0;
-}
-
-.preguntas22 li {
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-.preguntas22 a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 1rem;
-}
-
-.preguntas22 a:hover {
-    text-decoration: underline;
-}
-
-.form22 {
-    margin-bottom: 20px;
-}
-
-.form22 textarea {
-    width: 100%;
+.dropdown {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical;
     font-size: 1rem;
-}
-
-.form22 button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.form22 button:hover {
-    background-color: #007bff;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .container, .container22, .contenedor11 {
-        width: 100%;
-        padding: 15px;
-    }
-
-    #pageHeaderTitle {
-        font-size: 2rem;
-    }
-
-    h1, .h1 {
-        font-size: 1.75rem;
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
-}
-.contenedor.inactive {
-    opacity: 0.5;
-    pointer-events: none;
 }
