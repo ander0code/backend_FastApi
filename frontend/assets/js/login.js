@@ -1,46 +1,42 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Mostrar ventana emergente
-    function showErrorModal() {
-        var modal = document.getElementById("error-modal");
-        modal.style.display = "block";
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.login-form');
+    const alert = document.getElementById('custom-alert');
 
-    // Cerrar ventana emergente
-    document.querySelector(".close-button").addEventListener("click", function() {
-        var modal = document.getElementById("error-modal");
-        modal.style.display = "none";
-    });
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-    // Cerrar ventana emergente al hacer clic fuera de ella
-    window.onclick = function(event) {
-        var modal = document.getElementById("error-modal");
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+        const formData = new URLSearchParams();
+        formData.append('email', form.email.value);
+        formData.append('password', form.password.value);
 
-    // Validar el formulario y mostrar el mensaje de error si las credenciales no coinciden
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Evita el envío del formulario
+        try {
+            const response = await fetch('/autenticacion/login', {
+                method: 'POST',
+                body: formData
+            });
 
-        var form = event.target;
-        var formData = new FormData(form);
+            if (response.ok) {
+                // Si la respuesta indica que las credenciales son correctas, redirigir al dashboard
+                const tokenHeader = response.headers.get('Set-Cookie');
+                const token = tokenHeader;
 
-        fetch(form.action, {
-            method: form.method,
-            body: formData,
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Credenciales incorrectas");
+                // Almacenar el token en localStorage
+                localStorage.setItem('token', token);
+
+                window.location.href = "/autenticacion/dashboard";
+            } else {
+                // Si la respuesta indica que las credenciales son incorrectas, mostrar mensaje de error
+                const responseData = await response.json();
+                throw new Error(responseData.detail);
             }
-            return response.json();
-        })
-        .then(data => {
-            window.location.href = data.redirect_url;
-        })
-        .catch(error => {
-            showErrorModal();
-        });
+        } catch (error) {
+            // Mostrar mensaje de error en caso de problemas de conexión o errores en el servidor
+            showAlert(error.message);
+        }
     });
+
+    function showAlert(message) {
+        alert.classList.remove('d-none');
+        alert.textContent = message;
+    }
 });

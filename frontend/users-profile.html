@@ -8,10 +8,10 @@
   <title>Perfil</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <link href="assets/img/logosago.webp" rel="icon">
   <!-- Favicons -->
-  <link href="./assets/img/favicon.png" rel="icon">
-  <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -45,7 +45,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="dashboard.html" class="logo d-flex align-items-center">
-        <img src="./assets/img/imagen-forua.png" alt="forua">
+        <img src="./assets/img/logosago2.webp" alt="forua">
         <span class="d-none d-lg-block">Forua</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -210,7 +210,7 @@
 
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="./assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="./assets/img/xd.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2" id="profile-name"></span>
           </a><!-- End Profile Image Icon -->
         
@@ -442,9 +442,9 @@
           <div class="col-xl-4">
               <div class="card">
                   <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                      <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                      <h2>{{nombre}}, {{last_name}}</h2>
-                      <h3>Web Designer</h3>
+                      <img src="assets/img/xd.jpg" alt="Profile" class="rounded-circle">
+                      <h2 class="profile-name">, </h2>
+                      <h3 class="profile-last-name">Catador de bananos</h3>
                   </div>
               </div>
           </div>
@@ -464,31 +464,31 @@
                               <h5 class="card-title">Detalles del Perfil</h5>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Nombre</div>
-                                  <div class="col-lg-9 col-md-8">{{nombre2}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-name"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Apellido</div>
-                                  <div class="col-lg-9 col-md-8">{{last_name2}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-last-name"></div>
                               </div> 
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">A cerca de mi</div>
-                                  <div class="col-lg-9 col-md-8">{{acerca_de_mi}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-about"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Puntos de vista</div>
-                                  <div class="col-lg-9 col-md-8">{{puntos_de_vista}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-views"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Codigo ID</div>
-                                  <div class="col-lg-9 col-md-8">{{codigo_ID}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-id"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Votos positivos</div>
-                                  <div class="col-lg-9 col-md-8">{{votos_positivos}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-pos-votes"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Votos negativos</div>
-                                  <div class="col-lg-9 col-md-8">{{votos_negativos}}</div>
+                                  <div class="col-lg-9 col-md-8 profile-neg-votes"></div>
                               </div>
                           </div>
                           <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -574,12 +574,13 @@
   <script src="./assets/vendor/php-email-form/validate.js"></script>
 
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
-  <script src="./assets/js/solicitud.js"></script>
+  <!--<script src="./assets/js/solicitud.js"></script>
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/popular.js"></script>
   <script src="./assets/js/profiledash.js"></script>
   <script src="./assets/js/filtrado.js"></script>
-
+  -->
+  <script src="./assets/js/profile.js"></script>
 </body>
 
 </html>

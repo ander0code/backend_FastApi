@@ -19,20 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 newProfile.style.display = 'block'; // Mostrar el nuevo perfil
                 newProfile.removeAttribute('id'); // Eliminar el ID para evitar duplicados
 
-                // Reemplazar los marcadores de posición con los datos del perfil de usuario
-                newProfile.innerHTML = newProfile.innerHTML
-                    .replace('{{nombre}}', user.nombre || 'N/A')
-                    .replace('{{last_name}}', user.last_name || 'N/A')
-                    .replace('{{nombre2}}', user.nombre || 'N/A')
-                    .replace('{{last_name2}}', user.last_name || 'N/A')
-                    .replace('{{nombre3}}', user.nombre || 'N/A')
-                    .replace('{{last_name3}}', user.last_name || 'N/A')
-                    .replace('{{acerca_de_mi}}', user.acerca_de_mi || 'N/A')
-                    .replace('{{puntos_de_vista}}', user.puntos_de_vista || 'N/A')
-                    .replace('{{codigo_ID}}', user.codigo_ID || 'N/A')
-                    .replace('{{fecha_creacion}}', user.fecha_creacion ? new Date(user.fecha_creacion).toLocaleDateString() : 'N/A')
-                    .replace('{{votos_positivos}}', user.votos_positivos || '0')
-                    .replace('{{votos_negativos}}', user.votos_negativos || '0');
+                // Obtener los elementos de perfil del nuevo perfil clonado
+                const profileName = newProfile.querySelector('.profile-name');
+                const profileLastName = newProfile.querySelector('.profile-last-name');
+                const profileAbout = newProfile.querySelector('.profile-about');
+                const profileViews = newProfile.querySelector('.profile-views');
+                const profileID = newProfile.querySelector('.profile-id');
+                const profileCreationDate = newProfile.querySelector('.profile-creation-date');
+                const profilePosVotes = newProfile.querySelector('.profile-pos-votes');
+                const profileNegVotes = newProfile.querySelector('.profile-neg-votes');
+
+                // Asignar valores a los elementos de perfil
+                profileName.textContent = user.nombre || 'N/A';
+                profileLastName.textContent = user.last_name || 'N/A';
+                profileAbout.textContent = user.acerca_de_mi || 'N/A';
+                profileViews.textContent = user.puntos_de_vista || 'N/A';
+                profileID.textContent = user.codigo_ID || 'N/A';
+                profileCreationDate.textContent = user.fecha_creacion ? new Date(user.fecha_creacion).toLocaleDateString() : 'N/A';
+                profilePosVotes.textContent = user.votos_positivos || '0';
+                profileNegVotes.textContent = user.votos_negativos || '0';
 
                 profileContainer.appendChild(newProfile);
             });
