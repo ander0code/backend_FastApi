@@ -12,25 +12,18 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch('/autenticacion/login', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                credentials: 'same-origin' // Asegura que las cookies se incluyan en la solicitud
             });
 
             if (response.ok) {
-                // Si la respuesta indica que las credenciales son correctas, redirigir al dashboard
-                const tokenHeader = response.headers.get('Set-Cookie');
-                const token = tokenHeader;
-
-                // Almacenar el token en localStorage
-                localStorage.setItem('token', token);
-
+                // Redirigir al dashboard
                 window.location.href = "/autenticacion/dashboard";
             } else {
-                // Si la respuesta indica que las credenciales son incorrectas, mostrar mensaje de error
                 const responseData = await response.json();
                 throw new Error(responseData.detail);
             }
         } catch (error) {
-            // Mostrar mensaje de error en caso de problemas de conexión o errores en el servidor
             showAlert(error.message);
         }
     });

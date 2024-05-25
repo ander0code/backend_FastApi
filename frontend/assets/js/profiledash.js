@@ -1,12 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const email = localStorage.getItem('email'); // Obtener el email almacenado
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para obtener el valor de una cookie por su nombre
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
-    if (!email) {
-        console.error('No se encontró el email en localStorage');
+    const token = getCookie('access_token');
+
+    if (!token) {
+        console.error('No se encontró el token en las cookies');
         return;
     }
 
-    const token = localStorage.getItem('token');
+    // Decodificar el payload del token JWT
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    const payload = JSON.parse(jsonPayload);
+
+    // Almacenar el email en localStorage
+    localStorage.setItem('email', payload.email);
+
+    console.log(`Email guardado en localStorage: ${payload.email}`); // Verificar el email guardado
+
+    const email = payload.email; // Obtener el email del payload del token
 
     fetch(`http://127.0.0.1:8000/users/${encodeURIComponent(email)}`, {
         headers: {
@@ -27,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const profileId = document.getElementById('profile-id');
 
         if (profileName && profileFullname && profileId) {
-            const nombre = user.nombre || 'N/A';
-            const lastName = user.last_Name || 'N/A';
-            const id = user.id || 'N/A';
+            const nombre = user[0].nombre || 'N/A';
+            const lastName = user[0].last_Name || 'N/A';
+            const id = user[0].id || 'N/A';
 
             console.log(`Nombre: ${nombre}, Apellido: ${lastName}, ID: ${id}`); // Verificar valores
 

@@ -443,8 +443,8 @@
               <div class="card">
                   <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                       <img src="assets/img/xd.jpg" alt="Profile" class="rounded-circle">
-                      <h2 class="profile-name">, </h2>
-                      <h3 class="profile-last-name">Catador de bananos</h3>
+                      <h2 class="profile-name" id="profile-name"> </h2>
+                      <h3 class="profile-last-name" id="profile-last-name"></h3>
                   </div>
               </div>
           </div>
@@ -463,33 +463,37 @@
                           <div class="tab-pane fade show active profile-overview" id="profile-overview">
                               <h5 class="card-title">Detalles del Perfil</h5>
                               <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Nombre</div>
-                                  <div class="col-lg-9 col-md-8 profile-name"></div>
-                              </div>
+                                <div class="col-lg-3 col-md-4 label">Nombre</div>
+                                <div class="col-lg-9 col-md-8" id="profile-name2"></div>
+                            </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Apellido</div>
-                                  <div class="col-lg-9 col-md-8 profile-last-name"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-last-name2"></div>
                               </div> 
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">A cerca de mi</div>
-                                  <div class="col-lg-9 col-md-8 profile-about"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-about"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Puntos de vista</div>
-                                  <div class="col-lg-9 col-md-8 profile-views"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-views"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Codigo ID</div>
-                                  <div class="col-lg-9 col-md-8 profile-id"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-id"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Votos positivos</div>
-                                  <div class="col-lg-9 col-md-8 profile-pos-votes"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-pos-votes"></div>
                               </div>
                               <div class="row">
                                   <div class="col-lg-3 col-md-4 label">Votos negativos</div>
-                                  <div class="col-lg-9 col-md-8 profile-neg-votes"></div>
+                                  <div class="col-lg-9 col-md-8" id="profile-neg-votes"></div>
                               </div>
+                              <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Cuenta creada el</div>
+                                <div class="col-lg-9 col-md-8" id="profile-creation-date"></div>
+                            </div>
                           </div>
                           <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                               <form>
