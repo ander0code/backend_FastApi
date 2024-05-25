@@ -477,11 +477,16 @@
       <!-- Left side columns -->
       <div class="col-lg-8 order-lg-1">
         <div class="row" id="post-container">
-          <!-- Botón Preguntar -->
-          <div class="col-12 text-end mb-3" id="preguntar-btn-container">
-            <button class="btn btn-primary" id="preguntar-btn">Preguntar</button>
-          </div>
-         <!-- Plantilla de post -->
+            <!-- Formulario para preguntar -->
+            <form action="/autenticacion/publicar" method="GET" id="preguntar-form">
+                <div class="col-12 text-end mb-3" id="preguntar-btn-container">
+                    <button type="submit" class="btn btn-primary" id="preguntar-btn">Preguntar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+<!-- Plantilla de post -->
 <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0" id="post-template" style="display: none;">
   <div class="row align-items-center">
     <div class="col-md-8 mb-3 mb-sm-0">

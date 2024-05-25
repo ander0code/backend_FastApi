@@ -119,8 +119,8 @@ async def post_carrera(
     return resultados
 
 
+@post.get("/posts/{carrera_id}/{ciclo}/{curso}", response_model=None)
 
-@post.get("/posts/{ciarrera_d}/{ciclo}/{curso}", response_model=None)
 async def post_carrera(
     carrera_id: int ,
     ciclo: int ,
