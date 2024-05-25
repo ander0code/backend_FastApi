@@ -1071,6 +1071,18 @@ body {
 /*--------------------------------------------------------------
 # Profie Page
 --------------------------------------------------------------*/
+
+section#profile-template{
+  margin-top: 50px;
+
+}
+
+
+h2 {
+  text-align: center;
+}
+
+
 .profile .profile-card img {
   max-width: 120px;
 }
@@ -1122,9 +1134,31 @@ body {
   max-width: 120px;
 }
 
+/* CSS para el perfil */
+
+/* Muestra los campos de edición solo cuando se activa la pestaña "Editar Perfil" */
+.profile .nav-tabs .nav-link[data-bs-target="#profile-edit"].active ~ .tab-content .profile-edit {
+  display: block;
+}
+
+/* Oculta los campos de edición por defecto */
+.profile .tab-pane.profile-edit {
+  display: block;
+}
+
+
+
+
+
+
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
+section.section.faq {
+  margin-top: 43px;
+}
+
+
 .faq .basic h6 {
   font-size: 18px;
   font-weight: 600;
@@ -1138,6 +1172,10 @@ body {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+section.section.contact {
+  margin-top: 43px;
+}
+
 .contact .info-box {
   padding: 28px 30px;
 }

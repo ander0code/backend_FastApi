@@ -9,3 +9,4 @@ def get_users(db: Session):
 
 def get_post(db:Session):
     return db.query(Post).all()
+
