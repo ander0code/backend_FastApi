@@ -435,3 +435,94 @@ button:hover {
     border-radius: 5px;
     font-size: 1rem;
 }
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1200px) {
+    .container, .section.dashboard .container {
+        padding: 20px;
+    }
+
+    .postcard__text {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container, .section.dashboard .container {
+        padding: 15px;
+    }
+
+    .postcard__title {
+        font-size: 1.5rem;
+    }
+
+    .postcard__text {
+        padding: 0.75rem;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container, .section.dashboard .container {
+        padding: 10px;
+    }
+
+    .postcard {
+        flex-direction: column;
+    }
+
+    .postcard__img {
+        max-height: 150px;
+    }
+
+    .postcard__title {
+        font-size: 1.25rem;
+    }
+
+    .postcard__text {
+        padding: 0.5rem;
+    }
+
+    .info-box {
+        padding: 15px;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .container, .section.dashboard .container {
+        padding: 5px;
+    }
+
+    .postcard__title {
+        font-size: 1rem;
+    }
+
+    .postcard__text {
+        padding: 0.25rem;
+    }
+
+    .info-box {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 5px;
+    }
+
+    button, .form-box button, .comment-form .btn {
+        padding: 5px 10px;
+        font-size: 0.875rem;
+    }
+}
