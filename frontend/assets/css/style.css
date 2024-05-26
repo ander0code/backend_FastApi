@@ -1127,23 +1127,6 @@ section#profile-template {
   max-width: 120px;
 }
 
-/* CSS para el perfil */
-
-/* Muestra los campos de edición solo cuando se activa la pestaña "Editar Perfil" */
-.profile .nav-tabs .nav-link[data-bs-target="#profile-edit"].active ~ .tab-content .profile-edit {
-  display: block;
-}
-
-/* Oculta los campos de edición por defecto */
-.profile .tab-pane.profile-edit {
-  display: block;
-}
-
-
-
-
-
-
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
