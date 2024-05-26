@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = payload.email; // Obtener el email del payload del token
 
-    fetch(`http://127.0.0.1:8000/users/${encodeURIComponent(email)}`, {
+    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(email)}`, {
         headers: {
             'Authorization': `Bearer ${token}` // Incluir el token en el encabezado de la solicitud
         }
@@ -44,18 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const profileName = document.getElementById('profile-name');
         const profileFullname = document.getElementById('profile-fullname');
-        const profileId = document.getElementById('profile-id');
+        const profileCarrer = document.getElementById('profile-carreer');
 
-        if (profileName && profileFullname && profileId) {
+        if (profileName && profileFullname && profileCarrer) {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
-            const id = user[0].id || 'N/A';
+            const carreer = user[0].carrera.etiquetaNombre || 'N/A';
 
-            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, ID: ${id}`); // Verificar valores
+            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Carrera: ${carreer}`); // Verificar valores
 
             profileName.textContent = `${nombre} ${lastName}`;
             profileFullname.textContent = `${nombre} ${lastName}`;
-            profileId.textContent = `ID: ${id}`;
+            profileCarrer.textContent = `Carrera: ${carreer}`;
         } else {
             throw new Error('No se encontraron los elementos para reemplazar los datos del perfil');
         }

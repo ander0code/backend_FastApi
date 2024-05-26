@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = payload.email; // Obtener el email del payload del token
 
-    fetch(`http://127.0.0.1:8000/users/${encodeURIComponent(email)}`, {
+    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(email)}`, {
         headers: {
             'Authorization': `Bearer ${token}` // Incluir el token en el encabezado de la solicitud
         }
@@ -43,28 +43,34 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Datos del usuario recibidos:', user); // Verificar los datos recibidos
 
         const profileName = document.getElementById('profile-name');
-        const profileName2 = document.getElementById('profile-name2');
-        const profileLastName = document.getElementById('profile-last-name');
-        const profileLastName2 = document.getElementById('profile-last-name2');
+        const profileFullname = document.getElementById('profile-fullname');
+        const profileCarrer = document.getElementById('profile-carreer');
         const profileAbout = document.getElementById('profile-about');
-        const profileViews = document.getElementById('profile-views');
-        const profileID = document.getElementById('profile-id');
-        const profileCreationDate = document.getElementById('profile-creation-date');
-        const profilePosVotes = document.getElementById('profile-pos-votes');
-        const profileNegVotes = document.getElementById('profile-neg-votes');
+        const profilePointsOfView = document.getElementById('profile-points-of-view');
+        const profilePositiveVotes = document.getElementById('profile-positive-votes');
+        const profileNegativeVotes = document.getElementById('profile-negative-votes');
+        const profilePhoto = document.getElementById('profile-photo');
 
-        if (profileName && profileName2 && profileLastName && profileLastName2 && profileAbout && profileViews && profileID && profileCreationDate && profileNegVotes && profilePosVotes) {
-            // Asignar valores a las variables
-            profileName.textContent = user[0].nombre || 'N/A';
-            profileName2.textContent = user[0].nombre || 'N/A';
-            profileLastName.textContent = user[0].last_Name || 'N/A';
-            profileLastName2.textContent = user[0].last_Name || 'N/A';
-            profileAbout.textContent = user[0].acerca_de_mi || 'N/A';
-            profileViews.textContent = user[0].puntos_de_vista || 'N/A';
-            profileID.textContent = user[0].codigo_ID || 'N/A';
-            profileCreationDate.textContent = user[0].fecha_creación ? new Date(user[0].fecha_creación).toLocaleDateString() : 'N/A';
-            profilePosVotes.textContent = user[0].votos_positivos || '0';
-            profileNegVotes.textContent = user[0].votos_negativos || '0';
+        if (profileName && profileFullname && profileCarrer && profileAbout && profilePointsOfView && profilePositiveVotes && profileNegativeVotes && profilePhoto) {
+            const nombre = user[0].nombre || 'N/A';
+            const lastName = user[0].last_Name || 'N/A';
+            const carreer = user[0].carrera.etiquetaNombre || 'N/A';
+            const acercaDeMi = user[0].acerca_de_mi || 'N/A';
+            const puntosDeVista = user[0].puntos_de_vista || 'N/A';
+            const votosPositivos = user[0].votos_positivos || 0;
+            const votosNegativos = user[0].votos_negativos || 0;
+            const fotoUrl = user[0].usuariofoto || 'default-profile-photo-url'; // URL por defecto si no hay foto
+
+            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Carrera: ${carreer}, Acerca de mí: ${acercaDeMi}, Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Foto: ${fotoUrl}`); // Verificar valores
+
+            profileName.textContent = `${nombre} ${lastName}`;
+            profileFullname.textContent = `${nombre} ${lastName}`;
+            profileCarrer.textContent = `Carrera: ${carreer}`;
+            profileAbout.textContent = `Acerca de mí: ${acercaDeMi}`;
+            profilePointsOfView.textContent = `Puntos de vista: ${puntosDeVista}`;
+            profilePositiveVotes.textContent = `Votos positivos: ${votosPositivos}`;
+            profileNegativeVotes.textContent = `Votos negativos: ${votosNegativos}`;
+            profilePhoto.src = fotoUrl; // Asignar la URL de la foto
         } else {
             throw new Error('No se encontraron los elementos para reemplazar los datos del perfil');
         }
@@ -73,5 +79,3 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error al obtener el perfil del usuario:', error);
     });
 });
-
-

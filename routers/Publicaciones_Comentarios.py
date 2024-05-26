@@ -75,12 +75,6 @@ async def post_carrera(
     ciclo: int ,
     db: Session = Depends(get_db)
 ) -> Any:
-<<<<<<< HEAD
-    
-    
-=======
-
->>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627
     resultados = db.query(
         Model_DB.EtiquetaCurso).\
             join(Model_DB.EtiquetaEtiquetaCurso,

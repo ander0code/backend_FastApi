@@ -2,11 +2,8 @@ from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from models import Model_DB
-<<<<<<< HEAD
-from Schemas import Publicaciones
-=======
 from Schemas import Publicaciones,Usuario_Schema
->>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627
+
 from config.base_connection import SessionLocal
 from pydantic import EmailStr
 from typing import Any,List
@@ -78,14 +75,9 @@ async def get_post(db: Session= Depends(get_db)) -> Any:
     return db.query(Model_DB.Post).all()
 
 
-<<<<<<< HEAD
-@user.get("/posts/",response_model=List[Publicaciones.PostWithCurso])
-async def post_carrera(
-=======
 #mira depende de ti, lo puedo mejorar, seria que me esperes , o usarlo asi nomas, pero lo puedo mejorar pero me gana la hora
 @user.get("/posts_nuevo/",response_model=List[Publicaciones.PostWithCurso])
 async def get_post_nuevo(
->>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627
     db: Session = Depends(get_db)
 ) -> Any:
     resultados = db.query(
