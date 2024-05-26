@@ -834,7 +834,24 @@ body {
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
+
+section.section.dashboard {
+  margin-top: 40px;
+}
 /* Filter dropdown */
+.tag {
+
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  margin-right: 0.5em;
+  border: 2px solid #ff9900;
+  border-radius: 50px;
+  color: #000000;
+  text-decoration: none;
+}
+
+
+
 .dashboard .filter {
   position: absolute;
   right: 0px;

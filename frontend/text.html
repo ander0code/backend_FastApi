@@ -275,100 +275,141 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="dashboard.html">
-                <i class="bi bi-grid"></i>
-                <span>Home</span>
+      <li class="nav-item">
+        <a class="nav-link" href="/autenticacion/dashboard">
+          <i class="bi bi-grid"></i>
+          <span>Inicio</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" id="carrera-btn" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Carrera</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#" class="carrera-option" data-value="2">
+              <i class="bi bi-circle"></i><span>Psicología</span>
             </a>
-        </li><!-- End Dashboard Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Carreras</span><i class="bi bi-chevron-down ms-auto"></i>
+          </li>
+          <li>
+            <a href="#" class="carrera-option" data-value="2">
+              <i class="bi bi-circle"></i><span>Derecho</span>
             </a>
-            <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="components-alerts.html">
-                        <i class="bi bi-circle"></i><span>Psicología</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="components-accordion.html">
-                        <i class="bi bi-circle"></i><span>Derecho</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End Components Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Cursos</span><i class="bi bi-chevron-down ms-auto"></i>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" id="ciclo-btn" data-bs-target="#ciclo-nav" data-bs-toggle="collapse" href="#" disabled>
+          <i class="bi bi-calendar"></i><span>Ciclo</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="ciclo-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#" class="ciclo-option" data-value="1">
+              <i class="bi bi-circle"></i><span>I</span>
             </a>
-            <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="forms-elements.html">
-                        <i class="bi bi-circle"></i><span>Form Elements</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="forms-layouts.html">
-                        <i class="bi bi-circle"></i><span>Form Layouts</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="forms-editors.html">
-                        <i class="bi bi-circle"></i><span>Form Editors</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="forms-validation.html">
-                        <i class="bi bi-circle"></i><span>Form Validation</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End Forms Nav -->
-
-        <!-- Nuevo Botón Desplegable Ciclo -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#ciclo-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-calendar"></i><span>Ciclo</span><i class="bi bi-chevron-down ms-auto"></i>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="2">
+              <i class="bi bi-circle"></i><span>II</span>
             </a>
-            <ul id="ciclo-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="ciclo-1.html">
-                        <i class="bi bi-circle"></i><span>Ciclo 1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="ciclo-2.html">
-                        <i class="bi bi-circle"></i><span>Ciclo 2</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End Ciclo Nav -->
-
-        <li class="nav-heading">Soporte</li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>F.A.Q</span>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="3"> 
+              <i class="bi bi-circle"></i><span>III</span>
             </a>
-        </li><!-- End F.A.Q Page Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-contact.html">
-                <i class="bi bi-envelope"></i>
-                <span>Contact</span>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="4">
+              <i class="bi bi-circle"></i><span>IV</span>
             </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="5">
+              <i class="bi bi-circle"></i><span>V</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="6">
+              <i class="bi bi-circle"></i><span>VI</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="7">
+              <i class="bi bi-circle"></i><span>VII</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="8">
+              <i class="bi bi-circle"></i><span>VIII</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="9">
+              <i class="bi bi-circle"></i><span>IX</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="ciclo-option" data-value="10">
+              <i class="bi bi-circle"></i><span>X</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Ciclo Nav -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" id="curso-btn" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" disabled>
+            <i class="bi bi-journal-text"></i><span>Curso</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <!-- Aquí se añadirán los cursos dinámicamente -->
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <template id="curso-template">
+        <li>
+            <a href="#" class="curso-option">
+                <i class="bi bi-circle"></i><span></span>
+            </a>
+        </li>
+        </template>
+  
+      <!-- Botones de Filtrar y Limpiar -->
+<div id="filter-buttons" class="text-center" style="margin-top: 20px;">
+  <button id="filtrar-btn" class="btn btn-primary disabled" disabled>Filtrar</button>
+  <button id="limpiar-btn" class="btn btn-secondary">Limpiar</button>
+</div>
+        
+          <li class="nav-heading">Soporte</li>
+          <li class="nav-item">
+              <form action="/autenticacion/preguntas_frecuentes" method="GET">
+                  <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
+                      <i class="bi bi-question-circle"></i>
+                      <span>Preguntas frecuentes</span>
+                  </button>
+              </form>
+          </li><!-- End F.A.Q Page Nav -->
+
+
+          <li class="nav-item">
+            <form action="/autenticacion/pagina_contactos" method="GET">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                    <i class="bi bi-envelope"></i>
+                    <span>Soporte</span>
+                </button>
+            </form>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="index.html">
-                <i class="bi bi-box-arrow-in-right"></i>
-                <span>Sign Out</span>
-            </a>
-        </li><!-- End Login Page Nav -->
+          <form action="/autenticacion/logout" method="post" style="all: unset;">
+              <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                  <i class="bi bi-box-arrow-in-right"></i>
+                  <span>Salir</span>
+              </button>
+          </form>
+      </li><!-- End Login Page Nav -->
+      
     </ul>
 </aside>
 <!-- End Sidebar-->
@@ -448,7 +489,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>HORA-DE-PYTHON</span></strong>. Todos los derechos reservados
+      &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
     </div>
   </footer><!-- End Footer -->
 
@@ -463,12 +504,14 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="/NiceAdmin/assets/js/solicitud.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/solicitud.js"></script>
-  <script src="/NiceAdmin/assets/js/main.js"></script>
-  <script src="/NiceAdmin/assets/js/popular.js"></script>
+  <script src="./assets/js/postcarreraciclo.js"></script>
+    <script src="./assets/js/solicitud.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/popular.js"></script>
+    <script src="./assets/js/profiledash.js"></script>
+    <script src="./assets/js/filtrado.js"></script>
 
 </body>
 
