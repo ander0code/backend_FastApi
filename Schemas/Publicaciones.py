@@ -41,4 +41,11 @@ class PostBase(BaseModel):
 class PostWithCurso(BaseModel):
     post: PostBase
     carrera : Optional[EtiqetaCarreraBase] 
+<<<<<<< HEAD
     curso: Optional[EtiquetaCursoBase] 
+=======
+    curso: Optional[EtiquetaCursoBase] 
+    
+    
+    
+>>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627

@@ -2,7 +2,11 @@ from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from models import Model_DB
+<<<<<<< HEAD
 from Schemas import Publicaciones
+=======
+from Schemas import Publicaciones,Usuario_Schema
+>>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627
 from config.base_connection import SessionLocal
 from pydantic import EmailStr
 from typing import Any,List
@@ -17,6 +21,8 @@ def get_db():
     finally:
         db.close()
         
+#este es el que actualmente estas usando 
+
 @user.get("/users/{email}",response_model=None)
 def get_users( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
     resultados = db.query(Model_DB.User).\
@@ -25,19 +31,61 @@ def get_users( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
         all()
 
     if not resultados:
-        raise HTTPException(status_code=404, detail="Carrera no registrada - o no existe, no es la id de la carrera, fijate en la database imvecil")
+        #aca cambie el mensaje no te olvides 
+        raise HTTPException(status_code=404, detail="buscando usuario por email: no existe")
 
     return resultados
-    #return db.query(Model_DB.User).all()
-   
+
+#este es al que debes migrar ahora 
+#ahora puede usar la etiqueta del usuario
+
+@user.get("/users_nuevo/{email}",response_model=List[Usuario_Schema.UserBaseModel])
+def get_users_muevo( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
+    resultados = db.query(Model_DB.User,Model_DB.EtiquetaCarrera).\
+        join(Model_DB.UserData, Model_DB.UserData.id == Model_DB.User.codigo_ID).\
+        join(Model_DB.EtiquetaUsuario, Model_DB.EtiquetaUsuario.etiquetaUserID == Model_DB.User.id).\
+        join(Model_DB.EtiquetaCarrera, Model_DB.EtiquetaCarrera.id_carrera == Model_DB.EtiquetaUsuario.etiquetaID).\
+        filter(Model_DB.UserData.email == email).all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="buscando usuario por email: no existe")
+
+    response = [
+        Usuario_Schema.UserBaseModel(
+            id=user.id,
+            fecha_creación=user.fecha_creación,
+            nombre=user.nombre,
+            last_Name=user.last_Name,
+            acerca_de_mi=user.acerca_de_mi,
+            puntos_de_vista=user.puntos_de_vista,
+            votos_positivos=user.votos_positivos,
+            votos_negativos=user.votos_negativos,
+            usuariofoto=user.usuariofoto,
+            codigo_ID=user.codigo_ID,
+            carrera=Usuario_Schema.EtiqetaCarreraBase(
+                etiquetaNombre=carrera.etiquetaNombre,
+            ) if carrera else None
+        )
+        for user, carrera in resultados
+    ]
+    return response
+
+
+#este es el que usas altualmente 
 
 @user.get("/Post/",response_model=None)
 async def get_post(db: Session= Depends(get_db)) -> Any:
     return db.query(Model_DB.Post).all()
 
 
+<<<<<<< HEAD
 @user.get("/posts/",response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera(
+=======
+#mira depende de ti, lo puedo mejorar, seria que me esperes , o usarlo asi nomas, pero lo puedo mejorar pero me gana la hora
+@user.get("/posts_nuevo/",response_model=List[Publicaciones.PostWithCurso])
+async def get_post_nuevo(
+>>>>>>> 812247f153105f25da24f4fc93e63ef813b0f627
     db: Session = Depends(get_db)
 ) -> Any:
     resultados = db.query(
