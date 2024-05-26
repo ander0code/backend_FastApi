@@ -287,108 +287,111 @@
         </a>
         <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#" class="carrera-option" data-value="1">
+            <a href="#" class="carrera-option">
               <i class="bi bi-circle"></i><span>Psicología</span>
             </a>
           </li>
           <li>
-            <a href="#" class="carrera-option" data-value="2">
+            <a href="#" class="carrera-option">
               <i class="bi bi-circle"></i><span>Derecho</span>
             </a>
           </li>
         </ul>
       </li><!-- End Components Nav -->
-      
+  
       <li class="nav-item">
         <a class="nav-link collapsed" id="ciclo-btn" data-bs-target="#ciclo-nav" data-bs-toggle="collapse" href="#" disabled>
           <i class="bi bi-calendar"></i><span>Ciclo</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="ciclo-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#" class="ciclo-option" data-value="1">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>I</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="2">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>II</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="3">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>III</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="4">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>IV</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="5">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>V</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="6">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>VI</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="7">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>VII</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="8">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>VIII</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="9">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>IX</span>
             </a>
           </li>
           <li>
-            <a href="#" class="ciclo-option" data-value="10">
+            <a href="#" class="ciclo-option">
               <i class="bi bi-circle"></i><span>X</span>
             </a>
           </li>
         </ul>
       </li><!-- End Ciclo Nav -->
-      
   
       <li class="nav-item">
         <a class="nav-link collapsed" id="curso-btn" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" disabled>
-            <i class="bi bi-journal-text"></i><span>Curso</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Curso</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-            <!-- Aquí se añadirán los cursos dinámicamente -->
+          <li>
+            <a href="#" class="curso-option">
+              <i class="bi bi-circle"></i><span>Administración de chongos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="curso-option">
+              <i class="bi bi-circle"></i><span>Panadería nuclear</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="curso-option">
+              <i class="bi bi-circle"></i><span>Cachudo profesional</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="curso-option">
+              <i class="bi bi-circle"></i><span>Aprovechador de Camilas🥵</span>
+            </a>
+          </li>
         </ul>
-    </li><!-- End Forms Nav -->
-</ul>
-</nav>
-
-<!-- Plantilla para un curso -->
-<template id="curso-template">
-<li>
-    <a href="#" class="curso-option">
-        <i class="bi bi-circle"></i><span></span>
-    </a>
-</li>
-</template>
-
-<!-- Agrega aquí la referencia al archivo JavaScript -->
-<script src="./assets/js/postcarreraciclo.js"></script>
+      </li><!-- End Forms Nav -->
   
       <!-- Botones de Filtrar y Limpiar -->
 <div id="filter-buttons" class="text-center" style="margin-top: 20px;">
   <button id="filtrar-btn" class="btn btn-primary disabled" disabled>Filtrar</button>
   <button id="limpiar-btn" class="btn btn-secondary">Limpiar</button>
 </div>
-
-
-          <li class="nav-heading">Ayuda</li>
+        
+          <li class="nav-heading">Soporte</li>
           <li class="nav-item">
               <form action="/autenticacion/preguntas_frecuentes" method="GET">
                   <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
@@ -476,7 +479,7 @@
           <!-- Botón Preguntar -->
           <div class="col-12 text-end mb-3" id="preguntar-btn-container">
             <a href="/autenticacion/publicar">
-              <button  class="btn btn-primary" id="preguntar-btn">Preguntar</button>
+              <button class="btn btn-primary" id="preguntar-btn">Preguntar</button>
             </a>
           </div>
          <!-- Plantilla de post -->
