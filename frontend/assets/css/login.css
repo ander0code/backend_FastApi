@@ -1,124 +1,207 @@
-/* Estilos para la sección de login */
 h1.form-title {
   text-align: center;
   font-size: 30px;
 }
 
 .login-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Hace que la sección ocupe toda la altura de la ventana */
-    background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Hace que la sección ocupe toda la altura de la ventana */
+  background-color: #f9f9f9;
+}
+
+/* Estilos para el contenedor de imagen */
+.image-container {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-image {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+/* Estilos para el contenedor del formulario */
+.form-container {
+  flex: 1;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-content {
+  max-width: 28rem;
+  width: 100%;
+}
+
+/* Estilos para el título del formulario */
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos para el formulario */
+.login-form {
+  margin-top: 2rem;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para las etiquetas de input */
+.label-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+/* Estilos para los campos de input */
+.input-group {
+  position: relative;
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+/* Estilos para los iconos dentro de los campos de input */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.container-button {
+  text-align: center;
+}
+
+/* Estilos para el botón de submit */
+.submit-button {
+  width: 100%; /* Hace que el botón tenga el mismo ancho que los otros campos */
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #FA6D1D;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(255, 72, 0);
+}
+
+/* Estilos para el mensaje debajo del formulario */
+.form-message {
+  margin-top: 1rem;
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+
+/* Pantallas grandes (desktops) */
+@media (max-width: 1200px) {
+  .login-section {
+    padding: 2rem;
   }
-  
-  /* Estilos para el contenedor de imagen */
-  .image-container {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login-image {
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-  }
-  
-  /* Estilos para el contenedor del formulario */
-  .form-container {
-    flex: 1;
-    padding: 4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .form-content {
-    max-width: 28rem;
-    width: 100%;
-  }
-  
-  /* Estilos para el título del formulario */
-  .form-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Estilos para el formulario */
-  .login-form {
-    margin-top: 2rem;
-  }
-  
-  /* Estilos para los grupos de formulario */
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Estilos para las etiquetas de input */
-  .label-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .label {
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-    color: #333;
-  }
-  
-  /* Estilos para los campos de input */
-  .input-group {
-    position: relative;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-  }
-  
-  /* Estilos para los iconos dentro de los campos de input */
-  .input-icon {
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-  }
-  
-  .icon {
-    width: 1.5rem;
-    height: 1.5rem;
+}
+
+/* Tablets y dispositivos medianos (landscape) */
+@media (max-width: 992px) {
+  .login-section {
+    padding: 1.5rem;
   }
 
-  .container-button {
-    text-align: center;
+  .form-content {
+    max-width: 24rem;
   }
-  
-  /* Estilos para el botón de submit */
+}
+
+/* Teléfonos grandes y dispositivos pequeños (portrait) */
+@media (max-width: 768px) {
+  .login-section {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .image-container {
+    display: none; /* Oculta la imagen en pantallas pequeñas */
+  }
+
+  .form-container {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Teléfonos medianos */
+@media (max-width: 576px) {
+  .login-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .form-content {
+    max-width: 20rem;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+  }
+
+  .input-field {
+    padding: 0.75rem;
+  }
+
   .submit-button {
-    width: 100%; /* Hace que el botón tenga el mismo ancho que los otros campos */
-    padding: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: #FA6D1D ;
-    color: #fff;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 360px) {
+  .login-section {
+    padding: 1rem 0.5rem;
+  }
+
+  .form-content {
+    max-width: 18rem;
+  }
+
+  .form-title {
     font-size: 1rem;
-    cursor: pointer;
   }
-  
-  /* Estilos para el mensaje debajo del formulario */
-  .form-message {
-    margin-top: 1rem;
-    font-size: 15px;
-    color: #666;
-    text-align: center;
+
+  .input-field {
+    padding: 0.5rem;
   }
-  
-  .submit-button:hover {
-    background-color: rgb(255, 72, 0);
+
+  .submit-button {
+    padding: 0.5rem;
+    font-size: 0.75rem;
   }
+}
