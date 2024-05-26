@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Forua</title>
+    <link href="assets/img/logosago.webp" rel="icon">
     <link rel="stylesheet" href="./assets/css/login.css ">
+    <link rel="stylesheet" href="./assets/css/efect.css">
+    <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="./assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
 </head>
 <body>
     <section class="login-section">
@@ -17,7 +33,7 @@
 
         <div class="form-container">
             <div class="form-content">
-                <h1 class="form-title">Bienvenido a Forua</h1>
+                <h1 class="form-title">BIENVENIDO A FORUA</h1>
                 <form action="/autenticacion/login" method="post" class="login-form">
                     <div class="form-group">
                         <div class="label-group">
@@ -28,8 +44,8 @@
                                 type="email"
                                 name="email"
                                 class="input-field"
-                                placeholder="Enter User"
-                                aria-placeholder="Enter Email"
+                                placeholder="Ingresa tu correo"
+
                                 required
                             />
                             <span class="input-icon">
@@ -41,14 +57,14 @@
                     </div>
                     <div class="form-group">
                         <div class="label-group">
-                            <label for="password" class="label">Password</label>
+                            <label for="password" class="label">Contraseña</label>
                         </div>
                         <div class="input-group">
                             <input
                                 type="password"
                                 name="password"
                                 class="input-field"
-                                placeholder="Enter Password"
+                                placeholder="Ingresa tu contraseña"
                                 required
                             />
                             <span class="input-icon">
@@ -64,25 +80,26 @@
                         </div>
                     </div>
                 </form>
-                <p class="form-message">“Dime y lo olvido, enséñame y lo recuerdo, involúcrame y lo aprendo”</p>
+                <p class="form-message">“Somos estudiantes de 3er ciclo practicantes de html y python🤑”</p>
             </div>
         </div>
     </section>
 
-    <script>
-        function redirectToAnotherPage() {
-            // Redirigir a la página deseada
-            window.location.href = "./dashboard.html";   
-        }
-        // Función para cambiar el color del botón cuando se pasa el cursor sobre él
-        function changeButtonColor(button) {
-            button.style.backgroundColor = "#FAF71D";
-        }
+    <div class="alert alert-danger d-none fixed-top w-50 mx-auto mt-3" role="alert" id="custom-alert">
+        Credenciales incorrectas
+      </div>
+      
+      
 
-        // Función para restaurar el color original del botón cuando el cursor deja de pasar sobre él
-        function restoreButtonColor(button) {
-            button.style.backgroundColor = "#FAF71D" ;
-        }
-    </script>
+  <script src="./assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="./assets/vendor/echarts/echarts.min.js"></script>
+  <script src="./assets/vendor/quill/quill.js"></script>
+  <script src="./assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="./assets/vendor/php-email-form/validate.js"></script>
+
+ <script src="./assets/js/login.js"></script>
 </body>
 </html>

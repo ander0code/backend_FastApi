@@ -41,10 +41,24 @@ app.mount("/autenticacion/assets/css", StaticFiles(directory="frontend/assets/cs
 
 
 
+app.mount("/assets/js", StaticFiles(directory="frontend/assets/js"), name="js")
 
 app.mount("/assets/js", StaticFiles(directory="frontend/assets/js"), name="js")
 app.mount("/assets/img", StaticFiles(directory="frontend/assets/img"), name="img")
 app.mount("/assets/css", StaticFiles(directory="frontend/assets/css"), name="css")
+
+app.mount("/assets/vendor/bootstrap", StaticFiles(directory="frontend/assets/vendor/bootstrap"), name="bootstrap1")
+app.mount("/assets/vendor/bootstrap-icons", StaticFiles(directory="frontend/assets/vendor/bootstrap-icons"), name="bootstrap-icons1")
+app.mount("/assets/vendor/boxicons", StaticFiles(directory="frontend/assets/vendor/boxicons"), name="boxicons1")
+app.mount("/assets/vendor/quill", StaticFiles(directory="frontend/assets/vendor/quill"), name="quill1")
+app.mount("/assets/vendor/simple-datatables", StaticFiles(directory="frontend/assets/vendor/simple-datatables"), name="simple-datatables1")
+app.mount("/assets/vendor/remixicon", StaticFiles(directory="frontend/assets/vendor/remixicon"), name="remixicon1")
+app.mount("/assets/vendor/apexcharts", StaticFiles(directory="frontend/assets/vendor/apexcharts"), name="apexcharts1")
+app.mount("/assets/vendor/echarts", StaticFiles(directory="frontend/assets/vendor/echarts"), name="echarts1")
+app.mount("/assets/vendor/chart.js", StaticFiles(directory="frontend/assets/vendor/chart.js"), name="chart.js1")
+app.mount("/assets/vendor/tinymce", StaticFiles(directory="frontend/assets/vendor/tinymce"), name="tinymce1")
+app.mount("/assets/vendor/php-email-form", StaticFiles(directory="frontend/assets/vendor/php-email-form"), name="php-email-form1")
+app.mount("/assets/vendor/bootstrap/css", StaticFiles(directory="frontend/assets/vendor/bootstrap/css"), name="ccsss")
 
 app.include_router(Autenticacion.app, tags=["Login"])
 app.include_router(Users.user, tags=["Users"])

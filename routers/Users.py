@@ -4,7 +4,8 @@ from sqlalchemy import or_
 from models import Model_DB
 from Schemas import Publicaciones
 from config.base_connection import SessionLocal
-from typing import Any,List,Optional
+from pydantic import EmailStr
+from typing import Any,List
 
 user = APIRouter()
 
@@ -16,13 +17,24 @@ def get_db():
     finally:
         db.close()
         
-@user.get("/users/",response_model=None)
-async def get_users( db: Session = Depends(get_db) )-> Any:
-    return db.query(Model_DB.User).all()
+@user.get("/users/{email}",response_model=None)
+def get_users( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
+    resultados = db.query(Model_DB.User).\
+        join(Model_DB.UserData, Model_DB.UserData.id == Model_DB.User.codigo_ID).\
+        filter(Model_DB.UserData.email == email).\
+        all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="Carrera no registrada - o no existe, no es la id de la carrera, fijate en la database imvecil")
+
+    return resultados
+    #return db.query(Model_DB.User).all()
+   
 
 @user.get("/Post/",response_model=None)
 async def get_post(db: Session= Depends(get_db)) -> Any:
     return db.query(Model_DB.Post).all()
+
 
 @user.get("/posts/",response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera(

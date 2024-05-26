@@ -133,12 +133,12 @@ def login(email:Annotated[EmailStr,Form()],password:Annotated[str,Form()], db: S
     if user_data is None:
         raise HTTPException(
             status_code=401,
-            detail="Email no authorization")
+            detail="Credenciales incorrectas")
         
     if not authenticate_user(user_data.passwordHash,password):
         raise HTTPException(
             status_code=401,
-            detail="password not authorization"
+            detail="Credenciales incorrectas"
         )
     token = create_token({"email":user_data.email})
     
@@ -147,6 +147,7 @@ def login(email:Annotated[EmailStr,Form()],password:Annotated[str,Form()], db: S
         status_code=302,
         headers={"set-cookie":f"access_token={token};Max-Age={TOKEN_SECONDS_EXP}"}
     )
+
 
 @app.post("/autenticacion/logout")
 def logout():
