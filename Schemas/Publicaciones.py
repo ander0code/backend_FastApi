@@ -42,3 +42,6 @@ class PostWithCurso(BaseModel):
     post: PostBase
     carrera : Optional[EtiqetaCarreraBase] 
     curso: Optional[EtiquetaCursoBase] 
+    
+    
+    

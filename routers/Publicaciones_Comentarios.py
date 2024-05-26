@@ -75,8 +75,7 @@ async def post_carrera(
     ciclo: int ,
     db: Session = Depends(get_db)
 ) -> Any:
-    
-    
+
     resultados = db.query(
         Model_DB.EtiquetaCurso).\
             join(Model_DB.EtiquetaEtiquetaCurso,
