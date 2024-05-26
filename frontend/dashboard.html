@@ -390,9 +390,8 @@
   <button id="filtrar-btn" class="btn btn-primary disabled" disabled>Filtrar</button>
   <button id="limpiar-btn" class="btn btn-secondary">Limpiar</button>
 </div>
-
-
-          <li class="nav-heading">Ayuda</li>
+        
+          <li class="nav-heading">Soporte</li>
           <li class="nav-item">
               <form action="/autenticacion/preguntas_frecuentes" method="GET">
                   <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
@@ -479,7 +478,9 @@
         <div class="row" id="post-container">
           <!-- Botón Preguntar -->
           <div class="col-12 text-end mb-3" id="preguntar-btn-container">
-            <button class="btn btn-primary" id="preguntar-btn">Preguntar</button>
+            <a href="/autenticacion/publicar">
+              <button class="btn btn-primary" id="preguntar-btn">Preguntar</button>
+            </a>
           </div>
          <!-- Plantilla de post -->
 <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0" id="post-template" style="display: none;">

@@ -116,13 +116,14 @@ class EtiquetaCurso(Base):
     etiquetas_publicacion = relationship("EtiquetasPublicacion",back_populates="etiqueta_curso")
     etiqueta_etiqueta_curso = relationship("EtiquetaEtiquetaCurso",back_populates="etiqueta_curso")
     
+   
 class EtiquetasPublicacion(Base):
     __tablename__ = 'etiquetas_publicacion'
     Comentario_ID= Column(Integer, ForeignKey('post.id'), primary_key=True)
     etiqueta_carrera_ID= Column(Integer, ForeignKey('etiqueta_carrera.id_carrera'))
     etiqueta_curso_ID= Column(Integer, ForeignKey('etiquetaCurso.id_curso'))
-    post = relationship("Post", back_populates="etiquetas_publicacion")
     
+    post = relationship("Post", back_populates="etiquetas_publicacion")
     etiqueta_carrera = relationship("EtiquetaCarrera", back_populates="etiquetas_publicacion")
     etiqueta_curso = relationship("EtiquetaCurso", back_populates="etiquetas_publicacion")
 

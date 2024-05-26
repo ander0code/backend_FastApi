@@ -5,6 +5,7 @@ import sys
 sys.path.append("..")
 from routers import Autenticacion
 from routers import Users
+from routers import Publicaciones_Comentarios
 
 app = FastAPI()
 origins = [
@@ -61,4 +62,5 @@ app.mount("/assets/vendor/bootstrap/css", StaticFiles(directory="frontend/assets
 
 app.include_router(Autenticacion.app, tags=["Login"])
 app.include_router(Users.user, tags=["Users"])
+app.include_router(Publicaciones_Comentarios.post, tags=["Post"])
 
