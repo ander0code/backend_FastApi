@@ -1,12 +1,6 @@
-/**
-* Template Name: NiceAdmin
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Updated: Apr 20 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
+
+/*-------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 :root {
@@ -72,7 +66,8 @@ body {
 .breadcrumb {
   background: transparent;
   padding: 0;
-  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .breadcrumb-item + .breadcrumb-item::before {
   content: '>';
@@ -831,6 +826,39 @@ body {
   background-color: #4154f1;
 }
 
+/* Estilos mejorados para el desplegable */
+.header-nav .dropdown-menu {
+  background-color: #fff; /* Color de fondo */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borde */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px 0; /* Espaciado interno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.header-nav .dropdown-item {
+  padding: 10px 20px; /* Espaciado interno */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.header-nav .dropdown-item:hover {
+  background-color: #f6f6f6; /* Color de fondo al pasar el cursor */
+}
+
+.header-nav .dropdown-item i {
+  margin-right: 10px; /* Espaciado entre ícono y texto */
+}
+
+.header-nav .dropdown-toggle::after {
+  display: none; /* Ocultar flecha por defecto */
+}
+
+.header-nav .dropdown-toggle.collapsed::after {
+  display: inline-block; /* Mostrar flecha cuando el menú está colapsado */
+  content: "\25BC"; /* Código Unicode de la flecha hacia abajo */
+  margin-left: 5px; /* Espaciado entre texto e ícono */
+}
+
+
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
@@ -1299,12 +1327,12 @@ section.section.contact {
 
 #preguntar-btn-container {
   text-align: right;
-  margin-top: -50px; /* Ajusta este valor según sea necesario */
+  margin-top: -70px; /* Ajusta este valor según sea necesario */
   margin-bottom: 0px;
 }
 
 #preguntar-btn {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 
@@ -1347,3 +1375,4 @@ section.section.contact {
 .disabled a {
   color: grey !important;
 }
+

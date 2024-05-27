@@ -1,3 +1,5 @@
+/* General Styles */
+
 h1.form-title {
   text-align: center;
   font-size: 30px;
@@ -7,11 +9,13 @@ h1.form-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Hace que la sección ocupe toda la altura de la ventana */
+  height: 100vh; /* Makes the section take the full height of the viewport */
   background-color: #f9f9f9;
+  padding: 0 2rem; /* Added padding for better responsiveness */
 }
 
-/* Estilos para el contenedor de imagen */
+/* Image Container Styles */
+
 .image-container {
   flex: 1;
   text-align: center;
@@ -26,7 +30,8 @@ h1.form-title {
   height: auto;
 }
 
-/* Estilos para el contenedor del formulario */
+/* Form Container Styles */
+
 .form-container {
   flex: 1;
   padding: 4rem 2rem;
@@ -40,36 +45,48 @@ h1.form-title {
   width: 100%;
 }
 
-/* Estilos para el título del formulario */
+/* Form Title Styles */
+
 .form-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: typing-title 5s steps(22, end), blink-caret .75s step-end infinite;
 }
 
-/* Estilos para el formulario */
-.login-form {
-  margin-top: 2rem;
-}
-
-/* Estilos para los grupos de formulario */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-/* Estilos para las etiquetas de input */
-.label-group {
-  display: flex;
-  justify-content: space-between;
-}
+/* Label Styles */
 
 .label {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: #333;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: typing-label 3s steps(22, end), blink-caret .75s step-end infinite;
 }
 
-/* Estilos para los campos de input */
+/* Form Styles */
+
+.login-form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.label-group {
+  display: flex;
+  justify-content: space-between;
+}
+
 .input-group {
   position: relative;
 }
@@ -81,7 +98,6 @@ h1.form-title {
   border: 1px solid #ccc;
 }
 
-/* Estilos para los iconos dentro de los campos de input */
 .input-icon {
   position: absolute;
   top: 50%;
@@ -98,9 +114,8 @@ h1.form-title {
   text-align: center;
 }
 
-/* Estilos para el botón de submit */
 .submit-button {
-  width: 100%; /* Hace que el botón tenga el mismo ancho que los otros campos */
+  width: 100%; /* Makes the button the same width as other input fields */
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -114,7 +129,6 @@ h1.form-title {
   background-color: rgb(255, 72, 0);
 }
 
-/* Estilos para el mensaje debajo del formulario */
 .form-message {
   margin-top: 1rem;
   font-size: 15px;
@@ -122,16 +136,16 @@ h1.form-title {
   text-align: center;
 }
 
-/* Media queries para diferentes tamaños de pantalla */
+/* Media Queries */
 
-/* Pantallas grandes (desktops) */
+/* Large screens (desktops) */
 @media (max-width: 1200px) {
   .login-section {
     padding: 2rem;
   }
 }
 
-/* Tablets y dispositivos medianos (landscape) */
+/* Medium screens (tablets and landscape phones) */
 @media (max-width: 992px) {
   .login-section {
     padding: 1.5rem;
@@ -142,7 +156,7 @@ h1.form-title {
   }
 }
 
-/* Teléfonos grandes y dispositivos pequeños (portrait) */
+/* Small screens (portrait tablets and large phones) */
 @media (max-width: 768px) {
   .login-section {
     flex-direction: column;
@@ -150,7 +164,7 @@ h1.form-title {
   }
 
   .image-container {
-    display: none; /* Oculta la imagen en pantallas pequeñas */
+    display: none; /* Hide the image on small screens */
   }
 
   .form-container {
@@ -158,7 +172,7 @@ h1.form-title {
   }
 }
 
-/* Teléfonos medianos */
+/* Extra small screens (phones) */
 @media (max-width: 576px) {
   .login-section {
     padding: 1.5rem 0.5rem;
@@ -182,7 +196,7 @@ h1.form-title {
   }
 }
 
-/* Teléfonos pequeños */
+/* Very small screens */
 @media (max-width: 360px) {
   .login-section {
     padding: 1rem 0.5rem;
@@ -204,4 +218,20 @@ h1.form-title {
     padding: 0.5rem;
     font-size: 0.75rem;
   }
+}
+
+/* Keyframes for animations */
+@keyframes typing-title {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes typing-label {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
 }
