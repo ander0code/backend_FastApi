@@ -477,38 +477,28 @@
             </a>
           </div>
         <!-- Plantilla de post -->
-<div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0" id="post-template" style="display: none;">
-  <div class="row align-items-center">
-    <div class="col-md-8 mb-3 mb-sm-0">
-      <h5>
-        <a href="./text.html" class="text-primary post-title"></a>
-      </h5>
-      <p class="text-sm">
-        <span class="op-6">Publicado el</span> <a class="text-black post-date"></a>
-        <span class="op-6">por</span> <a class="text-black post-author"></a>
-      </p>
-      <div class="text-sm op-5 post-tags">
-        <!-- Tags se agregarán dinámicamente -->
-      </div>
+        <div id="post-container"></div>
+
+<!-- Plantilla de publicación -->
+<template id="post-template">
+  <div class="activity-item d-flex flex-column p-2 mb-2 border" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span class="activite-label post-date">{{time}}</span>
+      <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
     </div>
-    <div class="col-md-4 op-7">
-      <div class="row text-center op-7">
-        <div class="col px-2">
-          <i class="ion-connection-bars icon-1x"></i>
-          <span class="d-block text-sm post-votes"></span>
-        </div>
-        <div class="col px-2">
-          <i class="ion-ios-chatboxes-outline icon-1x"></i>
-          <span class="d-block text-sm post-replies"></span>
-        </div>
-        <div class="col px-3">
-          <i class="ion-ios-eye-outline icon-1x"></i>
-          <span class="d-block text-sm post-views"></span>
-        </div>
-      </div>
+    <div class="activity-content">
+      <a href="#" class="fw-bold text-dark post-title">{{titulo}}</a>
+      <div class="text-muted">por <span class="post-author">{{author}}</span></div>
+      <div class="post-tags"></div>
+    </div>
+    <div class="d-flex justify-content-between mt-2">
+      <span class="post-votes">{{votes}} Favoritos</span>
+      <span class="post-replies">{{replies}} Comentarios</span>
+      <span class="post-views">{{views}} Visitas</span>
     </div>
   </div>
-</div>
+</template>
+
 <!-- Fin de plantilla de post -->
 
         </div>

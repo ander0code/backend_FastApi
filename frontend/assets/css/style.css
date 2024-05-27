@@ -13,9 +13,6 @@
   scroll-behavior: smooth;
 }
 
-.pagetitle {
-  margin-bottom: -50px;
-}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -58,9 +55,7 @@ body {
 .main {
   padding: 20px;
 }
-.pagetitle {
-  margin-bottom: 20px;
-}
+
 .card {
   background: #fff;
   border: none;
@@ -134,7 +129,7 @@ body {
 --------------------------------------------------------------*/
 .pagetitle {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: -40px;
 }
 
 .pagetitle h1 {
@@ -840,7 +835,7 @@ body {
 --------------------------------------------------------------*/
 
 section.section.dashboard {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 /* Filter dropdown */
 .tag {
