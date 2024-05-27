@@ -13,6 +13,10 @@
   scroll-behavior: smooth;
 }
 
+.pagetitle {
+  margin-bottom: -50px;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;
