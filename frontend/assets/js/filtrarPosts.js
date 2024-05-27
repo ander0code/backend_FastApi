@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       option.addEventListener('click', function(event) {
         event.preventDefault();
         const value = this.getAttribute('data-value');
-        const url = `http://127.0.0.1:8000/posts/${value}`;
+        const url = `http://127.0.0.1:8000/posts_nuevo/${value}`;
   
         fetch(url)
           .then(response => {

@@ -37,10 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedCurso = null;
       filtrarBtnCheck(); // Verificar si se debe habilitar el botón de filtrar
       // Cerrar automáticamente el menú desplegable de Carrera
-      const componentsNav = document.getElementById('components-nav');
-      if (componentsNav.classList.contains('show')) {
-        carreraBtn.click(); // Cerrar el menú desplegable
-      }
+      closeDropdown(carreraBtn);
     });
   });
 
@@ -55,10 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedCurso = null;
       filtrarBtnCheck(); // Verificar si se debe habilitar el botón de filtrar
       // Cerrar automáticamente el menú desplegable de Ciclo
-      const cicloNav = document.getElementById('ciclo-nav');
-      if (cicloNav.classList.contains('show')) {
-        cicloBtn.click(); // Cerrar el menú desplegable
-      }
+      closeDropdown(cicloBtn);
     });
   });
 
@@ -71,10 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedCurso = option.getAttribute('data-value');
       filtrarBtnCheck(); // Verificar si se debe habilitar el botón de filtrar
       // Cerrar automáticamente el menú desplegable de Curso
-      const formsNav = document.getElementById('forms-nav');
-      if (formsNav.classList.contains('show')) {
-        cursoBtn.click(); // Cerrar el menú desplegable
-      }
+      closeDropdown(cursoBtn);
     });
   });
 
@@ -95,6 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedCarrera = null;
     selectedCiclo = null;
     selectedCurso = null;
+
+    // Cerrar todos los desplegables
+    closeDropdown(carreraBtn);
+    closeDropdown(cicloBtn);
+    closeDropdown(cursoBtn);
   });
 
   // Verificar si se debe habilitar el botón de filtrar
@@ -105,6 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       filtrarBtn.disabled = true;
       filtrarBtn.classList.add('disabled');
+    }
+  }
+
+  // Cerrar el desplegable asociado a un botón
+  function closeDropdown(button) {
+    const dropdown = button.nextElementSibling;
+    if (dropdown.classList.contains('show')) {
+      button.click(); // Cerrar el menú desplegable
     }
   }
 
@@ -125,5 +129,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-
