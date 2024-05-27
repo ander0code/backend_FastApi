@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
 from datetime import date
 
 class EtiquetaCursoBase(BaseModel):
@@ -41,6 +41,6 @@ class PostBase(BaseModel):
 class PostWithCurso(BaseModel):
     post: PostBase
     carrera : Optional[EtiqetaCarreraBase] 
-    curso: Optional[EtiquetaCursoBase] 
+    curso: Optional[EtiquetaCursoBase]
     
     
