@@ -65,11 +65,6 @@ h1.form-title {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: #333;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typewriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: typing-label 3s steps(22, end), blink-caret .75s step-end infinite;
 }
 
 /* Form Styles */
@@ -222,11 +217,6 @@ h1.form-title {
 
 /* Keyframes for animations */
 @keyframes typing-title {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes typing-label {
   from { width: 0; }
   to { width: 100%; }
 }
