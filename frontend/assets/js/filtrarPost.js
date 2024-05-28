@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carreraBtn = document.getElementById('carrera-btn');
     const cicloBtn = document.getElementById('ciclo-btn');
     const cursoBtn = document.getElementById('curso-btn');
-    const filtrarBtn = document.getElementById('filtrar-btn');
     const limpiarBtn = document.getElementById('limpiar-btn');
 
     const carreraOptions = document.querySelectorAll('.carrera-option');
@@ -17,81 +16,62 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedCiclo = null;
     let selectedCurso = null;
 
-    inicializarBotones();
+    cicloBtn.classList.add('disabled');
+    cursoBtn.classList.add('disabled');
+
+    // Mostrar todos los posts al cargar la página
+    fetchAndDisplayAllPosts();
 
     carreraOptions.forEach(option => {
         option.addEventListener('click', (event) => {
             event.preventDefault();
-            manejarSeleccion(option, carreraBtn, 'carrera', cicloBtn, cursoBtn);
+            const carreraName = option.querySelector('span').textContent;
+            carreraBtn.querySelector('span').textContent = carreraName;
+            selectedCarrera = option.getAttribute('data-value');
+            cicloBtn.classList.remove('disabled');
+            cursoBtn.classList.add('disabled');
+            cursoBtn.querySelector('span').textContent = defaultCursoText;
+            selectedCiclo = null;
+            selectedCurso = null;
+            closeDropdown(carreraBtn);
+            // Filtrar automáticamente al seleccionar una carrera
+            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
         });
     });
 
     cicloOptions.forEach(option => {
         option.addEventListener('click', (event) => {
             event.preventDefault();
-            manejarSeleccion(option, cicloBtn, 'ciclo', cursoBtn);
+            const cicloName = option.querySelector('span').textContent;
+            cicloBtn.querySelector('span').textContent = cicloName;
+            selectedCiclo = option.getAttribute('data-value');
+            cursoBtn.classList.remove('disabled');
+            selectedCurso = null;
+            closeDropdown(cicloBtn);
+            // Filtrar automáticamente al seleccionar un ciclo
+            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
         });
     });
 
     cursoOptions.forEach(option => {
         option.addEventListener('click', (event) => {
             event.preventDefault();
-            manejarSeleccion(option, cursoBtn, 'curso');
+            const cursoName = option.querySelector('span').textContent;
+            cursoBtn.querySelector('span').textContent = cursoName;
+            selectedCurso = option.getAttribute('data-value');
+            closeDropdown(cursoBtn);
+            // Filtrar automáticamente al seleccionar un curso
+            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
         });
     });
 
-    limpiarBtn.addEventListener('click', limpiarFiltros);
-
-    filtrarBtn.addEventListener('click', () => {
-        if (selectedCarrera) {
-            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
-        } else {
-            console.error('Debe seleccionar una carrera antes de filtrar.');
-        }
-    });
-
-    function inicializarBotones() {
-        cicloBtn.classList.add('disabled');
-        cursoBtn.classList.add('disabled');
-        filtrarBtn.disabled = true;
-        filtrarBtn.classList.add('disabled');
-    }
-
-    function manejarSeleccion(option, button, tipo, siguienteBtn1, siguienteBtn2) {
-        const nombre = option.querySelector('span').textContent;
-        button.querySelector('span').textContent = nombre;
-        const valor = option.getAttribute('data-value');
-        
-        switch (tipo) {
-            case 'carrera':
-                selectedCarrera = valor;
-                selectedCiclo = null;
-                selectedCurso = null;
-                siguienteBtn1.classList.remove('disabled');
-                siguienteBtn1.querySelector('span').textContent = defaultCicloText;
-                siguienteBtn2.classList.add('disabled');
-                siguienteBtn2.querySelector('span').textContent = defaultCursoText;
-                break;
-            case 'ciclo':
-                selectedCiclo = valor;
-                selectedCurso = null;
-                siguienteBtn1.classList.remove('disabled');
-                siguienteBtn1.querySelector('span').textContent = defaultCursoText;
-                break;
-            case 'curso':
-                selectedCurso = valor;
-                break;
-        }
-        filtrarBtnCheck();
-        closeDropdown(button);
-    }
-
-    function limpiarFiltros() {
+    limpiarBtn.addEventListener('click', () => {
         carreraBtn.querySelector('span').textContent = defaultCarreraText;
         cicloBtn.querySelector('span').textContent = defaultCicloText;
         cursoBtn.querySelector('span').textContent = defaultCursoText;
 
-        inicializarBotones();
+        cicloBtn.classList.add('disabled');
+        cursoBtn.classList.add('disabled');
 
         selectedCarrera = null;
         selectedCiclo = null;
@@ -101,18 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         closeDropdown(cicloBtn);
         closeDropdown(cursoBtn);
 
-        limpiarContenedorPosts();
-    }
-
-    function filtrarBtnCheck() {
-        if (selectedCarrera) {
-            filtrarBtn.disabled = false;
-            filtrarBtn.classList.remove('disabled');
-        } else {
-            filtrarBtn.disabled = true;
-            filtrarBtn.classList.add('disabled');
-        }
-    }
+        // Mostrar todos los posts al limpiar los filtros
+        fetchAndDisplayAllPosts();
+    });
 
     function closeDropdown(button) {
         const dropdown = button.nextElementSibling;
@@ -121,51 +92,98 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function limpiarContenedorPosts() {
-        const postContainer = document.getElementById('post-container');
-        postContainer.innerHTML = '';
+    function fetchAndDisplayAllPosts() {
+        fetch('http://127.0.0.1:8000/posts_nuevo/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener los posts');
+                }
+                return response.json();
+            })
+            .then(posts => {
+                displayPosts(posts);
+            })
+            .catch(error => {
+                console.error('Error al obtener los posts:', error);
+            });
     }
-});
 
-function fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso) {
-    let url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
-    if (selectedCiclo) url += `/${selectedCiclo}`;
-    if (selectedCurso) url += `/${selectedCurso}`;
+    function fetchAndDisplayPosts(selectedCarrera = null, selectedCiclo = null, selectedCurso = null) {
+        if (!selectedCarrera) {
+            console.error('Se debe seleccionar al menos una carrera');
+            return;
+        }
 
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('No se pudo obtener los posts');
-            return response.json();
-        })
-        .then(posts => {
-            if (!Array.isArray(posts)) throw new Error('La respuesta no es un array');
-            renderPosts(posts);
-        })
-        .catch(error => console.error('Error al obtener los posts:', error));
-}
+        let url = 'http://127.0.0.1:8000/posts';
+        if (selectedCarrera) {
+            url += `/${selectedCarrera}`;
+            if (selectedCiclo) {
+                url += `/${selectedCiclo}`;
+                if (selectedCurso) {
+                    url += `/${selectedCurso}`;
+                }
+            }
+        }
 
-function renderPosts(posts) {
-    const postContainer = document.getElementById('post-container');
-    const postTemplate = document.getElementById('post-template');
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener los posts');
+                }
+                return response.json();
+            })
+            .then(posts => {
+                displayPosts(posts);
+            })
+            .catch(error => {
+                console.error('Error al obtener los posts:', error);
+            });
+    }
 
-    limpiarContenedorPosts();
+    function displayPosts(posts) {
+        const postContainer = document.getElementById('post-container');
 
-    posts.forEach(item => {
-        const post = item.post;
-        const carrera = item.carrera;
-        const curso = item.curso;
+        if (!Array.isArray(posts)) {
+            throw new Error('La respuesta no es un array');
+        }
 
-        if (postTemplate && postTemplate.content) {
-            const newPost = document.importNode(postTemplate.content, true);
-            newPost.querySelector('.post-title').textContent = post.titulo || 'Título no disponible';
-            newPost.querySelector('.post-title').href = './text.html';
-            newPost.querySelector('.post-date').textContent = post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible';
-            newPost.querySelector('.post-author').textContent = post.propietarioNombre || 'Autor no disponible';
+        postContainer.innerHTML = '';
 
+        posts.forEach(item => {
+            const post = item.post;
+            const carrera = item.carrera;
+            const curso = item.curso;
+
+            const newPost = document.createElement('div');
+            newPost.classList.add('activity-item', 'd-flex', 'flex-column', 'p-2', 'mb-2', 'border');
+            newPost.style.display = 'none'; // Para ocultar la plantilla
+
+            newPost.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="activite-label post-date">${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</span>
+                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                </div>
+                <div class="activity-content">
+                    <a href="#" class="fw-bold text-dark post-title">${post.titulo || 'Título no disponible'}</a>
+                    <div class="text-muted">por <span class="post-author">${post.propietarioNombre || 'Autor no disponible'}</span></div>
+                    <div class="post-tags"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="post-votes">${post.conteo_favoritos || 0} Favoritos</span>
+                    <span class="post-replies">${post.recuento_comentarios || 0} Comentarios</span>
+                    <span class="post-views">${post.conteo_visitas || 0} Visitas</span>
+                </div>
+            `;
+
+            postContainer.appendChild(newPost);
+            newPost.style.display = 'block'; // Para mostrar la publicación
+
+            // Añadimos las etiquetas correspondientes
             const tagsContainer = newPost.querySelector('.post-tags');
             tagsContainer.innerHTML = '';
 
             let hasTags = false;
+
             if (carrera && carrera.etiquetaNombre) {
                 const carreraTag = document.createElement('span');
                 carreraTag.className = 'badge bg-primary text-light';
@@ -188,25 +206,13 @@ function renderPosts(posts) {
                 hasTags = true;
             }
 
+            // Añadir etiqueta general si no hay etiquetas de carrera, ciclo o curso
             if (!hasTags) {
                 const generalTag = document.createElement('span');
                 generalTag.className = 'badge bg-success text-light';
                 generalTag.textContent = 'General';
                 tagsContainer.appendChild(generalTag);
             }
-
-            newPost.querySelector('.post-votes').textContent = `${post.conteo_favoritos || 0} Favoritos`;
-            newPost.querySelector('.post-replies').textContent = `${post.recuento_comentarios || 0} Comentarios`;
-            newPost.querySelector('.post-views').textContent = `${post.conteo_visitas || 0} Visitas`;
-
-            postContainer.appendChild(newPost);
-        } else {
-            console.error('El template de post no se encuentra o no es válido.');
-        }
-    });
-}
-
-function limpiarContenedorPosts() {
-    const postContainer = document.getElementById('post-container');
-    postContainer.innerHTML = '';
-}
+        });
+    }
+});

@@ -861,15 +861,6 @@ body {
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
-#post-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.activity-item {
-  width: 100%;
-  box-sizing: border-box;
-}
 
 
 
@@ -1354,12 +1345,12 @@ section.section.contact {
 
 #preguntar-btn-container {
   text-align: right;
-  margin-top: -70px; /* Ajusta este valor según sea necesario */
+  margin-top: -50px; /* Ajusta este valor según sea necesario */
   margin-bottom: 0px;
 }
 
 #preguntar-btn {
-    margin-bottom: 60px;
+    margin-bottom: -10px;
 }
 
 
