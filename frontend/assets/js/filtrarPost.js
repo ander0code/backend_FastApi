@@ -19,111 +19,139 @@ document.addEventListener('DOMContentLoaded', () => {
     cicloBtn.classList.add('disabled');
     cursoBtn.classList.add('disabled');
 
-    // Mostrar todos los posts al cargar la página
-    fetchAndDisplayAllPosts();
-
+    // Inicializar opciones de carrera
     carreraOptions.forEach(option => {
-        option.addEventListener('click', (event) => {
+        option.addEventListener('click', function(event) {
             event.preventDefault();
-            const carreraName = option.querySelector('span').textContent;
-            carreraBtn.querySelector('span').textContent = carreraName;
-            selectedCarrera = option.getAttribute('data-value');
-            cicloBtn.classList.remove('disabled');
-            cursoBtn.classList.add('disabled');
-            cursoBtn.querySelector('span').textContent = defaultCursoText;
-            selectedCiclo = null;
-            selectedCurso = null;
+            selectedCarrera = this.getAttribute('data-value');
+            selectedCiclo = null; // Resetear ciclo cuando se selecciona una nueva carrera
+            selectedCurso = null; // Resetear curso cuando se selecciona una nueva carrera
+            document.getElementById('curso-btn').classList.add('disabled');
+            document.querySelector('#ciclo-btn span').textContent = defaultCicloText; // Resetear texto del botón ciclo
+            document.querySelector('#curso-btn span').textContent = defaultCursoText; // Resetear texto del botón curso
+            document.querySelector('#carrera-btn span').textContent = this.querySelector('span').textContent; // Actualizar texto del botón carrera
+            document.querySelector('#forms-nav').classList.remove('show'); // Cerrar el dropdown de curso
+    
+            updateCicloButton();
+            fetchAndDisplayPosts(); // Actualizar los posts al seleccionar carrera
             closeDropdown(carreraBtn);
-            // Filtrar automáticamente al seleccionar una carrera
-            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
         });
     });
+    
 
+
+    // Inicializar opciones de ciclo
     cicloOptions.forEach(option => {
-        option.addEventListener('click', (event) => {
+        option.addEventListener('click', function(event) {
             event.preventDefault();
-            const cicloName = option.querySelector('span').textContent;
-            cicloBtn.querySelector('span').textContent = cicloName;
-            selectedCiclo = option.getAttribute('data-value');
-            cursoBtn.classList.remove('disabled');
-            selectedCurso = null;
+            selectedCiclo = this.getAttribute('data-value');
+            selectedCurso = null; // Resetear curso cuando se selecciona un nuevo ciclo
+    
+            document.querySelector('#ciclo-btn span').textContent = this.querySelector('span').textContent; // Actualizar texto del botón ciclo
+            document.querySelector('#curso-btn span').textContent = defaultCursoText; // Resetear texto del botón curso
+            document.getElementById('curso-btn').classList.add('disabled'); // Deshabilitar botón de curso
+    
+            fetchAndDisplayCursos(); // Obtener cursos basados en carrera y ciclo
+            fetchAndDisplayPosts(); // Actualizar los posts al seleccionar ciclo
+            
             closeDropdown(cicloBtn);
-            // Filtrar automáticamente al seleccionar un ciclo
-            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
         });
     });
+    
 
-    cursoOptions.forEach(option => {
-        option.addEventListener('click', (event) => {
-            event.preventDefault();
-            const cursoName = option.querySelector('span').textContent;
-            cursoBtn.querySelector('span').textContent = cursoName;
-            selectedCurso = option.getAttribute('data-value');
-            closeDropdown(cursoBtn);
-            // Filtrar automáticamente al seleccionar un curso
-            fetchAndDisplayPosts(selectedCarrera, selectedCiclo, selectedCurso);
-        });
-    });
 
-    limpiarBtn.addEventListener('click', () => {
-        carreraBtn.querySelector('span').textContent = defaultCarreraText;
-        cicloBtn.querySelector('span').textContent = defaultCicloText;
-        cursoBtn.querySelector('span').textContent = defaultCursoText;
-
-        cicloBtn.classList.add('disabled');
-        cursoBtn.classList.add('disabled');
-
-        selectedCarrera = null;
-        selectedCiclo = null;
-        selectedCurso = null;
-
-        closeDropdown(carreraBtn);
-        closeDropdown(cicloBtn);
-        closeDropdown(cursoBtn);
-
-        // Mostrar todos los posts al limpiar los filtros
-        fetchAndDisplayAllPosts();
-    });
-
-    function closeDropdown(button) {
-        const dropdown = button.nextElementSibling;
-        if (dropdown.classList.contains('show')) {
-            button.click();
+    // Actualizar botón de ciclo
+    function updateCicloButton() {
+        if (selectedCarrera) {
+            document.getElementById('ciclo-btn').classList.remove('disabled');
+        } else {
+            document.getElementById('ciclo-btn').classList.add('disabled');
         }
     }
 
-    function fetchAndDisplayAllPosts() {
-        fetch('http://127.0.0.1:8000/posts_nuevo/')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('No se pudo obtener los posts');
-                }
-                return response.json();
-            })
-            .then(posts => {
-                displayPosts(posts);
-            })
-            .catch(error => {
-                console.error('Error al obtener los posts:', error);
-            });
-    }
-
-    function fetchAndDisplayPosts(selectedCarrera = null, selectedCiclo = null, selectedCurso = null) {
-        if (!selectedCarrera) {
-            console.error('Se debe seleccionar al menos una carrera');
+    // Obtener y mostrar cursos
+    function fetchAndDisplayCursos() {
+        if (!selectedCarrera || !selectedCiclo) {
+            console.error('Debe seleccionar una carrera y un ciclo antes de filtrar.');
             return;
         }
 
-        let url = 'http://127.0.0.1:8000/posts';
-        if (selectedCarrera) {
-            url += `/${selectedCarrera}`;
-            if (selectedCiclo) {
-                url += `/${selectedCiclo}`;
-                if (selectedCurso) {
-                    url += `/${selectedCurso}`;
+        const url = `http://127.0.0.1:8000/curso/${selectedCarrera}/${selectedCiclo}`;
+        console.log(`Fetching cursos from URL: ${url}`);
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener los cursos');
                 }
+                return response.json();
+            })
+            .then(cursos => {
+                const cursoNav = document.getElementById('forms-nav');
+                cursoNav.innerHTML = ''; // Limpiar el contenedor de cursos antes de agregar nuevos cursos
+
+                if (!Array.isArray(cursos)) {
+                    throw new Error('La respuesta no es un array');
+                }
+
+                if (cursos.length === 0) {
+                    cursoNav.innerHTML = '<li>No se encontraron cursos</li>';
+                    document.getElementById('curso-btn').classList.add('disabled');
+                    return;
+                }
+
+                cursos.forEach(curso => {
+                    const cursoItem = document.createElement('li');
+                    cursoItem.innerHTML = `
+                        <a href="#" class="curso-option" data-value="${curso.id_curso}">
+                            <i class="bi bi-circle"></i><span>${curso.nombre_curso}</span>
+                        </a>`;
+                    cursoNav.appendChild(cursoItem);
+                });
+
+                document.getElementById('curso-btn').classList.remove('disabled');
+
+                // Añadir event listeners a las nuevas opciones de curso
+                document.querySelectorAll('.curso-option').forEach(option => {
+                    option.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const cursoName = this.querySelector('span').textContent;
+                        document.getElementById('curso-btn').querySelector('span').textContent = cursoName;
+                        selectedCurso = this.getAttribute('data-value');
+                        console.log('Curso seleccionado:', selectedCurso);
+                
+                        document.querySelector('#forms-nav').classList.remove('show'); // Cerrar dropdown
+                        fetchAndDisplayPosts(); // Actualizar los posts al seleccionar curso
+                        
+                        document.querySelector('#forms-nav').classList.remove('show'); // Cerrar el dropdown de 
+                        closeDropdown(cursoBtn);
+                    });
+                });
+                                   
+                
+            })
+            .catch(error => {
+                console.error('Error al obtener los cursos:', error);
+                // Mostrar mensaje de error al usuario
+            });
+    }
+
+    // Obtener y mostrar posts basados en las selecciones de carrera, ciclo y curso
+    function fetchAndDisplayPosts() {
+        if (!selectedCarrera) {
+            console.error('Debe seleccionar una carrera antes de filtrar.');
+            return;
+        }
+
+        let url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
+        if (selectedCiclo) {
+            url += `/${selectedCiclo}`;
+            if (selectedCurso) {
+                url += `/${selectedCurso}`;
             }
         }
+
+        console.log(`Fetching posts from URL: ${url}`);
 
         fetch(url)
             .then(response => {
@@ -140,14 +168,63 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    // Limpiar todos los botones y resetear selecciones
+    limpiarBtn.addEventListener('click', () => {
+        carreraBtn.querySelector('span').textContent = defaultCarreraText;
+        cicloBtn.querySelector('span').textContent = defaultCicloText;
+        cursoBtn.querySelector('span').textContent = defaultCursoText;
+
+        cicloBtn.classList.add('disabled');
+        cursoBtn.classList.add('disabled');
+
+        selectedCarrera = null;
+        selectedCiclo = null;
+        selectedCurso = null;
+
+        fetchAndDisplayAllPosts(); // Actualizar los posts al limpiar la selección
+
+        closeDropdown(carreraBtn);
+        closeDropdown(cicloBtn);
+        closeDropdown(cursoBtn);
+    });
+
+    // Función para cerrar el dropdown después de una selección
+    function closeDropdown(button)
+{
+        const dropdown = button.nextElementSibling;
+        if (dropdown.classList.contains('show')) {
+            button.click();
+        }
+    }
+
+    // Obtener y mostrar todos los posts al cargar la página
+    fetchAndDisplayAllPosts();
+
+    // Función para obtener y mostrar todos los posts
+    function fetchAndDisplayAllPosts() {
+        fetch('http://127.0.0.1:8000/posts_nuevo/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo obtener los posts');
+                }
+                return response.json();
+            })
+            .then(posts => {
+                displayPosts(posts);
+            })
+            .catch(error => {
+                console.error('Error al obtener los posts:', error);
+            });
+    }
+
+    // Función para mostrar los posts en el contenedor
     function displayPosts(posts) {
         const postContainer = document.getElementById('post-container');
+        postContainer.innerHTML = ''; // Limpiar el contenedor de posts antes de agregar nuevos posts
 
         if (!Array.isArray(posts)) {
             throw new Error('La respuesta no es un array');
         }
-
-        postContainer.innerHTML = '';
 
         posts.forEach(item => {
             const post = item.post;
@@ -156,7 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const newPost = document.createElement('div');
             newPost.classList.add('activity-item', 'd-flex', 'flex-column', 'p-2', 'mb-2', 'border');
-            newPost.style.display = 'none'; // Para ocultar la plantilla
 
             newPost.innerHTML = `
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -175,12 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            postContainer.appendChild(newPost);
-            newPost.style.display = 'block'; // Para mostrar la publicación
-
-            // Añadimos las etiquetas correspondientes
             const tagsContainer = newPost.querySelector('.post-tags');
-            tagsContainer.innerHTML = '';
+            tagsContainer.innerHTML = ''; // Limpiar las etiquetas anteriores
 
             let hasTags = false;
 
@@ -213,6 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 generalTag.textContent = 'General';
                 tagsContainer.appendChild(generalTag);
             }
+
+            postContainer.appendChild(newPost);
         });
     }
 });
