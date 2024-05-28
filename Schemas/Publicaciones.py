@@ -2,6 +2,10 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import date
 
+class VotosBase(BaseModel):
+    me_gusta : int
+    no_me_gusta : int
+
 class EtiquetaCursoBase(BaseModel):
     id_curso: int
     nombre_curso: str
@@ -40,7 +44,8 @@ class PostBase(BaseModel):
 
 class PostWithCurso(BaseModel):
     post: PostBase
-    carrera : Optional[EtiqetaCarreraBase] 
-    curso: Optional[EtiquetaCursoBase]
+    carrera : Optional[EtiqetaCarreraBase] = None
+    curso: Optional[EtiquetaCursoBase] = None
+    votos: Optional[VotosBase] = None
     
     

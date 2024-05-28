@@ -39,7 +39,7 @@
 
 <body>
 
-   <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -69,7 +69,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
             <li class="dropdown-header" id="profile-template">
               <h6 id="profile-fullname"></h6>
-              <span id="profile-id"></span>
+              <span id="profile-carreer"></span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -108,15 +108,15 @@
             </li>
         
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Salir</span>
-              </a>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
+                  <i class="bi bi-question-circle"></i>
+                  <span>Salir</span>
+                </a>
+              </li>
             </li>
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
-        
-
       </ul>
     </nav><!-- End Icons Navigation -->
 
@@ -132,105 +132,6 @@
           <span>Inicio</span>
         </a>
       </li><!-- End Dashboard Nav -->
-  
-      <li class="nav-item">
-        <a class="nav-link collapsed" id="carrera-btn" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Carrera</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="#" class="carrera-option" data-value="2">
-              <i class="bi bi-circle"></i><span>Psicología</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="carrera-option" data-value="2">
-              <i class="bi bi-circle"></i><span>Derecho</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-  
-      <li class="nav-item">
-        <a class="nav-link collapsed" id="ciclo-btn" data-bs-target="#ciclo-nav" data-bs-toggle="collapse" href="#" disabled>
-          <i class="bi bi-calendar"></i><span>Ciclo</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="ciclo-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="#" class="ciclo-option" data-value="1">
-              <i class="bi bi-circle"></i><span>I</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="2">
-              <i class="bi bi-circle"></i><span>II</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="3"> 
-              <i class="bi bi-circle"></i><span>III</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="4">
-              <i class="bi bi-circle"></i><span>IV</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="5">
-              <i class="bi bi-circle"></i><span>V</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="6">
-              <i class="bi bi-circle"></i><span>VI</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="7">
-              <i class="bi bi-circle"></i><span>VII</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="8">
-              <i class="bi bi-circle"></i><span>VIII</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="9">
-              <i class="bi bi-circle"></i><span>IX</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="ciclo-option" data-value="10">
-              <i class="bi bi-circle"></i><span>X</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Ciclo Nav -->
-  
-      <li class="nav-item">
-        <a class="nav-link collapsed" id="curso-btn" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" disabled>
-            <i class="bi bi-journal-text"></i><span>Curso</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <!-- Aquí se añadirán los cursos dinámicamente -->
-        </ul>
-      </li><!-- End Forms Nav -->
-
-      <template id="curso-template">
-        <li>
-            <a href="#" class="curso-option">
-                <i class="bi bi-circle"></i><span></span>
-            </a>
-        </li>
-        </template>
-  
-      <!-- Botones de Filtrar y Limpiar -->
-<div id="filter-buttons" class="text-center" style="margin-top: 20px;">
-  <button id="filtrar-btn" class="btn btn-primary disabled" disabled>Filtrar</button>
-  <button id="limpiar-btn" class="btn btn-secondary">Limpiar</button>
-</div>
         
           <li class="nav-heading">Soporte</li>
           <li class="nav-item">
@@ -263,7 +164,6 @@
       
     </ul>
 </aside>
-<!-- End Sidebar-->
 
 
   <main id="main" class="main">
@@ -354,11 +254,13 @@
   <script src="./assets/vendor/php-email-form/validate.js"></script>
 
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
-  <script src="./assets/js/solicitud.js"></script>
   <script src="./assets/js/main.js"></script>
-  <script src="./assets/js/popular.js"></script>
-  <script src="./assets/js/profiledash.js"></script>
-  <script src="./assets/js/filtrado.js"></script>
+  <script src="./assets/js/publicPopular.js"></script>
+  <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/mostrarCursos.js"></script>
+
+  <!--================PRUEBAS==============================-->
+  <script src="./assets/js/filtrarPost.js"></script>
 </body>
 
 </html>
