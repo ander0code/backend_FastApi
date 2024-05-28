@@ -7,6 +7,14 @@
   scroll-behavior: smooth;
 }
 
+button#preguntar-btn {
+  width: 200px;
+}
+
+.search-bar {
+  width: 900px;
+  margin-left: 100px;
+}
 
 body {
   font-family: "Open Sans", sans-serif;
