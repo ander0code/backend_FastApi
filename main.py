@@ -7,7 +7,11 @@ from routers import Autenticacion
 from routers import Users
 from routers import Publicaciones_Comentarios
 
-app = FastAPI()
+app = FastAPI(
+    title="FORUA",
+    description="Proyecto Comunitario - Ciclo 3 - Programacion Avanzada",
+    version="1.0.0",
+)
 origins = [
     "http://localhost",
     "http://localhost:8000",
