@@ -135,8 +135,8 @@ estilos de la utilidad
 .seccion-perfil-usuario .perfil-usuario-bio {
     margin-bottom: 1.5rem; /* Aumentar el margen inferior */
     text-align: center;
+    justify-content: center;
 }
-
 .seccion-perfil-usuario .lista-datos {
     width: 50%;
     list-style: none;
