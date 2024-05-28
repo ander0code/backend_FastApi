@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <title>Forua</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -28,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/perfil.css">
   
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -63,7 +65,7 @@
 
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="./assets/img/xd.jpg" alt="Profile" class="rounded-circle">
+            <img src="assets/img/foto-perfil1.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2" id="profile-name"></span>
           </a><!-- End Profile Image Icon -->
         
@@ -277,132 +279,42 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section id="profile-template" class="section profile">
-      <div class="row">
-          <div class="col-xl-4">
-              <div class="card">
-                  <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                      <img src="assets/img/xd.jpg" alt="Profile" class="rounded-circle" id="profile-photo">
-                      <h2 class="profile-name" id="profile-name"></h2>
-                      <h3 class="profile-last-name" id="profile-last-name"></h3>
-                  </div>
-              </div>
-          </div>
-          <div class="col-xl-8">
-              <div class="card">
-                  <div class="card-body pt-3">
-                      <ul class="nav nav-tabs nav-tabs-bordered">
-                          <li class="nav-item">
-                              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Perfil</button>
-                          </li>
-                          <li class="nav-item">
-                              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Perfil</button>
-                          </li>
-                      </ul>
-                      <div class="tab-content pt-2">
-                          <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                              <h5 class="card-title">Detalles del Perfil</h5>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Nombre</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-name2"></div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Apellido</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-last-name2"></div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Acerca de mí</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-about"></div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Puntos de vista</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-views"></div>
-                              </div>
-                              <!--
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Código ID</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-id"></div>
-                              </div>-->
-                              <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Carrera</div>
-                                <div class="col-lg-9 col-md-8" id="profile-carreer"></div>
-                            </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Votos positivos</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-pos-votes"></div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Votos negativos</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-neg-votes"></div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-lg-3 col-md-4 label">Cuenta creada el</div>
-                                  <div class="col-lg-9 col-md-8" id="profile-creation-date"></div>
-                              </div>
-                          </div>
-                          <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                              <form>
-                                  <div class="row mb-3">
-                                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <img src="assets/img/profile-img.jpg" alt="Profile">
-                                          <div class="pt-2">
-                                              <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                                              <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Nombre completo" class="col-md-4 col-lg-3 col-form-label">Nombre completo</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Nombre completo" type="text" class="form-control" id="Nombre completo" value="Anderson Titto">
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Carrera" class="col-md-4 col-lg-3 col-form-label">Carrera</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Carrera" type="text" class="form-control" id="Carrera" value="Psicología">
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Ciclo" class="col-md-4 col-lg-3 col-form-label">Ciclo</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Ciclo" type="number" class="form-control" id="Ciclo" value="3">
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Distrito" class="col-md-4 col-lg-3 col-form-label">Distrito</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Distrito" type="text" class="form-control" id="Distrito" value="V.E.S">
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Correo" class="col-md-4 col-lg-3 col-form-label">Correo</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Correo" type="text" class="form-control" id="Correo" value="alumno@autonoma.edu.pe">
-                                      </div>
-                                  </div>
-                                  <div class="row mb-3">
-                                      <label for="Celular" class="col-md-4 col-lg-3 col-form-label">Celular</label>
-                                      <div class="col-md-8 col-lg-9">
-                                          <input name="Celular" type="text" class="form-control" id="Phone" value="123 456 789">
-                                      </div>
-                                  </div>
-                                  <div class="text-center">
-                                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  </div>
-                              </form>
-                          </div>
-                      </div><!-- End Bordered Tabs -->
-                  </div>
-              </div>
-          </div>
-      </div>
+  <section id="profile-template" class="section profile">
+      <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img src="assets/img/foto-perfil1.jpg" alt="img-avatar">
+
+                </div>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo">Maria Alejandra De la Cruz</h3>
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos" class="tab-pane fade show active profile-overview" id="profile-overview">
+                    <li><i class="icono fas fa-map-signs"></i> Nombre:</li><div id="profile-name2"></div>
+                    <li><i class="icono fas fa-phone-alt"></i> Apellido:</li>
+                    <li><i class="icono fas fa-briefcase"></i> Puntos de vista:</li>
+                    <li><i class="icono fas fa-building"></i> Codigo ID:</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-marker-alt"></i> Carrera:</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> Votos positivos:</li>
+                    <li><i class="icono fas fa-user-check"></i> Votos negativos:</li>
+                    <li><i class="icono fas fa-share-alt"></i> Cuenta creada: </li>
+                </ul>
+            </div>
+        </div>
+    </section>
   </section>
 
   </main><!-- End #main -->
 
- 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
