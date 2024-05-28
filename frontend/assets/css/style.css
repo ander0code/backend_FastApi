@@ -861,6 +861,17 @@ body {
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
+#post-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-item {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
 
 section.section.dashboard {
   margin-top: 10px;
