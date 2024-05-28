@@ -43,40 +43,37 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Datos del usuario recibidos:', user); // Verificar los datos recibidos
 
         const profileName = document.getElementById('profile-name');
-        const profileLastName = document.getElementById('profile-last-name');
         const profileName2 = document.getElementById('profile-name2');
+        const profileName3 = document.getElementById('profile-name3');
         const profileLastName2 = document.getElementById('profile-last-name2');
         const profileAbout = document.getElementById('profile-about');
         const profileViews = document.getElementById('profile-views');
-        //const profileId = document.getElementById('profile-id');
-        const profileCarrer = document.getElementById('profile-carreer');
+        const profileCareer = document.getElementById('profile-career');
         const profilePosVotes = document.getElementById('profile-pos-votes');
         const profileNegVotes = document.getElementById('profile-neg-votes');
         const profileCreationDate = document.getElementById('profile-creation-date');
         const profilePhoto = document.getElementById('profile-photo');
 
-        if (profileName && profileLastName && profileName2 && profileLastName2 && profileAbout && profileViews && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto) {
+        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto) {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
             const acercaDeMi = user[0].acerca_de_mi || 'N/A';
             const puntosDeVista = user[0].puntos_de_vista || 'N/A';
-           // const codigoId = user[0].codigo_ID || 'N/A';
-            const profileCarrera = user[0].carrera.etiquetaNombre
+            const profileCarrera = user[0].carrera.etiquetaNombre || 'N/A';
             const votosPositivos = user[0].votos_positivos || 0;
             const votosNegativos = user[0].votos_negativos || 0;
             const fechaCreacion = user[0].fecha_creación || 'N/A';
-            const fotoUrl = user[0].usuariofoto || 'assets/img/xd.jpg'; // URL por defecto si no hay foto
+            const fotoUrl = user[0].usuariofoto || 'assets/img/foto-perfil1.jpg'; // URL por defecto si no hay foto
 
             console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Acerca de mí: ${acercaDeMi}, Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Fecha de creación: ${fechaCreacion}, Foto: ${fotoUrl}`); // Verificar valores
 
             profileName.textContent = nombre;
-            profileLastName.textContent = lastName;
             profileName2.textContent = nombre;
+            profileName3.textContent = nombre;
             profileLastName2.textContent = lastName;
             profileAbout.textContent = acercaDeMi;
             profileViews.textContent = puntosDeVista;
-            //profileId.textContent = codigoId;
-            profileCarrer.textContent = profileCarrera;
+            profileCareer.textContent = profileCarrera;
             profilePosVotes.textContent = votosPositivos;
             profileNegVotes.textContent = votosNegativos;
             profileCreationDate.textContent = fechaCreacion;
