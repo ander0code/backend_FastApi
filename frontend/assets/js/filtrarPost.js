@@ -235,21 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
             newPost.classList.add('activity-item', 'd-flex', 'flex-column', 'p-2', 'mb-2', 'border');
 
             newPost.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="activite-label post-date">${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</span>
-                    <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                </div>
-                <div class="activity-content">
-                    <a href="./text.html" class="fw-bold text-dark post-title">${post.titulo || 'Título no disponible'}</a>
-                    <div class="text-muted">por <span class="post-author">${post.propietarioNombre || 'Autor no disponible'}</span></div>
-                    <div class="post-tags"></div>
-                </div>
-                <div class="d-flex justify-content-between mt-2">
-                    <span class="post-votes">${post.conteo_favoritos || 0} Votos</span>
-                    <span class="post-replies">${post.recuento_comentarios || 0} Respuestas</span>
-                    <span class="post-views">${post.conteo_visitas || 0} Vistas</span>
-                </div>
-            `;
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="activite-label post-date">${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</span>
+                <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+            </div>
+            <div class="activity-content">
+                <a href="text.html?post_id=${post.id}" class="fw-bold text-dark post-title">${post.titulo || 'Título no disponible'}</a>
+                <div class="text-muted">por <span class="post-author">${post.propietarioNombre || 'Autor no disponible'}</span></div>
+                <div class="post-tags"></div>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+                <span class="post-votes">${post.conteo_favoritos || 0} Favoritos</span>
+                <span class="post-replies">${post.recuento_comentarios || 0} Comentarios</span>
+                <span class="post-views">${post.conteo_visitas || 0} Visitas</span>
+            </div>
+        `;
 
             const tagsContainer = newPost.querySelector('.post-tags');
             tagsContainer.innerHTML = ''; // Limpiar las etiquetas anteriores
