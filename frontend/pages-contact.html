@@ -9,11 +9,15 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/logosago.webp" rel="icon">
+  <link rel="stylesheet" href="assets/css/soporte.css">
   <!-- Favicons -->
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"> 
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -169,66 +173,65 @@
   <main id="main" class="main">
 
     <section class="section contact">
-
-      <div class="row gy-4">
-
-        <div class="col-xl-6">
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-telephone"></i>
-                <h3>¡Llámanos!</h3>
-                <p>+51 958 269 284<br>+51 990 903 235</p>
-              </div>
+      
+      <div class="content">
+        <div class="contact-wrapper animated bounceInUp">
+            <div id="alert" class="alert d-none"></div>
+            <div class="contact-form">
+                <h3>Contactanos</h3>
+                <form id="contactForm">
+                    <p>
+                        <label>Nombres</label>
+                        <input type="text" name="fullname">
+                    </p>
+                    <p>
+                        <label>Apellidos</label>
+                        <input type="text" name="email">
+                    </p>
+                    <p>
+                        <label>Numero</label>
+                        <input type="tel" name="phone">
+                    </p>
+                    <p class="block">
+                        <label>Mensaje</label> 
+                        <textarea name="message" rows="3"></textarea>
+                    </p>
+                    <p class="block">
+                        <button type="submit">
+                            Enviar
+                        </button>
+                    </p>
+                </form>
             </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-envelope"></i>
-                <h3>¡Envianos un email!</h3>
-                <p>foruape@yahoo.com</p>
-              </div>
+            <div class="contact-info">
+                <h4>More Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Casa de Anderson</li>
+                    <li><i class="fas fa-phone"></i> +51 958 269 284</li>
+                    <li><i class="fas fa-phone"></i> +51 990 903 235</li>
+                    <li><i class="fas fa-envelope-open-text"></i> foruape@yahoo.com</li>
+                </ul>
+                <p>Estamos listos para ayudar</p>
+                <p>Recuerda!!!!</p>
+                <p>"Si lo puedes imaginar lo puedes programar"</p>
             </div>
-          </div>
-
         </div>
+    </div>
+    
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          alert('Datos enviados');
 
-        <div class="col-xl-6">
-          <div class="card p-4">
-            <form action="forms/contact.php" method="post" class="php-email-form">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
+          // Añadir animación de desvanecimiento después del envío
+          this.classList.add('fadeOutUp');
+          setTimeout(() => {
+              this.reset();
+              this.classList.remove('fadeOutUp');
+              this.classList.add('fadeInUp');
+          }, 1000); // Duración de la animación
+      });
+  </script>
 
     </section>
 
@@ -258,6 +261,7 @@
   <script src="./assets/js/publicPopular.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/mostrarCursos.js"></script>
+  <script src="assets/js/soporte.js"></script>
 
   <!--================PRUEBAS==============================-->
   <script src="./assets/js/filtrarPost.js"></script>
