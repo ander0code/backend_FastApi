@@ -26,7 +26,7 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/text.css">
-
+  
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -169,67 +169,50 @@
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Dashboard</h1>
-
+    <h1>Pregunta</h1>
+    
 </div><!-- End Page Title -->
 
 <section class="section dashboard">
   <section class="light">
-    <section class="section dashboard">
-      <section class="light">
-        <div class="container py-2">
-            <article class="postcard light blue">
-                <div class="postcard__text t-dark">
-                    <h1 class="postcard__title blue"><a href="#">Podcast Title</a></h1>
-                    <div class="postcard__subtitle small">
-                        <time datetime="2020-05-25 12:00:00">
-                            <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-                        </time>
-                    </div>
-                    <div class="postcard__bar"></div>
-                    <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-                    <ul class="postcard__tagbox">
-                        <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-                        <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-                        <li class="tag__item play blue">
-                            <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-    
-            <!-- Comentarios -->
-            <div class="comments-section">
-                <h2>Comentarios</h2>
-                <form class="comment-form">
-                    <div class="form-group">
-                        <label for="comment">Deja un comentario:</label>
-                        <textarea id="comment" class="form-control" rows="4" placeholder="Escribe tu comentario aquí..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-                <div class="comments-list">
-                    <div class="comment">
-                        <div class="comment-author">
-                            <img src="assets/img/profile-img.jpg" alt="Profile Image" class="comment-author-img">
-                            <span class="comment-author-name">Usuario 1</span>
-                        </div>
-                        <p class="comment-text">Este es un comentario de prueba para mostrar cómo se verá un comentario real.</p>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-author">
-                            <img src="assets/img/profile-img.jpg" alt="Profile Image" class="comment-author-img">
-                            <span class="comment-author-name">Usuario 2</span>
-                        </div>
-                        <p class="comment-text">Otro comentario para ilustrar la sección de comentarios.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </section>
-    </section>
-    
-</section>
+      <div class="container py-2">
+          <article class="postcard light blue">
+              <div class="postcard__text t-dark">
+                  <h1 class="postcard__title blue" id="post-title">Título del Post</h1>
+                  <div class="postcard__subtitle small">
+                      <span id="author-name">Autor del Post</span>
+                      <time id="creation-date"><i class="fas fa-calendar-alt mr-2"></i> Fecha de Creación</time>
+                  </div>
+                  <div class="postcard__bar"></div>
+                  <div class="postcard__preview-txt" id="post-content">Contenido del post...</div>
+                  <ul class="postcard__tagbox" id="post-tags">
+                      <!-- Las etiquetas se agregarán dinámicamente mediante JavaScript -->
+                  </ul>
+                  <div class="post-stats">
+                      <span id="post-views">Visitas: 0</span>
+                      <span id="post-votes">Votos: 0</span>
+                      <span id="post-comments">Comentarios: 0</span>
+                      <span id="post-responses">Respuestas: 0</span>
+                  </div>
+              </div>
+          </article>
+          <!-- Comentarios -->
+          <div class="comments-section">
+              <h2>Comentarios</h2>
+              <form class="comment-form">
+                  <div class="form-group">
+                      <label for="comment">Deja un comentario:</label>
+                      <textarea id="mytextarea">Hello, World!</textarea>
+                      
+                  </div>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+              </form>
+              <div class="comments-list">
+                  <!-- Los comentarios se agregarán dinámicamente mediante JavaScript -->
+              </div>
+          </div>
+      </div>
+  </section>
 </section>
 </main>
 <!-- End #main -->
@@ -255,9 +238,23 @@
 
   <!-- Template Main JS File -->
   <script src="./assets/js/mostPerfilDash.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/publicPopular.js"></script>
-    <script src="./textFetch.js"></script>
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/textFetch.js"></script>
+  <script src="https://cdn.tiny.cloud/1/8fbaulwtrf8cc7lwb2o7bqt0a6daa4suw61nxw571wm7z94t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ],
+      ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+    });
+  </script>
 
 </body>
 
