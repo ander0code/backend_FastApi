@@ -68,6 +68,7 @@ class Comment(Base):
     puntuacion= Column(Integer)
     texto= Column(String(1000000))
     userID= Column(Integer, ForeignKey('user.id'), nullable=False)
+    fecha_creacion = Column(Date)
     
     user = relationship("User", back_populates="comments")
     post = relationship("Post", back_populates="comments")

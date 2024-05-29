@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Limpiar todos los botones y resetear selecciones
     limpiarBtn.addEventListener('click', () => {
+        limpiarBtn.disabled = true; // Deshabilitar el botón de limpiar
         carreraBtn.querySelector('span').textContent = defaultCarreraText;
         cicloBtn.querySelector('span').textContent = defaultCicloText;
         cursoBtn.querySelector('span').textContent = defaultCursoText;
@@ -186,6 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
         closeDropdown(carreraBtn);
         closeDropdown(cicloBtn);
         closeDropdown(cursoBtn);
+        
+        setTimeout(() => {
+            limpiarBtn.disabled = false; // Habilitar el botón de limpiar
+        }, 5000); // 5000 milisegundos = 5 segundos
     });
 
     // Función para cerrar el dropdown después de una selección
