@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                 </div>
                 <div class="activity-content">
-                    <a href="./text.html" class="fw-bold text-dark post-title">${post.titulo || 'Título no disponible'}</a>
+                    <a href="/autenticacion/texto" class="fw-bold text-dark post-title">${post.titulo || 'Título no disponible'}</a>
                     <div class="text-muted">por <span class="post-author">${post.propietarioNombre || 'Autor no disponible'}</span></div>
                     <div class="post-tags"></div>
                 </div>

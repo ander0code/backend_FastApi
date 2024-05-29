@@ -83,7 +83,7 @@ def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = Non
 
     except JWTError:
         RedirectResponse("/",status_code=302)
-   
+
 @app.get("/autenticacion/preguntas_frecuentes",response_class=HTMLResponse)
 def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = None,db: Session = Depends(get_db)):
     if access_token is None:
@@ -97,7 +97,7 @@ def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = Non
     except JWTError:
         RedirectResponse("/",status_code=302)
 
-@app.get("/autenticacion/text",response_class=HTMLResponse)
+@app.get("/autenticacion/texto",response_class=HTMLResponse)
 def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = None,db: Session = Depends(get_db)):
     if access_token is None:
         return RedirectResponse("/",status_code=302)
