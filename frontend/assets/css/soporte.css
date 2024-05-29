@@ -3,11 +3,10 @@
 }
 
 body {
-    background: #fff;
-    color: #181818;
     line-height: 1.6;
     font-family: 'Quicksand', sans-serif;
     padding: 0 1.5em;
+    color: black;
 }
 
 .container {
@@ -15,20 +14,12 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 1.5em;
+    text-align: center;
 }
 
 ul {
     list-style: none;
     padding: 0;
-}
-
-.logo {
-    text-align: center;
-    font-size: 3em;
-}
-
-.logo span {
-    color: #B70E21;
 }
 
 .contact-wrapper {
@@ -40,7 +31,9 @@ ul {
 }
 
 .contact-form {
-    background: #222222;
+    border-radius: 20px;
+    background: #fff;
+    margin-right: 20px;
 }
 
 .contact-form form {
@@ -69,12 +62,12 @@ ul {
     border: none;
     background: none;
     outline: 0;
-    color: #fff;
-    border-bottom: 1px solid #d63031;
+    color: black;
+    border-bottom: 1px solid #E74C3C ;
 }
 
 .contact-form form button {
-    background: #B70E21;
+    background: #E74C3C ;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -82,7 +75,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #d63031;
+    background: #E74C3C ;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -90,7 +83,8 @@ ul {
 
 /* CONTACT INFO */
 .contact-info {
-    background: #000;
+    background: #fff;
+    border-radius: 20px;
 }
 
 .contact-info h4, .contact-info ul, .contact-info p {
@@ -114,5 +108,1051 @@ ul {
     .contact-info ul,
     .contact-info p {
         text-align: left;
+    }
+}
+
+/* Añadir al final del CSS existente */
+
+/* Estilos para la sección "More Info" */
+.contact-info {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-info:hover {
+    transform: translateY(-10px);
+}
+
+.contact-info h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.contact-info ul {
+    padding: 0;
+    list-style: none;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.contact-info ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.contact-info p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.contact-info {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Responsividad */
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2em;
+    }
+}
+
+/* Añadir al final del CSS existente */
+
+/* Ajustes de responsividad adicionales */
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+
+/* Añadir al final del CSS existente */
+
+/* Animaciones para la sección "Contactanos" */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-form {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form p {
+    animation: fadeInUp 1s ease-in-out;
+    animation-delay: 0.2s;
+}
+
+.contact-form form p:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.contact-form form p:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.contact-form form p:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.contact-form form p:nth-child(5) {
+    animation-delay: 1s;
+}
+
+/* Estilos para la sección "More Info" */
+.contact-info {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact-info:hover {
+    transform: translateY(-10px);
+}
+
+.contact-info h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.contact-info ul {
+    padding: 0;
+    list-style: none;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.contact-info ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.contact-info p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.contact-info {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Responsividad */
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2em;
+    }
+}
+
+/* Ajustes de responsividad adicionales */
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Quicksand', sans-serif;
+    padding: 0 1.5em;
+    color: black;
+}
+
+.container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+}
+
+.contact-wrapper > * {
+    padding: 1em;
+}
+
+/* Estilos y animaciones para la sección "Contactanos" */
+.contact-form {
+    border-radius: 20px;
+    background: #fff;
+    margin-right: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: black;
+    border-bottom: 1px solid #E74C3C;
+}
+
+.contact-form form button {
+    background: #E74C3C;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: #E74C3C;
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+}
+
+/* Estilos y animaciones para la sección "More Info" */
+.contact-info {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-info:hover {
+    transform: translateY(-10px);
+}
+
+.contact-info h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.contact-info ul {
+    padding: 0;
+    list-style: none;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-info ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.contact-info p {
+    font-size: 1em;
+    color: #666;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividad */
+@media(min-width: 700px) {
+    body {
+        padding: 0 4em;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .contact-wrapper > * {
+        padding: 2em;
+    }
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        text-align: left;
+    }
+}
+
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2em;
+    }
+}
+
+/* Ajustes de responsividad adicionales */
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Quicksand', sans-serif;
+    padding: 0 1.5em;
+    color: black;
+}
+
+.container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+}
+
+.contact-wrapper > * {
+    padding: 1em;
+}
+
+/* Estilos y animaciones compartidos para Contactanos y More Info */
+.common-style {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style:hover {
+    transform: translateY(-10px);
+}
+
+.common-style h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.common-style ul {
+    padding: 0;
+    list-style: none;
+}
+
+.common-style ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.common-style p {
+    font-size: 1em;
+    color: #666;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Estilos y animaciones para el formulario de contacto */
+.contact-form {
+    margin-right: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: black;
+    border-bottom: 1px solid #E74C3C;
+}
+
+.contact-form form button {
+    background: #E74C3C;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: #E74C3C;
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividad */
+@media(min-width: 700px) {
+    body {
+        padding: 0 4em;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .contact-wrapper > * {
+        padding: 2em;
+    }
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        text-align: left;
+    }
+}
+
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2em;
+    }
+}
+
+/* Ajustes de responsividad adicionales */
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Quicksand', sans-serif;
+    padding: 0 1.5em;
+    color: black;
+}
+
+.container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+}
+
+.contact-wrapper > * {
+    padding: 1em;
+}
+
+/* Estilos y animaciones compartidos para Contactanos y More Info */
+.common-style {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style:hover {
+    transform: translateY(-10px);
+}
+
+.common-style h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.common-style ul {
+    padding: 0;
+    list-style: none;
+}
+
+.common-style ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.common-style p {
+    font-size: 1em;
+    color: #666;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Estilos y animaciones para el formulario de contacto */
+.contact-form {
+    margin-right: 20px;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: black;
+    border-bottom: 1px solid #E74C3C;
+}
+
+.contact-form form button {
+    background: #E74C3C;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: #E74C3C;
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 1s ease-in-out;
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Responsividad */
+@media(min-width: 700px) {
+    body {
+        padding: 0 4em;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .contact-wrapper > * {
+        padding: 2em;
+    }
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        text-align: left;
+    }
+}
+
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2em;
+    }
+}
+
+/* Ajustes de responsividad adicionales */
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Quicksand', sans-serif;
+    padding: 0 1.5em;
+    color: black;
+}
+
+.container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-wrapper {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+}
+
+.contact-wrapper > * {
+    padding: 1em;
+}
+
+/* Estilos y animaciones compartidos para Contactanos y More Info */
+.common-style {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style:hover {
+    transform: translateY(-10px);
+}
+
+.common-style h4 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.common-style ul {
+    padding: 0;
+    list-style: none;
+}
+
+.common-style ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.common-style ul li i {
+    margin-right: 0.5em;
+    color: #E74C3C;
+}
+
+.common-style p {
+    font-size: 1em;
+    color: #666;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Estilos y animaciones para el formulario de contacto */
+.contact-form {
+    margin-right: 20px;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+    display: block;
+}
+
+.contact-form form p {
+    margin: 0;
+    padding: 1em;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-form form .block {
+    grid-column: 1 / 3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: black;
+    border-bottom: 1px solid #E74C3C;
+}
+
+.contact-form form button {
+    background: #E74C3C;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+    background: #E74C3C;
+    color: #fff;
+    transition: background-color 1s ease-out;
+    outline: 0;
+}
+
+/* Añadir animaciones y estilo hover para la sección de contacto */
+.contact-form.common-style:hover {
+    transform: translateY(-10px);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 1s ease-in-out;
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Responsividad */
+@media(min-width: 700px) {
+    body {
+        padding: 0 4em;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .contact-wrapper > * {
+        padding: 2em;
+    }
+    .common-style h4,
+    .common-style ul,
+    .common-style p {
+        text-align: left;
+    }
+}
+
+@media(max-width: 699px) {
+    .contact-wrapper {
+        display: block;
+    }
+
+    .contact-form,
+    .common-style {
+        margin-bottom: 2em;
+    }
+}
+
+@media(max-width: 499px) {
+    .contact-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form .block {
+        grid-column: 1 / 2;
+    }
+}
+
+.alert {
+    display: none;
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.alert.show {
+    display: block;
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 1s forwards;
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.alert {
+    display: none;
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.alert.show {
+    display: block;
+}
+
+.fadeOutUp {
+    animation: fadeOutUp 1s forwards;
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

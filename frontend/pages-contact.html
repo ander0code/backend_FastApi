@@ -173,38 +173,32 @@
   <main id="main" class="main">
 
     <section class="section contact">
-
+      
       <div class="content">
-
-        <h1 class="logo">Contact <span>Us</span></h1>
-
         <div class="contact-wrapper animated bounceInUp">
+            <div id="alert" class="alert d-none"></div>
             <div class="contact-form">
-                <h3>Contact us</h3>
-                <form action="">
+                <h3>Contactanos</h3>
+                <form id="contactForm">
                     <p>
-                        <label>FullName</label>
+                        <label>Nombres</label>
                         <input type="text" name="fullname">
                     </p>
                     <p>
-                        <label>Email Adress</label>
-                        <input type="email" name="email">
+                        <label>Apellidos</label>
+                        <input type="text" name="email">
                     </p>
                     <p>
-                        <label>Phone Number</label>
+                        <label>Numero</label>
                         <input type="tel" name="phone">
                     </p>
-                    <p>
-                        <label>Affair</label>
-                        <input type="text" name="affair">
+                    <p class="block">
+                        <label>Mensaje</label> 
+                        <textarea name="message" rows="3"></textarea>
                     </p>
                     <p class="block">
-                      <label>Message</label> 
-                      <textarea name="message" rows="3"></textarea>
-                    </p>
-                    <p class="block">
-                        <button>
-                            Send
+                        <button type="submit">
+                            Enviar
                         </button>
                     </p>
                 </form>
@@ -212,17 +206,32 @@
             <div class="contact-info">
                 <h4>More Info</h4>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Baker Street</li>
-                    <li><i class="fas fa-phone"></i> (111) 111 111 111</li>
-                    <li><i class="fas fa-envelope-open-text"></i> contact@website.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Casa de Anderson</li>
+                    <li><i class="fas fa-phone"></i> +51 958 269 284</li>
+                    <li><i class="fas fa-phone"></i> +51 990 903 235</li>
+                    <li><i class="fas fa-envelope-open-text"></i> foruape@yahoo.com</li>
                 </ul>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero provident ipsam necessitatibus repellendus?</p>
-                <p>Company.com</p>
+                <p>Estamos listos para ayudar</p>
+                <p>Recuerda!!!!</p>
+                <p>"Si lo puedes imaginar lo puedes programar"</p>
             </div>
         </div>
-
     </div>
+    
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          alert('Datos enviados');
 
+          // Añadir animación de desvanecimiento después del envío
+          this.classList.add('fadeOutUp');
+          setTimeout(() => {
+              this.reset();
+              this.classList.remove('fadeOutUp');
+              this.classList.add('fadeInUp');
+          }, 1000); // Duración de la animación
+      });
+  </script>
 
     </section>
 
@@ -252,6 +261,7 @@
   <script src="./assets/js/publicPopular.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/mostrarCursos.js"></script>
+  <script src="assets/js/soporte.js"></script>
 
   <!--================PRUEBAS==============================-->
   <script src="./assets/js/filtrarPost.js"></script>
