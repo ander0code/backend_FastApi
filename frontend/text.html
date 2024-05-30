@@ -175,45 +175,44 @@
 </div><!-- End Page Title -->
 
 <section class="section dashboard">
-  <section class="light">
-      <div class="container py-2">
-          <article class="postcard light blue">
-              <div class="postcard__text t-dark">
-                  <h1 class="postcard__title blue" id="post-title">Título del Post</h1>
-                  <div class="postcard__subtitle small">
-                      <span id="author-name">Autor del Post</span>
-                      <time id="creation-date"><i class="fas fa-calendar-alt mr-2"></i> Fecha de Creación</time>
-                  </div>
-                  <div class="postcard__bar"></div>
-                  <div class="postcard__preview-txt" id="post-content">Contenido del post...</div>
-                  <ul class="postcard__tagbox" id="post-tags">
-                      <!-- Las etiquetas se agregarán dinámicamente mediante JavaScript -->
-                  </ul>
-                  <div class="post-stats">
-                      <span id="post-views">Visitas: 0</span>
-                      <span id="post-votes">Votos: 0</span>
-                      <span id="post-comments">Comentarios: 0</span>
-                      <span id="post-responses">Respuestas: 0</span>
-                  </div>
-              </div>
-          </article>
-          <!-- Comentarios -->
-          <div class="comments-section">
-              <h2>Comentarios</h2>
-              <form class="comment-form">
-                  <div class="form-group">
-                      <label for="comment">Deja un comentario:</label>
-                      <textarea id="mytextarea">Hello, World!</textarea>
-                      
-                  </div>
-                  <button type="submit" class="btn btn-primary">Enviar</button>
-              </form>
-              <div class="comments-list">
-                  <!-- Los comentarios se agregarán dinámicamente mediante JavaScript -->
-              </div>
-          </div>
-      </div>
-  </section>
+  <div class="container">
+        <div class="question-title">¿Cómo crear una plantilla de HTML para una pregunta en Stack Overflow?</div>
+        <div class="question-details">
+            <p>Estoy tratando de crear una plantilla de HTML que se asemeje a una pregunta en Stack Overflow. ¿Alguien puede proporcionarme un ejemplo completo?</p>
+        </div>
+        <div class="tags">
+            <span>html</span>
+            <span>css</span>
+            <span>javascript</span>
+        </div>
+        <div class="answers">
+            <h2>Respuestas</h2>
+            <div class="answer">
+                <div class="answer-container">
+                    <div class="vote-buttons">
+                        <button>&uarr;</button>
+                        <div class="vote-count">10</div>
+                        <button>&darr;</button>
+                    </div>
+                    <div class="answer-content">
+                        <p>Para crear una plantilla de HTML para una pregunta en Stack Overflow, puedes seguir este ejemplo...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="answer">
+                <div class="answer-container">
+                    <div class="vote-buttons">
+                        <button>&uarr;</button>
+                        <div class="vote-count">5</div>
+                        <button>&darr;</button>
+                    </div>
+                    <div class="answer-content">
+                        <p>Otra opción sería utilizar...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </main>
 <!-- End #main -->
