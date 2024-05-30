@@ -1406,57 +1406,56 @@ section.section.contact {
 
 
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 .post-item {
-  background-color: #eeeeef;
-  display: flex;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
 }
 
 .post-left {
-  display: flex;
-  flex-direction: column;
-  margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
 }
 
 .post-right {
-  flex: 1;
+    flex: 1;
 }
 
 .post-votes, .post-replies, .post-views {
-  margin-bottom: 8px;
-  font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
 .post-header {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .post-title {
-  font-size: 1.25rem;
-  color: #155CA2;
-  text-decoration: none;
+    font-size: 1.25rem;
+    color: #0073e6;
+    text-decoration: none;
 }
 
 .post-title:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .post-meta {
-  color: #000000;
-  font-size: 0.875rem;
+    color: #666;
+    font-size: 0.875rem;
 }
 
 .post-tags span {
-  display: inline-block;
-  background-color: #efd216;
-  color: #000000;
-  padding: 4px 8px;
-  margin-right: 4px;
-  border-radius: 5px;
-  font-size: 0.875rem;
+    display: inline-block;
+    background-color: #e1ecf4;
+    color: #39739d;
+    padding: 4px 8px;
+    margin-right: 4px;
+    border-radius: 3px;
+    font-size: 0.875rem;
 }
