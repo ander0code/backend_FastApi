@@ -6,54 +6,36 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 1500px;
+
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-.question {
-    margin-bottom: 40px;
-    position: relative;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.vote-buttons {
-    position: absolute;
-    top: 0;
-    left: -50px; /* Ajusta este valor según sea necesario */
-}
-
-.vote-buttons img {
-    width: 40px; /* Ajusta el ancho de la imagen según sea necesario */
-}
-
-.question h1 {
+.question-title {
     font-size: 24px;
     margin-bottom: 10px;
+    font-weight: bold;
+    animation: slideInTitle 1s ease-in-out;
 }
 
-.question-details, .question-stats {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 10px;
+@keyframes slideInTitle {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-.question-body {
+.question-details {
     font-size: 16px;
-}
-
-.question-body code {
-    background-color: #f5f5f5;
-    padding: 2px 4px;
-    border-radius: 4px;
-}
-
-.question-body pre {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 4px;
-    overflow: auto;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .tags {
@@ -71,34 +53,162 @@ body {
 
 .answers {
     margin-top: 20px;
-    position: relative;
-}
-
-.answers .vote-buttons {
-    top: 0;
-    left: -50px; /* Ajusta este valor según sea necesario */
 }
 
 .answers h2 {
     font-size: 20px;
     margin-bottom: 10px;
+    animation: slideIn 0.5s ease-in-out;
 }
 
-.answer {
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.answer, .comment {
     background-color: #f5f5f5;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 20px;
+    display: flex;
+    animation: slideInAnswer 0.5s ease-in-out;
 }
 
-.answer pre {
+@keyframes slideInAnswer {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.vote-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.vote-buttons button {
+    background-color: #ff9800;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    border-radius: 3px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.vote-buttons button:hover {
+    background-color: #e68900;
+    transform: scale(1.2);
+}
+
+.vote-count {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.answer-content, .comment-content {
+    font-size: 16px;
+    flex: 1;
+}
+
+.answer-content pre, .comment-content pre {
     background-color: #eaeaea;
     padding: 10px;
     border-radius: 4px;
     overflow: auto;
 }
 
-.fa-caret-up, .fa-caret-down {
-    color: #888;
+.answer-content code, .comment-content code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.comment-form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.comment-form textarea {
+    resize: vertical;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.comment-form textarea:focus {
+    border-color: #ff9800;
+    outline: none;
+}
+
+.comment-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.comment-form button:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+}
+
+.editable-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: text;
+}
+
+.editable-content:focus {
+    outline: none;
+    border-color: #ff9800;
+}
+
+.edit-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.edit-buttons button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ff9800;
+}
+
+.edit-buttons button:hover {
+    color: #e68900;
+}
+
+.comments h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+#add-comment {
+    margin-top: 20px;
+}
