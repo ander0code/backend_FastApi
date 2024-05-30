@@ -3,8 +3,7 @@ from typing import Optional
 from datetime import date
 
 class VotosBase(BaseModel):
-    me_gusta : int
-    no_me_gusta : int
+    cantidad : int
 
 class EtiquetaCursoBase(BaseModel):
     id_curso: int

@@ -24,8 +24,8 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) - 
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -55,11 +55,10 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -99,8 +98,8 @@ async def post_carrera_ciclo(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -131,11 +130,10 @@ async def post_carrera_ciclo(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -153,8 +151,8 @@ async def post_carrera_ciclo_curso(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -186,11 +184,10 @@ async def post_carrera_ciclo_curso(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -203,8 +200,8 @@ async def post_x_post_id(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -234,11 +231,10 @@ async def post_x_post_id(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
