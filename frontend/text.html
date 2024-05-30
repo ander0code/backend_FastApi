@@ -9,6 +9,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+
   <!-- Favicons -->
   <link href="assets/img/logosago.webp" rel="icon">
 
@@ -170,60 +171,57 @@
 
 <main id="main" class="main">
   
-<section class="section dashboard">
-  <div class="container">
-    <div class="question-title">¿Cómo crear una plantilla de HTML para una pregunta en Stack Overflow?</div>
-    <div class="question-details editable-content" contenteditable="true">
-        <p>Estoy tratando de crear una plantilla de HTML que se asemeje a una pregunta en Stack Overflow. ¿Alguien puede proporcionarme un ejemplo completo?</p>
-    </div>
-    <div class="tags">
-        <span>html</span>
-        <span>css</span>
-        <span>javascript</span>
-    </div>
-    <div class="answers">
+  <section class="section dashboard">
+    <div class="container" >
+      <div class="question">
+        <div class="vote-buttons">
+          <button class="upvote">&uarr;</button>
+          <div class="vote-count">2</div>
+          <button class="downvote">&darr;</button>
+        </div>
+        <div class="question-content">
+          <div class="question-title"></div>
+          <div class="question-details editable-content" contenteditable="false">
+            <div></div>
+          </div>
+          <div class="post-meta">
+            <span class="post-owner"></span> |
+            <span class="post-date"></span>
+          </div>
+          <div class="tags">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="answers">
         <h2>Respuestas</h2>
-        <div class="answer">
-            <div class="vote-buttons">
-                <button class="upvote">&uarr;</button>
-                <div class="vote-count">10</div>
-                <button class="downvote">&darr;</button>
+        <div class="answer" style="display: none;">
+          <div class="vote-buttons">
+            <button class="upvote">&uarr;</button>
+            <div class="vote-count"></div>
+            <button class="downvote">&darr;</button>
+          </div>
+          <div class="answer-content">
+            <div class="answer-text"></div>
+            <div class="post-meta">
+              <span class="post-owner"></span> |
+              <span class="post-date"></span>
             </div>
-            <div class="answer-content editable-content" contenteditable="true">
-                <p>Para crear una plantilla de HTML para una pregunta en Stack Overflow, puedes seguir este ejemplo...</p>
-            </div>
+          </div>
         </div>
-        <div class="answer">
-            <div class="vote-buttons">
-                <button class="upvote">&uarr;</button>
-                <div class="vote-count">5</div>
-                <button class="downvote">&darr;</button>
-            </div>
-            <div class="answer-content editable-content" contenteditable="true">
-                <p>Otra opción sería utilizar...</p>
-            </div>
-        </div>
+      </div>
+      <div class="comments">
+        <form class="comment-form" id="formulario">
+          <textarea id="editor" placeholder="Comenta pues imbecil 😡"></textarea>
+          <button type="submit" id="add-comment" disabled>Subir comentario</button>
+        </form>
+      </div>
     </div>
-    <div class="comments">
-        <h2>Comentarios</h2>
-        <div class="comment">
-            <div class="vote-buttons">
-                <button class="upvote">&uarr;</button>
-                <div class="vote-count">0</div>
-                <button class="downvote">&darr;</button>
-            </div>
-            <div class="comment-content editable-content" contenteditable="true">
-                <p>En resumen, puedes utilizar un POJO con @Embedded para el padre y con @Relation para el hijo...</p>
-            </div>
-        </div>
-        <div class="comment-form">
-            <label for="comment-textarea">Escribe un comentario:</label>
-            <textarea id="comment-textarea" placeholder="Escribe un comentario..."></textarea>
-            <button id="add-comment">Subir comentario</button>
-        </div>
-    </div>
-</div>
-</section>
+  </section>
+  
 </main>
 <!-- End #main -->
 
@@ -250,21 +248,8 @@
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/textFetch.js"></script>
-  <script src="https://cdn.tiny.cloud/1/8fbaulwtrf8cc7lwb2o7bqt0a6daa4suw61nxw571wm7z94t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-      mergetags_list: [
-        { value: 'First.Name', title: 'First Name' },
-        { value: 'Email', title: 'Email' },
-      ],
-      ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-    });
-  </script>
+  <script src="./assets/js/textEditor.js"></script>
+  
   <script src="assets/js/publicaciones.js"></script>
 
 </body>

@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeDropdown(carreraBtn);
         closeDropdown(cicloBtn);
         closeDropdown(cursoBtn);
-
+        
         setTimeout(() => {
             limpiarBtn.disabled = false; // Habilitar el botón de limpiar
         }, 5000); // 5000 milisegundos = 5 segundos
@@ -223,13 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const post = item.post;
             const carrera = item.carrera;
             const curso = item.curso;
+            const votos = item.votos;
 
             const newPost = document.createElement('div');
             newPost.classList.add('post-item');
 
             newPost.innerHTML = `
                 <div class="post-left">
-                    <div class="post-votes">${post.conteo_favoritos || 0} Votos</div>
+                    <div class="post-votes">${votos.cantidad || 0} Votos</div>
                     <div class="post-replies">${post.recuento_comentarios || 0} Respuestas</div>
                     <div class="post-views">${post.conteo_visitas || 0} Vistas</div>
                 </div>

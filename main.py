@@ -35,6 +35,11 @@ app.mount("/autenticacion/assets/vendor/chart.js", StaticFiles(directory="fronte
 app.mount("/autenticacion/assets/vendor/tinymce", StaticFiles(directory="frontend/assets/vendor/tinymce"), name="tinymce")
 app.mount("/autenticacion/assets/vendor/php-email-form", StaticFiles(directory="frontend/assets/vendor/php-email-form"), name="php-email-form")
 
+
+
+
+
+
 app.mount("/autenticacion/assets/js", StaticFiles(directory="frontend/assets/js"), name="js_dashboard")
 app.mount("/autenticacion/assets/img", StaticFiles(directory="frontend/assets/img"), name="img_dashboard")
 app.mount("/autenticacion/assets/css", StaticFiles(directory="frontend/assets/css"), name="css_dashboard")

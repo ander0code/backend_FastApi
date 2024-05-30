@@ -20,43 +20,46 @@ document.addEventListener('DOMContentLoaded', () => {
             popularPostsContainer.innerHTML = '';
 
             // Crear y añadir las cinco publicaciones más populares
-            topFivePosts.forEach(post => {
+            topFivePosts.forEach(item => {
+                const post = item.post;
+                const carrera = item.carrera;
+                const curso = item.curso;
+
                 const newPopularPost = popularPostTemplate.cloneNode(true);
                 newPopularPost.style.display = 'flex';
-                newPopularPost.querySelector('.activite-label').textContent = new Date(post.post.fecha_Creacion).toLocaleDateString();
-                newPopularPost.querySelector('.post-title').textContent = post.post.titulo;
-                newPopularPost.querySelector('.post-author').textContent = post.post.propietarioNombre;
+                newPopularPost.id = '';
+
+                newPopularPost.querySelector('.activite-label').textContent = new Date(post.fecha_Creacion).toLocaleDateString();
+                newPopularPost.querySelector('.post-title').textContent = post.titulo;
+                newPopularPost.querySelector('.post-title').href = `/autenticacion/texto?post_id=${post.id}`;
+                newPopularPost.querySelector('.post-author').textContent = post.propietarioNombre;
 
                 // Agregar etiquetas de carrera, ciclo y curso si están disponibles
                 const tagsContainer = newPopularPost.querySelector('.post-tags');
                 tagsContainer.innerHTML = ''; // Limpiar etiquetas anteriores
                 let hasTags = false;
 
-                if (post.carrera && post.carrera.etiquetaNombre) {
+                if (carrera && carrera.etiquetaNombre) {
                     const carreraTag = document.createElement('span');
-                    carreraTag.className = 'badge bg-primary text-light';
-                    carreraTag.textContent = post.carrera.etiquetaNombre;
+                    carreraTag.textContent = carrera.etiquetaNombre;
                     tagsContainer.appendChild(carreraTag);
                     hasTags = true;
                 }
-                if (post.curso && post.curso.ciclo !== null) {
+                if (curso && curso.ciclo !== null) {
                     const cicloTag = document.createElement('span');
-                    cicloTag.className = 'badge bg-warning text-dark';
-                    cicloTag.textContent = `Ciclo ${post.curso.ciclo}`;
+                    cicloTag.textContent = `Ciclo ${curso.ciclo}`;
                     tagsContainer.appendChild(cicloTag);
                     hasTags = true;
                 }
-                if (post.curso && post.curso.nombre_curso) {
+                if (curso && curso.nombre_curso) {
                     const cursoTag = document.createElement('span');
-                    cursoTag.className = 'badge bg-secondary text-light';
-                    cursoTag.textContent = post.curso.nombre_curso;
+                    cursoTag.textContent = curso.nombre_curso;
                     tagsContainer.appendChild(cursoTag);
                     hasTags = true;
                 }
 
                 if (!hasTags) {
                     const generalTag = document.createElement('span');
-                    generalTag.className = 'badge bg-success text-light';
                     generalTag.textContent = 'General';
                     tagsContainer.appendChild(generalTag);
                 }

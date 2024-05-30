@@ -1410,6 +1410,7 @@ body {
 }
 
 .post-item {
+  background-color: #ffffff;
     display: flex;
     border: 1px solid #ddd;
     padding: 16px;
@@ -1458,4 +1459,9 @@ body {
     margin-right: 4px;
     border-radius: 3px;
     font-size: 0.875rem;
+}
+
+
+a.fw-bold.text-dark.post-title {
+    font-size: 16px;
 }

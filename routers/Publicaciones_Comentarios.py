@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends,HTTPException,Query,Path
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case
 from models import Model_DB
-from Schemas import Publicaciones
+from Schemas import Publicaciones,Comentarios
 from config.base_connection import SessionLocal
 from typing import Any,List
 
@@ -24,8 +24,8 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) - 
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -55,11 +55,10 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -84,7 +83,7 @@ async def curso_carrera_ciclo(
         ).all()
 
     if not resultados:
-        raise HTTPException(status_code=404, detail="Carrera no encontrada")
+        raise HTTPException(status_code=404, detail="curso no encontrado")
 
     return resultados
 
@@ -99,8 +98,8 @@ async def post_carrera_ciclo(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -123,7 +122,7 @@ async def post_carrera_ciclo(
         ).all()
 
     if not resultados:
-        raise HTTPException(status_code=404, detail="Comentario no encontrado")
+        raise HTTPException(status_code=404, detail="Publicacion no encontrado")
 
     response = [
         Publicaciones.PostWithCurso(
@@ -131,11 +130,10 @@ async def post_carrera_ciclo(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -153,8 +151,8 @@ async def post_carrera_ciclo_curso(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -178,7 +176,7 @@ async def post_carrera_ciclo_curso(
         ).all()
 
     if not resultados:
-        raise HTTPException(status_code=404, detail="Comentario no encontrado")
+        raise HTTPException(status_code=404, detail="Publicacion no encontrado")
 
     response = [
         Publicaciones.PostWithCurso(
@@ -186,11 +184,10 @@ async def post_carrera_ciclo_curso(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
 
@@ -203,8 +200,8 @@ async def post_x_post_id(
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)).label('me_gusta'),
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('no_me_gusta')
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,
             Model_DB.Vote.mensajeID == Model_DB.Post.id
@@ -226,7 +223,7 @@ async def post_x_post_id(
         ).all()
 
     if not resultados:
-        raise HTTPException(status_code=404, detail="Comentario no encontrado")
+        raise HTTPException(status_code=404, detail="Publicacion no encontrado")
 
     response = [
         Publicaciones.PostWithCurso(
@@ -234,10 +231,45 @@ async def post_x_post_id(
             carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
-                me_gusta=me_gusta,
-                no_me_gusta=no_me_gusta
+                cantidad=voto_cantidad
             )
         )
-        for post, carrera, curso, me_gusta, no_me_gusta in resultados
+        for post, carrera, curso, voto_cantidad in resultados
+    ]
+    return response
+
+@post.get("/comentario_x_idPost/{id_post}",response_model=List[Comentarios.ComentariosBase])
+async def post_x_post_id(
+    id_post: int ,
+    db: Session = Depends(get_db)) -> Any:
+    resultados = db.query(
+        Model_DB.Comment ,
+        Model_DB.User
+    ).join(Model_DB.Post,
+           Model_DB.Post.id == Model_DB.Comment.publicacion_ID
+    ).join(Model_DB.User,
+           Model_DB.User.id == Model_DB.Comment.userID
+    ).filter(
+        Model_DB.Comment.publicacion_ID == id_post
+    ).all()
+    
+    if not resultados:
+        raise HTTPException(status_code=404, detail="Comentario no encontrado")
+    
+    response = [
+        Comentarios.ComentariosBase(
+            publicacion_ID=comment.publicacion_ID,
+            padre_comentario_id = comment.padre_comentario_id, 
+            texto = comment.texto,
+            comentario_id = comment.comentario_id,
+            puntuacion = comment.puntuacion,
+            fecha_creacion = comment.fecha_creacion,
+            userID = comment.userID,
+            UserData = Comentarios.UserBase(
+                nombre= user.nombre,
+                last_Name= user.last_Name
+            )
+        )
+        for comment, user in resultados
     ]
     return response
