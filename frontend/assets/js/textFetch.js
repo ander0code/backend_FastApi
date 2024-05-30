@@ -74,3 +74,16 @@ function displayPostDetails(postData) {
         tagsContainer.appendChild(dislikesTag);
     }
 }
+
+document.querySelectorAll('.vote-buttons button').forEach(button => {
+    button.addEventListener('click', function() {
+        const voteCountElement = this.parentElement.querySelector('.vote-count');
+        let voteCount = parseInt(voteCountElement.textContent);
+        if (this.textContent === '↑') {
+            voteCount++;
+        } else {
+            voteCount--;
+        }
+        voteCountElement.textContent = voteCount;
+    });
+});
