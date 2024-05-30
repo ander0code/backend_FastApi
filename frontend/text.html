@@ -175,9 +175,9 @@
     <div class="container" >
       <div class="question">
         <div class="vote-buttons">
-          <button class="upvote">&uarr;</button>
-          <div class="vote-count">2</div>
-          <button class="downvote">&darr;</button>
+          <button class="upvote" data-post-id="1">&uarr;</button>
+            <div class="vote-count" id="vote-count-1"></div>
+            <button class="downvote" data-post-id="1">&darr;</button>
         </div>
         <div class="question-content">
           <div class="question-title"></div>
@@ -200,9 +200,9 @@
         <h2>Respuestas</h2>
         <div class="answer" style="display: none;">
           <div class="vote-buttons">
-            <button class="upvote">&uarr;</button>
-            <div class="vote-count"></div>
-            <button class="downvote">&darr;</button>
+            <button class="upvote" data-post-id="1">&uarr;</button>
+            <div class="vote-count" id="vote-count-1"></div>
+            <button class="downvote" data-post-id="1">&darr;</button>
           </div>
           <div class="answer-content">
             <div class="answer-text"></div>
@@ -215,7 +215,7 @@
       </div>
       <div class="comments">
         <form class="comment-form" id="formulario">
-          <textarea id="editor" placeholder="Comenta pues imbecil 😡"></textarea>
+          <textarea id="editor" placeholder="Coloca tu respuesta aquí"></textarea>
           <button type="submit" id="add-comment" disabled>Subir comentario</button>
         </form>
       </div>

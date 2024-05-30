@@ -1,0 +1,528 @@
+/* Importar la fuente de Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Baloo 2", cursive;
+    font-size: 16px;
+    color: #18151f;
+    text-rendering: optimizeLegibility;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+a, a:hover {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a {
+    color: inherit;
+}
+
+h1, .h1 {
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 0.75rem 0;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Encabezado de página */
+#pageHeaderTitle {
+    margin: 2rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+/* Contenedor */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilos de las tarjetas de publicación */
+.postcard {
+    flex-wrap: wrap;
+    display: flex;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+    border-radius: 10px;
+    margin: 2rem 0;
+    overflow: hidden;
+    position: relative;
+    color: #ffffff;
+}
+
+.postcard.light {
+    background-color: #e1e5ea;
+}
+
+.t-dark {
+    color: #18151f;
+}
+
+.postcard__title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.postcard__img_link {
+    display: contents;
+}
+
+.postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #424242;
+    transition: width 0.2s ease;
+}
+
+.postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+}
+
+.postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.tag__item {
+    display: inline-block;
+    background: rgba(83, 83, 83, 0.4);
+    border-radius: 3px;
+    padding: 2.5px 10px;
+    margin: 0 5px 5px 0;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.3s;
+}
+
+.tag__item:hover {
+    background: rgba(83, 83, 83, 0.8);
+}
+
+.postcard:hover .postcard__bar {
+    width: 100px;
+}
+
+/* Estilos de la caja de información */
+.info-box {
+    border: 1px solid #d9eaf7;
+    background-color: #f1f8ff;
+    padding: 30px;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.info-box h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+.info-box ul {
+    padding-left: 20px;
+}
+
+.info-box ul li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+/* Estilos del formulario */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.form-box label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.form-box input[type="text"],
+.form-box textarea,
+.form-box select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-box button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.form-box button:hover {
+    background-color: #0056b3;
+}
+
+/* Sección de comentarios */
+.comments-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.comments-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.comment-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.comment-form .form-control {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: vertical;
+    font-size: 1rem;
+}
+
+.comment-form .btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.comment-form .btn:hover {
+    background-color: #0056b3;
+}
+
+.comments-list {
+    margin-top: 2rem;
+}
+
+.comment {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.comment-author-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-text {
+    color: #555;
+}
+
+/* Estilos personalizados para la sección del tablero */
+.section.dashboard {
+    background-color: #f9f9f9;
+    padding: 30px 0;
+}
+
+.section.dashboard .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.section.dashboard h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #18151f;
+}
+
+.section.dashboard .info-box {
+    background-color: #f1f8ff;
+    border-color: #d9eaf7;
+    margin-bottom: 2rem;
+}
+
+.section.dashboard .info-box h2 {
+    color: #18151f;
+}
+
+.section.dashboard .info-box p {
+    color: #18151f;
+}
+
+.section.dashboard .info-box a {
+    color: #007bff;
+}
+
+.section.dashboard .form-box label {
+    color: #18151f;
+}
+
+.section.dashboard .form-box input[type="text"] {
+    color: #18151f;
+    border-color: #ccc;
+}
+
+.section.dashboard .form-box button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.section.dashboard .form-box button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes adicionales */
+.dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-group button {
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+
+.title-publicar {
+    color: #012970;
+}
+
+/* Nueva clase para el contenedor */
+.form-container {
+    order: -1; /* Este valor mueve el contenedor arriba */
+    width: 95%; /* Ancho ajustado */
+    max-width: 1300px; /* Ancho máximo */
+    margin: 2rem auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 2rem; /* Agrega margen inferior opcional */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.title-publicar {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.btn-group button {
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+
+.dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1200px) {
+    .container, .section.dashboard .container {
+        padding: 20px;
+    }
+
+    .postcard__text {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container, .section.dashboard .container {
+        padding: 15px;
+    }
+
+    .postcard__title {
+        font-size: 1.5rem;
+    }
+
+    .postcard__text {
+        padding: 0.75rem;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container, .section.dashboard .container {
+        padding: 10px;
+    }
+
+    .postcard {
+        flex-direction: column;
+    }
+
+    .postcard__img {
+        max-height: 150px;
+    }
+
+    .postcard__title {
+        font-size: 1.25rem;
+    }
+
+    .postcard__text {
+        padding: 0.5rem;
+    }
+
+    .info-box {
+        padding: 15px;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+
+    .container, .section.dashboard .container {
+        padding: 5px;
+    }
+
+    .postcard__title {
+        font-size: 1rem;
+    }
+
+    .postcard__text {
+        padding: 0.25rem;
+    }
+
+    .info-box {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 5px;
+    }
+
+    button, .form-box button, .comment-form .btn {
+        padding: 5px 10px;
+        font-size: 0.875rem;
+    }
+}
