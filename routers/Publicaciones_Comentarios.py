@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends,HTTPException
+from fastapi import APIRouter,Depends,HTTPException,Query,Path
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case
 from models import Model_DB
@@ -24,7 +24,7 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
         Model_DB.Post,
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) - 
         func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
         ).outerjoin(
             Model_DB.Vote,

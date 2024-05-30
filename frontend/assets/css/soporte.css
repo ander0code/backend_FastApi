@@ -63,11 +63,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #E74C3C ;
+    border-bottom: 1px solid #000000 ;
 }
 
 .contact-form form button {
-    background: #E74C3C ;
+    background: #3c56e7 ;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -75,7 +75,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #E74C3C ;
+    background: #3c56e7 ;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -145,7 +145,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .contact-info p {
@@ -263,7 +263,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .contact-info p {
@@ -376,11 +376,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #E74C3C;
+    border-bottom: 1px solid #522bff;
 }
 
 .contact-form form button {
-    background: #E74C3C;
+    background: #522bff;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -388,7 +388,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #E74C3C;
+    background: #522bff;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -428,7 +428,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .contact-info p {
@@ -555,7 +555,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .common-style p {
@@ -598,11 +598,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #E74C3C;
+    border-bottom: 1px solid #522bff;
 }
 
 .contact-form form button {
-    background: #E74C3C;
+    background: #522bff;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -610,7 +610,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #E74C3C;
+    background: #522bff;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -734,7 +734,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .common-style p {
@@ -776,11 +776,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #E74C3C;
+    border-bottom: 1px solid #522bff;
 }
 
 .contact-form form button {
-    background: #E74C3C;
+    background: #522bff;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -788,7 +788,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #E74C3C;
+    background: #522bff;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -932,7 +932,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #E74C3C;
+    color: #522bff;
 }
 
 .common-style p {
@@ -974,11 +974,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #E74C3C;
+    border-bottom: 1px solid #522bff;
 }
 
 .contact-form form button {
-    background: #E74C3C;
+    background: #4262f0;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -986,7 +986,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #E74C3C;
+    background: #522bff;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;

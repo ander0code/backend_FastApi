@@ -56,12 +56,16 @@ function fetchPostResponses(postId) {
 
 function displayPostDetails(postData) {
     const post = postData.post;
+    const votos = postData.votos.cantidad;
 
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
-    document.querySelector('.question-details').textContent = post.descripcion || 'Descripción no disponible';
+    document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
     document.querySelector('.post-owner').textContent = post.propietarioNombre || 'Autor no disponible';
     document.querySelector('.post-date').textContent = post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible';
-    
+
+    const voteCountElement = document.querySelector('.vote-count');
+    voteCountElement.textContent = votos;
+
     const tagsContainer = document.querySelector('.tags');
     tagsContainer.innerHTML = '';
 
@@ -86,10 +90,20 @@ function displayPostDetails(postData) {
         generalTag.textContent = 'General';
         tagsContainer.appendChild(generalTag);
     }
+
+    // Add event listeners for upvote and downvote buttons
+    document.querySelector('.upvote').addEventListener('click', function() {
+        handleVote(voteCountElement, this, document.querySelector('.downvote'));
+    });
+
+    document.querySelector('.downvote').addEventListener('click', function() {
+        handleVote(voteCountElement, this, document.querySelector('.upvote'));
+    });
 }
 
 function displayPostResponses(responseData) {
     const answersContainer = document.querySelector('.answers');
+    answersContainer.innerHTML = ''; // Clear existing answers
 
     responseData.forEach(response => {
         const answerElement = document.createElement('div');
@@ -98,9 +112,9 @@ function displayPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'vote-buttons';
         voteButtons.innerHTML = `
-            <button class="upvote">&uarr;</button>
+            <button class="upvote" data-response-id="${response.comentario_id}">&uarr;</button>
             <div class="vote-count">${response.puntuacion}</div>
-            <button class="downvote">&darr;</button>
+            <button class="downvote" data-response-id="${response.comentario_id}">&darr;</button>
         `;
 
         const answerContent = document.createElement('div');
@@ -115,22 +129,29 @@ function displayPostResponses(responseData) {
 
         answerElement.appendChild(voteButtons);
         answerElement.appendChild(answerContent);
-
         answersContainer.appendChild(answerElement);
-    });
 
-    // Agregar eventos de votación
-    document.querySelectorAll('.vote-buttons button').forEach(button => {
-        button.addEventListener('click', function() {
-            const voteCountElement = this.parentElement.querySelector('.vote-count');
-            let voteCount = parseInt(voteCountElement.textContent);
-            if (this.textContent === '↑') {
-                voteCount++;
-            } else {
-                voteCount--;
-            }
-            voteCountElement.textContent = voteCount;
+        // Add event listeners for upvote and downvote buttons for responses
+        answerElement.querySelector('.upvote').addEventListener('click', function() {
+            handleVote(this.nextElementSibling, this, answerElement.querySelector('.downvote'));
+        });
+
+        answerElement.querySelector('.downvote').addEventListener('click', function() {
+            handleVote(this.previousElementSibling, this, answerElement.querySelector('.upvote'));
         });
     });
 }
 
+function handleVote(voteCountElement, clickedButton, otherButton) {
+    let voteCount = parseInt(voteCountElement.textContent);
+
+    if (clickedButton.classList.contains('upvote')) {
+        voteCount++;
+    } else {
+        voteCount--;
+    }
+
+    voteCountElement.textContent = voteCount;
+    clickedButton.disabled = true;
+    otherButton.disabled = false;
+}

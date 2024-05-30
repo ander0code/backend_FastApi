@@ -79,7 +79,8 @@ async def get_post_nuevo(db: Session = Depends(get_db)) -> Any:
             Model_DB.EtiquetaCurso.id_curso == Model_DB.EtiquetasPublicacion.etiqueta_curso_ID
         ).group_by(
             Model_DB.Post.id,
-            Model_DB.Post.titulo
+            Model_DB.EtiquetaCarrera.id_carrera,
+            Model_DB.EtiquetaCurso.id_curso
         ).all()
 
     if not resultados:
@@ -97,4 +98,5 @@ async def get_post_nuevo(db: Session = Depends(get_db)) -> Any:
         for post, carrera, curso, voto_cantidad in resultados
     ]
     return response
+
 
