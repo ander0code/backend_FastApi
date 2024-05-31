@@ -38,7 +38,7 @@
 
 .activity-item .text-muted {
     font-size: 0.875rem;
-    color: #6a737d;
+    color: #515151;
 }
 
 .activity-item .post-tags {
@@ -47,8 +47,8 @@
 
 .activity-item .post-tags span {
     display: inline-block;
-    background-color: #e1ecf4;
-    color: #39739d;
+    background-color: #FF6633;
+    color: #fff;
     padding: 4px 8px;
     margin-right: 4px;
     margin-bottom: 4px;
