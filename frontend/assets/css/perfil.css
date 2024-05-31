@@ -78,7 +78,7 @@ estilos de la utilidad
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
-    bottom: -100px; /* Ajustar la posición del avatar */
+    bottom: -110px; /* Ajustar la posición del avatar */
     left: calc(50% - 100px); /* Ajustar la posición horizontal */
     z-index: 1;
 }
@@ -92,7 +92,7 @@ estilos de la utilidad
 .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
     position: absolute;
     left: -2px;
-    top: -2px;
+    top: 2px;
     border: 0;
     background-color: #fff;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
@@ -134,7 +134,7 @@ estilos de la utilidad
 
 .seccion-perfil-usuario .perfil-usuario-bio {
     margin-bottom: 1.5rem; /* Aumentar el margen inferior */
-    text-align: center;
+    text-align:left;
     justify-content: center;
 }
 .seccion-perfil-usuario .lista-datos {
@@ -199,5 +199,51 @@ estilos de la utilidad
     color: #309B76;
     transform: scale(1.4);
 }
+
+/* Transiciones y animaciones */
+.perfil-usuario-avatar img,
+.perfil-usuario-avatar .boton-avatar,
+.lista-datos li,
+.perfil-usuario-bio,
+.perfil-usuario-footer {
+    transition: all 0.3s ease-in-out;
+}
+
+.perfil-usuario-avatar img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.perfil-usuario-avatar .boton-avatar:hover {
+    transform: rotate(360deg);
+}
+
+.lista-datos li:hover {
+    background-color: #f0f0f0;
+    transform: translateX(10px);
+}
+
+.perfil-usuario-bio {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+}
+
+.perfil-usuario-footer {
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
+}
+
+/* Keyframes para las animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 

@@ -230,16 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             newPost.innerHTML = `
                 <div class="post-left">
-                    <div class="post-votes">${votos.cantidad || 0} Votos</div>
-                    <div class="post-replies">${post.recuento_comentarios || 0} Respuestas</div>
-                    <div class="post-views">${post.conteo_visitas || 0} Vistas</div>
+                    <div class="post-votes"><i class="fa-solid fa-check-to-slot"></i>${votos.cantidad || 0} Votos</div>
+                    <div class="post-replies"><i class="fa-solid fa-square-check"></i>${post.recuento_comentarios || 0} Respuestas</div>
+                    <div class="post-views"><i class="fa-solid fa-eye"></i>${post.conteo_visitas || 0} Vistas</div>
                 </div>
                 <div class="post-right">
                     <div class="post-header">
-                        <a href="/autenticacion/texto?post_id=${post.id}" class="post-title">${post.titulo || 'Título no disponible'}</a>
+                        <div class="post-title">${post.titulo || 'Título no disponible'}</div>
                         <div class="post-meta">por <span class="post-author">${post.propietarioNombre || 'Autor no disponible'}</span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
                     </div>
                     <div class="post-tags"></div>
+                    <div class="post-footer">
+                    <a href="/autenticacion/texto?post_id=${post.id}"><button class="redirect-button"><i class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
             `;
 
