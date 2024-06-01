@@ -3,9 +3,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 sys.path.append("..")
-from routers import Autenticacion
-from routers import Users
-from routers import Publicaciones_Comentarios
+from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores
+
 
 app = FastAPI()
 origins = [
@@ -68,4 +67,4 @@ app.mount("/assets/vendor/bootstrap/css", StaticFiles(directory="frontend/assets
 app.include_router(Autenticacion.app, tags=["Login"])
 app.include_router(Users.user, tags=["Users"])
 app.include_router(Publicaciones_Comentarios.post, tags=["Post"])
-
+app.include_router(Etiqueta_Profesores.Profe,tags=["Profe"])
