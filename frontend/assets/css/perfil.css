@@ -114,6 +114,7 @@ estilos de la utilidad
     width: 100%;
     font-size: 2em; /* Aumentar el tamaño de la fuente */
     margin-bottom: 1rem; /* Aumentar el margen inferior */
+    text-align: center;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body .texto {
@@ -159,7 +160,26 @@ estilos de la utilidad
     display: flex;
     flex-direction: column;
 }
+.seccion-perfil-usuario .lista-datos {
+    width: 100%; /* Adjusting width to take full width */
+    list-style: none;
+    text-align: left; /* Aligning text to the left */
+    column-count: 2; /* Setting the number of columns */
+    column-gap: 20px; /* Adjusting the gap between columns */
+}
 
+.seccion-perfil-usuario .lista-datos li {
+    padding: 10px 0; /* Aumentar el padding */
+    display: flex; /* Making list items flex containers */
+    align-items: center; /* Aligning items vertically */
+}
+
+.seccion-perfil-usuario .lista-datos li > .icono {
+    margin-right: 1.5rem; /* Aumentar el margen derecho */
+    font-size: 1.5rem; /* Aumentar el tamaño del icono */
+    vertical-align: middle;
+    flex: 0 0 auto; /* Preventing icons from stretching */
+}
 /* Adaptación a dispositivos */
 @media (max-width: 750px) {
     .seccion-perfil-usuario .lista-datos {
@@ -244,6 +264,40 @@ estilos de la utilidad
         transform: translateY(0);
     }
 }
+/* Header and Avatar Animation */
+.seccion-perfil-usuario .perfil-usuario-header,
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 1s forwards;
+}
 
+/* Background Animation */
+.seccion-perfil-usuario .perfil-usuario-header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+/* Hover Effects */
+.seccion-perfil-usuario .boton-portada:hover,
+.seccion-perfil-usuario .boton-avatar:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+}
+
+.seccion-perfil-usuario .lista-datos li:hover {
+    background-color: #f8f8f8;
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mensaje a {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.mensaje a:hover {
+    color: #309b76;
+    transform: scale(1.1);
+}
 
 
