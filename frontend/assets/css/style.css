@@ -612,7 +612,7 @@ body {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #444444;
+  color: #214773;
 }
 
 .header-nav .profile .dropdown-header span {
@@ -646,6 +646,7 @@ body {
   opacity: 0; /* Inicio invisible */
   transform: translateY(-20px); /* Inicia más arriba */
   transition: opacity 0.3s ease, transform 0.3s ease; /* Transición de deslizamiento */
+  color: #214773;
 }
 
 /* Mostrar el menú con deslizamiento */
@@ -661,12 +662,13 @@ body {
   display: flex; /* Alineación flex */
   align-items: center; /* Centrar verticalmente */
   border-radius: 4px; /* Bordes redondeados de los ítems */
+  color: #214773;
 }
 
 /* Efecto hover en los elementos del menú */
 .header-nav .dropdown-item:hover {
   background-color: #f6f6f6; /* Color de fondo al pasar el cursor */
-  color: #FF5733; /* Color del texto al pasar el cursor */
+  color: #3c597a ; /* Color del texto al pasar el cursor */
 }
 
 /* Estilo de los íconos dentro de los elementos del menú */
@@ -699,7 +701,7 @@ body {
 }
 
 #profile-template span {
-  color: #6c757d; /* Color gris para la carrera */
+  color: #214773; /* Color gris para la carrera */
 }
 
 /*--------------------------------------------------------------
@@ -1786,7 +1788,7 @@ a.fw-bold.text-dark.post-title {
 }
 
 .dropdown-menu .dropdown-divider {
-  color: #FF6633;
+  color: #214773;
   margin: 0;
 }
 
