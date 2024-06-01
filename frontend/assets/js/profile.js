@@ -49,15 +49,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const profileAbout = document.getElementById('profile-about');
         const profileViews = document.getElementById('profile-views');
         const profileCareer = document.getElementById('profile-career');
+        const profileID = document.getElementById('profile-id');
         const profilePosVotes = document.getElementById('profile-pos-votes');
         const profileNegVotes = document.getElementById('profile-neg-votes');
         const profileCreationDate = document.getElementById('profile-creation-date');
         const profilePhoto = document.getElementById('profile-photo');
 
-        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto) {
+        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileID && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto) {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
             const acercaDeMi = user[0].acerca_de_mi || 'N/A';
+            const codigoID = user[0].codigo_user || 'N/A';
             const puntosDeVista = user[0].puntos_de_vista || 'N/A';
             const profileCarrera = user[0].carrera.etiquetaNombre || 'N/A';
             const votosPositivos = user[0].votos_positivos || 0;
@@ -65,13 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const fechaCreacion = user[0].fecha_creación || 'N/A';
             const fotoUrl = user[0].usuariofoto || 'assets/img/foto-perfil1.jpg'; // URL por defecto si no hay foto
 
-            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Acerca de mí: ${acercaDeMi}, Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Fecha de creación: ${fechaCreacion}, Foto: ${fotoUrl}`); // Verificar valores
+            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Acerca de mí: ${acercaDeMi}, Código ID: ${codigoID} , Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Fecha de creación: ${fechaCreacion}, Foto: ${fotoUrl}`); // Verificar valores
 
             profileName.textContent = nombre;
             profileName2.textContent = nombre;
             profileName3.textContent = nombre;
             profileLastName2.textContent = lastName;
             profileAbout.textContent = acercaDeMi;
+            profileID.textContent = codigoID;
             profileViews.textContent = puntosDeVista;
             profileCareer.textContent = profileCarrera;
             profilePosVotes.textContent = votosPositivos;
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             profileCreationDate.textContent = fechaCreacion;
             profilePhoto.src = fotoUrl; // Asignar la URL de la foto
         } else {
-            throw new Error('No se encontraron los elementos para reemplazar los datos del perfil');
+            console.error('No se encontraron los elementos para reemplazar los datos del perfil');
         }
     })
     .catch(error => {
