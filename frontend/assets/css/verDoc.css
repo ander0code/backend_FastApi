@@ -12,7 +12,7 @@
 .cardDoc {
   width: 100%;
   height: 100px;
-  max-width: 1000px; /* Ajuste para hacerla más ancha */
+  max-width: 1100px; /* Ajuste para hacerla más ancha */
   border-radius: 20px;
   background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Fondo degradado */
   position: relative;
@@ -68,7 +68,7 @@
 }
 
 .textBodyDoc {
-  color: rgb(63, 66, 245);
+  color: rgb(117, 118, 177);
   font-weight: bold;
   font-size: 20px;
 }

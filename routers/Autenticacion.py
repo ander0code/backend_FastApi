@@ -149,6 +149,19 @@ def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = Non
 
     except JWTError:
         RedirectResponse("/",status_code=302)
+
+@app.get("/autenticacion/infdoc",response_class=HTMLResponse)
+def dashboard(request:Request,access_token:Annotated[str | None, Cookie()] = None,db: Session = Depends(get_db)):
+    if access_token is None:
+        return RedirectResponse("/",status_code=302)
+    try:
+        data_user = jwt.decode(access_token,key=SECRETE_KEY,algorithms=["HS256"])
+        if get_user(data_user["email"],db) is None:
+            return RedirectResponse("/",status_code=302)
+        return jinjatemplates.TemplateResponse("infoDocente.html",{"request":request})
+
+    except JWTError:
+        RedirectResponse("/",status_code=302)
         
 # autenticacion de paginas 
 
