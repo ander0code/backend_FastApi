@@ -9,7 +9,8 @@ class UserData(Base):
     location= Column(String(10))
     email= Column(String(45), nullable=False, unique=True)
     passwordHash= Column(String(45), nullable=False)
-    rol= Column(Enum("MOD", "STD"), nullable=False)
+    rol= Column(Enum("MOD", "STD","PRO"), nullable=False)
+    codigo_std = Column(Integer)
     
     user = relationship("User", back_populates="user_data")
 

@@ -22,7 +22,8 @@ def get_db():
 def get_users_muevo( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
     resultados = db.query(
         Model_DB.User,
-        Model_DB.EtiquetaCarrera
+        Model_DB.EtiquetaCarrera,
+        Model_DB.UserData.codigo_std
         ).join(
             Model_DB.UserData, Model_DB.UserData.id == Model_DB.User.codigo_ID
         ).join(
@@ -48,11 +49,12 @@ def get_users_muevo( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
             votos_negativos=user.votos_negativos,
             usuariofoto=user.usuariofoto,
             codigo_ID=user.codigo_ID,
+            codigo_user = codigo_usuario,
             carrera=Usuario_Schema.EtiqetaCarreraBase(
                 etiquetaNombre=carrera.etiquetaNombre,
             ) if carrera else None
         )
-        for user, carrera in resultados
+        for user, carrera ,codigo_usuario in resultados
     ]
     return response
 

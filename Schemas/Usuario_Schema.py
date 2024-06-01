@@ -20,6 +20,7 @@ class UserBaseModel(BaseModel):
     votos_negativos: Optional[int]
     usuariofoto: Optional[int]
     codigo_ID: int
+    codigo_user : int
     carrera : Optional[EtiqetaCarreraBase]
 
     class Config:

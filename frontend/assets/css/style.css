@@ -1594,12 +1594,7 @@ a.fw-bold.text-dark.post-title {
   transition: all 1s;
 }
 
-.post-container:after {
-  top: -1px;
-  left: -1px;
-  border-top: 5px solid black;
-  border-left: 5px solid black;
-}
+
 
 .post-container:before {
   bottom: -1px;
