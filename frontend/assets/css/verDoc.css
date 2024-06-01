@@ -3,6 +3,9 @@
   background-color: #f9f9f9;
 }
 
+a.botonVerDoc {
+  color: #ffffff;
+}
 
 .sectionDashboardDoc .row {
   display: flex;
@@ -17,7 +20,7 @@
   background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Fondo degradado */
   position: relative;
   padding: 1.8rem;
-  border: 2px solid transparent;
+  border: 0.3px solid transparent;
   transition: 0.5s ease-out;
   overflow: visible;
   display: flex; /* Para distribuir horizontalmente */
@@ -32,7 +35,7 @@
   left: -5px;
   right: -5px;
   bottom: -5px;
-  background: linear-gradient(to right, #000000, #2575fc); /* Borde degradado */
+  background: linear-gradient(to right, #000000, #000000); /* Borde degradado */
   z-index: -1;
   border-radius: 20px;
   opacity: 0;
@@ -94,7 +97,7 @@
 }
 
 .cardDoc:hover .textTitleDoc {
-  color: #008bf8;
+  color: #000000;
 }
 
 .topDocentes {

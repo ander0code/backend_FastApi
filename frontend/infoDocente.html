@@ -176,43 +176,82 @@
 <!-- End Sidebar-->
 
 <main id="main" class="main">
-    <div class="pagetitleDoc">
-      <h1>Docente: Nombre del Docente</h1>
-    </div><!-- End Page Title -->
-  
-    <section class="sectionDashboardDoc">
-      <div class="containerDocente">
-        <!-- Información del Docente -->
-        <div class="infoDocente">
-          <h2>Información del Docente</h2>
-          <p><strong>Nombre:</strong> Nombre del Docente</p>
-          <p><strong>Facultad:</strong> Facultad de Ciencias</p>
-          <p><strong>Calidad General:</strong> 8.5</p>
-          <p><strong>Recomendado por:</strong> 90%</p>
-          <p><strong>Nivel de Dificultad:</strong> 4.2</p>
-          <p><strong>Etiquetas:</strong> Amable, Exigente, Inspirador</p>
-        </div>
-  
-        <!-- Calificaciones de Estudiantes -->
-        <div class="calificacionesEstudiantes">
-          <h2>Calificaciones de Estudiantes</h2>
-          <div class="calificacion">
-            <p><strong>Fecha:</strong> 2024-05-31</p>
-            <p><strong>Calidad General:</strong> 9.0</p>
-            <p><strong>Facilidad:</strong> 7.5</p>
-            <p><strong>Etiquetas:</strong> Claro, Paciente</p>
+  <div class="pagetitleDoc">
+    <h1>Docente: Nombre del Docente</h1>
+  </div><!-- End Page Title -->
+
+  <section class="sectionDashboardDoc">
+    <div class="col-lg-12 order-lg-1">
+      <div class="card infoDocente">
+        <div class="card-body">
+          <div class="info-container">
+            <div class="info-left">
+              <h2 class="card-title">CALIDAD GENERAL</h2>
+              <p class="quality-score">8.3</p>
+            </div>
+            <div class="info-middle">
+              <p><strong><i class="fas fa-thumbs-up"></i> Lo Recomiendan</strong></p>
+              <p class="recommendation">83%</p>
+              <p><strong><i class="fas fa-tachometer-alt"></i> Nivel de Dificultad</strong></p>
+              <p class="difficulty">2.5</p>
+            </div>
+            <div class="info-right">
+              <h2 class="card-title">Etiquetas para este Profesor</h2>
+              <p>Descubre cómo otros estudiantes describen a este profesor.</p>
+              <div class="tags">
+                <div class="tag-container">
+                  <span class="tag">Muy Cómico (25)</span>
+                  <span class="tag">Respetado por los Estudiantes (4)</span>
+                  <span class="tag">Tomaría su Clase Otra Vez (12)</span>
+                  <span class="tag">Clases Excelentes (13)</span>
+                  <span class="tag">Aspectos de Calificación Claros (7)</span>
+                  <span class="tag">Brinda Apoyo (7)</span>
+                  <span class="tag">La Participación Importa (3)</span>
+                  <span class="tag">Califica Duro (4)</span>
+                  <span class="tag">Inspiracional (1)</span>
+                  <span class="tag">Asistencia Obligatoria (2)</span>
+                  <span class="tag">Da Buena Retroalimentación (5)</span>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="calificarButton"><i class="fas fa-pen"></i> Calificar Docente</button>
+        </div>
+      </div>
+
+      <div class="card calificacionesEstudiantes">
+        <div class="card-body">
+          <h2 class="card-title">Calificaciones de Estudiantes</h2>
           <div class="calificacion">
-            <p><strong>Fecha:</strong> 2024-04-28</p>
-            <p><strong>Calidad General:</strong> 8.0</p>
-            <p><strong>Facilidad:</strong> 6.5</p>
-            <p><strong>Etiquetas:</strong> Inspirador, Motivador</p>
+            <div class="calificacion-header">
+              <p><strong><i class="fas fa-calendar-alt"></i> Fecha:</strong> 10/Mar/2024</p>
+            </div>
+            <div class="calificacion-body">
+              <div class="calificacion-left">
+                <p><strong>Calidad General</strong></p>
+                <p class="quality-score">9.0</p>
+                <p><strong>Facilidad</strong></p>
+                <p class="quality-score">6.0</p>
+              </div>
+              <div class="calificacion-right">
+                <p><strong><i class="fas fa-tags"></i> Etiquetas:</strong> 
+                  <span class="tag">Muy Cómico</span>, <span class="tag">Da Buena Retroalimentación</span>, <span class="tag">Tomaría su Clase Otra Vez</span>
+                </p>
+              </div>
+            </div>
+            <div class="calificacion-footer">
+              <p><i class="fas fa-thumbs-up"></i> 0 personas que les pareció útil</p>
+              <p><i class="fas fa-thumbs-down"></i> 0 personas que no les pareció útil</p>
+              <a href="#" class="reportar-link">reportar esta calificación</a>
+            </div>
           </div>
           <!-- Agregar más calificaciones aquí -->
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
+
   
 
 
