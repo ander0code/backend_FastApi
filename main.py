@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 sys.path.append("..")
-from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores
+from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores,insertar_Publicaciones
 
 
 app = FastAPI()
@@ -68,3 +68,4 @@ app.include_router(Autenticacion.app, tags=["Login"])
 app.include_router(Users.user, tags=["Users"])
 app.include_router(Publicaciones_Comentarios.post, tags=["Post"])
 app.include_router(Etiqueta_Profesores.Profe,tags=["Profe"])
+app.include_router(insertar_Publicaciones.post,tags=["PostInsert"])

@@ -54,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const profileNegVotes = document.getElementById('profile-neg-votes');
         const profileCreationDate = document.getElementById('profile-creation-date');
         const profilePhoto = document.getElementById('profile-photo');
+        const fotex = document.getElementById('fotex');
 
-        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileID && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto) {
+        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileID && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto && fotex) {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
             const acercaDeMi = user[0].acerca_de_mi || 'N/A';
@@ -65,7 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const votosPositivos = user[0].votos_positivos || 0;
             const votosNegativos = user[0].votos_negativos || 0;
             const fechaCreacion = user[0].fecha_creación || 'N/A';
-            const fotoUrl = user[0].usuariofoto || 'assets/img/foto-perfil1.jpg'; // URL por defecto si no hay foto
+            const fotoUrl = user[0].usuariofoto || './assets/img/defaultft.jpg';
+            const fotexURl = user[0].usuariofoto || './assets/img/defaultft.jpg'; // URL por defecto si no hay foto
 
             console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Acerca de mí: ${acercaDeMi}, Código ID: ${codigoID} , Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Fecha de creación: ${fechaCreacion}, Foto: ${fotoUrl}`); // Verificar valores
 
@@ -80,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
             profilePosVotes.textContent = votosPositivos;
             profileNegVotes.textContent = votosNegativos;
             profileCreationDate.textContent = fechaCreacion;
-            profilePhoto.src = fotoUrl; // Asignar la URL de la foto
+            profilePhoto.src = fotoUrl;
+            fotex.src = fotexURl; // Asignar la URL de la foto
         } else {
             console.error('No se encontraron los elementos para reemplazar los datos del perfil');
         }
