@@ -45,17 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const profileName = document.getElementById('profile-name');
         const profileFullname = document.getElementById('profile-fullname');
         const profileCarrer = document.getElementById('profile-carreer');
+        const profileImg = document.getElementById('profile-img');
 
-        if (profileName && profileFullname && profileCarrer) {
+        if (profileName && profileFullname && profileCarrer && profileImg) {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
             const carreer = user[0].carrera.etiquetaNombre || 'N/A';
+            const fotex = user[0].usuariofoto || './assets/img/defaultft.jpg';
 
-            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Carrera: ${carreer}`); // Verificar valores
+            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Carrera: ${carreer}, Foto: ${fotex}`); // Verificar valores
 
             profileName.textContent = `${nombre} ${lastName}`;
             profileFullname.textContent = `${nombre} ${lastName}`;
             profileCarrer.textContent = `Carrera: ${carreer}`;
+            profileImg.src = fotex;
         } else {
             throw new Error('No se encontraron los elementos para reemplazar los datos del perfil');
         }

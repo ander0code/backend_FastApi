@@ -24,7 +24,7 @@ class User(Base):
     puntos_de_vista= Column(String(100000))
     votos_positivos:  int= Column(Integer)
     votos_negativos:  int= Column(Integer)
-    usuariofoto:  int= Column(Integer)
+    usuariofoto = Column(String(225))
     codigo_ID= Column(Integer, ForeignKey('user_Data.id'), nullable=False)
 
     etiqueta_usuario = relationship("EtiquetaUsuario", back_populates="user") 

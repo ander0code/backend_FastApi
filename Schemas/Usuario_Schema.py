@@ -18,7 +18,7 @@ class UserBaseModel(BaseModel):
     puntos_de_vista: Optional[str]
     votos_positivos: Optional[int]
     votos_negativos: Optional[int]
-    usuariofoto: Optional[int]
+    usuariofoto: Optional[str]
     codigo_ID: int
     codigo_user : int
     carrera : Optional[EtiqetaCarreraBase]
