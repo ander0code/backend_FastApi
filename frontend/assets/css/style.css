@@ -17,7 +17,7 @@ ion-icon {
 button#preguntar-btn {
   width: 200px;
   border-radius: 10px;
-  background-color: #0a58ca; 
+  background-color: #0a57caa6; 
   color: #fff;
   padding: 10px 20px;
   font-size: 20px;
@@ -68,12 +68,12 @@ body {
 }
 
 a {
-  color: #4154f1;
+  color: #0a57caa6;
   text-decoration: none;
 }
 
 a:hover {
-  color: #717ff5;
+  color: #0a58ca;
   text-decoration: none;
 }
 
@@ -143,29 +143,6 @@ body {
 .card {
   border: none;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.activity-item {
-  background-color: #fff;
-  border-radius: 5px;
-  transition: transform 0.2s;
-}
-
-.activity-item:hover {
-  transform: scale(1.02);
-}
-
-.activity-badge {
-  font-size: 0.8rem;
-  padding: 0.2rem 0.4rem;
-}
-
-.activity-content {
-  flex: 1;
-}
-
-.text-muted {
-  font-size: 0.9rem;
 }
 
 
@@ -1100,19 +1077,79 @@ section#profile-template {
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
-section.section.faq {
-  margin-top: 43px;
+/* Estilos para FAQ */
+
+.faq-section {
+  padding: 50px 0;
 }
 
+.faq-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-.faq .basic h6 {
+.faq-col {
+  flex: 1;
+}
+
+.faq-card {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-card-body {
+  padding: 20px;
+}
+
+.faq-card-title {
+  color: #333;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h6 {
   font-size: 18px;
-  font-weight: 600;
-  color: #4154f1;
+  margin-bottom: 10px;
 }
 
-.faq .basic p {
-  color: #6980aa;
+.faq-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+.faq-accordion .faq-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.faq-accordion .faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-accordion .faq-item h6 {
+  cursor: pointer;
+}
+
+.faq-accordion .faq-item .accordion-body {
+  display: none;
+  padding-top: 10px;
+}
+
+.faq-accordion .faq-item.active .accordion-body {
+  display: block;
+}
+
+/* Animación de despliegue */
+.faq-accordion .faq-item .accordion-button {
+  transition: all 0.3s ease-in-out;
+}
+
+.faq-accordion .faq-item.active .accordion-button {
+  transform: rotate(180deg);
 }
 
 /*--------------------------------------------------------------
@@ -1396,12 +1433,12 @@ section.section.contact {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #3c597a ;
+  color: #2e5581 ;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #3c597a ;
+  color: #2e5581 ;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -1424,7 +1461,7 @@ section.section.contact {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #515151;
+  color: #0a58ca;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -1540,6 +1577,9 @@ section.section.contact {
 
 .fa-arrow-right {
   color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .post-header {
@@ -1635,7 +1675,7 @@ a.fw-bold.text-dark.post-title {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: #0f65c79c;
+  background-color: #0a57caa6;
   color: #fff;
   border: none;
   border-radius: 20px;
@@ -1645,7 +1685,7 @@ a.fw-bold.text-dark.post-title {
 }
 
 .redirect-button:hover {
-  background-color: #1682FD;
+  background-color: #0a58ca;
   transform: scale(1.1);
 }
 
@@ -1842,7 +1882,7 @@ a.fw-bold.text-dark.post-title {
 
 #limpiar-btn {
   border-radius: 10px;
-  background-color: #0f65c79c;
+  background-color: #0a57caa6;
   color: #fff;
   padding: 10px 20px;
   margin-bottom: 12px;
@@ -1855,14 +1895,14 @@ a.fw-bold.text-dark.post-title {
 
 /* Efectos al pasar el cursor sobre el botón */
 #limpiar-btn:hover {
-  background-color: #1682FD;
+  background-color: #0a58ca;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Efectos al hacer clic en el botón */
 #limpiar-btn:active {
-  background-color: #1682FD;
+  background-color: #0a58ca;
   transform: scale(0.95);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
