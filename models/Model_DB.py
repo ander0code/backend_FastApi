@@ -25,7 +25,7 @@ class User(Base):
     puntos_de_vista= Column(String(100000))
     votos_positivos:  int= Column(Integer)
     votos_negativos:  int= Column(Integer)
-    usuariofoto:  int= Column(String(255))
+    usuariofoto = Column(String(225))
     codigo_ID= Column(Integer, ForeignKey('user_Data.id'), nullable=False)
 
     etiqueta_usuario = relationship("EtiquetaUsuario", back_populates="user") 
@@ -120,7 +120,7 @@ class EtiquetaCurso(Base):
     etiquetas_publicacion = relationship("EtiquetasPublicacion",back_populates="etiqueta_curso")
     etiqueta_etiqueta_curso = relationship("EtiquetaEtiquetaCurso",back_populates="etiqueta_curso")
     
-   
+
 class EtiquetasPublicacion(Base):
     __tablename__ = 'etiquetas_publicacion'
     Comentario_ID= Column(Integer, ForeignKey('post.id'), primary_key=True)
