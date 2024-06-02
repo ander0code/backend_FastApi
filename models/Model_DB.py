@@ -23,9 +23,9 @@ class User(Base):
     last_Name= Column(String(45))
     acerca_de_mi= Column(String(100000))
     puntos_de_vista= Column(String(100000))
-    votos_positivos:  int= Column(Integer)
-    votos_negativos:  int= Column(Integer)
-    usuariofoto:  int= Column(String(255))
+    votos_positivos= Column(Integer)
+    votos_negativos= Column(Integer)
+    usuariofoto = Column(String(255))
     codigo_ID= Column(Integer, ForeignKey('user_Data.id'), nullable=False)
 
     etiqueta_usuario = relationship("EtiquetaUsuario", back_populates="user") 
