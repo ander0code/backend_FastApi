@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends,HTTPException,Query,Path
 from sqlalchemy.orm import Session
-from sqlalchemy import func, case
+from sqlalchemy import func, case ,desc
 from models import Model_DB
 from Schemas import Publicaciones,Comentarios
 from config.base_connection import SessionLocal
@@ -44,7 +44,7 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Carrera no registrada - o no existe, no es la id de la carrera, fijate en la database imvecil")
@@ -119,7 +119,7 @@ async def post_carrera_ciclo(
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Publicacion no encontrado")
@@ -173,7 +173,7 @@ async def post_carrera_ciclo_curso(
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Publicacion no encontrado")
@@ -251,7 +251,7 @@ async def post_x_post_id(
            Model_DB.User.id == Model_DB.Comment.userID
     ).filter(
         Model_DB.Comment.publicacion_ID == id_post
-    ).all()
+    ).order_by(desc(Model_DB.Comment.comentario_id)).all()
     
     if not resultados:
         raise HTTPException(status_code=404, detail="Comentario no encontrado")
