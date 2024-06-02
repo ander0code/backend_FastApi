@@ -10,12 +10,17 @@ body {
 }
 
 .pagetitleDoc {
-  margin-top: 60px;
+  margin-top: 0px;
   text-align: center;
   font-size: 2.5em;
   font-weight: bold;
   color: #333;
 }
+
+.card.infoDocente {
+  margin-top: 40px;
+}
+
 
 .sectionDashboardDoc {
   display: flex;

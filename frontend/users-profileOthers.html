@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>Forua</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/logosago.webp" rel="icon">
+  <!-- Favicons -->
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="./assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/perfil.css">
+  
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
+        <img src="./assets/img/logosago2.webp" alt="forua">
+        <span class="d-none d-lg-block">ORUA</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Buscar" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/foto-perfil1.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2" id="profile-name"></span>
+          </a><!-- End Profile Image Icon -->
+        
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
+            <li class="dropdown-header" id="profile-template">
+              <h6 id="profile-fullname"></h6>
+              <span id="profile-carreer"></span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <form action="/autenticacion/data_users" method="GET">
+                <button type="submit" class="dropdown-item d-flex align-items-center" style="border: none; background: none; cursor: pointer;">
+                  <i class="bi bi-person"></i>
+                  <span>Mi Perfil</span>
+                </button>
+              </form>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="./users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Configuración de cuenta</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/autenticacion/preguntas_frecuentes">
+                <i class="bi bi-question-circle"></i>
+                <span>¿Necesitas ayuda?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+        
+            <li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
+                  <i class="bi bi-question-circle"></i>
+                  <span>Salir</span>
+                </a>
+              </li>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header>
+<!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/autenticacion/dashboard">
+          <i class="bi bi-grid"></i>
+          <span>Inicio</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+        
+          <li class="nav-heading">Soporte</li>
+          <li class="nav-item">
+              <form action="/autenticacion/preguntas_frecuentes" method="GET">
+                  <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
+                      <i class="bi bi-question-circle"></i>
+                      <span>Preguntas frecuentes</span>
+                  </button>
+              </form>
+          </li><!-- End F.A.Q Page Nav -->
+
+
+          <li class="nav-item">
+            <form action="/autenticacion/pagina_contactos" method="GET">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                    <i class="bi bi-envelope"></i>
+                    <span>Soporte</span>
+                </button>
+            </form>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+          <form action="/autenticacion/logout" method="post" style="all: unset;">
+              <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                  <i class="bi bi-box-arrow-in-right"></i>
+                  <span>Salir</span>
+              </button>
+          </form>
+      </li><!-- End Login Page Nav -->
+      
+    </ul>
+</aside>
+
+  <main id="main" class="main">
+
+    <section id="profile-template" class="section profile">
+      <section class="seccion-perfil-usuario">
+          <div class="perfil-usuario-header">
+              <div class="perfil-usuario-portada">
+                  <div class="perfil-usuario-avatar">
+                      <img src="assets/img/foto-perfil1.jpg" alt="img-avatar" id="profile-photo">
+                  </div>
+              </div>
+          </div>
+          <div class="perfil-usuario-body">
+              <div class="perfil-usuario-bio">
+                  <h2 class="profile-name" id="profile-name"></h2>
+                  <h3 class="titulo" id="profile-name2"></h3>
+                  <p class="texto" id="profile-about"></p>
+              </div>
+              <div class="perfil-usuario-footer">
+                  <ul class="lista-datos">
+                      <li><i class="icono fas fa-address-card"></i> Nombre: <span id="profile-name3"></span></li>
+                      <li><i class="icono fas fa-address-card"></i> Apellido: <span id="profile-last-name2"></span></li>
+                      <li><i class="icono fas fa-eye"></i> Puntos de vista: <span id="profile-views"></span></li>
+                      <li><i class="icono fas fa-file-code"></i> Codigo ID: <span id="profile-id"></span></li>
+                  </ul>
+                  <ul class="lista-datos">
+                      <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
+                      <li><i class="icono far fa-arrow-alt-circle-up"></i> Votos positivos: <span id="profile-pos-votes"></span></li>
+                      <li><i class="icono far fa-arrow-alt-circle-down"></i> Votos negativos: <span id="profile-neg-votes"></span></li>
+                      <li><i class="icono far fa-calendar-alt"></i> Cuenta creada: <span id="profile-creation-date"></span></li>
+                  </ul>
+              </div>
+          </div>
+      </section>
+  </section>
+  
+    
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="./assets/vendor/echarts/echarts.min.js"></script>
+  <script src="./assets/vendor/quill/quill.js"></script>
+  <script src="./assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="./assets/vendor/php-email-form/validate.js"></script>
+
+  <!-----------------------------JAVASCRIPTS IMPORTANTES-->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/mostPerfilDash.js"></script>
+
+  <!--================PRUEBAS==============================-->
+  <script src="./assets/js/profile.js"></script>
+  <script src="./assets/js/users-profile.js" ></script>
+</body>
+
+</html>

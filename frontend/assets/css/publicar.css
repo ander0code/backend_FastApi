@@ -409,7 +409,11 @@ select {
     font-size: 1rem;
 }
 
-button {
+.botonPublicar {
+    display: flex;
+    width: 300px;
+    margin: auto;
+    justify-content: center;
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -420,7 +424,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.botonPublicar:hover {
     background-color: #0056b3;
 }
 
