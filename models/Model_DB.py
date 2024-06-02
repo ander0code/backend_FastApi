@@ -120,7 +120,7 @@ class EtiquetaCurso(Base):
     etiquetas_publicacion = relationship("EtiquetasPublicacion",back_populates="etiqueta_curso")
     etiqueta_etiqueta_curso = relationship("EtiquetaEtiquetaCurso",back_populates="etiqueta_curso")
     
-   
+
 class EtiquetasPublicacion(Base):
     __tablename__ = 'etiquetas_publicacion'
     Comentario_ID= Column(Integer, ForeignKey('post.id'), primary_key=True)
