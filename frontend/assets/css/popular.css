@@ -2,6 +2,12 @@
     margin-top: 20px;
 }
 
+.post-author {
+    font-weight: bold;
+    text-decoration: dashed;
+  }
+
+
 .activity-item {
     display: flex;
     flex-direction: column;
