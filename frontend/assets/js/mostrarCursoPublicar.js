@@ -2,13 +2,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const carreraSelect = document.getElementById('carrera');
     const cicloSelect = document.getElementById('ciclo');
     const cursoSelect = document.getElementById('curso');
+    const tipoPreguntaRadios = document.querySelectorAll('input[name="tipoPregunta"]');
+    const academicaFields = document.getElementById('academicaFields');
+    const botonPublicar = document.querySelector('.botonPublicar');
+    const mensajeCurso = document.getElementById('mensajeCurso');
+
+    // Mostrar/Ocultar campos de pregunta académica
+    tipoPreguntaRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (document.getElementById('academica').checked) {
+                academicaFields.style.display = 'block';
+            } else {
+                academicaFields.style.display = 'none';
+            }
+        });
+    });
 
     carreraSelect.addEventListener('change', () => {
+        // Ocultar mensaje y habilitar botón cuando se selecciona una carrera
+        mensajeCurso.style.display = 'none';
+        botonPublicar.disabled = false;
         updateCursos();
     });
 
     cicloSelect.addEventListener('change', () => {
+        // Mostrar mensaje y deshabilitar botón cuando se selecciona un ciclo
+        if (!cursoSelect.value) {
+            mensajeCurso.style.display = 'block';
+            botonPublicar.disabled = true;
+        } else {
+            mensajeCurso.style.display = 'none';
+            botonPublicar.disabled = false;
+        }
         updateCursos();
+    });
+
+    cursoSelect.addEventListener('change', () => {
+        // Ocultar mensaje y habilitar botón cuando se selecciona un curso
+        mensajeCurso.style.display = 'none';
+        botonPublicar.disabled = false;
     });
 
     function updateCursos() {
@@ -18,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Solo proceder si ambos valores están seleccionados
         if (!selectedCarrera || !selectedCiclo) {
             cursoSelect.innerHTML = '<option value="">Seleccionar curso</option>';
+            botonPublicar.disabled = true;
+            mensajeCurso.style.display = 'none';
             return;
         }
 

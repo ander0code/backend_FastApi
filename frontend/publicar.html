@@ -162,55 +162,69 @@
 <!-- End Sidebar-->
 
 
-    <main id="main" class="main">
+<main id="main" class="main">
+  <div class="form-container">
+      <h2 class="title-publicar">Publicar Pregunta</h2>
+      <form id="publicarPreguntaForm">
+          <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" id="titulo" name="titulo" required>
+          </div>
+          <div class="form-group">
+              <label for="contenido">Contenido</label>
+              <textarea id="editor" name="contenido" required></textarea>
+          </div>
+          
+          <div class="form-group-radio">
+              <label>Elige qué tipo de pregunta deseas realizar</label>
+              <div>
+                  <input type="radio" id="general" name="tipoPregunta" value="general" checked>
+                  <label for="general">General</label>
+              </div>
+              <div>
+                  <input type="radio" id="academica" name="tipoPregunta" value="academica">
+                  <label for="academica">Académica</label>
+              </div>
+          </div>
+          <div id="academicaFields" style="display: none;">
+              <div class="form-group">
+                  <label for="carrera">Carrera</label>
+                  <select id="carrera" name="carrera">
+                      <option value="">Seleccionar carrera</option>
+                      <option value="1">Psicología</option>
+                      <option value="2">Derecho</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="ciclo">Ciclo</label>
+                  <select id="ciclo" name="ciclo">
+                      <option value="">Seleccionar ciclo</option>
+                      <option value="1">I</option>
+                      <option value="2">II</option>
+                      <option value="3">III</option>
+                      <option value="4">IV</option>
+                      <option value="5">V</option>
+                      <option value="6">VI</option>
+                      <option value="7">VII</option>
+                      <option value="8">VIII</option>
+                      <option value="9">IX</option>
+                      <option value="10">X</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="curso">Curso</label>
+                  <select id="curso" name="curso">
+                      <option value="">Seleccionar curso</option>
+                  </select>
+              </div>
+              <div id="mensajeCurso" style="color: red; display: none;">Debes seleccionar un curso</div>
+          </div>
+          <button class="botonPublicar" type="submit" disabled>Publicar</button>
+      </form>
+  </div>
+</main>
 
-      <div class="form-container">
-        <h2 class="title-publicar">Publicar Pregunta</h2>
-        <form id="publicarPreguntaForm">
-            <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" required>
-            </div>
-            <div class="form-group">
-                <label for="contenido">Contenido</label>
-                <textarea id="editor" name="contenido" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="carrera">Carrera</label>
-                <select id="carrera" name="carrera" required>
-                    <option value="">Seleccionar carrera</option>
-                    <option value="1">Psicología</option>
-                    <option value="2">Derecho</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ciclo">Ciclo</label>
-                <select id="ciclo" name="ciclo" required>
-                    <option value="">Seleccionar ciclo</option>
-                    <option value="1">I</option>
-                    <option value="2">II</option>
-                    <option value="3">III</option>
-                    <option value="4">IV</option>
-                    <option value="5">V</option>
-                    <option value="6">VI</option>
-                    <option value="7">VII</option>
-                    <option value="8">VIII</option>
-                    <option value="9">IX</option>
-                    <option value="10">X</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="curso">Curso</label>
-                <select id="curso" name="curso" required>
-                    <option value="">Seleccionar curso</option>
-                </select>
-            </div>
-            <button class="botonPublicar" type="submit">Publicar</button>
-        </form>
-    </div>
-    
-    
-    </main>
+
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
@@ -237,7 +251,6 @@
     <!-- JavaScript personalizado -->
     <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
-  <script src="./assets/js/textEditor.js"></script>
   <script src="./assets/js/mostrarCursoPublicar.js"></script>
 
   <!--================PRUEBAS==============================-->
