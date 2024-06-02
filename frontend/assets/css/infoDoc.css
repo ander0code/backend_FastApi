@@ -1,63 +1,202 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
 .main {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .pagetitleDoc {
-    margin-top: 60px;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-  }
-  
-  .sectionDashboardDoc {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
-  }
-  
-  .containerDocente {
-    width: 80%;
-    max-width: 1000px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .infoDocente, .calificacionesEstudiantes {
-    width: 100%;
-  }
-  
-  .infoDocente h2, .calificacionesEstudiantes h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .infoDocente p, .calificacion p {
-    margin: 5px 0;
-    color: #555;
-  }
-  
-  .infoDocente p strong, .calificacion p strong {
-    color: #333;
-  }
-  
-  .calificacionesEstudiantes {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .calificacion {
-    padding: 15px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-  
+  padding: 20px;
+}
+
+.pagetitleDoc {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.sectionDashboardDoc {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.col-lg-12 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #333;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.info-left, .info-middle, .info-right {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.quality-score {
+  font-size: 5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.recommendation, .difficulty {
+  font-size: 3em;
+  font-weight: bold;
+  color: #333;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: #214773;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.calificarButton {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #214773;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.calificarButton:hover {
+  background-color: #4154f1;
+}
+
+.calificacionesEstudiantes .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calificacion {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.calificacion-header, .calificacion-body, .calificacion-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.calificacion-header p {
+  margin: 10px 0;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.calificacion-body {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.calificacion-left, .calificacion-right {
+  flex: 1;
+  min-width: 45%;
+  padding: 10px;
+  text-align: center;
+}
+
+.calificacion-left {
+  padding-right: 20px;
+  border-right: 1px solid #ebeef4;
+}
+
+.calificacion-left .quality-score {
+  font-size: 4em;
+  font-weight: bold;
+  color: #333;
+}
+
+.calificacion-right {
+  padding-left: 20px;
+}
+
+.calificacion-right p {
+  margin: 10px 0;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.calificacion i {
+  margin-right: 10px;
+  color: #214773;
+}
+
+.calificacion .tag {
+  background-color: #214773;
+  color: #fff;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.calificacion-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.calificacion-footer p {
+  margin: 0;
+  font-size: 1em;
+  color: #555;
+}
+
+.reportar-link {
+  color: #214773;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.reportar-link:hover {
+  text-decoration: underline;
+}
