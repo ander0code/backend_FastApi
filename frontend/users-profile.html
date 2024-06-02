@@ -43,6 +43,7 @@
 <body>
 
   <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -62,66 +63,50 @@
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
         <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="" alt="Profile" class="rounded-circle" id="fotex">
-            <span class="d-none d-md-block dropdown-toggle ps-2" id="profile-name"></span>
-          </a><!-- End Profile Image Icon -->
-        
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-label="User Profile Menu">
+            <img src="" alt="Profile Picture" class="rounded-circle profile-img" id="profile-img">
+            <span class="d-none d-md-block dropdown-toggle ps-2 profile-name" id="profile-name"></span>
+          </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
             <li class="dropdown-header" id="profile-template">
-              <h6 id="profile-fullname"></h6>
-              <span id="profile-carreer"></span>
+              <h6 id="profile-fullname">Nombre Completo</h6>
+              <span id="profile-carreer">Carrera</span>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-        
+            <li><hr class="dropdown-divider"></li>
             <li>
               <form action="/autenticacion/data_users" method="GET">
-                <button type="submit" class="dropdown-item d-flex align-items-center" style="border: none; background: none; cursor: pointer;">
+                <button type="submit" class="dropdown-item d-flex align-items-center">
                   <i class="bi bi-person"></i>
                   <span>Mi Perfil</span>
                 </button>
               </form>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-        
+            <li><hr class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="./users-profile.html">
                 <i class="bi bi-gear"></i>
                 <span>Configuración de cuenta</span>
               </a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-        
+            <li><hr class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="/autenticacion/preguntas_frecuentes">
                 <i class="bi bi-question-circle"></i>
                 <span>¿Necesitas ayuda?</span>
               </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <hr class="dropdown-divider">
+              <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Salir</span>
+              </a>
             </li>
-        
-            <li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Salir</span>
-                </a>
-              </li>
-            </li>
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+          </ul>
+        </li>
       </ul>
-    </nav><!-- End Icons Navigation -->
+    </nav>    
 
   </header>
 <!-- End Header -->
