@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import date
 
+# obtener datos
 class VotosBase(BaseModel):
     cantidad : int
 
@@ -28,9 +29,9 @@ class PostBase(BaseModel):
     fecha_Creacion: date
     conteo_visitas: int
     propietarioUserID: int
-    propietarioNombre: str
+    propietarioNombre: Optional[str] = None
     ultimoEditorUserlD: int
-    ultimoEditorName: str
+    ultimoEditorName: Optional[str] = None
     recuento_comentarios: int
     conteo_respuestas: int
     conteo_favoritos: int
@@ -48,3 +49,10 @@ class PostWithCurso(BaseModel):
     votos: Optional[VotosBase] = None
     
     
+# insertar datos 
+
+class PostCreate(BaseModel):
+    title: str
+    content: str
+    carrera_id: Optional[int|None] = None
+    curso_id: Optional[int|None] = None
