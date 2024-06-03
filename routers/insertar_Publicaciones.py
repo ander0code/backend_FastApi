@@ -1,6 +1,5 @@
-from fastapi import APIRouter,Depends,HTTPException,Query,Path
+from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
-from sqlalchemy import func, case
 import pytz
 from models import Model_DB
 from Schemas import Publicaciones
@@ -71,6 +70,7 @@ async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session 
     db.add(etiqueta_publicacion)
     db.commit()
     
+    #insertar historial
     Historial_post = Model_DB.HistorialPost(
             id_mensaje = nuevo_post.id,
             id_usuario = id_user,
@@ -82,14 +82,12 @@ async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session 
     db.add(Historial_post)
     db.commit()
     
-
-    # Construir la respuesta
     response = Publicaciones.PostWithCurso(
         post=Publicaciones.PostBase.model_validate(nuevo_post),
         carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
         curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
         votos=Publicaciones.VotosBase(
-            cantidad=0  # No hay votos inicialmente
+            cantidad=0  
         )
     )
     return response

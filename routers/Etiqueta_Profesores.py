@@ -2,8 +2,7 @@ from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 from models import Model_DB
 from config.base_connection import SessionLocal
-from typing import Any,List
-from sqlalchemy import desc
+from typing import Any
 
 Profe = APIRouter()
 
