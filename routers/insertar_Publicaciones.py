@@ -70,6 +70,18 @@ async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session 
     )
     db.add(etiqueta_publicacion)
     db.commit()
+    
+    Historial_post = Model_DB.HistorialPost(
+            id_mensaje = nuevo_post.id,
+            id_usuario = id_user,
+            fecha_creación = fecha_formateada,
+            usuario_nombre = post_user,
+            titulo = nuevo_post.titulo,
+            descripcion = nuevo_post.descripcion
+    )
+    db.add(Historial_post)
+    db.commit()
+    
 
     # Construir la respuesta
     response = Publicaciones.PostWithCurso(

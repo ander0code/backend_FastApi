@@ -94,7 +94,7 @@ class HistorialPost(Base):
     fecha_creación = Column(Date)
     usuario_nombre= Column(String(45))
     titulo= Column(String(300))
-    comentario= Column(String(1000000))
+    descripcion= Column(String(1000000))
     
     user = relationship("User", back_populates="historial_Post")
     post = relationship("Post", back_populates="historial_Post")
