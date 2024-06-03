@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.login-form');
     const alert = document.getElementById('custom-alert');
-    let submitButton;
-
-    if (form) {
-        submitButton = form.querySelector('input[type="submit"]');
-    }
+    const submitButton = document.querySelector('.container-button');
 
     if (form && submitButton) {
         function resetForm() {
             form.reset();
             submitButton.disabled = false;
-            submitButton.value = "Iniciar Sesión";
+            submitButton.innerHTML = "<span>Ingresar</span>";
         }
 
         // Restablecer el formulario al cargar la página
@@ -22,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Deshabilitar el botón de enviar
             submitButton.disabled = true;
-            submitButton.value = "Iniciando...";
+            submitButton.innerHTML = "Iniciando...";
 
             const formData = new URLSearchParams();
             formData.append('email', form.email.value);
@@ -45,8 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 showAlert(error.message);
                 // Habilitar el botón nuevamente si ocurre un error
-                submitButton.disabled = false;
-                submitButton.value = "Iniciar Sesión";
+                resetForm();
             }
         });
 
