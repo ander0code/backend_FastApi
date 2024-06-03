@@ -26,13 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedCarrera = this.getAttribute('data-value');
             selectedCiclo = null;
             selectedCurso = null;
-            document.getElementById('curso-btn').classList.add('disabled');
+
             document.querySelector('#ciclo-btn span').textContent = defaultCicloText;
             document.querySelector('#curso-btn span').textContent = defaultCursoText;
             document.querySelector('#carrera-btn span').textContent = this.querySelector('span').textContent;
             document.querySelector('#forms-nav').classList.remove('show');
 
-            updateCicloButton();
+            if (selectedCarrera === '0') {
+                cicloBtn.classList.add('disabled');
+                cursoBtn.classList.add('disabled');
+            } else {
+                cicloBtn.classList.remove('disabled');
+                cursoBtn.classList.add('disabled');
+            }
+
             fetchAndDisplayPosts();
             closeDropdown(carreraBtn);
         });
@@ -47,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.querySelector('#ciclo-btn span').textContent = this.querySelector('span').textContent;
             document.querySelector('#curso-btn span').textContent = defaultCursoText;
-            document.getElementById('curso-btn').classList.add('disabled');
+            cursoBtn.classList.add('disabled');
 
             fetchAndDisplayCursos();
             fetchAndDisplayPosts();
@@ -57,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Actualizar botón de ciclo
     function updateCicloButton() {
-        if (selectedCarrera) {
-            document.getElementById('ciclo-btn').classList.remove('disabled');
+        if (selectedCarrera && selectedCarrera !== '0') {
+            cicloBtn.classList.remove('disabled');
         } else {
-            document.getElementById('ciclo-btn').classList.add('disabled');
+            cicloBtn.classList.add('disabled');
         }
     }
 
@@ -91,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (cursos.length === 0) {
                     cursoNav.innerHTML = '<li>No se encontraron cursos</li>';
-                    document.getElementById('curso-btn').classList.add('disabled');
+                    cursoBtn.classList.add('disabled');
                     return;
                 }
 
@@ -104,13 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     cursoNav.appendChild(cursoItem);
                 });
 
-                document.getElementById('curso-btn').classList.remove('disabled');
+                cursoBtn.classList.remove('disabled');
 
                 document.querySelectorAll('.curso-option').forEach(option => {
                     option.addEventListener('click', function(event) {
                         event.preventDefault();
                         const cursoName = this.querySelector('span').textContent;
-                        document.getElementById('curso-btn').querySelector('span').textContent = cursoName;
+                        cursoBtn.querySelector('span').textContent = cursoName;
                         selectedCurso = this.getAttribute('data-value');
                         console.log('Curso seleccionado:', selectedCurso);
 
@@ -144,7 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch(url)
             .then(response => {
-                if (!response.ok) {
+                if (response.status === 404) {
+                    return [];
+                } else if (!response.ok) {
                     throw new Error('No se pudo obtener los posts');
                 }
                 return response.json();
@@ -213,70 +222,76 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para mostrar los posts en el contenedor
     function displayPosts(posts) {
         const postContainer = document.getElementById('post-container');
+        const notfoundContainer = document.getElementById('notfound-container');
+
         postContainer.innerHTML = '';
 
-        if (!Array.isArray(posts)) {
-            throw new Error('La respuesta no es un array');
+        if (!Array.isArray(posts) || posts.length === 0) {
+            notfoundContainer.style.display = 'block';
+            postContainer.style.display = 'none';
+        } else {
+            notfoundContainer.style.display = 'none';
+            postContainer.style.display = 'block';
+
+            posts.forEach(item => {
+                const post = item.post;
+                const carrera = item.carrera;
+                const curso = item.curso;
+                const votos = item.votos;
+
+                const newPost = document.createElement('div');
+                newPost.classList.add('post-item');
+
+                newPost.innerHTML = `
+                    <div class="post-left">
+                        <div class="post-votes"><i class="fa-solid fa-check-to-slot"></i>${votos.cantidad || 0} Votos</div>
+                        <div class="post-replies"><i class="fa-solid fa-square-check"></i>${post.recuento_comentarios || 0} Respuestas</div>
+                        <div class="post-views"><i class="fa-solid fa-eye"></i>${post.conteo_visitas || 0} Vistas</div>
+                    </div>
+                    <div class="post-right">
+                        <div class="post-header">
+                            <div class="post-title">${post.titulo || 'Título no disponible'}</div>
+                            <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
+                        </div>
+                        <div class="post-tags"></div>
+                        <div class="post-footer">
+                        <a href="/autenticacion/texto?post_id=${post.id}"><button class="redirect-button"><i class="fa-solid fa-arrow-right"></i></button></a>
+                        </div>
+                    </div>
+                `;
+
+                const tagsContainer = newPost.querySelector('.post-tags');
+                tagsContainer.innerHTML = '';
+
+                let hasTags = false;
+
+                if (carrera && carrera.etiquetaNombre) {
+                    const carreraTag = document.createElement('span');
+                    carreraTag.textContent = carrera.etiquetaNombre;
+                    tagsContainer.appendChild(carreraTag);
+                    hasTags = true;
+                }
+                if (curso && curso.ciclo !== null) {
+                    const cicloTag = document.createElement('span');
+                    cicloTag.textContent = `Ciclo ${curso.ciclo}`;
+                    tagsContainer.appendChild(cicloTag);
+                    hasTags = true;
+                }
+                if (curso && curso.nombre_curso) {
+                    const cursoTag = document.createElement('span');
+                    cursoTag.textContent = curso.nombre_curso;
+                    tagsContainer.appendChild(cursoTag);
+                    hasTags = true;
+                }
+
+                if (!hasTags) {
+                    const generalTag = document.createElement('span');
+                    generalTag.textContent = 'General';
+                    tagsContainer.appendChild(generalTag);
+                }
+
+                postContainer.appendChild(newPost);
+            });
         }
-
-        posts.forEach(item => {
-            const post = item.post;
-            const carrera = item.carrera;
-            const curso = item.curso;
-            const votos = item.votos;
-
-            const newPost = document.createElement('div');
-            newPost.classList.add('post-item');
-
-            newPost.innerHTML = `
-                <div class="post-left">
-                    <div class="post-votes"><i class="fa-solid fa-check-to-slot"></i>${votos.cantidad || 0} Votos</div>
-                    <div class="post-replies"><i class="fa-solid fa-square-check"></i>${post.recuento_comentarios || 0} Respuestas</div>
-                    <div class="post-views"><i class="fa-solid fa-eye"></i>${post.conteo_visitas || 0} Vistas</div>
-                </div>
-                <div class="post-right">
-                    <div class="post-header">
-                        <div class="post-title">${post.titulo || 'Título no disponible'}</div>
-                        <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
-                    </div>
-                    <div class="post-tags"></div>
-                    <div class="post-footer">
-                    <a href="/autenticacion/texto?post_id=${post.id}"><button class="redirect-button"><i class="fa-solid fa-arrow-right"></i></button></a>
-                    </div>
-                </div>
-            `;
-
-            const tagsContainer = newPost.querySelector('.post-tags');
-            tagsContainer.innerHTML = '';
-
-            let hasTags = false;
-
-            if (carrera && carrera.etiquetaNombre) {
-                const carreraTag = document.createElement('span');
-                carreraTag.textContent = carrera.etiquetaNombre;
-                tagsContainer.appendChild(carreraTag);
-                hasTags = true;
-            }
-            if (curso && curso.ciclo !== null) {
-                const cicloTag = document.createElement('span');
-                cicloTag.textContent = `Ciclo ${curso.ciclo}`;
-                tagsContainer.appendChild(cicloTag);
-                hasTags = true;
-            }
-            if (curso && curso.nombre_curso) {
-                const cursoTag = document.createElement('span');
-                cursoTag.textContent = curso.nombre_curso;
-                tagsContainer.appendChild(cursoTag);
-                hasTags = true;
-            }
-
-            if (!hasTags) {
-                const generalTag = document.createElement('span');
-                generalTag.textContent = 'General';
-                tagsContainer.appendChild(generalTag);
-            }
-
-            postContainer.appendChild(newPost);
-        });
     }
 });

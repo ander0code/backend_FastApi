@@ -1921,3 +1921,31 @@ a.fw-bold.text-dark.post-title {
 #limpiar-btn {
   animation: fadeIn 0.5s ease forwards;
 }
+
+
+
+#notfound-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundText {
+  color: #214773;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.notfoundImage {
+  width: 50%;
+  max-width: 600px;
+  height: auto;
+}
