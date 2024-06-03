@@ -273,3 +273,51 @@ async def post_x_post_id(
         for comment, user in resultados
     ]
     return response
+
+
+@post.get("/posts_general", response_model=List[Publicaciones.PostWithCurso])
+async def post_general(
+    db: Session = Depends(get_db)
+) -> Any:
+    resultados = db.query(
+        Model_DB.Post,
+        Model_DB.EtiquetaCarrera,
+        Model_DB.EtiquetaCurso,
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
+        ).outerjoin(
+            Model_DB.Vote,
+            Model_DB.Vote.mensajeID == Model_DB.Post.id
+        ).join(
+            Model_DB.EtiquetasPublicacion,
+            Model_DB.EtiquetasPublicacion.Comentario_ID == Model_DB.Post.id
+        ).outerjoin(
+            Model_DB.EtiquetaCarrera,
+            Model_DB.EtiquetaCarrera.id_carrera == Model_DB.EtiquetasPublicacion.etiqueta_carrera_ID
+        ).outerjoin(
+            Model_DB.EtiquetaCurso,
+            Model_DB.EtiquetaCurso.id_curso == Model_DB.EtiquetasPublicacion.etiqueta_curso_ID
+        ).filter(
+            Model_DB.EtiquetasPublicacion.etiqueta_carrera_ID == None,
+            Model_DB.EtiquetasPublicacion.etiqueta_curso_ID == None
+        ).group_by(
+            Model_DB.Post.id,
+            Model_DB.EtiquetaCarrera.id_carrera,
+            Model_DB.EtiquetaCurso.id_curso
+        ).order_by(desc(Model_DB.Post.id)).all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="Publicacion no encontrado")
+
+    response = [
+        Publicaciones.PostWithCurso(
+            post=Publicaciones.PostBase.model_validate(post),
+            carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
+            curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
+            votos=Publicaciones.VotosBase(
+                cantidad=voto_cantidad
+            )
+        )
+        for post, carrera, curso, voto_cantidad in resultados
+    ]
+    return response
