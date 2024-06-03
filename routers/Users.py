@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import func, case
+from sqlalchemy import func, case, desc
 from models import Model_DB
 from Schemas import Publicaciones,Usuario_Schema
 
@@ -83,7 +83,7 @@ async def get_post_nuevo(db: Session = Depends(get_db)) -> Any:
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Comentario no encontrado")

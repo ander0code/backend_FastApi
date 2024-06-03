@@ -1,6 +1,6 @@
-from fastapi import APIRouter,Depends,HTTPException,Query,Path
+from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import func, case
+from sqlalchemy import func, case ,desc
 from models import Model_DB
 from Schemas import Publicaciones,Comentarios
 from config.base_connection import SessionLocal
@@ -44,7 +44,7 @@ async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Carrera no registrada - o no existe, no es la id de la carrera, fijate en la database imvecil")
@@ -119,7 +119,7 @@ async def post_carrera_ciclo(
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Publicacion no encontrado")
@@ -173,7 +173,7 @@ async def post_carrera_ciclo_curso(
             Model_DB.Post.id,
             Model_DB.EtiquetaCarrera.id_carrera,
             Model_DB.EtiquetaCurso.id_curso
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="Publicacion no encontrado")
@@ -251,7 +251,7 @@ async def post_x_post_id(
            Model_DB.User.id == Model_DB.Comment.userID
     ).filter(
         Model_DB.Comment.publicacion_ID == id_post
-    ).all()
+    ).order_by(desc(Model_DB.Comment.comentario_id)).all()
     
     if not resultados:
         raise HTTPException(status_code=404, detail="Comentario no encontrado")
@@ -271,5 +271,53 @@ async def post_x_post_id(
             )
         )
         for comment, user in resultados
+    ]
+    return response
+
+
+@post.get("/posts_general", response_model=List[Publicaciones.PostWithCurso])
+async def post_general(
+    db: Session = Depends(get_db)
+) -> Any:
+    resultados = db.query(
+        Model_DB.Post,
+        Model_DB.EtiquetaCarrera,
+        Model_DB.EtiquetaCurso,
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
+        ).outerjoin(
+            Model_DB.Vote,
+            Model_DB.Vote.mensajeID == Model_DB.Post.id
+        ).join(
+            Model_DB.EtiquetasPublicacion,
+            Model_DB.EtiquetasPublicacion.Comentario_ID == Model_DB.Post.id
+        ).outerjoin(
+            Model_DB.EtiquetaCarrera,
+            Model_DB.EtiquetaCarrera.id_carrera == Model_DB.EtiquetasPublicacion.etiqueta_carrera_ID
+        ).outerjoin(
+            Model_DB.EtiquetaCurso,
+            Model_DB.EtiquetaCurso.id_curso == Model_DB.EtiquetasPublicacion.etiqueta_curso_ID
+        ).filter(
+            Model_DB.EtiquetasPublicacion.etiqueta_carrera_ID == None,
+            Model_DB.EtiquetasPublicacion.etiqueta_curso_ID == None
+        ).group_by(
+            Model_DB.Post.id,
+            Model_DB.EtiquetaCarrera.id_carrera,
+            Model_DB.EtiquetaCurso.id_curso
+        ).order_by(desc(Model_DB.Post.id)).all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="Publicacion no encontrado")
+
+    response = [
+        Publicaciones.PostWithCurso(
+            post=Publicaciones.PostBase.model_validate(post),
+            carrera=Publicaciones.EtiqetaCarreraBase.model_validate(carrera) if carrera else None,
+            curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
+            votos=Publicaciones.VotosBase(
+                cantidad=voto_cantidad
+            )
+        )
+        for post, carrera, curso, voto_cantidad in resultados
     ]
     return response

@@ -9,6 +9,10 @@ body {
   padding: 20px;
 }
 
+.clasificarText {
+  color:#fff;
+}
+
 .pagetitleDoc {
   margin-top: 0px;
   text-align: center;

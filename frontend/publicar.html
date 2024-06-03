@@ -44,13 +44,6 @@
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div><!-- End Logo -->
 
-  <div class="search-bar">
-    <form class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" name="query" placeholder="Buscar" title="Enter search keyword">
-      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-    </form>
-  </div><!-- End Search Bar -->
-
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
       <li class="nav-item dropdown pe-3">
@@ -82,16 +75,18 @@
           <li><hr class="dropdown-divider"></li>
           <li>
             <a class="dropdown-item d-flex align-items-center" href="/autenticacion/preguntas_frecuentes">
-              <i class="bi bi-question-circle"></i>
-              <span>¿Necesitas ayuda?</span>
+              <i class="bi bi-chat-left"></i>
+              <span>Mis preguntas</span>
             </a>
           </li>
           <li><hr class="dropdown-divider"></li>
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="/autenticacion/logout">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Salir</span>
-            </a>
+            <form action="/autenticacion/logout" method="post">
+              <button type="submit" class="dropdown-item d-flex align-items-center">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Salir</span>
+              </button>
+          </form>
           </li>
         </ul>
       </li>
@@ -155,7 +150,7 @@
           </div>
           <div class="form-group">
               <label for="contenido">Contenido</label>
-              <textarea id="editor" name="contenido" required></textarea>
+              <textarea id="contenido" name="contenido" required></textarea>
           </div>
           
           <div class="form-group-radio">
@@ -208,6 +203,7 @@
 </main>
 
 
+
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
@@ -233,8 +229,8 @@
 
     <!-- JavaScript personalizado -->
     <script src="./assets/js/main.js"></script>
-  <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/mostrarCursoPublicar.js"></script>
+  <script src="./assets/js/publicarpregunta.js"></script>
 
   <!--================PRUEBAS==============================-->
 

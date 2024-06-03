@@ -42,50 +42,57 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(user => {
         console.log('Datos del usuario recibidos:', user); // Verificar los datos recibidos
 
-        const profileName = document.getElementById('profile-name');
-        const profileName2 = document.getElementById('profile-name2');
-        const profileName3 = document.getElementById('profile-name3');
-        const profileLastName2 = document.getElementById('profile-last-name2');
-        const profileAbout = document.getElementById('profile-about');
-        const profileViews = document.getElementById('profile-views');
-        const profileCareer = document.getElementById('profile-career');
-        const profileID = document.getElementById('profile-id');
-        const profilePosVotes = document.getElementById('profile-pos-votes');
-        const profileNegVotes = document.getElementById('profile-neg-votes');
-        const profileCreationDate = document.getElementById('profile-creation-date');
-        const profilePhoto = document.getElementById('profile-photo');
-        const fotex = document.getElementById('fotex');
+        const profileElements = {
+            profileName: document.getElementById('profile-name'),
+            profileName2: document.getElementById('profile-name2'),
+            profileName3: document.getElementById('profile-name3'),
+            profileLastName2: document.getElementById('profile-last-name2'),
+            profileAbout: document.getElementById('profile-about'),
+            profileViews: document.getElementById('profile-views'),
+            profileCareer: document.getElementById('profile-career'),
+            profileID: document.getElementById('profile-id'),
+            profilePosVotes: document.getElementById('profile-pos-votes'),
+            profileNegVotes: document.getElementById('profile-neg-votes'),
+            profileCreationDate: document.getElementById('profile-creation-date'),
+            profilePhoto: document.getElementById('profile-photo')
+        };
 
-        if (profileName && profileName2 && profileLastName2 && profileAbout && profileViews && profileID && profileCareer && profilePosVotes && profileNegVotes && profileCreationDate && profilePhoto && fotex) {
-            const nombre = user[0].nombre || 'N/A';
-            const lastName = user[0].last_Name || 'N/A';
-            const acercaDeMi = user[0].acerca_de_mi || 'N/A';
-            const codigoID = user[0].codigo_user || 'N/A';
-            const puntosDeVista = user[0].puntos_de_vista || 'N/A';
-            const profileCarrera = user[0].carrera.etiquetaNombre || 'N/A';
-            const votosPositivos = user[0].votos_positivos || 0;
-            const votosNegativos = user[0].votos_negativos || 0;
-            const fechaCreacion = user[0].fecha_creación || 'N/A';
-            const fotoUrl = user[0].usuariofoto || './assets/img/defaultft.jpg';
-            const fotexURl = user[0].usuariofoto || './assets/img/defaultft.jpg'; // URL por defecto si no hay foto
+        for (let key in profileElements) {
+            if (!profileElements[key]) {
+                console.error(`No se encontró el elemento: ${key}`);
+            }
+        }
 
-            console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Acerca de mí: ${acercaDeMi}, Código ID: ${codigoID} , Puntos de vista: ${puntosDeVista}, Votos positivos: ${votosPositivos}, Votos negativos: ${votosNegativos}, Fecha de creación: ${fechaCreacion}, Foto: ${fotoUrl}`); // Verificar valores
+        if (Object.values(profileElements).every(el => el !== null)) {
+            const userData = {
+                nombre: user[0].nombre || 'N/A',
+                lastName: user[0].last_Name || 'N/A',
+                acercaDeMi: user[0].acerca_de_mi || 'N/A',
+                codigoID: user[0].codigo_user || 'N/A',
+                puntosDeVista: user[0].puntos_de_vista || 'N/A',
+                profileCarrera: user[0].carrera.etiquetaNombre || 'N/A',
+                votosPositivos: user[0].votos_positivos || 0,
+                votosNegativos: user[0].votos_negativos || 0,
+                fechaCreacion: user[0].fecha_creación || 'N/A',
+                fotoUrl: user[0].usuariofoto || './assets/img/defaultft.jpg'
+            };
 
-            profileName.textContent = nombre;
-            profileName2.textContent = nombre;
-            profileName3.textContent = nombre;
-            profileLastName2.textContent = lastName;
-            profileAbout.textContent = acercaDeMi;
-            profileID.textContent = codigoID;
-            profileViews.textContent = puntosDeVista;
-            profileCareer.textContent = profileCarrera;
-            profilePosVotes.textContent = votosPositivos;
-            profileNegVotes.textContent = votosNegativos;
-            profileCreationDate.textContent = fechaCreacion;
-            profilePhoto.src = fotoUrl;
-            fotex.src = fotexURl; // Asignar la URL de la foto
+            console.log(`Nombre: ${userData.nombre}, Apellido: ${userData.lastName}, Acerca de mí: ${userData.acercaDeMi}, Código ID: ${userData.codigoID}, Puntos de vista: ${userData.puntosDeVista}, Votos positivos: ${userData.votosPositivos}, Votos negativos: ${userData.votosNegativos}, Fecha de creación: ${userData.fechaCreacion}, Foto: ${userData.fotoUrl}`); // Verificar valores
+
+            profileElements.profileName.textContent = userData.nombre;
+            profileElements.profileName2.textContent = userData.nombre;
+            profileElements.profileName3.textContent = userData.nombre;
+            profileElements.profileLastName2.textContent = userData.lastName;
+            profileElements.profileAbout.textContent = userData.acercaDeMi;
+            profileElements.profileID.textContent = userData.codigoID;
+            profileElements.profileViews.textContent = userData.puntosDeVista;
+            profileElements.profileCareer.textContent = userData.profileCarrera;
+            profileElements.profilePosVotes.textContent = userData.votosPositivos;
+            profileElements.profileNegVotes.textContent = userData.votosNegativos;
+            profileElements.profileCreationDate.textContent = userData.fechaCreacion;
+            profileElements.profilePhoto.src = userData.fotoUrl;
         } else {
-            console.error('No se encontraron los elementos para reemplazar los datos del perfil');
+            console.error('No se encontraron todos los elementos necesarios para reemplazar los datos del perfil');
         }
     })
     .catch(error => {
