@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#carrera-btn span').textContent = this.querySelector('span').textContent;
             document.querySelector('#forms-nav').classList.remove('show');
 
-            if (selectedCarrera === '0') {
+            if (selectedCarrera === 'null') {
                 cicloBtn.classList.add('disabled');
                 cursoBtn.classList.add('disabled');
             } else {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Actualizar botón de ciclo
     function updateCicloButton() {
-        if (selectedCarrera && selectedCarrera !== '0') {
+        if (selectedCarrera && selectedCarrera !== 'null') {
             cicloBtn.classList.remove('disabled');
         } else {
             cicloBtn.classList.add('disabled');
@@ -139,11 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        let url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
-        if (selectedCiclo) {
-            url += `/${selectedCiclo}`;
-            if (selectedCurso) {
-                url += `/${selectedCurso}`;
+        let url;
+        if (selectedCarrera === 'null') {
+            // Si la selección es "General", se usa el endpoint específico para posts generales
+            url = `http://127.0.0.1:8000/posts_general`;
+        } else {
+            url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
+            if (selectedCiclo) {
+                url += `/${selectedCiclo}`;
+                if (selectedCurso) {
+                    url += `/${selectedCurso}`;
+                }
             }
         }
 
