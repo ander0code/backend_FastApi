@@ -15,3 +15,11 @@ class ComentariosBase(BaseModel):
     fecha_creacion: date
     userID: int
     UserData: UserBase
+    
+#insertar comentarios 
+class ComentariosInsert(BaseModel):
+    texto : str
+    
+class ComentariosResponse(BaseModel):
+    message: str
+    status: str

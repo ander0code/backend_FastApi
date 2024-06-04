@@ -18,4 +18,4 @@ class UserDataSchema(BaseModel):
         return value
     
     class Config:
-        from_attributes = True  # Actualización para Pydantic v2
+        from_attributes = True 
