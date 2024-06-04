@@ -163,8 +163,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
+            console.log('Respuesta del servidor:', data); // Añadir log para revisar la respuesta
             alert('Pregunta publicada exitosamente');
             form.reset();  // Limpiar el formulario después de enviar
+            const postId = data.post.id; // Asegúrate de acceder correctamente al ID
+            console.log('Post ID:', postId); // Verificar el ID de la nueva pregunta
+
+            // Redirigir al usuario a la nueva pregunta
+            window.location.href = `http://127.0.0.1:8000/autenticacion/texto?post_id=${postId}`;
         })
         .catch(error => {
             console.error('Error al publicar la pregunta:', error);

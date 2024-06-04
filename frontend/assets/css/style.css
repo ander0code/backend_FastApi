@@ -2,6 +2,8 @@
 ion-icon {
   font-size: 64px;
 }
+
+
 /*-------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -391,7 +393,7 @@ body {
 
 .logo img {
   max-height: 26px;
-  margin-right: 6px;
+  margin-right: 5px; /* Ajuste para acercar la imagen al texto */
 }
 
 .logo span {
@@ -408,8 +410,8 @@ body {
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
   padding-left: 20px;
-  /* Toggle Sidebar Button */
-  /* Search Bar */
+  display: flex;
+  align-items: center;
 }
 
 .header .toggle-sidebar-btn {
@@ -417,7 +419,7 @@ body {
   padding-left: 10px;
   cursor: pointer;
   color: #214773;
-
+  margin-left: 10px; /* Ajuste para colocar el botón de menú al lado del logo */
 }
 
 .header .search-bar {
@@ -479,6 +481,7 @@ body {
 .header .search-form button i {
   color: #012970;
 }
+
 
 /*--------------------------------------------------------------
 # Header Nav
