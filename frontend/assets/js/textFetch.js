@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const commentForm = document.querySelector('#formulario');
     const commentTextArea = document.querySelector('#editor');
     const addCommentButton = document.querySelector('#add-comment');
+    const alertBox = document.getElementById('custom-alerta');
+    const alertBox1 = document.getElementById('custom-alerta1');
 
     // Habilitar el botón de comentario solo si hay texto en el textarea
     commentTextArea.addEventListener('input', function() {
@@ -37,6 +39,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         console.log('Email obtenido:', userEmail);
+
+        // Verificar si el usuario puede comentar
+        const lastCommentTime = localStorage.getItem('lastCommentTime');
+        const currentTime = new Date().getTime();
+        const fiveMinutes = 1 * 60 * 1000;
+
+        if (lastCommentTime && currentTime - lastCommentTime < fiveMinutes) {
+            alertBox1.textContent = 'Por favor esperar 1 minuto para subir otra respuesta';
+                alertBox1.classList.remove('d-none');
+                setTimeout(() => {
+                    alertBox1.classList.add('d-none');
+                }, 3000);
+            return;
+        }
+
+        // Deshabilitar el botón de comentar y cambiar el texto a "Subiendo comentario..."
+        addCommentButton.disabled = true;
+        addCommentButton.textContent = 'Subiendo comentario...';
 
         // Obtener userID usando el correo
         fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
@@ -78,11 +98,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Limpiar el textarea después de enviar el comentario
                 commentTextArea.value = '';
                 addCommentButton.disabled = true;
+                // Guardar el tiempo del último comentario
+                localStorage.setItem('lastCommentTime', new Date().getTime());
+                // Mostrar alerta de éxito
+                alertBox.textContent = '¡Respuesta subida, podrás responder de nuevo en unos minutos!';
+                alertBox.classList.remove('d-none');
+                setTimeout(() => {
+                    alertBox.classList.add('d-none');
+                    addCommentButton.textContent = 'Subir comentario';
+                }, 3000);
                 // Actualizar la lista de respuestas
                 fetchPostResponses(postId);
             })
             .catch(error => {
                 console.error('Error al publicar el comentario:', error);
+                alert('Hubo un problema al subir el comentario');
+                // Volver a habilitar el botón y restaurar el texto original en caso de error
+                addCommentButton.disabled = false;
+                addCommentButton.textContent = 'Subir comentario';
             });
         })
         .catch(error => {
