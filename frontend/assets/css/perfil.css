@@ -8,69 +8,58 @@ html {
 * {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 body {
-    color: #404040;
     font-family: "Arial", Segoe UI, Tahoma, sans-serif, Helvetica Neue, Helvetica;
+    background-color: #f4f4f9;
+    color: #404040;
 }
 
-/*=====================================
-estilos de la utilidad
-=====================================*/
-.seccion-perfil-usuario .perfil-usuario-body,
-.seccion-perfil-usuario {
+#perfil-usuario {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
-.seccion-perfil-usuario .perfil-usuario-header {
+.contenedor-perfil, .contenedor-metricas {
+    flex: 1;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor-perfil:hover, .contenedor-metricas:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-usuario-header {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 20px;
-    margin-bottom: 2rem; /* Aumentar el margen inferior */
-}
-
-.seccion-perfil-usuario .perfil-usuario-portada {
-    display: block;
+    margin-bottom: 2rem;
     position: relative;
-    width: 90%;
-    height: 3rem; /* Aumentar la altura */
-    border-radius: 0 0 20px 20px;
-    /*
-    background-image: url('http://localhost/multimedia/png/user-portada-3.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    */
 }
 
-.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    border: 0;
-    border-radius: 8px;
-    padding: 12px 25px;
-    background-color: rgba(0, 0, 0, .5);
-    color: #fff;
-    cursor: pointer;
+.perfil-usuario-portada {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border-radius: 20px 20px 0 0;
 }
 
-.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
-    margin-right: 1rem;
-}
-
-.seccion-perfil-usuario .perfil-usuario-avatar {
-    display: flex;
-    width: 200px; /* Aumentar el tamaño del avatar */
-    height: 200px; /* Aumentar el tamaño del avatar */
+.perfil-usuario-avatar {
+    width: 150px;
+    height: 150px;
     align-items: center;
     justify-content: center;
     border: 7px solid #FFFFFF;
@@ -78,153 +67,89 @@ estilos de la utilidad
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
-    bottom: -110px; /* Ajustar la posición del avatar */
-    left: calc(50% - 100px); /* Ajustar la posición horizontal */
-    z-index: 1;
+    bottom: -75px;
+    left: calc(50% - 75px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.seccion-perfil-usuario .perfil-usuario-avatar img {
+.perfil-usuario-avatar img {
     width: 100%;
-    position: relative;
     border-radius: 50%;
 }
 
-.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
-    position: absolute;
-    left: -2px;
-    top: 2px;
-    border: 0;
-    background-color: #fff;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    width: 70px; /* Aumentar el tamaño del botón de avatar */
-    height: 70px; /* Aumentar el tamaño del botón de avatar */
-    border-radius: 40%;
-    cursor: pointer;
+.perfil-usuario-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
 }
 
-.seccion-perfil-usuario .perfil-usuario-body {
-    width: 80%; /* Aumentar el ancho del cuerpo del perfil */
-    position: relative;
-    max-width: 1200px; /* Aumentar el ancho máximo */
-    margin-top: 100px; /* Ajustar el margen superior */
-}
-
-.seccion-perfil-usuario .perfil-usuario-body .titulo {
-    display: block;
-    width: 100%;
-    font-size: 2em; /* Aumentar el tamaño de la fuente */
-    margin-bottom: 1rem; /* Aumentar el margen inferior */
+.perfil-usuario-body {
     text-align: center;
+    margin-top: 100px;
 }
 
-.seccion-perfil-usuario .perfil-usuario-body .texto {
-    color: #848484;
-    font-size: 1.1em; /* Aumentar el tamaño de la fuente */
+.profile-name {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+    color: #333;
+    transition: color 0.3s ease;
 }
 
-.seccion-perfil-usuario .perfil-usuario-footer,
-.seccion-perfil-usuario .perfil-usuario-bio {
+.titulo {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.perfil-usuario-footer {
     display: flex;
-    flex-wrap: wrap;
-    padding: 2rem 3rem; /* Aumentar el padding */
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 3rem;
     background-color: #fff;
     border-radius: 15px;
     width: 100%;
 }
 
-.seccion-perfil-usuario .perfil-usuario-bio {
-    margin-bottom: 1.5rem; /* Aumentar el margen inferior */
-    text-align:left;
-    justify-content: center;
-}
-.seccion-perfil-usuario .lista-datos {
-    width: 50%;
+.lista-datos {
+    width: 100%;
     list-style: none;
 }
 
-.seccion-perfil-usuario .lista-datos li {
-    padding: 10px 0; /* Aumentar el padding */
-}
-
-.seccion-perfil-usuario .lista-datos li>.icono {
-    margin-right: 1.5rem; /* Aumentar el margen derecho */
-    font-size: 1.5rem; /* Aumentar el tamaño del icono */
-    vertical-align: middle;
-}
-
-.seccion-perfil-usuario .redes-sociales {
-    position: absolute;
-    right: calc(0px - 50px - 1rem);
-    top: 0;
+.lista-datos li {
+    padding: 10px 0;
     display: flex;
-    flex-direction: column;
-}
-.seccion-perfil-usuario .lista-datos {
-    width: 100%; /* Adjusting width to take full width */
-    list-style: none;
-    text-align: left; /* Aligning text to the left */
-    column-count: 2; /* Setting the number of columns */
-    column-gap: 20px; /* Adjusting the gap between columns */
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.seccion-perfil-usuario .lista-datos li {
-    padding: 10px 0; /* Aumentar el padding */
-    display: flex; /* Making list items flex containers */
-    align-items: center; /* Aligning items vertically */
+.lista-datos li:hover {
+    background-color: #f0f0f0;
+    transform: translateX(10px);
 }
 
-.seccion-perfil-usuario .lista-datos li > .icono {
-    margin-right: 1.5rem; /* Aumentar el margen derecho */
-    font-size: 1.5rem; /* Aumentar el tamaño del icono */
+.lista-datos li > .icono {
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
     vertical-align: middle;
-    flex: 0 0 auto; /* Preventing icons from stretching */
+    flex: 0 0 auto;
 }
+
 /* Adaptación a dispositivos */
 @media (max-width: 750px) {
-    .seccion-perfil-usuario .lista-datos {
-        width: 100%;
-    }
-
-    .seccion-perfil-usuario .perfil-usuario-portada,
-    .seccion-perfil-usuario .perfil-usuario-body {
-        width: 95%;
-    }
-
-    .seccion-perfil-usuario .redes-sociales {
-        position: relative;
-        flex-direction: row;
-        width: 100%;
-        left: 0;
-        text-align: center;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+    #perfil-usuario {
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
     }
 
-    .seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
-        margin-left: 1rem;
-        margin-top: 0;
+    .contenedor-perfil, .contenedor-metricas {
+        width: 100%;
     }
-}
-
-.mensaje a {
-    color: inherit;
-    margin-right: .5rem;
-    display: inline-block;
-}
-
-.mensaje a:hover {
-    color: #309B76;
-    transform: scale(1.4);
 }
 
 /* Transiciones y animaciones */
 .perfil-usuario-avatar img,
-.perfil-usuario-avatar .boton-avatar,
 .lista-datos li,
-.perfil-usuario-bio,
 .perfil-usuario-footer {
     transition: all 0.3s ease-in-out;
 }
@@ -234,23 +159,9 @@ estilos de la utilidad
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.perfil-usuario-avatar .boton-avatar:hover {
-    transform: rotate(360deg);
-}
-
 .lista-datos li:hover {
     background-color: #f0f0f0;
     transform: translateX(10px);
-}
-
-.perfil-usuario-bio {
-    opacity: 0;
-    animation: fadeInUp 1s forwards;
-}
-
-.perfil-usuario-footer {
-    opacity: 0;
-    animation: fadeInUp 1s forwards 0.5s;
 }
 
 /* Keyframes para las animaciones */
@@ -264,40 +175,13 @@ estilos de la utilidad
         transform: translateY(0);
     }
 }
-/* Header and Avatar Animation */
-.seccion-perfil-usuario .perfil-usuario-header,
-.seccion-perfil-usuario .perfil-usuario-avatar {
+
+.perfil-usuario-body {
     opacity: 0;
-    transform: translateY(-20px);
     animation: fadeInUp 1s forwards;
 }
 
-/* Background Animation */
-.seccion-perfil-usuario .perfil-usuario-header {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+.perfil-usuario-footer {
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
 }
-
-/* Hover Effects */
-.seccion-perfil-usuario .boton-portada:hover,
-.seccion-perfil-usuario .boton-avatar:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    transform: scale(1.05);
-}
-
-.seccion-perfil-usuario .lista-datos li:hover {
-    background-color: #f8f8f8;
-    transform: translateX(5px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.mensaje a {
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.mensaje a:hover {
-    color: #309b76;
-    transform: scale(1.1);
-}
-
-

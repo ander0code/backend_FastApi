@@ -1578,6 +1578,7 @@ section.section.contact {
 }
 
 /* post  */
+/* General Styles */
 .post-item {
   background-color: #ffffff;
   display: flex;
@@ -1630,10 +1631,10 @@ section.section.contact {
 }
 
 .post-votes, .post-replies, .post-views {
-  margin-right: 23px;
+  margin-right: 18px;
   font-weight: bold;
   text-align: left;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .fa-arrow-right {
@@ -1814,6 +1815,7 @@ a.fw-bold.text-dark.post-title {
   }
 }
 
+
 /* Nuevos estilos responsivos */
 @media (max-width: 700px) {
   .post-left {
@@ -1848,7 +1850,25 @@ a.fw-bold.text-dark.post-title {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
+
+  /* Adjusting icon size and text size */
+  .post-left .fa-solid {
+    font-size: 16px; /* Adjust icon size */
+    margin-right: 5px; /* Adjust spacing */
+  }
+
+  .post-left-item {
+    font-size: 14px; /* Adjust text size */
+    margin-right: 10px; /* Adjust spacing */
+  }
+  .post-votes, .post-replies, .post-views {
+    margin-right: 18px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 15px;
+  }
 }
+
 
 @media (max-width: 600px) {
   .post-left {
@@ -1882,6 +1902,23 @@ a.fw-bold.text-dark.post-title {
   .redirect-button {
     padding: 5px 10px;
     font-size: 0.7rem;
+  }
+
+  /* Adjusting icon size and text size */
+  .post-left .fa-solid {
+    font-size: 14px; /* Adjust icon size */
+    margin-right: 4px; /* Adjust spacing */
+  }
+
+  .post-left-item {
+    font-size: 13px; /* Adjust text size */
+    margin-right: 8px; /* Adjust spacing */
+  }
+  .post-votes, .post-replies, .post-views {
+    margin-right: 18px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 13px;
   }
 }
 
@@ -1918,6 +1955,23 @@ a.fw-bold.text-dark.post-title {
     padding: 4px 8px;
     font-size: 0.6rem;
   }
+
+  /* Adjusting icon size and text size */
+  .post-left .fa-solid {
+    font-size: 12px; /* Adjust icon size */
+    margin-right: 3px; /* Adjust spacing */
+  }
+
+  .post-left-item {
+    font-size: 12px; /* Adjust text size */
+    margin-right: 6px; /* Adjust spacing */
+  }
+  .post-votes, .post-replies, .post-views {
+    margin-right: 18px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -1952,6 +2006,23 @@ a.fw-bold.text-dark.post-title {
   .redirect-button {
     padding: 3px 6px;
     font-size: 0.5rem;
+  }
+
+  /* Adjusting icon size and text size */
+  .post-left .fa-solid {
+    font-size: 10px; /* Adjust icon size */
+    margin-right: 2px; /* Adjust spacing */
+  }
+
+  .post-left-item {
+    font-size: 10px; /* Adjust text size */
+    margin-right: 4px; /* Adjust spacing */
+  }
+  .post-votes, .post-replies, .post-views {
+    margin-right: 18px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 10px;
   }
 }
 

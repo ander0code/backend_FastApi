@@ -150,36 +150,35 @@
 
 <main id="main" class="main">
   <section id="profile-template" class="section profile">
-      <section class="seccion-perfil-usuario">
+    <div id="perfil-usuario">
+      <div class="contenedor-perfil">
           <div class="perfil-usuario-header">
               <div class="perfil-usuario-portada">
                   <div class="perfil-usuario-avatar">
-                      <img src="" alt="img-avatar" id="profile-photo">
+                      <img src="profile-photo.jpg" alt="img-avatar" id="profile-photo">
                   </div>
               </div>
           </div>
           <div class="perfil-usuario-body">
-              <div class="perfil-usuario-bio">
-                  <h2 class="profile-name" id="profile-name"></h2>
-                  <h3 class="titulo" id="profile-name2"></h3>
-                  <p class="texto" id="profile-about"></p>
-              </div>
-              <div class="perfil-usuario-footer">
-                  <ul class="lista-datos">
-                      <li><i class="icono fas fa-address-card"></i> Nombre: <span id="profile-name3"></span></li>
-                      <li><i class="icono fas fa-address-card"></i> Apellido: <span id="profile-last-name2"></span></li>
-                      <li><i class="icono fas fa-eye"></i> Puntos de vista: <span id="profile-views"></span></li>
-                      <li><i class="icono fas fa-file-code"></i> Codigo ID: <span id="profile-id"></span></li>
-                  </ul>
-                  <ul class="lista-datos">
-                      <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
-                      <li><i class="icono far fa-arrow-alt-circle-up"></i> Votos positivos: <span id="profile-pos-votes"></span></li>
-                      <li><i class="icono far fa-arrow-alt-circle-down"></i> Votos negativos: <span id="profile-neg-votes"></span></li>
-                      <li><i class="icono far fa-calendar-alt"></i> Cuenta creada: <span id="profile-creation-date"></span></li>
-                  </ul>
-              </div>
+              <h2 class="profile-name" id="profile-name"></h2>
+              <h3 class="titulo" id="profile-name2"></h3>
           </div>
-      </section>
+          <div class="perfil-usuario-footer">
+              <ul class="lista-datos">
+                  <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
+                  <li><i class="icono fas fa-calendar-alt"></i> Ciclo: <span id="profile-cycle"></span></li>
+                  <li><i class="icono fas fa-quote-left"></i> Frase: <span id="profile-phrase"></span></li>
+                  <li><i class="icono fas fa-id-card"></i> Codigo U.: <span id="profile-id"></span></li>
+                  <li><i class="icono fas fa-birthday-cake"></i> Fecha de nacimiento: <span id="profile-birthdate"></span></li>
+              </ul>
+          </div>
+      </div>
+      <div class="contenedor-metricas">
+          <h3>Métricas</h3>
+          <!-- Aquí puedes agregar las métricas -->
+      </div>
+  </div>
+  
   </section>
 </main>
 
