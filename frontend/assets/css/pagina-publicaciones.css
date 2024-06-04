@@ -33,7 +33,7 @@ body {
 }
 
 .vote-buttons button {
-    background-color: #0f65c79c;
+    background-color: #0a57caa6;
     border: none;
     font-size: 20px;
     cursor: pointer;
@@ -44,7 +44,7 @@ body {
 }
 
 .vote-buttons button:hover {
-    background-color: #e68900;
+    background-color: #0a58ca;
     transform: scale(1.2);
 }
 
@@ -207,6 +207,12 @@ body {
 
 .post-meta .post-owner {
     font-weight: bold;
+    cursor: pointer;
+    transition: backgroung-color 1s;
+}
+
+.post-meta .post-owner:hover{
+    color: #0a58ca;
 }
 
 .post-meta .post-date {
