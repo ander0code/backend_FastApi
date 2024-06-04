@@ -45,15 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const profileElements = {
             profileName: document.getElementById('profile-name'),
             profileName2: document.getElementById('profile-name2'),
-            profileName3: document.getElementById('profile-name3'),
-            profileLastName2: document.getElementById('profile-last-name2'),
-            profileAbout: document.getElementById('profile-about'),
-            profileViews: document.getElementById('profile-views'),
+            aboutMe: document.getElementById('aboutme'),
             profileCareer: document.getElementById('profile-career'),
+            profileCycle: document.getElementById('profile-cycle'),
+            profilePhrase: document.getElementById('profile-phrase'),
             profileID: document.getElementById('profile-id'),
-            profilePosVotes: document.getElementById('profile-pos-votes'),
-            profileNegVotes: document.getElementById('profile-neg-votes'),
-            profileCreationDate: document.getElementById('profile-creation-date'),
+            profileBirthdate: document.getElementById('profile-birthdate'),
             profilePhoto: document.getElementById('profile-photo')
         };
 
@@ -68,28 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 nombre: user[0].nombre || 'N/A',
                 lastName: user[0].last_Name || 'N/A',
                 acercaDeMi: user[0].acerca_de_mi || 'N/A',
+                carrera: user[0].carrera.etiquetaNombre || 'N/A',
+                ciclo: user[0].ciclo || 'N/A',
+                frase: user[0].puntos_de_vista || 'N/A',
                 codigoID: user[0].codigo_user || 'N/A',
-                puntosDeVista: user[0].puntos_de_vista || 'N/A',
-                profileCarrera: user[0].carrera.etiquetaNombre || 'N/A',
-                votosPositivos: user[0].votos_positivos || 0,
-                votosNegativos: user[0].votos_negativos || 0,
-                fechaCreacion: user[0].fecha_creación || 'N/A',
+                fechaNacimiento: user[0].fecha_nacimiento || 'N/A',
                 fotoUrl: user[0].usuariofoto || './assets/img/defaultft.jpg'
             };
 
-            console.log(`Nombre: ${userData.nombre}, Apellido: ${userData.lastName}, Acerca de mí: ${userData.acercaDeMi}, Código ID: ${userData.codigoID}, Puntos de vista: ${userData.puntosDeVista}, Votos positivos: ${userData.votosPositivos}, Votos negativos: ${userData.votosNegativos}, Fecha de creación: ${userData.fechaCreacion}, Foto: ${userData.fotoUrl}`); // Verificar valores
+            console.log(`Nombre: ${userData.nombre}, Apellido: ${userData.lastName}, Acerca de mí: ${userData.acercaDeMi}, Carrera: ${userData.carrera}, Ciclo: ${userData.ciclo}, Frase: ${userData.frase}, Código ID: ${userData.codigoID}, Fecha de nacimiento: ${userData.fechaNacimiento}, Foto: ${userData.fotoUrl}`); // Verificar valores
 
-            profileElements.profileName.textContent = userData.nombre;
-            profileElements.profileName2.textContent = userData.nombre;
-            profileElements.profileName3.textContent = userData.nombre;
-            profileElements.profileLastName2.textContent = userData.lastName;
-            profileElements.profileAbout.textContent = userData.acercaDeMi;
+            profileElements.profileName.textContent = `${userData.nombre} ${userData.lastName}`;
+            profileElements.profileName2.textContent = `${userData.nombre} ${userData.lastName}`;
+            profileElements.aboutMe.textContent = userData.acercaDeMi;
+            profileElements.profileCareer.textContent = userData.carrera;
+            profileElements.profileCycle.textContent = userData.ciclo;
+            profileElements.profilePhrase.textContent = userData.frase;
             profileElements.profileID.textContent = userData.codigoID;
-            profileElements.profileViews.textContent = userData.puntosDeVista;
-            profileElements.profileCareer.textContent = userData.profileCarrera;
-            profileElements.profilePosVotes.textContent = userData.votosPositivos;
-            profileElements.profileNegVotes.textContent = userData.votosNegativos;
-            profileElements.profileCreationDate.textContent = userData.fechaCreacion;
+            profileElements.profileBirthdate.textContent = userData.fechaNacimiento;
             profileElements.profilePhoto.src = userData.fotoUrl;
         } else {
             console.error('No se encontraron todos los elementos necesarios para reemplazar los datos del perfil');
