@@ -66,10 +66,11 @@ class Comment(Base):
     __tablename__ = 'comments'
     comentario_id= Column(Integer, primary_key=True,autoincrement=True)
     publicacion_ID= Column(Integer, ForeignKey('post.id'), nullable=False)
-    padre_comentario_id= Column(Integer, ForeignKey('comments.comentario_id'))
+    padre_comentario_id= Column(Integer, ForeignKey('comments.comentario_id'), nullable=True)
     puntuacion= Column(Integer)
     texto= Column(String(1000000))
     userID= Column(Integer, ForeignKey('user.id'), nullable=False)
+    usuarioName = Column(String(45))
     fecha_creacion = Column(Date)
     
     user = relationship("User", back_populates="comments")

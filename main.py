@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 sys.path.append("..")
-from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores,insertar_Publicaciones
+from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores,insertar_Publicaciones,insertar_comentario
 
 
 app = FastAPI()
@@ -64,8 +64,10 @@ app.mount("/assets/vendor/tinymce", StaticFiles(directory="frontend/assets/vendo
 app.mount("/assets/vendor/php-email-form", StaticFiles(directory="frontend/assets/vendor/php-email-form"), name="php-email-form1")
 app.mount("/assets/vendor/bootstrap/css", StaticFiles(directory="frontend/assets/vendor/bootstrap/css"), name="ccsss")
 
+
 app.include_router(Autenticacion.app, tags=["Login"])
 app.include_router(Users.user, tags=["Users"])
 app.include_router(Publicaciones_Comentarios.post, tags=["Post"])
 app.include_router(Etiqueta_Profesores.Profe,tags=["Profe"])
 app.include_router(insertar_Publicaciones.post,tags=["PostInsert"])
+app.include_router(insertar_comentario.coment,tags=["ComentInsert"])
