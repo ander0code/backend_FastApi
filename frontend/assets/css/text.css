@@ -1,66 +1,186 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f1f1f1;
 }
+
+/* Contenedor principal */
 .container {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
 }
+
+.container:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el cursor */
+    transform: scale(1.02); /* Aumento de tamaño al pasar el cursor */
+}
+
 .question-title {
-    font-size: 24px;
+    font-size: 2rem; /* Tamaño de fuente relativo */
     font-weight: bold;
+    transition: all 0.3s ease; /* Transición suave de 0.3 segundos */
 }
+
+/* Efecto al pasar el ratón */
+.question-title:hover {
+    transform: scale(1.1);
+    /*Aumentaligeramenteeltamañoalpasarelratón*/color: #0a58ca;
+    -webkit-transform: scale(1.);
+    -moz-transform: scale(1.);
+    -ms-transform: scale(1.);
+    -o-transform: scale(1.);
+}
+
+
+/* Detalles de la pregunta */
 .question-details {
-    margin-top: 20px;
+    margin-top: 1.5rem; /* Margen superior relativo */
 }
+
+/* Etiquetas */
 .tags {
-    margin-top: 20px;
+    margin-top: 1.5rem; /* Margen superior relativo */
 }
+
 .tags span {
     background-color: #e1ecf4;
     color: #39739d;
-    padding: 5px;
-    margin-right: 5px;
+    padding: 0.5rem; /* Relleno relativo */
+    margin-right: 0.5rem; /* Margen derecho relativo */
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 1rem; /* Tamaño de fuente relativo */
+    transition: all 0.3s ease; /* Transición suave */
 }
+
+.tags span:hover {
+    background-color: #cde4f7;
+    color: #2d5a7e;
+    transform: scale(1.1) translateY(-0.5rem); /* Transformación relativa */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Sombra relativa */
+}
+
+/* Respuestas */
 .answers {
-    margin-top: 40px;
+    margin-top: 2rem; /* Margen superior relativo */
 }
+
 .answer {
-    border-top: 1px solid #ddd;
-    padding: 20px 0;
+    border: 1px solid #ddd;
+    padding: 1.5rem 0;
+    /* Bordeado suave */
+    border-radius: 10px;
+    /* Sombra sutil */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Transiciones suaves */
+    transition: all 0.3s ease-in-out;
 }
+
+/* Animación al hacer hover */
+.answer:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.answer {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+
 .answer:first-child {
     border-top: none;
 }
+
+/* Botones de votación */
 .vote-buttons {
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 1.5rem; /* Margen derecho relativo */
 }
+
 .vote-buttons button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1rem; /* Tamaño de fuente relativo */
 }
+
+/* Conteo de votos */
 .vote-count {
-    font-size: 16px;
+    font-size: 0.875rem; /* Tamaño de fuente relativo */
     font-weight: bold;
 }
+
+/* Contenido de la respuesta */
 .answer-content {
     flex-grow: 1;
 }
+
+/* Contenedor de respuestas */
 .answer-container {
     display: flex;
     align-items: flex-start;
 }
+
+/* Estilos responsivos */
+@media only screen and (max-width: 700px) {
+    .container {
+        width: 85%; /* Ajuste del ancho del contenedor */
+    }
+
+    .vote-buttons {
+        margin-right: 1rem; /* Ajuste del margen de los botones de votación */
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%; /* Ajuste del ancho del contenedor */
+    }
+
+    .vote-buttons {
+        margin-right: 0.5rem; /* Ajuste del margen de los botones de votación */
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        width: 95%; /* Ajuste del ancho del contenedor */
+    }
+
+    .vote-buttons {
+        margin-right: 0.25rem; /* Ajuste del margen de los botones de votación */
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .container {
+        width: 98%; /* Ajuste del ancho del contenedor */
+    }
+
+    .vote-buttons {
+        margin-right: 0; /* Eliminar el margen de los botones de votación */
+    }
+}
+
 
