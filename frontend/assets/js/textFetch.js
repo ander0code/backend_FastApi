@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('post_id');
 
@@ -8,6 +8,87 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('No se proporcionó un ID de post en la URL');
     }
+
+    const commentForm = document.querySelector('#formulario');
+    const commentTextArea = document.querySelector('#editor');
+    const addCommentButton = document.querySelector('#add-comment');
+
+    // Habilitar el botón de comentario solo si hay texto en el textarea
+    commentTextArea.addEventListener('input', function() {
+        addCommentButton.disabled = commentTextArea.value.trim() === '';
+    });
+
+    commentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const commentText = commentTextArea.value.trim();
+
+        if (!commentText) {
+            return;
+        }
+
+        console.log('Intentando enviar comentario...');
+
+        // Obtener el correo del usuario logueado desde el local storage
+        const userEmail = localStorage.getItem('email');
+
+        if (!userEmail) {
+            console.error('No se encontró el correo del usuario logueado');
+            return;
+        }
+
+        console.log('Email obtenido:', userEmail);
+
+        // Obtener userID usando el correo
+        fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(userData => {
+            if (userData.length === 0) {
+                console.error('No se encontró el usuario con el correo proporcionado');
+                return;
+            }
+            const userID = userData[0].id;
+            console.log('UserID obtenido:', userID);
+
+            // Publicar el comentario
+            const commentData = {
+                texto: commentText
+            };
+
+            fetch(`http://127.0.0.1:8000/coment/${postId}/${userID}`, {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(commentData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Comentario publicado:', data);
+                // Limpiar el textarea después de enviar el comentario
+                commentTextArea.value = '';
+                addCommentButton.disabled = true;
+                // Actualizar la lista de respuestas
+                fetchPostResponses(postId);
+            })
+            .catch(error => {
+                console.error('Error al publicar el comentario:', error);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener el userID:', error);
+        });
+    });
 });
 
 function fetchPostDetails(postId) {
