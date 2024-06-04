@@ -66,6 +66,17 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error al obtener el perfil del usuario:', error);
     });
 
+    // Función para mostrar la alerta de éxito
+    function showSuccessAlert(message, postId) {
+        const successAlert = document.getElementById('custom-alerta');
+        successAlert.textContent = message;
+        successAlert.classList.remove('d-none');
+        setTimeout(() => {
+            successAlert.classList.add('d-none');
+            window.location.href = `http://127.0.0.1:8000/autenticacion/texto?post_id=${postId}`;
+        }, 1000); // Ocultar la alerta después de 1 segundo y redirigir
+    }
+
     // Función para publicar la pregunta
     const form = document.getElementById('publicarPreguntaForm');
     const botonPublicar = document.querySelector('.botonPublicar');
@@ -145,6 +156,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Datos enviados:', formData); // Log para revisar los datos enviados
 
+        // Deshabilitar el botón de publicar y cambiar el texto a "Publicando..."
+        botonPublicar.disabled = true;
+        botonPublicar.textContent = 'Publicando...';
+
         fetch(`http://127.0.0.1:8000/posts/${userId}`, {
             method: 'POST',
             headers: {
@@ -164,17 +179,19 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Respuesta del servidor:', data); // Añadir log para revisar la respuesta
-            alert('Pregunta publicada exitosamente');
-            form.reset();  // Limpiar el formulario después de enviar
             const postId = data.post.id; // Asegúrate de acceder correctamente al ID
             console.log('Post ID:', postId); // Verificar el ID de la nueva pregunta
 
-            // Redirigir al usuario a la nueva pregunta
-            window.location.href = `http://127.0.0.1:8000/autenticacion/texto?post_id=${postId}`;
+            // Mostrar la alerta de éxito y redirigir al usuario a la nueva pregunta
+            showSuccessAlert('¡Pregunta creada!', postId);
         })
         .catch(error => {
             console.error('Error al publicar la pregunta:', error);
             alert('Hubo un problema al publicar la pregunta');
+
+            // Volver a habilitar el botón y restaurar el texto original en caso de error
+            botonPublicar.disabled = false;
+            botonPublicar.textContent = 'Publicar';
         });
     });
 });
