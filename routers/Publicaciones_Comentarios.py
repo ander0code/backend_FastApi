@@ -201,10 +201,11 @@ async def post_x_post_id(
         Model_DB.EtiquetaCarrera,
         Model_DB.EtiquetaCurso,
         func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
-        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
-        ).outerjoin(
-            Model_DB.Vote,
-            Model_DB.Vote.mensajeID == Model_DB.Post.id
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos'),
+        Model_DB.User.usuariofoto
+        ).join(
+            Model_DB.User,
+            Model_DB.User.id == Model_DB.Post.propietarioUserID
         ).outerjoin(
             Model_DB.EtiquetasPublicacion,
             Model_DB.EtiquetasPublicacion.Comentario_ID == Model_DB.Post.id
@@ -232,9 +233,12 @@ async def post_x_post_id(
             curso=Publicaciones.EtiquetaCursoBase.model_validate(curso) if curso else None,
             votos=Publicaciones.VotosBase(
                 cantidad=voto_cantidad
+            ),
+            imgUser = Publicaciones.ImgUserBase(
+                foto = foto_user
             )
         )
-        for post, carrera, curso, voto_cantidad in resultados
+        for post, carrera, curso, voto_cantidad,foto_user in resultados
     ]
     return response
 
