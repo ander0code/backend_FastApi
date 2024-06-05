@@ -21,7 +21,7 @@ def get_db():
 @coment.post("/coment/{Post_id}/{id_user}", response_model=None)
 async def create_post(Post_id : int,id_user : int,comment: Comentarios.ComentariosInsert, db: Session = Depends(get_db)) -> Any:
     try:
-        post_user_tupla = db.query(Model_DB.User.nombre).filter(Model_DB.User.id == Post_id).first()
+        post_user_tupla = db.query(Model_DB.User.nombre).filter(Model_DB.User.id == id_user).first()
         post_user = post_user_tupla[0] if post_user_tupla else None
         
         tz = pytz.timezone('America/Lima')
