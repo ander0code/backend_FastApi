@@ -36,6 +36,10 @@ ul {
     margin-right: 20px;
 }
 
+.contact-form:hover {
+    transform: translateY(-10px);
+}
+
 .contact-form form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -67,7 +71,7 @@ ul {
 }
 
 .contact-form form button {
-    background: #3c56e7 ;
+    background: rgb(255, 131, 93) ;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -75,7 +79,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #3c56e7 ;
+    background: rgb(255, 131, 93) ;
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -91,27 +95,6 @@ ul {
     text-align: center;
     margin: 0 0 1rem 0;
 }
-
-/* LARGE SIZE */
-@media(min-width: 700px) {
-    body {
-        padding: 0 4em;
-    }
-    .contact-wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-    }
-    .contact-wrapper > * {
-        padding: 2em;
-    }
-    .contact-info h4,
-    .contact-info ul,
-    .contact-info p {
-        text-align: left;
-    }
-}
-
-/* Añadir al final del CSS existente */
 
 /* Estilos para la sección "More Info" */
 .contact-info {
@@ -145,7 +128,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .contact-info p {
@@ -167,6 +150,24 @@ ul {
     animation: fadeIn 1s ease-in;
 }
 
+/* LARGE SIZE */
+@media(min-width: 700px) {
+    body {
+        padding: 0 4em;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .contact-wrapper > * {
+        padding: 2em;
+    }
+    .contact-info h4,
+    .contact-info ul,
+    .contact-info p {
+        text-align: left;
+    }
+}
 /* Responsividad */
 @media(max-width: 699px) {
     .contact-wrapper {
@@ -178,8 +179,6 @@ ul {
         margin-bottom: 2em;
     }
 }
-
-/* Añadir al final del CSS existente */
 
 /* Ajustes de responsividad adicionales */
 @media(max-width: 499px) {
@@ -263,7 +262,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .contact-info p {
@@ -376,11 +375,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #522bff;
+    border-bottom: 1px solid rgb(255, 131, 93);
 }
 
 .contact-form form button {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -388,7 +387,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -428,7 +427,7 @@ ul {
 
 .contact-info ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .contact-info p {
@@ -555,7 +554,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .common-style p {
@@ -598,11 +597,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #522bff;
+    border-bottom: 1px solid rgb(255, 131, 93);
 }
 
 .contact-form form button {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -610,7 +609,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -734,7 +733,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .common-style p {
@@ -776,11 +775,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #522bff;
+    border-bottom: 1px solid rgb(255, 131, 93);
 }
 
 .contact-form form button {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -788,7 +787,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
@@ -932,7 +931,7 @@ ul {
 
 .common-style ul li i {
     margin-right: 0.5em;
-    color: #522bff;
+    color: rgb(255, 131, 93);
 }
 
 .common-style p {
@@ -944,7 +943,10 @@ ul {
 /* Estilos y animaciones para el formulario de contacto */
 .contact-form {
     margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
+
 
 .contact-form form {
     display: grid;
@@ -974,11 +976,11 @@ ul {
     background: none;
     outline: 0;
     color: black;
-    border-bottom: 1px solid #522bff;
+    border-bottom: 1px solid rgb(255, 131, 93);
 }
 
 .contact-form form button {
-    background: #4262f0;
+    background: rgba(255, 131, 93, 0.781);
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -986,7 +988,7 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-    background: #522bff;
+    background: rgb(255, 131, 93);
     color: #fff;
     transition: background-color 1s ease-out;
     outline: 0;
