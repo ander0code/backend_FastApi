@@ -26,18 +26,11 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/text.css">
-  
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/pagina-publicaciones.css">
+  <link rel="stylesheet" href="./assets/css/newtext.css">
 
   <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
+ <link rel="stylesheet" href="./assets/css/text.css">
+  <link rel="stylesheet" href="assets/css/pagina-publicaciones.css">
   ======================================================== -->
 </head>
 
@@ -152,55 +145,38 @@
 <main id="main" class="main">
   
   <section class="section dashboard">
-    <div class="container" >
-      <div class="question">
-        <div class="vote-buttons">
-          <button class="upvote" data-post-id="1">&uarr;</button>
-            <div class="vote-count" id="vote-count-1"></div>
-            <button class="downvote" data-post-id="1">&darr;</button>
-        </div>
-        <div class="question-content">
-          <div class="question-title"></div>
-          <div class="question-details editable-content" contenteditable="false">
-            <div></div>
-          </div>
-          <div class="post-meta">
-            <span class="post-owner"></span> |
-            <span class="post-date"></span>
-          </div>
-          <div class="tags">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-  
-      <div class="answers">
-        <h2>Respuestas</h2>
-        <div class="answer" style="display: none;">
-          <div class="vote-buttons">
-            <button class="upvote" data-post-id="1">&uarr;</button>
-            <div class="vote-count" id="vote-count-1"></div>
-            <button class="downvote" data-post-id="1">&darr;</button>
-          </div>
-          <div class="answer-content">
-            <div class="answer-text"></div>
-            <div class="post-meta">
-              <span class="post-owner"></span> |
-              <span class="post-date"></span>
+    <div class="container">
+        <div class="question-container">
+            <div class="question-header">
+                <img src="profile-pic.jpg" alt="Foto de perfil" class="profile-pic">
+                <div class="question-info">
+                    <h2 class="question-title"></h2>
+                    <p class="question-details"></p>
+                    <p class="question-meta"></p>
+                    <div class="tagsPost">
+                        <!-- Las etiquetas se insertarán aquí -->
+                    </div>
+                </div>
+                <div class="votes">
+                    <button class="vote-button upvote">▲</button>
+                    <p class="vote-count">25</p>
+                    <button class="vote-button downvote">▼</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="comments">
-        <form class="comment-form" id="formulario">
-            <textarea id="editor" placeholder="Coloca tu respuesta aquí"></textarea>
-            <button type="submit" id="add-comment" disabled>Subir comentario</button>
-        </form>
+        <div class="comment-section">
+            <textarea class="comment-input" placeholder="Deja tu comentario..."></textarea>
+            <button class="comment-submit">➤</button>
+        </div>
+        <div class="comments">
+            <!-- Los comentarios se insertarán aquí -->
+        </div>
+        <div class="view-all-comments">
+            <a href="#">Ver todos los comentarios</a>
+        </div>
     </div>
-</div>
-  </section>
+</section>
+
   
 </main>
 <div class="alert alert-info d-none fixed-top w-50 mx-auto mt-3" role="alert" id="custom-alerta">
