@@ -111,6 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error al obtener el userID:', error);
         });
     });
+
+    // Evento para ver todos los comentarios
+    document.querySelector('.view-all-comments').addEventListener('click', function(event) {
+        event.preventDefault();
+        fetchPostResponses(postId, true); // Agregamos un parámetro para indicar que queremos ver todos los comentarios
+    });
 });
 
 function fetchPostDetails(postId) {
@@ -135,7 +141,7 @@ function fetchPostDetails(postId) {
         });
 }
 
-function fetchPostResponses(postId) {
+function fetchPostResponses(postId, showAllComments = false) {
     const url = `http://127.0.0.1:8000/comentario_x_idPost/${postId}`;
 
     fetch(url)
@@ -147,7 +153,12 @@ function fetchPostResponses(postId) {
         })
         .then(responseData => {
             if (Array.isArray(responseData) && responseData.length > 0) {
-                displayPostResponses(responseData);
+                if (showAllComments) {
+                    displayAllPostResponses(responseData);
+                } else {
+                    const limitedResponses = responseData.slice(0, 3); // Tomamos solo las primeras 3 respuestas
+                    displayPostResponses(limitedResponses);
+                }
             } else {
                 console.error('No se encontraron respuestas para el post con el ID proporcionado');
             }
@@ -202,6 +213,43 @@ function displayPostDetails(postData) {
 }
 
 function displayPostResponses(responseData) {
+    const commentsContainer = document.querySelector('.comments');
+    commentsContainer.innerHTML = '';
+
+    responseData.forEach(response => {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+
+        const voteButtons = document.createElement('div');
+        voteButtons.className = 'votes';
+        voteButtons.innerHTML = `
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}">▲</button>
+            <p class="vote-count">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}">▼</button>
+        `;
+
+        const commentInfo = document.createElement('div');
+        commentInfo.className = 'comment-info';
+        commentInfo.innerHTML = `
+            <p class="comment-text">${response.texto}</p>
+            <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
+        `;
+
+        commentElement.appendChild(voteButtons);
+        commentElement.appendChild(commentInfo);
+        commentsContainer.appendChild(commentElement);
+
+        commentElement.querySelector('.upvote').addEventListener('click', function() {
+            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
+        });
+
+        commentElement.querySelector('.downvote').addEventListener('click', function() {
+            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
+        });
+    });
+}
+
+function displayAllPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
     commentsContainer.innerHTML = '';
 
