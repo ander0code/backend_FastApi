@@ -172,6 +172,10 @@ function displayPostDetails(postData) {
     const post = postData.post;
     const votos = postData.votos.cantidad;
 
+    const profilePicElement = document.querySelector('.profile-pic');
+    const userImageURL = postData.img_user || './assets/img/defaultft.jpg'; // URL de la imagen del usuario o imagen por defecto
+    profilePicElement.src = userImageURL;
+
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
     document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
     document.querySelector('.question-meta').textContent = `${post.propietarioNombre || 'Autor no disponible'} | ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}`;
@@ -212,6 +216,7 @@ function displayPostDetails(postData) {
     });
 }
 
+
 function displayPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
     commentsContainer.innerHTML = '';
@@ -223,9 +228,9 @@ function displayPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}">▲</button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
             <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}">▼</button>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
         const commentInfo = document.createElement('div');
@@ -260,9 +265,9 @@ function displayAllPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}">▲</button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
             <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}">▼</button>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
         const commentInfo = document.createElement('div');
