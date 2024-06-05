@@ -9,18 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('No se proporcionó un ID de post en la URL');
     }
 
-    const commentForm = document.querySelector('#formulario');
-    const commentTextArea = document.querySelector('#editor');
-    const addCommentButton = document.querySelector('#add-comment');
+    const commentForm = document.querySelector('.comment-section');
+    const commentTextArea = document.querySelector('.comment-input');
+    const addCommentButton = document.querySelector('.comment-submit');
     const alertBox = document.getElementById('custom-alerta');
     const alertBox1 = document.getElementById('custom-alerta1');
 
-    // Habilitar el botón de comentario solo si hay texto en el textarea
     commentTextArea.addEventListener('input', function() {
         addCommentButton.disabled = commentTextArea.value.trim() === '';
     });
 
-    commentForm.addEventListener('submit', function(event) {
+    addCommentButton.addEventListener('click', function(event) {
         event.preventDefault();
         const commentText = commentTextArea.value.trim();
 
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Intentando enviar comentario...');
 
-        // Obtener el correo del usuario logueado desde el local storage
         const userEmail = localStorage.getItem('email');
 
         if (!userEmail) {
@@ -40,25 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Email obtenido:', userEmail);
 
-        // Verificar si el usuario puede comentar
         const lastCommentTime = localStorage.getItem('lastCommentTime');
         const currentTime = new Date().getTime();
         const fiveMinutes = 1 * 60 * 1000;
 
         if (lastCommentTime && currentTime - lastCommentTime < fiveMinutes) {
             alertBox1.textContent = 'Por favor esperar 1 minuto para subir otra respuesta';
-                alertBox1.classList.remove('d-none');
-                setTimeout(() => {
-                    alertBox1.classList.add('d-none');
-                }, 3000);
+            alertBox1.classList.remove('d-none');
+            setTimeout(() => {
+                alertBox1.classList.add('d-none');
+            }, 3000);
             return;
         }
 
-        // Deshabilitar el botón de comentar y cambiar el texto a "Subiendo comentario..."
         addCommentButton.disabled = true;
         addCommentButton.textContent = 'Subiendo comentario...';
 
-        // Obtener userID usando el correo
         fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
             method: 'GET',
             headers: {
@@ -74,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const userID = userData[0].id;
             console.log('UserID obtenido:', userID);
 
-            // Publicar el comentario
             const commentData = {
                 texto: commentText
             };
@@ -95,25 +89,20 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 console.log('Comentario publicado:', data);
-                // Limpiar el textarea después de enviar el comentario
                 commentTextArea.value = '';
                 addCommentButton.disabled = true;
-                // Guardar el tiempo del último comentario
                 localStorage.setItem('lastCommentTime', new Date().getTime());
-                // Mostrar alerta de éxito
                 alertBox.textContent = '¡Respuesta subida, podrás responder de nuevo en unos minutos!';
                 alertBox.classList.remove('d-none');
                 setTimeout(() => {
                     alertBox.classList.add('d-none');
                     addCommentButton.textContent = 'Subir comentario';
                 }, 3000);
-                // Actualizar la lista de respuestas
                 fetchPostResponses(postId);
             })
             .catch(error => {
                 console.error('Error al publicar el comentario:', error);
                 alert('Hubo un problema al subir el comentario');
-                // Volver a habilitar el botón y restaurar el texto original en caso de error
                 addCommentButton.disabled = false;
                 addCommentButton.textContent = 'Subir comentario';
             });
@@ -121,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error al obtener el userID:', error);
         });
+    });
+
+    // Evento para ver todos los comentarios
+    document.querySelector('.view-all-comments').addEventListener('click', function(event) {
+        event.preventDefault();
+        fetchPostResponses(postId, true); // Agregamos un parámetro para indicar que queremos ver todos los comentarios
     });
 });
 
@@ -135,7 +130,7 @@ function fetchPostDetails(postId) {
             return response.json();
         })
         .then(postData => {
-            if (Array.isArray(postData) && postData.length > 0) {
+            if (postData && postData.length > 0) {
                 displayPostDetails(postData[0]);
             } else {
                 console.error('No se encontró el post con el ID proporcionado');
@@ -146,7 +141,7 @@ function fetchPostDetails(postId) {
         });
 }
 
-function fetchPostResponses(postId) {
+function fetchPostResponses(postId, showAllComments = false) {
     const url = `http://127.0.0.1:8000/comentario_x_idPost/${postId}`;
 
     fetch(url)
@@ -158,7 +153,12 @@ function fetchPostResponses(postId) {
         })
         .then(responseData => {
             if (Array.isArray(responseData) && responseData.length > 0) {
-                displayPostResponses(responseData);
+                if (showAllComments) {
+                    displayAllPostResponses(responseData);
+                } else {
+                    const limitedResponses = responseData.slice(0, 3); // Tomamos solo las primeras 3 respuestas
+                    displayPostResponses(limitedResponses);
+                }
             } else {
                 console.error('No se encontraron respuestas para el post con el ID proporcionado');
             }
@@ -172,40 +172,46 @@ function displayPostDetails(postData) {
     const post = postData.post;
     const votos = postData.votos.cantidad;
 
+    const profilePicElement = document.querySelector('.profile-pic');
+    let userImageURL = './assets/img/defaultft.jpg'; // Establecer la imagen por defecto
+
+    if (postData.imgUser && postData.imgUser.foto) {
+        userImageURL = postData.imgUser.foto; // Usar la URL de la imagen del usuario si está disponible
+    }
+
+    profilePicElement.src = userImageURL;
+
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
     document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
-    document.querySelector('.post-owner').textContent = post.propietarioNombre || 'Autor no disponible';
-    document.querySelector('.post-date').textContent = post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible';
+    document.querySelector('.question-meta').textContent = `${post.propietarioNombre || 'Autor no disponible'} | ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}`;
 
     const voteCountElement = document.querySelector('.vote-count');
     voteCountElement.textContent = votos;
 
-    const tagsContainer = document.querySelector('.tags');
+    const tagsContainer = document.querySelector('.tagsPost');
     tagsContainer.innerHTML = '';
-
-    let tagsExist = false;
 
     if (postData.carrera) {
         const carreraTag = document.createElement('span');
         carreraTag.textContent = postData.carrera.etiquetaNombre;
+        carreraTag.className = 'tagPost';
         tagsContainer.appendChild(carreraTag);
-        tagsExist = true;
+    }
+
+    if (postData.curso) {
+        const cicloTag = document.createElement('span');
+        cicloTag.textContent = `Ciclo ${postData.curso.ciclo}`;
+        cicloTag.className = 'tagPost';
+        tagsContainer.appendChild(cicloTag);
     }
 
     if (postData.curso) {
         const cursoTag = document.createElement('span');
         cursoTag.textContent = postData.curso.nombre_curso;
+        cursoTag.className = 'tagPost';
         tagsContainer.appendChild(cursoTag);
-        tagsExist = true;
     }
 
-    if (!tagsExist) {
-        const generalTag = document.createElement('span');
-        generalTag.textContent = 'General';
-        tagsContainer.appendChild(generalTag);
-    }
-
-    // Add event listeners for upvote and downvote buttons
     document.querySelector('.upvote').addEventListener('click', function() {
         handleVote(voteCountElement, this, document.querySelector('.downvote'));
     });
@@ -215,43 +221,79 @@ function displayPostDetails(postData) {
     });
 }
 
+
+
+
 function displayPostResponses(responseData) {
-    const answersContainer = document.querySelector('.answers');
-    answersContainer.innerHTML = ''; // Clear existing answers
+    const commentsContainer = document.querySelector('.comments');
+    commentsContainer.innerHTML = '';
 
     responseData.forEach(response => {
-        const answerElement = document.createElement('div');
-        answerElement.className = 'answer';
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
 
         const voteButtons = document.createElement('div');
-        voteButtons.className = 'vote-buttons';
+        voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="upvote" data-response-id="${response.comentario_id}">&uarr;</button>
-            <div class="vote-count">${response.puntuacion}</div>
-            <button class="downvote" data-response-id="${response.comentario_id}">&darr;</button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
+            <p class="vote-count">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
-        const answerContent = document.createElement('div');
-        answerContent.className = 'answer-content';
-        answerContent.innerHTML = `
-            <div class="answer-text">${response.texto}</div>
-            <div class="post-meta">
-                <span class="post-owner">${response.UserData.nombre} ${response.UserData.last_Name}</span> |
-                <span class="post-date">${new Date(response.fecha_creacion).toLocaleDateString()}</span>
-            </div>
+        const commentInfo = document.createElement('div');
+        commentInfo.className = 'comment-info';
+        commentInfo.innerHTML = `
+            <p class="comment-text">${response.texto}</p>
+            <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
         `;
 
-        answerElement.appendChild(voteButtons);
-        answerElement.appendChild(answerContent);
-        answersContainer.appendChild(answerElement);
+        commentElement.appendChild(voteButtons);
+        commentElement.appendChild(commentInfo);
+        commentsContainer.appendChild(commentElement);
 
-        // Add event listeners for upvote and downvote buttons for responses
-        answerElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(this.nextElementSibling, this, answerElement.querySelector('.downvote'));
+        commentElement.querySelector('.upvote').addEventListener('click', function() {
+            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
         });
 
-        answerElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(this.previousElementSibling, this, answerElement.querySelector('.upvote'));
+        commentElement.querySelector('.downvote').addEventListener('click', function() {
+            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
+        });
+    });
+}
+
+function displayAllPostResponses(responseData) {
+    const commentsContainer = document.querySelector('.comments');
+    commentsContainer.innerHTML = '';
+
+    responseData.forEach(response => {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+
+        const voteButtons = document.createElement('div');
+        voteButtons.className = 'votes';
+        voteButtons.innerHTML = `
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
+            <p class="vote-count">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+        `;
+
+        const commentInfo = document.createElement('div');
+        commentInfo.className = 'comment-info';
+        commentInfo.innerHTML = `
+            <p class="comment-text">${response.texto}</p>
+            <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
+        `;
+
+        commentElement.appendChild(voteButtons);
+        commentElement.appendChild(commentInfo);
+        commentsContainer.appendChild(commentElement);
+
+        commentElement.querySelector('.upvote').addEventListener('click', function() {
+            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
+        });
+
+        commentElement.querySelector('.downvote').addEventListener('click', function() {
+            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
         });
     });
 }
