@@ -3,6 +3,9 @@ from typing import Optional
 from datetime import date
 
 # obtener datos
+class ImgUserBase(BaseModel):
+    foto : Optional[str] = None
+
 class VotosBase(BaseModel):
     cantidad : int
 
@@ -47,6 +50,7 @@ class PostWithCurso(BaseModel):
     carrera : Optional[EtiqetaCarreraBase] = None
     curso: Optional[EtiquetaCursoBase] = None
     votos: Optional[VotosBase] = None
+    imgUser: Optional[ImgUserBase] = None
     
     
 # insertar datos 
