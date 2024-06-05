@@ -172,6 +172,10 @@ function displayPostDetails(postData) {
     const post = postData.post;
     const votos = postData.votos.cantidad;
 
+    const profilePicElement = document.querySelector('.profile-pic');
+    const userImageURL = postData.img_user || './assets/img/defaultft.jpg'; // URL de la imagen del usuario o imagen por defecto
+    profilePicElement.src = userImageURL;
+
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
     document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
     document.querySelector('.question-meta').textContent = `${post.propietarioNombre || 'Autor no disponible'} | ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}`;
@@ -211,6 +215,7 @@ function displayPostDetails(postData) {
         handleVote(voteCountElement, this, document.querySelector('.upvote'));
     });
 }
+
 
 function displayPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
