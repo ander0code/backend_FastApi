@@ -173,7 +173,12 @@ function displayPostDetails(postData) {
     const votos = postData.votos.cantidad;
 
     const profilePicElement = document.querySelector('.profile-pic');
-    const userImageURL = postData.img_user || './assets/img/defaultft.jpg'; // URL de la imagen del usuario o imagen por defecto
+    let userImageURL = './assets/img/defaultft.jpg'; // Establecer la imagen por defecto
+
+    if (postData.imgUser && postData.imgUser.foto) {
+        userImageURL = postData.imgUser.foto; // Usar la URL de la imagen del usuario si está disponible
+    }
+
     profilePicElement.src = userImageURL;
 
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
@@ -215,6 +220,8 @@ function displayPostDetails(postData) {
         handleVote(voteCountElement, this, document.querySelector('.upvote'));
     });
 }
+
+
 
 
 function displayPostResponses(responseData) {
