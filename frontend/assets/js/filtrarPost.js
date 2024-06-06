@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newPost.innerHTML = `
                     <div class="post-left">
                         <div class="post-votes">${votos.cantidad || 0} Votos</div>
-                        <div class="post-replies"></i>${post.recuento_comentarios || 0} Respuestas</div>
+                        <div class="post-replies">${post.recuento_comentarios || 0} Respuestas</div>
                         <div class="post-views">${post.conteo_visitas || 0} Vistas</div>
                     </div>
                     <div class="post-right">
