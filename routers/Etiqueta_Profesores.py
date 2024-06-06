@@ -13,7 +13,6 @@ def get_db():
         yield db
     finally:
         db.close()
-        
 @Profe.get("/get_profesores/{id_carrera}}",response_model=None,
            description="Endpoint para obtener profesores por carrera. Acuerdate extraer primero el id de la carrera del usuario")
 def get_profes(id_carrera = int  ,db: Session = Depends(get_db) )-> Any:
