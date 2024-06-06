@@ -547,11 +547,14 @@ button#preguntar-btn {
 .activity-item .activity-content {
   margin-top: 8px;
 }
+.fw-bold {
+  color: #5493F1;
+}
 
 .activity-item .post-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #0a58ca;
+  color: #5493F1;
   text-decoration: none;
 }
 
@@ -1216,7 +1219,7 @@ section#profile-template {
 .post-item {
   background-color: #ffffff;
   display: flex;
-  flex-direction: column;
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
   border: 1px solid #ddd;
   padding: 6px 12px; /* Ajustar el relleno */
   margin-bottom: 8px; /* Ajustar el margen inferior */
@@ -1224,14 +1227,8 @@ section#profile-template {
   border-radius: 12px; /* Redondear los bordes */
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
   width: 100%; /* Establecer el ancho al 100% */
-  max-width: 900px; /* Establecer un ancho máximo */
   box-sizing: border-box; /* Incluir el borde en el tamaño total */
-}
-
-@media screen and (max-width: 768px) {
-  .post-item {
-    max-width: 90%; /* Reducir el ancho máximo en dispositivos pequeños */
-  }
+  position: relative; /* Permite posicionar el botón de redirección */
 }
 
 .post-item:hover {
@@ -1242,56 +1239,38 @@ section#profile-template {
 
 .post-left {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column; /* Cambiar a columna */
+  align-items: flex-start; /* Alinear los íconos a la izquierda */
+  justify-content: center; /* Centrar los íconos verticalmente */
   flex: 0 0 auto;
   padding-top: 3px; /* Ajustar el relleno superior */
   color: #000033;
-  margin-bottom: 5px; /* Ajustar el margen inferior */
+  margin-right: 12px; /* Añadir margen a la derecha */
 }
 
 .fa-solid {
   color: #000033;
-  margin-right: 6px; /* Ajustar el margen derecho */
-}
-
-.post-left-item {
-  display: flex;
-  align-items: center;
-  font-size: 18px; /* Ajustar el tamaño de la fuente */
-  margin-right: 16px; /* Ajustar el margen derecho */
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-bottom: 6px; /* Añadir margen inferior para espaciar los íconos */
 }
 
 .post-right {
   flex: 1;
-  padding-top: 3px; /* Ajustar el relleno superior */
-}
-
-.icon-text {
   display: flex;
-  margin-bottom: 5px; /* Ajustar el margen inferior */
-}
-
-.post-votes, .post-replies, .post-views {
-  margin-right: 12px; /* Ajustar el margen derecho */
-  font-weight: bold;
-  text-align: left;
-  font-size: 14px; /* Ajustar el tamaño de la fuente */
-}
-
-.fa-arrow-right {
-  color: #fff;
-  padding-right: 0px;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinear al inicio */
+  padding-top: 10px; /* Ajustar el relleno superior */
 }
 
 .post-header {
-  margin-bottom: 3px; /* Ajustar el margen inferior */
+  margin-bottom: 10px; /* Ajustar el margen inferior */
 }
 
 .post-title {
   font-size: 1.1rem; /* Ajustar el tamaño de la fuente */
-  color: #212121;
+  color: #5493F1
+  ;
   text-decoration: none;
   font-weight: bold;
 }
@@ -1303,6 +1282,13 @@ section#profile-template {
 .post-meta {
   color: #515151;
   font-size: 0.8rem; /* Ajustar el tamaño de la fuente */
+  margin-top: 5px; /* Añadir margen superior para espaciar desde el título */
+}
+
+.post-tags {
+  display: flex;
+  margin-top: 1px;
+  margin-bottom: 10px; /* Añadir margen superior para espaciar desde el meta */
 }
 
 .post-tags span {
@@ -1371,26 +1357,36 @@ a.fw-bold.text-dark.post-title {
   display: flex;
   justify-content: flex-end;
 }
+
 .redirect-button {
-  margin-left: auto;
-  padding-bottom: 0;
+  position: absolute;
+  /*Posiciónabsoluta*/right: 10px;
+  /*Alinearloaladerecha*/top: 76%;
+  /*Centrarverticalmente*/transform: translateY(-50%);
+  /*Ajustarelcentrado*/padding-bottom: 0;
   display: flex;
   align-items: center;
-  padding: 6px 0px; /* Ajustar el relleno */
-  padding-left: 6px; /* Ajustar el relleno */
-  padding-right: 2px; /* Ajustar el relleno */
+  padding: 10px 10px;
+  /*Ajustarelrelleno*/padding-bottom: 6px;
   background-color: #0a57caa6;
   color: #fff;
   border: none;
-  border-radius: 12px; /* Redondear los bordes */
-  font-size: 0.8rem; /* Ajustar el tamaño de la fuente */
-  cursor: pointer;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  /*Ajustareltamañodelafuente*/cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  -webkit-transition: background-color 0.3s, transform 0.3s;
+  -moz-transition: background-color 0.3s, transform 0.3s;
+  -ms-transition: background-color 0.3s, transform 0.3s;
+  -o-transition: background-color 0.3s, transform 0.3s;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
 .redirect-button:hover {
   background-color: #0a58ca;
-  transform: scale(1.1);
 }
 
 /* Estilos responsivos */
@@ -1462,14 +1458,11 @@ a.fw-bold.text-dark.post-title {
   }
 
   .redirect-button {
-    margin-left: auto;
     margin-right: 0;
-    width: auto;
-    justify-content: center;
     padding: 10px 0px;
-    padding-left: 10px;
+    padding-left: 2px;
     padding-right: 4px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   button#preguntar-btn {
     width: 120px;
@@ -1483,7 +1476,42 @@ a.fw-bold.text-dark.post-title {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 }
+/* Ajuste para la vista en pantallas pequeñas */
+@media screen and (max-width: 760px) {
+  .post-item {
+    max-width: 100%; /* Asegurar que el ancho máximo sea 100% en dispositivos pequeños */
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    align-items: flex-start; /* Alinear los elementos al inicio en pantallas pequeñas */
+  }
+  .post-left {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5px;
+  }
+  .post-left .fa-solid {
+    font-size: 14px; /* Adjust icon size */
+    margin-right: 4px; /* Adjust spacing */
+  }
 
+  .post-left-item {
+    font-size: 13px; /* Adjust text size */
+    margin-right: 8px; /* Adjust spacing */
+  }
+  .post-votes, .post-replies, .post-views {
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 12px;
+  }
+  .redirect-button {
+    margin-right: 0;
+    padding: 10px 0px;
+    padding-left: 2px;
+    padding-right: 4px;
+    font-size: 0.7rem;
+  }
+}
 
 /* Nuevos estilos responsivos */
 @media (max-width: 700px) {
@@ -1514,10 +1542,12 @@ a.fw-bold.text-dark.post-title {
   .post-meta {
     font-size: 0.8rem;
   }
-
   .redirect-button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    margin-right: 0;
+    padding: 10px 0px;
+    padding-left: 2px;
+    padding-right: 4px;
+    font-size: 0.7rem;
   }
 
   /* Adjusting icon size and text size */
@@ -1582,7 +1612,7 @@ a.fw-bold.text-dark.post-title {
   .redirect-button {
     margin-right: 0;
     padding: 10px 0px;
-    padding-left: 10px;
+    padding-left: 2px;
     padding-right: 4px;
     font-size: 0.7rem;
   }
@@ -1648,7 +1678,7 @@ a.fw-bold.text-dark.post-title {
   .redirect-button {
     margin-right: 0;
     padding: 10px 0px;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-right: 4px;
     font-size: 0.6rem;
   }
@@ -1714,7 +1744,7 @@ a.fw-bold.text-dark.post-title {
   .redirect-button {
     margin-right: 0;
     padding: 10px 0px;
-    padding-left: 10px;
+    padding-left: 4px;
     padding-right: 4px;
     font-size: 0.5rem;
   }
