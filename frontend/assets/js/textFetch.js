@@ -222,8 +222,6 @@ function displayPostDetails(postData) {
 }
 
 
-
-
 function displayPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
     commentsContainer.innerHTML = '';
@@ -280,8 +278,9 @@ function displayAllPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
+        <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
             <p class="comment-text">${response.texto}</p>
-            <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
+            
         `;
 
         commentElement.appendChild(voteButtons);

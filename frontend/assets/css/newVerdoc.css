@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.sectionDashboardDoc {
+    margin: 0;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.docentes, .top-docentes {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.docentes {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.top-docentes {
+    flex: 1;
+}
+
+h1, h2 {
+    color: #333;
+    margin: 0 0 20px 0;
+}
+
+.buscar {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 1.2em;
+}
+
+.profesor, .top-profesor {
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #fffcfc;
+}
+
+.calidad-container {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.calidad-texto {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.calidad {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.calidad-alta {
+    background-color: #4CAF50;
+}
+
+.calidad-media {
+    background-color: #FFEB3B;
+    color: #333;
+}
+
+.calidad-baja {
+    background-color: #F44336;
+}
+
+.calificaciones {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info h2 a, .info p, .nombre-profesor-top {
+    margin: 0;
+    font-size: 22px;
+    color: #FF6600;
+    font-weight: bold;
+}
+
+.top-docentes h2 {
+    font-size: 1.8em;
+}
+
+.info p {
+    color: #666;
+    margin: 5px 0;
+    font-size: 18px;
+}

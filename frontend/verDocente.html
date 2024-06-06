@@ -30,7 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="./assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/verDoc.css">
+<link rel="stylesheet" href="./assets/css/newVerdoc.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -173,40 +173,47 @@
 <!-- End Sidebar-->
 
 <main id="main" class="main">
-  <div class="pagetitleDoc">
-    <h1>Docentes de tu carrera</h1>
-  </div><!-- End Page Title -->
-
   <section class="sectionDashboardDoc">
-    <div class="row">
-      <!-- Left side columns -->
-      <div class="col-lg-8 order-lg-1">
-        <input type="text" id="search-profesores" placeholder="Buscar docente por nombre" class="form-control mb-3">
-        <div class="row" id="profesores-container">
-          <!-- Aquí se insertarán las tarjetas de los profesores dinámicamente -->
+    <div class="container">
+      <div class="docentes" id="docentes-container">
+        <h1>DOCENTES</h1>
+        <input type="text" placeholder="Buscar" id="search-profesores" class="buscar">
+        <div id="profesores-list">
+          <!-- Aquí se cargarán los profesores -->
         </div>
-      </div><!-- End Left side columns -->
-
-      <!-- Right side columns for Top Docentes -->
-      <div class="col-lg-4 order-lg-2">
-        <div class="topDocentes">
-          <h2>Top Docentes</h2>
-          <div class="topDocenteCard">
-            <div class="topDocenteDetails">
-              <div class="topDocenteHeader">
-                <a href="#" class="topDocenteTitle">Deyvi Sanchez</a>
-              </div>
-              <div class="topDocenteMeta">
-                <span class="topDocenteBody">Promedio: 99.99</span>
-              </div>
-            </div>
+      </div>
+      <div class="top-docentes" id="top-docentes-container">
+        <h2>Top Docentes</h2>
+        <div class="top-profesor">
+          <div class="calidad-container">
+            <div class="calidad-texto">CALIDAD</div>
+            <div class="calidad calidad-baja">0</div>
+            <div class="calificaciones">9 CALIFICACIONES</div>
           </div>
-          <!-- Repetir para más docentes -->
+          <div class="info">
+            <h2 class="nombre-profesor"><a href="">ARANA MEZA LUIS POMPEYO</a></h2>
+          </div>
         </div>
-      </div><!-- End Right side columns -->
+        <div class="top-profesor">
+          <div class="calidad-container">
+            <div class="calidad-texto">CALIDAD</div>
+            <div class="calidad calidad-media">3.5</div>
+            <div class="calificaciones">9 CALIFICACIONES</div>
+          </div>
+          <div class="info">
+            <h2 class="nombre-profesor"><a href="">BAÑOS RAMOS JUAN CARLOS</a></h2>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
+
+
+
+
+
+
 
 
 
@@ -233,10 +240,14 @@
   <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="./assets/vendor/php-email-form/validate.js"></script>
 
-  <!-----------------------------JAVASCRIPTS IMPORTANTES-->
+  <!-----------------------------JAVASCRIPTS IMPORTANTES
+  <script src="./assets/js/buscarProfesores.js"></script>
+  -->
+  
+  
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilVerDoc.js"></script>
-  <script src="./assets/js/buscarProfesores.js"></script>
+
 
 
 
