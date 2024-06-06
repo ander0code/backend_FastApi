@@ -250,9 +250,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 newPost.innerHTML = `
                     <div class="post-left">
-                        <div class="post-votes"><i class="fa-solid fa-check-to-slot"></i>${votos.cantidad || 0} Votos</div>
-                        <div class="post-replies"><i class="fa-solid fa-square-check"></i>${post.recuento_comentarios || 0} Respuestas</div>
-                        <div class="post-views"><i class="fa-solid fa-eye"></i>${post.conteo_visitas || 0} Vistas</div>
+                        <div class="post-votes">${votos.cantidad || 0} Votos</div>
+                        <div class="post-replies"></i>${post.recuento_comentarios || 0} Respuestas</div>
+                        <div class="post-views">${post.conteo_visitas || 0} Vistas</div>
                     </div>
                     <div class="post-right">
                         <div class="post-header">
