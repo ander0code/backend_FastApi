@@ -5,6 +5,25 @@ body {
   padding: 0;
 }
 
+
+.tituloParrafo {
+  color: #214773;
+  font-weight: bold;
+}
+
+.tituloParrafo {
+  color: #ceff0c;
+  font-weight: bold;
+}
+
+.tag {
+  font-size: 30px;
+}
+
+.calificacion {
+  font-size: 25px;
+}
+
 .main {
   padding: 20px;
 }
