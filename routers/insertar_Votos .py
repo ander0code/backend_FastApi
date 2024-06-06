@@ -5,7 +5,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from models import Model_DB
 from Schemas import votos
 from config.base_connection import SessionLocal
-from typing import Any,List
+from typing import Any
 from datetime import datetime
 
 voto = APIRouter()
@@ -21,33 +21,31 @@ def get_db():
 @voto.post("/voto/{mensajeID}/{user_id}", response_model=None)
 async def create_post(mensajeID : int,user_id : int,comment: votos.VotosModel, db: Session = Depends(get_db)) -> Any:
     try:
-        #arregla esto 
-        # post_user_tupla = db.query(Model_DB.User.nombre).filter(Model_DB.User.id == Post_id).first()
-        # post_user = post_user_tupla[0] if post_user_tupla else None
-        
-        # tz = pytz.timezone('America/Lima')
-        # fecha_actual_peru = datetime.now(tz)
-        # fecha_formateada = fecha_actual_peru.strftime('%Y-%m-%d')
+        if comment.tipo_voto not in ['POST', 'NEG']:
+            raise HTTPException(status_code=400, detail="Tipo de voto inválido")
 
-        # nuevo_post = Model_DB.Comment(
-        #                         publicacion_ID = Post_id,
-        #                         padre_comentario_id = None,
-        #                         puntuacion = 0, 
-        #                         texto = comment.texto ,
-        #                         userID = id_user,
-        #                         usuarioName = post_user,
-        #                         fecha_creacion = fecha_formateada
-        #                         )
-        # db.add(nuevo_post)
-        # db.commit()
-        # db.refresh(nuevo_post)
-        
-        response = votos.VotosResponde(
-                message=f"tipo_voto {0} agregado exitosamente",
-                status="success"
-            )
-        return response
+        voto_existente = db.query(Model_DB.Vote).filter(Model_DB.Vote.mensajeID == mensajeID,Model_DB.Vote.userID == user_id).first()
+        print(voto_existente)
+        if voto_existente is None:
+            # Insertar nuevo voto
+            nuevo_voto = Model_DB.Vote(mensajeID=mensajeID, userID=user_id, tipo_Voto=comment.tipo_voto)
+            db.add(nuevo_voto)
+            db.commit()
+            print("se inserto el voto")
+        else:
+            if voto_existente.tipo_Voto == comment.tipo_voto:
+                # Eliminar el voto existente
+                db.delete(voto_existente)
+                db.commit()
+                print("se elimino el voto existente")
+            else:
+                # Cambiar el voto existente
+                voto_existente.tipo_Voto = comment.tipo_voto
+                db.commit()
+                print("se cambio el tipo de voto")
 
+        return {"message": "Voto procesado correctamente"}
+        
     except SQLAlchemyError as e:
         db.rollback()
         raise HTTPException(status_code=500, detail="Error en la base de datos: " + str(e))

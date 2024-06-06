@@ -207,6 +207,9 @@ async def post_x_post_id(
             Model_DB.User,
             Model_DB.User.id == Model_DB.Post.propietarioUserID
         ).outerjoin(
+            Model_DB.Vote,
+            Model_DB.Vote.mensajeID == Model_DB.Post.id
+        ).outerjoin(
             Model_DB.EtiquetasPublicacion,
             Model_DB.EtiquetasPublicacion.Comentario_ID == Model_DB.Post.id
         ).outerjoin(
