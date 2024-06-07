@@ -28,3 +28,19 @@ def get_profes(id_carrera = int  ,db: Session = Depends(get_db) )-> Any:
     if not resultados:
         raise HTTPException(status_code=404, detail="buscando porfesores por carrear: no existe ")
     return resultados
+
+@Profe.get("/get_calificaciones}",response_model=None)
+         
+def get_profes(id_carrera = int  ,db: Session = Depends(get_db) )-> Any:
+    resultados = db.query(
+        Model_DB.EtiquetaProfesores
+            ).join(
+                Model_DB.EtiquetaCarrera,
+                Model_DB.EtiquetaCarrera.id_carrera == Model_DB.EtiquetaProfesores.id_carrera                
+            ).filter(
+                Model_DB.EtiquetaProfesores.id_carrera  == id_carrera
+                ).all()
+    if not resultados:
+        raise HTTPException(status_code=404, detail="buscando porfesores por carrear: no existe ")
+    return resultados
+
