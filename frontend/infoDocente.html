@@ -172,81 +172,86 @@
 <!-- End Sidebar-->
 
 <main id="main" class="main">
-  <div class="pagetitleDoc">
-    <h1>Nombre del Docente</h1>
-    <h2>Facultad</h2>
-  </div><!-- End Page Title -->
-
-  <section class="sectionDashboardDoc">
-    <div class="col-lg-12 order-lg-1">
-      <div class="card infoDocente">
-        <div class="card-body">
-          <div class="info-container">
-            <div class="info-left">
-              <h2 class="card-title">CALIDAD GENERAL</h2>
-              <p class="quality-score">8.3</p>
+  <div class="container">
+    <section class="profesor-resumen">
+        <div class="profesor-info">
+            <div class="promedio-container">
+                <p class="promedio"><strong>5</strong>/5</p>
+                <p>Basado en 7 calificaciones</p>
             </div>
-            <div class="info-middle">
-              <p><strong><i class="fas fa-thumbs-up"></i> Lo Recomiendan</strong></p>
-              <p class="recommendation">83%</p>
-              <p><strong><i class="fas fa-tachometer-alt"></i> Nivel de Dificultad</strong></p>
-              <p class="difficulty">2.5</p>
+            <p class="nombre"><strong>ALVARADO GARCIA PAUL ALAN ARKIN</strong></p>
+            <p class="facultad">Psicología</p>
+            <div class="porcentaje-dificultad">
+                <p class="porcentaje"><strong>100%</strong> tomaría de nuevo</p>
+                <p class="dificultad"><strong>5</strong> nivel de dificultad</p>
             </div>
-            <div class="info-right">
-              <h2 class="card-title">Etiquetas para este Profesor</h2>
-              <p>Descubre cómo otros estudiantes describen a este profesor.</p>
-              <div class="tags">
-                <div class="tag-container">
-                  <span class="tag">Muy Cómico (25)</span>
-                  <span class="tag">Respetado por los Estudiantes (4)</span>
-                  <span class="tag">Tomaría su Clase Otra Vez (12)</span>
-                  <span class="tag">Clases Excelentes (13)</span>
-                  <span class="tag">Aspectos de Calificación Claros (7)</span>
-                  <span class="tag">Brinda Apoyo (7)</span>
-                  <span class="tag">La Participación Importa (3)</span>
-                  <span class="tag">Califica Duro (4)</span>
-                  <span class="tag">Inspiracional (1)</span>
-                  <span class="tag">Asistencia Obligatoria (2)</span>
-                  <span class="tag">Da Buena Retroalimentación (5)</span>
+            <a href="/autenticacion/califDoc/"><button class="calificar-btn">CALIFICAR</button></a>
+        </div>
+        <div class="clasificacion-etiquetas">
+            <div class="clasificacion">
+                <h2>CLASIFICACION</h2>
+                <table>
+                    <tr>
+                        <td>EXCELENTE 5</td>
+                        <td><div class="bar" style="width: 100%;"></div>7</td>
+                    </tr>
+                    <tr>
+                        <td>BUENO 4</td>
+                        <td><div class="bar" style="width: 57%;"></div>4</td>
+                    </tr>
+                    <tr>
+                        <td>ACEPTABLE 3</td>
+                        <td><div class="bar" style="width: 0%;"></div>0</td>
+                    </tr>
+                    <tr>
+                        <td>CONFUSO 2</td>
+                        <td><div class="bar" style="width: 28%;"></div>2</td>
+                    </tr>
+                    <tr>
+                        <td>MUY CONFUSO 1</td>
+                        <td><div class="bar" style="width: 14%;"></div>1</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="etiquetas">
+                <h2>ETIQUETAS</h2>
+                <div class="etiquetas-container">
+                    <span class="etiqueta">Clases Excelentes</span>
+                    <span class="etiqueta">Brinda Apoyo</span>
+                    <span class="etiqueta">Muy Cómico</span>
+                    <span class="etiqueta">Respetado por sus estudiantes</span>
+                    <span class="etiqueta">Inspiracional</span>
+                    <span class="etiqueta">Da Buena Retroalimentación</span>
                 </div>
-              </div>
             </div>
-          </div>
-          <button class="calificarButton"><i class="fas fa-pen"></i> <a class="clasificarText" href="/autenticacion/califDoc">Calificar Docente</a></button>
         </div>
-      </div>
+    </section>
 
-      <div class="card calificacionesEstudiantes">
-        <div class="card-body">
-          <h2 class="card-title">Calificaciones de Estudiantes</h2>
-          <div class="calificacion">
-            <div class="calificacion-header">
-              <p><strong><i class="fas fa-calendar-alt"></i> Fecha:</strong> 10/Mar/2024</p>
+    <section class="calificaciones-estudiantes">
+        <h1>Calificación de estudiantes</h1>
+        <div class="calificacion">
+            <div class="calidad-dificultad">
+                <div class="calidad">
+                    <p class="label">CALIDAD</p>
+                    <p class="valor">5</p>
+                </div>
+                <div class="dificultad">
+                    <p class="label">DIFICULTAD</p>
+                    <p class="valor">4.0</p>
+                </div>
             </div>
-            <div class="calificacion-body">
-              <div class="calificacion-left">
-                <p><strong>Calidad General</strong></p>
-                <p class="quality-score">9.0</p>
-                <p><strong>Facilidad</strong></p>
-                <p class="quality-score">6.0</p>
-              </div>
-              <div class="calificacion-right">
-                <p><strong><i class="fas fa-tags"></i> Etiquetas:</strong> 
-                  <span class="tag">Muy Cómico</span>, <span class="tag">Da Buena Retroalimentación</span>, <span class="tag">Tomaría su Clase Otra Vez</span>
-                </p>
-              </div>
+            <p class="tomaria-denuevo"><strong>Tomaría de nuevo:</strong> SI</p>
+            <p>Buen profesor, tiene un gran método de enseñanza y hace las clases interactivas para no aburrir a sus alumnos, definitivamente repetiría.</p>
+            <p class="fecha">03/06/2024</p>
+            <div class="etiquetas-container">
+                <span class="etiqueta">Clases Excelentes</span>
+                <span class="etiqueta">Brinda Apoyo</span>
             </div>
-            <div class="calificacion-footer">
-              <p><i class="fas fa-thumbs-up"></i> 0 personas que les pareció útil</p>
-              <p><i class="fas fa-thumbs-down"></i> 0 personas que no les pareció útil</p>
-              <a href="#" class="reportar-link">reportar esta calificación</a>
-            </div>
-          </div>
-          <!-- Agregar más calificaciones aquí -->
         </div>
-      </div>
-    </div>
-  </section>
+        <!-- Más calificaciones de estudiantes -->
+    </section>
+</div>
+
 </main>
 
   

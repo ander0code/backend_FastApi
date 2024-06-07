@@ -84,6 +84,7 @@ body {
 .vote-count {
     margin: 10px 0;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .comment-section {
@@ -158,6 +159,7 @@ body {
 .buttonImgNega {
     width: 70px;
     height: 70px;
+    color: #007bff;
 }
 
 .submitImg {

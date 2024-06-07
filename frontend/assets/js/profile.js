@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 frase: user[0].puntos_de_vista || 'N/A',
                 codigoID: user[0].codigo_user || 'N/A',
                 fechaNacimiento: user[0].fecha_nacimiento || 'N/A',
-                fotoUrl: user[0].usuariofoto || './assets/img/defaultft.jpg'
+                fotoUrl: user[0].usuariofoto || './assets/img/defaultft.webp'
             };
 
             console.log(`Nombre: ${userData.nombre}, Apellido: ${userData.lastName}, Acerca de mí: ${userData.acercaDeMi}, Carrera: ${userData.carrera}, Ciclo: ${userData.ciclo}, Frase: ${userData.frase}, Código ID: ${userData.codigoID}, Fecha de nacimiento: ${userData.fechaNacimiento}, Foto: ${userData.fotoUrl}`); // Verificar valores
