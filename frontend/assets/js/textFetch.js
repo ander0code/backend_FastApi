@@ -173,7 +173,7 @@ function displayPostDetails(postData) {
     const votos = postData.votos.cantidad;
 
     const profilePicElement = document.querySelector('.profile-pic');
-    let userImageURL = './assets/img/defaultft.jpg'; // Establecer la imagen por defecto
+    let userImageURL = './assets/img/defaultft.webp'; // Establecer la imagen por defecto
 
     if (postData.imgUser && postData.imgUser.foto) {
         userImageURL = postData.imgUser.foto; // Usar la URL de la imagen del usuario si está disponible

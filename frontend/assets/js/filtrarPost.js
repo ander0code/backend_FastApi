@@ -250,13 +250,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 newPost.innerHTML = `
                     <div class="post-left">
-                        <div class="post-votes"><i class="material-icons">arrow_upward</i>${votos.cantidad || 0} Votos</div>
-                        <div class="post-replies"></i>${post.recuento_comentarios || 0} Respuestas</div>
-                        <div class="post-views"><i class='far fa-eye'></i>${post.conteo_visitas || 0} Vistas</div>
+                        <div class="post-votes"><i class="bi bi-box2-heart-fill"></i> ${votos.cantidad || 0} Votos</div>
+                        <div class="post-replies"><i class="bi bi-chat-left-text"></i> ${post.recuento_comentarios || 0} Respuestas</div>
+                        <div class="post-views"><i class="bi bi-eye-fill"></i> ${post.conteo_visitas || 0} Vistas</div>
                     </div>
                     <div class="post-right">
                         <div class="post-header">
-                            <div class="post-title">${post.titulo || 'Título no disponible'}</div>
+                            <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
                             <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
                         </div>
                         <div class="post-tags"></div>

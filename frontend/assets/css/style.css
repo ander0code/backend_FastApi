@@ -1269,8 +1269,7 @@ section#profile-template {
 
 .post-title {
   font-size: 1.1rem; /* Ajustar el tamaño de la fuente */
-  color: #5493F1
-  ;
+  color: #5493F1;
   text-decoration: none;
   font-weight: bold;
 }
@@ -1286,6 +1285,7 @@ section#profile-template {
 }
 
 .post-tags {
+  font-weight: bold;
   display: flex;
   margin-top: 1px;
   margin-bottom: 10px; /* Añadir margen superior para espaciar desde el meta */

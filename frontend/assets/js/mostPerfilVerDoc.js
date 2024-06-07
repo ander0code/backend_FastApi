@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             profileName.textContent = `${nombre} ${lastName}`;
             profileFullname.textContent = `${nombre} ${lastName}`;
             profileCarrer.textContent = `Carrera: ${nombreCarrera}`;
-            profileImg.src = user[0].usuariofoto || './assets/img/defaultft.jpg';
+            profileImg.src = user[0].usuariofoto || './assets/img/defaultft.webp';
 
             fetchProfesores(carreraId);
         } else {
