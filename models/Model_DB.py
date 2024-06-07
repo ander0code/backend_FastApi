@@ -165,10 +165,11 @@ class Calificacion(Base):
     id_rol_PRO = Column(Integer,ForeignKey('etiqueta_profesor.id'),primary_key=True)
     ciclo = Column(Integer)
     nombreCurso = Column(String(250))
-    claridad = Column(Integer)
-    motivacion = Column(Integer)
+    calidad = Column(Integer)
+    dificultad = Column(Integer)
     etiquetas = Column(String(500))
-    recomendacion = Column(Boolean)    
+    recomendacion = Column(Boolean)   
+    texto = Column(String(10000)) 
     
 
     student = relationship("UserData", back_populates="calificaciones")
