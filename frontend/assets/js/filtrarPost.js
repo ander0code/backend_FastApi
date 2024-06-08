@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si la selección es "General", se usa el endpoint específico para posts generales
             url = `http://127.0.0.1:8000/posts_general`;
         } else {
-            url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
+            url = `http://127.0.0.1:8000/postsFilter/${selectedCarrera}`;
             if (selectedCiclo) {
                 url += `/${selectedCiclo}`;
                 if (selectedCurso) {
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="post-right">
                         <div class="post-header">
                             <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
-                            <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
+                            <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion || 'Fecha no disponible'}</div>
                         </div>
                         <div class="post-tags"></div>
                         <div class="post-footer">

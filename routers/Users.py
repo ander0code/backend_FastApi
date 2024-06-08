@@ -102,3 +102,20 @@ async def get_post_nuevo(db: Session = Depends(get_db)) -> Any:
     return response
 
 
+
+@user.get("/posts/{id_user}", response_model=None)
+async def post_carrera(id_user: int, db: Session = Depends(get_db)) -> Any:
+
+    resultados = db.query(
+        Model_DB.Post
+        ).join(
+            Model_DB.User,
+            Model_DB.User.id == Model_DB.Post.propietarioUserID
+        ).filter(
+            Model_DB.User.id == id_user
+        ).all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="usuario inexistente")
+    
+    return resultados
