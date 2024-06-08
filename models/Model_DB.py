@@ -175,3 +175,4 @@ class Calificacion(Base):
 
     student = relationship("UserData", back_populates="calificaciones")
     profesor = relationship("EtiquetaProfesores", back_populates="calificaciones")
+    
