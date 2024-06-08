@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
+                
                 const tagsContainer = newPost.querySelector('.post-tags');
                 tagsContainer.innerHTML = '';
 
