@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="post-right">
                         <div class="post-header">
                             <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
-                            <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
+                            <div class="post-meta">por <span class="post-author"><a href="/autenticacion/perfils" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
                         </div>
                         <div class="post-tags"></div>
                         <div class="post-footer">
