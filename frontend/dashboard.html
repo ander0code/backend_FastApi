@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <title>Forua</title>
@@ -28,6 +27,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/perfil.css">
 
   <!-- Template Main CSS File -->
   <link href="./assets/css/style.css" rel="stylesheet">
@@ -144,6 +144,26 @@
                     <a href="#" class="carrera-option" data-value="2">
                         <i class="bi bi-circle"></i><span>Derecho</span>
                     </a>
+                </li>
+                <li>
+                  <a href="#" class="carrera-option" data-value="3">
+                      <i class="bi bi-circle"></i><span>Ingenieria de sistemas</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="carrera-option" data-value="4">
+                      <i class="bi bi-circle"></i><span>Ingenieria de Software</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="carrera-option" data-value="5">
+                      <i class="bi bi-circle"></i><span>Administración de Empresas</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="carrera-option" data-value="6">
+                      <i class="bi bi-circle"></i><span>Contabilidad</span>
+                  </a>
                 </li>
             </ul>
         </li><!-- End Components Nav -->
@@ -352,16 +372,16 @@
           <div class="post-container" style="display: none;">
             <div class="post-left">
               <div class="post-votes">
-                <span id="votes-count"></span>
-                <div><i class="bi bi-box2-heart-fill"></i>Votos</div>
+                <span id="votes-count">0</span>
+                <div>Votos</div>
               </div>
               <div class="post-answers">
                 <span id="answers-count">0</span>
-                <div><i class="bi bi-chat-left-text"></i>Respuestas</div>
+                <div>Respuestas</div>
               </div>
               <div class="post-views">
                 <span id="views-count">0</span>
-                <div><i class="bi bi-eye-fill"></i>Vistas</div>
+                <div>Vistas</div>
               </div>
             </div>
             <div class="post-right">
@@ -377,9 +397,10 @@
               </div>
             </div>
           </div>
-          <!-- Fin de plantilla de post --
+          <!-- Fin de plantilla de post -->
+
         </div>
-      </div><End Left side columns -->
+      </div><!-- End Left side columns -->
     </div>
   </section>
 </main>
@@ -405,8 +426,6 @@
   <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="./assets/vendor/php-email-form/validate.js"></script>
 
-  
-  
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/publicPopular.js"></script>
@@ -414,7 +433,7 @@
 
 
   <!--================PRUEBAS=============================
-    <script src="./assets/js/mostrarCursos.js"></script>=-->
+     <script src="./assets/js/mostrarCursos.js"></script>=-->
   <script src="./assets/js/filtrarPost.js"></script>
   <script src="./assets/js/buscarPregunta.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
