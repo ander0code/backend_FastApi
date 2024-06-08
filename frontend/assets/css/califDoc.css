@@ -35,6 +35,12 @@ label {
   font-size: 1.1em;
 }
 
+.estrellas {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
 .estrellas input[type="radio"] {
   display: none;
 }
@@ -44,12 +50,18 @@ label {
   color: #ccc;
   cursor: pointer;
   transition: color 0.2s;
+  padding: 0 5px;
 }
 
 .estrellas input[type="radio"]:checked ~ label,
 .estrellas label:hover,
 .estrellas label:hover ~ label {
   color: #ffcc00;
+}
+
+.si-no {
+  display: flex;
+  justify-content: center;
 }
 
 .si-no input[type="radio"] {
@@ -70,6 +82,12 @@ label {
   background-color: #ff6600;
   color: #fff;
   border-color: #ff6600;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .etiquetas input[type="checkbox"] {
@@ -120,7 +138,6 @@ button {
 button:hover {
   background-color: #ff8c1a;
 }
-
 
 button:active {
   background-color: #cc5200;

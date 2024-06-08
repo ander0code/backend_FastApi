@@ -117,10 +117,12 @@ function displayProfesores(profesores) {
         const recomendacionPorcen = profesor.datos_ex[0]?.recomendacion_porcen || 'N/A';
         const dificultadTotal = profesor.datos_ex[0]?.dificultad_total || 'N/A';
 
+        const calidadBackgroundColor = getCalidadBackgroundColor(calidadTotal);
+
         profesorCard.innerHTML = `
             <div class="calidad-container">
                 <div class="calidad-texto">CALIDAD</div>
-                <div class="calidad">${calidadTotal}</div>
+                <div class="calidad" style="background-color: ${calidadBackgroundColor};">${calidadTotal}</div>
                 <div class="calificaciones">${numeroTotal} CALIFICACIONES</div>
             </div>
             <div class="info">
@@ -132,6 +134,24 @@ function displayProfesores(profesores) {
 
         profesoresList.appendChild(profesorCard);
     });
+}
+
+function getCalidadBackgroundColor(calidad) {
+    if (calidad >= 0 && calidad <= 0.9) {
+        return '#FF0000';
+    } else if (calidad >= 1 && calidad <= 1.9) {
+        return '#FF5100';
+    } else if (calidad >= 2 && calidad <= 2.9) {
+        return '#FFB600';
+    } else if (calidad === 3) {
+        return '#FFF300';
+    } else if (calidad >= 3.1 && calidad <= 3.9) {
+        return '#D4FF00';
+    } else if (calidad >= 4 && calidad <= 5) {
+        return '#02B207';
+    } else {
+        return '#9b9b9b'; // Color de fondo predeterminado en caso de valor fuera de rango
+    }
 }
 
 function addSearchFunctionality(profesores) {
