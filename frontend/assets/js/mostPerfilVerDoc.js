@@ -121,6 +121,11 @@ function displayTopDocentes(profesores) {
         })
         .slice(0, 5); // Obtener solo los primeros 5 docentes
 
+    // Agregar el título "Top Docentes"
+    const tituloTopDocentes = document.createElement('h2');
+    tituloTopDocentes.textContent = 'Top Docentes';
+    topDocentesContainer.appendChild(tituloTopDocentes);
+
     top5Profesores.forEach((profesor, index) => {
         const calidadTotal = profesor.datos_ex[0]?.calidad_total || 'N/A';
         const numeroTotal = profesor.datos_ex[0]?.numero_total || 'N/A';
@@ -146,6 +151,7 @@ function displayTopDocentes(profesores) {
         topDocentesContainer.appendChild(topProfesor);
     });
 }
+
 
 
 
