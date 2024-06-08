@@ -17,7 +17,7 @@ def get_db():
         db.close()
         
         
-@post.get("/postsCarrera/{carrera_id}", response_model=List[Publicaciones.PostWithCurso])
+@post.get("/postsFilter/{carrera_id}", response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
 
     resultados = db.query(
@@ -87,7 +87,7 @@ async def curso_carrera_ciclo(
 
     return resultados
 
-@post.get("/postsCarrera/{carrera_id}/{ciclo}", response_model=List[Publicaciones.PostWithCurso])
+@post.get("/postsFilter/{carrera_id}/{ciclo}", response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera_ciclo(
     carrera_id: int ,
     ciclo: int ,
@@ -138,7 +138,7 @@ async def post_carrera_ciclo(
     return response
 
 
-@post.get("/postsCarrera/{carrera_id}/{ciclo}/{curso}",response_model=List[Publicaciones.PostWithCurso])
+@post.get("/postsFilter/{carrera_id}/{ciclo}/{curso}",response_model=List[Publicaciones.PostWithCurso])
 
 async def post_carrera_ciclo_curso(
     carrera_id: int ,
