@@ -3,10 +3,10 @@ from typing import Optional,List
    
 class Pag1CuestionarioBase(BaseModel):   
 
-    calidad_total: Optional[int] = None
+    calidad_total: Optional[float] = None
     numero_total : Optional[int] = None
-    recomendacion_porcen: Optional[int] = None
-    dificultad_total: Optional[int] = None
+    recomendacion_porcen: Optional[float] = None
+    dificultad_total: Optional[float] = None
 
     
 class etiquetaprofeBase(BaseModel):
