@@ -19,7 +19,7 @@ body {
 
 #perfil-usuario {
   display: flex;
-  flex-direction: column; /* Asegura que los contenedores se apilen verticalmente */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
@@ -28,11 +28,12 @@ body {
 }
 
 .contenedor-perfil, .contenedor-metricas {
-  width: 100%; /* Asegura que los contenedores ocupen todo el ancho disponible */
+  width: 100%;
   box-shadow: 0 0 12px rgba(0, 0, 0, .2);
   background-color: #fff;
   border-radius: 15px;
   padding: 20px;
+  position: relative; /* Add this */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -53,7 +54,7 @@ body {
 
 .perfil-usuario-portada {
   display: block;
-  width: auto; /* Cambiado de 100% a auto */
+  width: auto;
   height: 150px;
   border-radius: 20px 20px 0 0;
 }
@@ -69,7 +70,7 @@ body {
   box-shadow: 0 0 12px rgba(0, 0, 0, .2);
   position: absolute;
   bottom: 0px;
-  left: 200px; /* Ajustado a 20px para que se alinee a la izquierda */
+  left: 200px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -86,9 +87,9 @@ body {
 
 .perfil-usuario-body {
   display: flex;
-  justify-content: flex-start; /* Alinea los elementos al principio horizontalmente */
-  align-items: flex-start; /* Alinea los elementos al principio verticalmente */
-  margin-top: 0; /* Elimina cualquier margen superior */
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 0;
   width: 100%;
 }
 
@@ -101,7 +102,7 @@ body {
   flex: 1;
   padding: 20px;
   text-align: left;
-  margin-top: -160px; /* Elimina cualquier margen superior */
+  margin-top: -160px;
 }
 
 .profile-name {
@@ -129,8 +130,8 @@ body {
 }
 
 .lista-datos {
-  margin-top: 0; /* Elimina cualquier margen superior */
-  padding-top: 0; /* Elimina cualquier relleno superior */
+  margin-top: 0;
+  padding-top: 0;
   list-style: none;
 }
 
@@ -139,7 +140,7 @@ body {
   display: flex;
   align-items: center;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 0; /* Elimina cualquier margen superior */
+  margin-top: 0;
 }
 
 .lista-datos li:hover {
@@ -154,7 +155,6 @@ body {
   flex: 0 0 auto;
 }
 
-/* Asegura que el contenedor de posts tenga espacio para mostrar los posts */
 .contenedor-metricas {
   display: flex;
   flex-direction: column;
@@ -163,43 +163,28 @@ body {
 .post-container {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacio entre los posts */
+  gap: 10px;
 }
 
-.button-container {
+/* New CSS for buttons */
+.profile-btn {
   position: absolute;
   top: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
-  width: 100px; /* Adjust as necessary */
+  background-color: #ffffff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.icon-button {
-  width: 30px; /* Adjust as necessary */
-  height: 30px; /* Adjust as necessary */
-}
-
-.edit-button {
-  position: absolute;
-  top: 10px;
-  left: -1030px; /* Align the edit button to the left edge */
-}                                         
-
-.like-button {
-  position: absolute;
-  top: 10px;
+.profile-btn.like-btn {
   right: 10px;
 }
 
-.counters {
-  display: flex;
-  gap: 20px;
-  margin-top: 10px;
-  margin-left:190px;
+.profile-btn.edit-btn {
+  left: 10px;
 }
 
-.counters div {
-  font-size: 1.2em;
-  color: #555;
+.profile-btn:hover {
+  color: #007BFF;
 }
