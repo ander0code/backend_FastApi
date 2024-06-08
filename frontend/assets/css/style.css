@@ -1322,22 +1322,7 @@ a.fw-bold.text-dark.post-title {
   transition: all 1s;
 }
 
-.post-container:after,
-.post-container:before {
-  content: " ";
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  border: 0px solid #fff;
-  transition: all 1s;
-}
 
-.post-container:before {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 4px solid black;
-  border-right: 4px solid black;
-}
 
 .post-container:hover {
   border-top-right-radius: 0px;
