@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function fetchProfesores(carreraId) {
     const url = `http://127.0.0.1:8000/get_profesores/${carreraId}}`;
 
-    console.log(`Fetching profesores from URL: ${url}`);
+    console.log(`Obteniendo profesores desde la URL: ${url}`);
 
     fetch(url)
         .then(response => {
@@ -88,13 +88,60 @@ function fetchProfesores(carreraId) {
         })
         .then(profesores => {
             console.log('Profesores recibidos:', profesores);
-            displayProfesores(profesores);
+            // Ordena los profesores por calidad y dificultad de mayor a menor
+            profesores.sort((a, b) => {
+                return (b.datos_ex[0]?.calidad_total || 0) - (a.datos_ex[0]?.calidad_total || 0) ||
+                       (b.datos_ex[0]?.dificultad_total || 0) - (a.datos_ex[0]?.dificultad_total || 0);
+            });
+            displayTopDocentes(profesores);
+            displayProfesores(profesores); // Esta función muestra los docentes en otra parte del HTML
             addSearchFunctionality(profesores);
         })
         .catch(error => {
             console.error('Error al obtener los profesores:', error);
         });
 }
+
+function displayTopDocentes(profesores) {
+    const topDocentesContainer = document.getElementById('top-docentes-container');
+    if (!topDocentesContainer) {
+        console.error('No se encontró el contenedor de los top docentes');
+        return;
+    }
+    topDocentesContainer.innerHTML = '';
+
+    if (!Array.isArray(profesores)) {
+        throw new Error('La respuesta no es un array');
+    }
+
+    profesores.forEach((profesor, index) => {
+        if (index < 5) { // Muestra solo los primeros 5 docentes (puedes ajustar este número según tus necesidades)
+            const calidadTotal = profesor.datos_ex[0]?.calidad_total || 'N/A';
+            const numeroTotal = profesor.datos_ex[0]?.numero_total || 'N/A';
+            const recomendacionPorcen = profesor.datos_ex[0]?.recomendacion_porcen || 'N/A';
+            const dificultadTotal = profesor.datos_ex[0]?.dificultad_total || 'N/A';
+
+            const calidadBackgroundColor = getCalidadBackgroundColor(calidadTotal);
+
+            const topProfesor = document.createElement('div');
+            topProfesor.classList.add('top-profesor');
+            topProfesor.innerHTML = `
+                <div class="calidad-container">
+                    <div class="calidad-texto">CALIDAD</div>
+                    <div class="calidad" style="background-color: ${calidadBackgroundColor}; color: ${getTextColorForBackground(calidadBackgroundColor)};">${calidadTotal}</div>
+                    <div class="calificaciones">${numeroTotal} CALIFICACIONES</div>
+                </div>
+                <div class="info">
+                    <h2 class="nombre-profesor"><a href="/autenticacion/infdoc?id=${profesor.id}">${profesor.nombre_Profesor}</a></h2>
+                    <p>${profesor.id_carrera === 1 ? 'Psicología' : 'Derecho'}</p>
+                    <p><strong>${recomendacionPorcen}%</strong> tomará de nuevo | <strong>${dificultadTotal}</strong> nivel de dificultad</p>
+                </div>
+            `;
+            topDocentesContainer.appendChild(topProfesor);
+        }
+    });
+}
+
 
 function displayProfesores(profesores) {
     const profesoresList = document.getElementById('profesores-list');
@@ -122,11 +169,11 @@ function displayProfesores(profesores) {
         profesorCard.innerHTML = `
             <div class="calidad-container">
                 <div class="calidad-texto">CALIDAD</div>
-                <div class="calidad" style="background-color: ${calidadBackgroundColor};">${calidadTotal}</div>
+                <div class="calidad" style="background-color: ${calidadBackgroundColor}; color: ${getTextColorForBackground(calidadBackgroundColor)};">${calidadTotal}</div>
                 <div class="calificaciones">${numeroTotal} CALIFICACIONES</div>
             </div>
             <div class="info">
-                <h2 class="nombre-profesor"><a href="/autenticacion/infdoc">${profesor.nombre_Profesor}</a></h2>
+                <h2 class="nombre-profesor"><a href="/autenticacion/infdoc?id=${profesor.id}">${profesor.nombre_Profesor}</a></h2>
                 <p>${profesor.id_carrera === 1 ? 'Psicología' : 'Derecho'}</p>
                 <p><strong>${recomendacionPorcen}%</strong> tomará de nuevo | <strong>${dificultadTotal}</strong> nivel de dificultad</p>
             </div>
@@ -152,6 +199,16 @@ function getCalidadBackgroundColor(calidad) {
     } else {
         return '#9b9b9b'; // Color de fondo predeterminado en caso de valor fuera de rango
     }
+}
+
+function getTextColorForBackground(backgroundColor) {
+    const color = backgroundColor.substring(1); // elimina el '#'
+    const r = parseInt(color.substring(0, 2), 16);
+    const g = parseInt(color.substring(2, 4), 16);
+    const b = parseInt(color.substring(4, 6), 16);
+    const luminosidad = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    return luminosidad > 0.5 ? '#333333' : '#FFFFFF';
 }
 
 function addSearchFunctionality(profesores) {
