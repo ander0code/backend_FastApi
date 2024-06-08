@@ -152,36 +152,71 @@
   <section id="profile-template" class="section profile">
     <div id="perfil-usuario">
       <div class="contenedor-perfil">
-          <div class="perfil-usuario-header">
-              <div class="perfil-usuario-portada">
-                  <div class="perfil-usuario-avatar">
-                      <img loading="lazy" alt="img-avatar" id="profile-photo">
-                  </div>
-              </div>
+        <div class="perfil-usuario-header">
+          <div class="perfil-usuario-portada">
+            <div class="perfil-usuario-avatar">
+              <img src="/mnt/data/image.png" loading="lazy" alt="img-avatar" id="profile-photo">
+            </div>
           </div>
-          <div class="perfil-usuario-body">
+        </div>
+        <div class="perfil-usuario-body">
+          <div class="perfil-column-left">
+            
               <h2 class="profile-name" id="profile-name"></h2>
               <h3 class="titulo" id="profile-name2"></h3>
               <h4 class="acercaDemi" id="aboutme"></h4>
+            
           </div>
-          <div class="perfil-usuario-footer">
-              <ul class="lista-datos">
-                  <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
-                  <li><i class="icono fas fa-calendar-alt"></i>Ciclo: <span id="profile-cycle"></span></li>
-                  <li><i class="icono fas fa-quote-left"></i>Frase: <span id="profile-phrase"></span></li>
-                  <li><i class="icono fas fa-id-card"></i>Codigo U: <span id="profile-id"></span></li>
-                  <li><i class="icono fas fa-birthday-cake"></i>Fecha de nacimiento: <span id="profile-birthdate"></span></li>
-              </ul>
-          </div>
+          <div class="perfil-column-right">
+            <ul class="lista-datos">
+              <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
+              <li><i class="icono fas fa-calendar-alt"></i>Ciclo: <span id="profile-cycle"></span></li>
+              <li><i class="icono fas fa-quote-left"></i>Frase: <span id="profile-phrase"></span></li>
+              <li><i class="icono fas fa-id-card"></i>Codigo U: <span id="profile-id"></span></li>
+              <li><i class="icono fas fa-birthday-cake"></i>Fecha de nacimiento: <span id="profile-birthdate"></span></li>
+            </ul>
+            </div>
+        </div>
       </div>
       <div class="contenedor-metricas">
-          <h3>Métricas</h3>
-          <!-- Aquí puedes agregar las métricas -->
+        <h3>Publicaciones</h3>
+        <!-- Contenedor de posts -->
+        <div id="post-container">
+          <div class="post-container">
+            <div class="post-left">
+              <div class="post-votes">
+                <span id="votes-count"></span>
+                <div><i class="bi bi-box2-heart-fill"></i>Votos</div>
+              </div>
+              <div class="post-answers">
+                <span id="answers-count">0</span>
+                <div><i class="bi bi-chat-left-text"></i>Respuestas</div>
+              </div>
+              <div class="post-views">
+                <span id="views-count">0</span>
+                <div><i class="bi bi-eye-fill"></i>Vistas</div>
+              </div>
+            </div>
+            <div class="post-right">
+              <div class="post-header">
+                <a href="#" class="post-title">Título no disponible</a>
+              </div>
+              <div class="post-meta">
+                <span class="post-author"><a href="#">por Autor no disponible</a></span> |
+                <span class="post-date">Fecha no disponible</span>
+              </div>
+              <div class="post-tags">
+                <!-- Aquí se insertarán las etiquetas -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
-  
+    </div>
   </section>
 </main>
+
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

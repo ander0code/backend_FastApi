@@ -19,15 +19,16 @@ body {
 
 #perfil-usuario {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column; /* Asegura que los contenedores se apilen verticalmente */
+    justify-content: flex-start;
+    align-items: center;
     gap: 20px;
     max-width: 1200px;
     margin: 20px auto;
 }
 
 .contenedor-perfil, .contenedor-metricas {
-    flex: 1;
+    width: 100%; /* Asegura que los contenedores ocupen todo el ancho disponible */
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: #fff;
     border-radius: 15px;
@@ -52,7 +53,7 @@ body {
 
 .perfil-usuario-portada {
     display: block;
-    width: 100%;
+    width: auto; /* Cambiado de 100% a auto */
     height: 150px;
     border-radius: 20px 20px 0 0;
 }
@@ -67,14 +68,15 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
-    bottom: -75px;
-    left: calc(50% - 75px);
+    bottom: 0px;
+    left: 200px; /* Ajustado a 20px para que se alinee a la izquierda */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .perfil-usuario-avatar img {
     width: 100%;
     border-radius: 50%;
+    margin-top: 0px;
 }
 
 .perfil-usuario-avatar:hover {
@@ -83,8 +85,23 @@ body {
 }
 
 .perfil-usuario-body {
-    text-align: center;
-    margin-top: 100px;
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos al principio horizontalmente */
+    align-items: flex-start; /* Alinea los elementos al principio verticalmente */
+    margin-top: 0; /* Elimina cualquier margen superior */
+    width: 100%;
+}
+
+.perfil-column-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.perfil-column-right {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+    margin-top: -160px; /* Elimina cualquier margen superior */
 }
 
 .profile-name {
@@ -112,7 +129,8 @@ body {
 }
 
 .lista-datos {
-    width: 100%;
+    margin-top: 0; /* Elimina cualquier margen superior */
+    padding-top: 0; /* Elimina cualquier relleno superior */
     list-style: none;
 }
 
@@ -121,6 +139,7 @@ body {
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 0; /* Elimina cualquier margen superior */
 }
 
 .lista-datos li:hover {
@@ -135,6 +154,62 @@ body {
     flex: 0 0 auto;
 }
 
+/* Estilos para las publicaciones normales */
+.post-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.post-votes, .post-answers, .post-views {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-right {
+    flex: 1;
+}
+
+.post-title {
+    font-size: 1.25em;
+    margin-bottom: 5px;
+}
+
+.post-meta {
+    font-size: 0.875em;
+    color: #777;
+}
+
+.post-tags {
+    margin-top: 10px;
+}
+
+.post-tags span {
+    background-color: #007bff;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
 /* Adaptación a dispositivos */
 @media (max-width: 750px) {
     #perfil-usuario {
@@ -145,43 +220,32 @@ body {
     .contenedor-perfil, .contenedor-metricas {
         width: 100%;
     }
+
+    .perfil-usuario-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .perfil-column-left, .perfil-column-right {
+        width: 100%;
+        padding: 0;
+    }
+
+    .post-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-left {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
 
 /* Transiciones y animaciones */
 .perfil-usuario-avatar img,
 .lista-datos li,
-.perfil-usuario-footer {
-    transition: all 0.3s ease-in-out;
-}
-
-.perfil-usuario-avatar img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.lista-datos li:hover {
-    background-color: #f0f0f0;
-    transform: translateX(10px);
-}
-
-/* Keyframes para las animaciones */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.perfil-usuario-body {
-    opacity: 0;
-    animation: fadeInUp 1s forwards;
-}
-
-.perfil-usuario-footer {
-    opacity: 0;
-    animation: fadeInUp 1s forwards 0.5s;
-}
+.perfil-usuario-footer
