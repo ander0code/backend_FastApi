@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchProfesores(carreraId) {
-    const url = `http://127.0.0.1:8000/get_profesores/${carreraId}%7D`;
+    const url = `http://127.0.0.1:8000/get_profesores/${carreraId}}`;
 
     console.log(`Fetching profesores from URL: ${url}`);
 
@@ -89,7 +89,7 @@ function fetchProfesores(carreraId) {
         .then(profesores => {
             console.log('Profesores recibidos:', profesores);
             displayProfesores(profesores);
-            addSearchFunctionality(profesores); // Agregar funcionalidad de búsqueda aquí
+            addSearchFunctionality(profesores);
         })
         .catch(error => {
             console.error('Error al obtener los profesores:', error);
@@ -111,20 +111,25 @@ function displayProfesores(profesores) {
     profesores.forEach(profesor => {
         const profesorCard = document.createElement('div');
         profesorCard.classList.add('profesor');
+        
+        const calidadTotal = profesor.datos_ex[0]?.calidad_total || 'N/A';
+        const numeroTotal = profesor.datos_ex[0]?.numero_total || 'N/A';
+        const recomendacionPorcen = profesor.datos_ex[0]?.recomendacion_porcen || 'N/A';
+        const dificultadTotal = profesor.datos_ex[0]?.dificultad_total || 'N/A';
+
         profesorCard.innerHTML = `
             <div class="calidad-container">
                 <div class="calidad-texto">CALIDAD</div>
-                <div class="calidad">${profesor.calidad}</div>
-                <div class="calificaciones">${profesor.calificaciones || 'N/A'} CALIFICACIONES</div>
+                <div class="calidad">${calidadTotal}</div>
+                <div class="calificaciones">${numeroTotal} CALIFICACIONES</div>
             </div>
             <div class="info">
-                <h2 class="nombre-profesor"><a href="/autenticacion/infdoc">${profesor.nombre_profesor}</a></h2>
+                <h2 class="nombre-profesor"><a href="/autenticacion/infdoc">${profesor.nombre_Profesor}</a></h2>
                 <p>${profesor.id_carrera === 1 ? 'Psicología' : 'Derecho'}</p>
-                <p><strong>${profesor.porcentaje_tomara_de_nuevo}%</strong> tomará de nuevo | <strong>${profesor.nivel_dificultad}</strong> nivel de dificultad</p>
+                <p><strong>${recomendacionPorcen}%</strong> tomará de nuevo | <strong>${dificultadTotal}</strong> nivel de dificultad</p>
             </div>
         `;
 
-        
         profesoresList.appendChild(profesorCard);
     });
 }
@@ -135,7 +140,7 @@ function addSearchFunctionality(profesores) {
     searchInput.addEventListener('input', function() {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredProfesores = profesores.filter(profesor => 
-            profesor.nombre_profesor.toLowerCase().includes(searchTerm)
+            profesor.nombre_Profesor.toLowerCase().includes(searchTerm)
         );
         displayProfesores(filteredProfesores);
     });
