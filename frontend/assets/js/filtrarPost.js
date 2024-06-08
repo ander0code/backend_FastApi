@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si la selección es "General", se usa el endpoint específico para posts generales
             url = `http://127.0.0.1:8000/posts_general`;
         } else {
-            url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
+            url = `http://127.0.0.1:8000/postsFilter/${selectedCarrera}`;
             if (selectedCiclo) {
                 url += `/${selectedCiclo}`;
                 if (selectedCurso) {
