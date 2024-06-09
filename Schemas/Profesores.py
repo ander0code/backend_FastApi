@@ -29,3 +29,16 @@ class etiquetaprofeBaseV2(BaseModel):
     id_carrera :int
     datos_ex : List[Optional[CuestionarioBase]] = None
     
+# insert Calificacion_profesores
+class CalificacionBaseInsert(BaseModel):
+    ciclo : int
+    nameCurso : str
+    calidad : int
+    dificultad : int
+    recomendacion : bool
+    etiquetas : List
+    resena : str 
+    
+class CalifiResponse(BaseModel):
+    message: str
+    status : str
