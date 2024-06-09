@@ -1,6 +1,7 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import func
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import Integer
 from models import Model_DB
 from Schemas import Profesores
@@ -143,6 +144,38 @@ def get_profes(id_user: int, db: Session = Depends(get_db)) -> Any:
     response = list(profesores_dict.values())
     return response
 
+
+@Profe.post("/Insert_Calificacion/{id_user_std}/{id_user_pro}", response_model=None)
+async def create_cali(id_user_std : int,id_user_pro : int,califi: Profesores.CalificacionBaseInsert , db: Session = Depends(get_db)) -> Any:
+    try:
+        
+        nuevo_cali = Model_DB.Calificacion(
+                            id_rol_STD = id_user_std,
+                            id_rol_PRO = id_user_pro,
+                            ciclo =  califi.ciclo,
+                            nombreCurso = califi.nameCurso,
+                            calidad = califi.calidad,
+                            dificultad = califi.dificultad,
+                            etiquetas  = califi.etiquetas,
+                            recomendacion  = califi.recomendacion,
+                            texto = califi.resena
+                            )
+        db.add(nuevo_cali)
+        db.commit()
+        db.refresh(nuevo_cali)
+        
+        response = Profesores.CalifiResponse(
+                message="Comentario creado exitosamente",
+                status="success"
+            )
+        return response
+
+    except SQLAlchemyError as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Error en la base de datos: " + str(e))
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Error interno del servidor: " + str(e))
 
 
 
