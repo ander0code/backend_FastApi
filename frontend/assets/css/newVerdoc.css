@@ -64,7 +64,7 @@
 h1, h2 {
     color: #0a58ca;
     margin: 0 0 8px 0;
-    font-size: 1.3em;
+    font-size: 2.5em;
     opacity: 0; /* Empezar con una opacidad de 0 para que se desvanezcan en */
     transform: translateX(-20px); /* Desplazarlos hacia la izquierda */
     animation: fadeInSlide 1s ease forwards; /* Usar una animación llamada fadeInSlide que dura 1 segundo */
@@ -116,7 +116,7 @@ h1, h2 {
 }
 
 #profesores-list {
-    height: calc(100% - 100px); /* Ajusta según el tamaño del header */
+    height: calc(97% - 100px); /* Ajusta según el tamaño del header */
     overflow-y: auto;
     padding-top: 10px;
 }
