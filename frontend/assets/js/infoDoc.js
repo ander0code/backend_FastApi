@@ -42,16 +42,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const porcentajeElement = document.querySelector('.porcentaje-dificultad .porcentaje strong');
         const dificultadElement = document.querySelector('.porcentaje-dificultad .dificultad strong');
         const numCalificacionesElement = document.getElementById('num-calificaciones');
-
+        const calificarBtn = document.querySelector('.calificar-btn');
+    
         if (profesor && profesor.datos_ex && profesor.datos_ex.length > 0) {
             const datosEx = profesor.datos_ex[0];
-
+    
             promedioContainer.textContent = datosEx.calidad_total.toFixed(1);
             nombreElement.textContent = profesor.nombre_Profesor;
             facultadElement.textContent = profesor.id_carrera === 1 ? 'Psicología' : 'Derecho';
             porcentajeElement.textContent = `${datosEx.recomendacion_porcen}%`;
             dificultadElement.textContent = datosEx.dificultad_total.toFixed(1);
             numCalificacionesElement.textContent = `Basado en ${datosEx.numero_total} calificaciones`;
+    
+            // Update the href attribute of the calificar button
+            calificarBtn.closest('a').href = `/autenticacion/califDoc?id=${profesor.id}`;
         }
     }
 

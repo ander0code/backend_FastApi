@@ -196,16 +196,14 @@ function displayProfesores(profesores) {
 }
 
 function getCalidadBackgroundColor(calidad) {
-    if (calidad >= 0 && calidad <= 0.9) {
+    if (calidad >= 1 && calidad <= 1.9) {
         return '#FF0000';
-    } else if (calidad >= 1 && calidad <= 1.9) {
-        return '#FF5100';
     } else if (calidad >= 2 && calidad <= 2.9) {
-        return '#FFB600';
+        return '#FF5500';
     } else if (calidad === 3) {
         return '#FFF300';
     } else if (calidad >= 3.1 && calidad <= 3.9) {
-        return '#D4FF00';
+        return '#B2FF00';
     } else if (calidad >= 4 && calidad <= 5) {
         return '#02B207';
     } else {
