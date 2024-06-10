@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy.sql import func
+from sqlalchemy.sql import func,desc
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import Integer
 from models import Model_DB
@@ -112,7 +112,7 @@ def get_profes(id_user: int, db: Session = Depends(get_db)) -> Any:
         Model_DB.Calificacion.id_rol_PRO == Model_DB.EtiquetaProfesores.id      
     ).filter(
         Model_DB.EtiquetaProfesores.id == id_user 
-    ).all()
+    ).order_by(desc(Model_DB.Calificacion.id)).all()
     
     if not resultados:
         raise HTTPException(status_code=404, detail="Buscando profesores por carrera: no existe")
