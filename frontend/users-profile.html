@@ -161,9 +161,9 @@
         </div>
         <div class="perfil-usuario-body">
           <div class="perfil-column-left">
-            <h2 class="profile-name" id="profile-name"></h2>
+            <h2 class="profile-name" id="profile-name">Edward Miguel Pitman Medina</h2>
             <h3 class="titulo" id="profile-name2"></h3>
-            <h4 class="acercaDemi" id="aboutme"></h4>
+            <h4 class="acercaDemi" id="aboutme">mi genero musical favorito es taylor swift</h4>
             <div class="counters">
               <div>Likes: <span id="like-count">0</span></div>
               <div>Votos: <span id="vote-count">0</span></div>
@@ -171,16 +171,16 @@
           </div>
           <div class="perfil-column-right">
             <ul class="lista-datos">
-              <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career"></span></li>
-              <li><i class="icono fas fa-calendar-alt"></i>Ciclo: <span id="profile-cycle"></span></li>
-              <li><i class="icono fas fa-quote-left"></i>Frase: <span id="profile-phrase"></span></li>
-              <li><i class="icono fas fa-id-card"></i>Codigo U: <span id="profile-id"></span></li>
-              <li><i class="icono fas fa-birthday-cake"></i>Fecha de nacimiento: <span id="profile-birthdate"></span></li>
+              <li><i class="icono fas fa-book"></i> Carrera: <span id="profile-career">Derecho</span></li>
+              <li><i class="icono fas fa-calendar-alt"></i>Ciclo: <span id="profile-cycle">N/A</span></li>
+              <li><i class="icono fas fa-quote-left"></i>Frase: <span id="profile-phrase">resolver el problema del triangulos de la bermudas</span></li>
+              <li><i class="icono fas fa-id-card"></i>Codigo U: <span id="profile-id">2256949</span></li>
+              <li><i class="icono fas fa-birthday-cake"></i>Fecha de nacimiento: <span id="profile-birthdate">N/A</span></li>
             </ul>
           </div>
         </div>
         <button class="profile-btn like-btn"><i class="bi bi-heart"></i></button>
-        <button class="profile-btn edit-btn"><i class="bi bi-pencil-square"></i></button>
+        <button class="profile-btn edit-btn" onclick="openEditModal()"><i class="bi bi-pencil-square"></i></button>
       </div>
       <div class="contenedor-metricas">
         <h3>Mis preguntas</h3>
@@ -190,6 +190,21 @@
       </div>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h2>Editar Perfil</h2>
+      <form id="editForm">
+        <label for="editPhrase">Frase:</label>
+        <input type="text" id="editPhrase" name="editPhrase">
+        <label for="editDescription">Descripción:</label>
+        <textarea id="editDescription" name="editDescription"></textarea>
+        <button type="button" onclick="saveChanges()">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
 </main>
 
 
@@ -222,6 +237,9 @@
   <!--================PRUEBAS==============================-->
   <script src="./assets/js/profile.js"></script>
   <script src="./assets/js/users-profile.js" ></script>
+
+  <!-- ventana -->
+  <script src="./assets/js/ventana.js"></script>
 </body>
 
 </html>
