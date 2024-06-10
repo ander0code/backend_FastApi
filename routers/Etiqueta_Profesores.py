@@ -149,7 +149,6 @@ def get_profes(id_user: int, db: Session = Depends(get_db)) -> Any:
         description="el id_user es del usuario logeado, y el id_user_pro es del profesor que estas calificando")
 async def create_cali(id_user_std : int,id_user_pro : int,califi: Profesores.CalificacionBaseInsert , db: Session = Depends(get_db)) -> Any:
     try: 
-        
         nuevo_cali = Model_DB.Calificacion(
                             id_rol_STD = id_user_std,
                             id_rol_PRO = id_user_pro,
