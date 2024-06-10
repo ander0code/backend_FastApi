@@ -176,62 +176,104 @@
     <section class="profesor-resumen">
         <div class="profesor-info">
             <div class="promedio-container">
-                <p class="promedio"><strong></strong>/5</p>
-                <p id="num-calificaciones"></p>
+                <div class="rating-container">
+                    <p class="promedio"><strong>5.0</strong><span>/5</span></p> 
+                    <p id="num-calificaciones">Basado en 2 calificaciones</p>
+                </div>
             </div>
-            <p class="nombre"><strong></strong></p>
-            <p class="facultad"></p>
+            <p class="nombre"><strong>BENITES CASTILLO SANTIAGO MOISES</strong></p>
+            <p class="facultad">Psicología</p>
             <div class="porcentaje-dificultad">
-                <p class="porcentaje"><strong></strong> tomaría de nuevo el curso</p>
-                <p class="dificultad"><strong></strong> nivel de dificultad</p>
-            </div>
+              <div class="porcentaje">
+                  <strong>100%</strong>
+                  <span>tomaría de nuevo</span>
+              </div>
+              <div class="dificultad">
+                  <strong>5</strong>
+                  <span>nivel de dificultad</span>
+              </div>
+          </div>          
             <a href=""><button class="calificar-btn">CALIFICAR</button></a>
         </div>
         <div class="clasificacion-etiquetas">
-            <div class="clasificacion">
-                <h2>CLASIFICACION</h2>
-                <table id="clasificacion-table">
-                    <tr>
-                        <td>EXCELENTE</td>
-                        <td><div class="bar" style="width: 100%;"></div><span class="count">7</span></td>
-                    </tr>
-                    <tr>
-                        <td>GENIAL</td>
-                        <td><div class="bar" style="width: 57%;"></div><span class="count">4</span></td>
-                    </tr>
-                    <tr>
-                        <td>BUENO</td>
-                        <td><div class="bar" style="width: 0%;"></div><span class="count">0</span></td>
-                    </tr>
-                    <tr>
-                        <td>OK</td>
-                        <td><div class="bar" style="width: 28%;"></div><span class="count">2</span></td>
-                    </tr>
-                    <tr>
-                        <td>PODRÍA MEJORAR</td>
-                        <td><div class="bar" style="width: 14%;"></div><span class="count">1</span></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="etiquetas">
+          <div class="clasificacion-container">
+            <h2>CLASIFICACION</h2>
+            <table id="clasificacion-table">
+                <tr>
+                    <td>EXCELENTE <span class="rating">(5)</span>
+                        <div class="bar" style="width: 100%;"></div>
+                        <span class="count">2</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GENIAL <span class="rating">(4)</span>
+                        <div class="bar" style="width: 0%;"></div>
+                        <span class="count">0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>BUENO <span class="rating">(3)</span>
+                        <div class="bar" style="width: 0%;"></div>
+                        <span class="count">0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>OK <span class="rating">(2)</span>
+                        <div class="bar" style="width: 0%;"></div>
+                        <span class="count">0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PODRÍA MEJORAR <span class="rating">(1)</span>
+                        <div class="bar" style="width: 0%;"></div>
+                        <span class="count">0</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+              
+            <div class="etiquetas-container">
                 <h2>ETIQUETAS</h2>
-                <div id="etiquetas-container" class="etiquetas-container">
-                    <!-- Las etiquetas se llenarán dinámicamente -->
+                <div id="etiquetas" class="etiquetas">
+                    <span class="etiqueta">La Participación Importa (2)</span>
+                    <span class="etiqueta">La Puntualidad Importa (2)</span>
+                    <span class="etiqueta">Proyectos Grupales (2)</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="calificaciones-estudiantes">
-        <h1>Calificación de estudiantes</h1>
-        <!-- Las calificaciones de los estudiantes se llenarán dinámicamente -->
-    </section>
+    <div class="calificaciones-estudiantes">
+      <h2>Clasificación Estudiantes</h2>
+      <div class="calificacion">
+          <div class="calidad-dificultad">
+              <div class="calidad">
+                  <span class="label">CALIDAD</span>
+                  <span class="valor">5</span>
+              </div>
+              <div class="dificultad">
+                  <span class="label">DIFICULTAD</span>
+                  <span class="valor">3</span>
+              </div>
+          </div>
+          <div class="info-container">
+              <div class="info">
+                  <div class="tomaria-denuevo">Tomaría de nuevo: <strong>SI</strong></div>
+                  <div class="texto">
+                      Excelente profe me ayudó muchísimo a aprender mecatrónica avanzada lunar físico-meta-cuántica-sub nivel categoría apocalipsis.
+                  </div>
+              </div>
+              <div class="etiquetas-container">
+                  <div class="etiqueta">La Participación Importa</div>
+                  <div class="etiqueta">La Puntualidad Importa</div>
+                  <div class="etiqueta">Proyectos Grupales</div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
 </div>
 </main>
-
-  
-
-
 
 
 <!-- End #main -->
