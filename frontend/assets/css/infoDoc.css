@@ -154,12 +154,21 @@ td {
   margin-bottom: 10px;
 }
 
-.calidad, .dificultad {
+.calidad {
   background-color: #fff;
   border: 2px solid #ddd;
   padding: 10px;
   border-radius: 5px;
   width: 100px;
+  text-align: center;
+}
+
+.dificultad {
+  background-color: #fff;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  width: 50px;
   text-align: center;
 }
 
