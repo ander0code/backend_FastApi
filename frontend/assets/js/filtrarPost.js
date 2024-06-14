@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si la selección es "General", se usa el endpoint específico para posts generales
             url = `http://127.0.0.1:8000/posts_general`;
         } else {
-            url = `http://127.0.0.1:8000/posts/${selectedCarrera}`;
+            url = `http://127.0.0.1:8000/postsFilter/${selectedCarrera}`;
             if (selectedCiclo) {
                 url += `/${selectedCiclo}`;
                 if (selectedCurso) {
@@ -250,14 +250,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 newPost.innerHTML = `
                     <div class="post-left">
-                        <div class="post-votes"><i class="fa-solid fa-check-to-slot"></i>${votos.cantidad || 0} Votos</div>
-                        <div class="post-replies"><i class="fa-solid fa-square-check"></i>${post.recuento_comentarios || 0} Respuestas</div>
-                        <div class="post-views"><i class="fa-solid fa-eye"></i>${post.conteo_visitas || 0} Vistas</div>
+                        <div class="post-votes"><i class="bi bi-box2-heart-fill"></i> ${votos.cantidad || 0} Votos</div>
+                        <div class="post-replies"><i class="bi bi-chat-left-text"></i> ${post.recuento_comentarios || 0} Respuestas</div>
+                        <div class="post-views"><i class="bi bi-eye-fill"></i> ${post.conteo_visitas || 0} Vistas</div>
                     </div>
                     <div class="post-right">
                         <div class="post-header">
-                            <div class="post-title">${post.titulo || 'Título no disponible'}</div>
-                            <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}</div>
+                            <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
+                            <div class="post-meta">por <span class="post-author"><a href="/autenticacion/perfils" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion || 'Fecha no disponible'}</div>
                         </div>
                         <div class="post-tags"></div>
                         <div class="post-footer">
@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
+                
                 const tagsContainer = newPost.querySelector('.post-tags');
                 tagsContainer.innerHTML = '';
 

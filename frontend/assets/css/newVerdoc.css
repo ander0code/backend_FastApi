@@ -1,121 +1,463 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
 .sectionDashboardDoc {
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow-y: auto; /* Agrega desbordamiento */
 }
 
 .container {
     display: flex;
     flex-direction: row;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1650px;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
+    overflow-y: auto; /* Agrega desbordamiento */
 }
 
-.docentes, .top-docentes {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
+.docentes:hover, .top-docentes:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .docentes {
-    flex: 2;
-    margin-right: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+    flex: 3;
+    padding: 15px 20px;
+    margin-right: 15px;
+    height: 1100px; /* Ajusta la altura según sea necesario */
 }
 
 .top-docentes {
-    flex: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+    flex: 1; /* Cambia este valor según tu preferencia */
+    padding: 15px 15px;
+}
+
+.top-profesor {
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los elementos secundarios */
+    background-color: #fffcfc;
+    transition: transform 0.3s ease;
+    max-width: 97%; /* Cambia este valor según tu preferencia */
+    margin: 0 auto; /* Centra horizontalmente */
+    margin-bottom: 12px;
 }
 
 h1, h2 {
-    color: #333;
-    margin: 0 0 20px 0;
+    color: #0a58ca;
+    margin: 0 0 8px 0;
+    font-size: 2.5em;
+    opacity: 0; /* Empezar con una opacidad de 0 para que se desvanezcan en */
+    transform: translateX(-20px); /* Desplazarlos hacia la izquierda */
+    animation: fadeInSlide 1s ease forwards; /* Usar una animación llamada fadeInSlide que dura 1 segundo */
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0; /* Empezar con una opacidad de 0 */
+        transform: translateX(-20px); /* Empezar desplazados hacia la izquierda */
+    }
+    to {
+        opacity: 1; /* Terminar con una opacidad de 1 */
+        transform: translateX(0); /* Terminar sin desplazamiento */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Empezar con una opacidad de 0 */
+    }
+    to {
+        opacity: 1; /* Terminar con una opacidad de 1 */
+    }
 }
 
 .buscar {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 8px;
+    margin-bottom: 13px;
     border: 1px solid #ccc;
-    border-radius: 20px;
-    font-size: 1.2em;
+    border-radius: 10px;
+    font-size: 0.8em;
+    transition: border 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Transición para todas las propiedades */
 }
 
-.profesor, .top-profesor {
-    border-radius: 10px;
+.buscar:focus {
+    border-color: #0a58ca;
+    background-color: #f5f5f5; /* Cambio de color de fondo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aumento de la sombra */
+}
+
+#docentes-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+#profesores-list {
+    height: calc(97% - 100px); /* Ajusta según el tamaño del header */
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.profesor {
+    border-radius: 8px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: 6px;
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 0 auto 12px; /* Auto en los lados y 12px en la parte inferior */
     background-color: #fffcfc;
+    transition: transform 0.3s ease;
+    max-width: 93%; /* Cambia este valor según tu preferencia */
 }
 
-.calidad-container {
-    text-align: center;
-    margin-right: 20px;
+.profesor:hover, .top-profesor:hover {
+    transform: scale(
+        1.05);
+    }
+    
+    .calidad-container {
+        text-align: center;
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+    
+    .calidad-texto {
+        font-weight: bold;
+        margin-bottom: 3px;
+        font-size: 14px;
+    }
+    
+    .calidad {
+        font-size: 2em;
+        font-weight: bold;
+        color: #fff;
+        padding: 30px 12px;
+        border-radius: 4px;
+        margin-bottom: 3px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .calidad-alta {
+        background-color: #4CAF50;
+    }
+    
+    .calidad-media {
+        background-color: #FFEB3B;
+        color: #333;
+    }
+    
+    .calidad-baja {
+        background-color: #F44336;
+    }
+    
+    .calificaciones {
+        font-size: 12px;
+        font-weight: bold;
+    }
+    
+    .info h2 a, .info p, .nombre-profesor-top {
+        margin: 0;
+        font-size: 24px;
+        color: #FF6600;
+        font-weight: bold;
+    }
+    
+    .info h2 a {
+        transition: color 0.3s ease;
+    }
+    
+    .info h2 a:hover {
+        color: #FF3300;
+    }
+    
+    .top-docentes h2 {
+        font-size: 1em;
+    }
+    
+    .info p {
+        color: #666;
+        margin: 4px 0;
+        font-size: 17px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+        .top-docentes {
+            margin-top: 20px;
+        }
+        .docentes {
+            width: 90%; /* Ancho relativo */
+            max-width: 1000px; /* Ancho máximo opcional */
+        }
+        
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+    
+        .buscar {
+            padding: 6px;
+            font-size: 0.7em;
+        }
+    
+        .calificaciones {
+            font-size: 11px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 12px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.9em;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+    
+        .buscar {
+            padding: 5px;
+            font-size: 0.6em;
+        }
+    
+        .calificaciones {
+            font-size: 10px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 11px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.9em;
+        }
+    
+        .profesor, .top-profesor {
+            padding: 5px;
+        }
+    
+        .calidad-texto, .calificaciones {
+            font-size: 10px;
+        }
+    
+        .calidad {
+            font-size: 0.9em;
+            padding: 5px 8px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+    
+        .buscar {
+            padding: 5px;
+            font-size: 0.6em;
+        }
+    
+        .profesor, .top-profesor {
+            padding: 5px;
+        }
+    
+        .calidad-texto, .calificaciones {
+            font-size: 9px;
+        }
+    
+        .calidad {
+            font-size: 0.8em;
+            padding: 5px 8px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 11px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.8em;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+    
+        .buscar {
+            padding: 5px;
+            font-size: 0.6em;
+        }
+    
+        .profesor, .top-profesor {
+            padding: 5px;
+        }
+    
+        .calidad-texto, .calificaciones {
+            font-size: 9px;
+        }
+    
+        .calidad {
+            font-size: 0.8em;
+            padding: 5px 8px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 11px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.8em;
+        }
+    }
+    #profesores-list {
+        padding-top: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Agrega desbordamiento */
+        }
+    
+        .buscar {
+            padding: 6px;
+            font-size: 0.7em;
+        }
+    
+        .calificaciones {
+            font-size: 11px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 12px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.9em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 8px;
+            overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+        }
+    
+        .buscar {
+            padding: 6px;
+            font-size: 0.7em;
+        }
+    
+        .calificaciones {
+            font-size: 11px;
+        }
+    
+        .info h2 a, .info p, .nombre-profesor-top {
+            font-size: 12px;
+        }
+    
+        .top-docentes h2 {
+            font-size: 0.9em;
+        }
+    
+        #profesores-list {
+            overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+            max-height: 70vh; /* Establece una altura máxima */
+            padding-top: 10px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        #profesores-list {
+            overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+            max-height: 70vh; /* Establece una altura máxima */
+            padding-top: 10px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        #profesores-list {
+            overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+            max-height: 70vh; /* Establece una altura máxima */
+            padding-top: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        #profesores-list {
+            overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+            max-height: 70vh; /* Establece una altura máxima */
+            padding-top: 10px;
+        }
+    }
+    
+    @media (max-width: 800px) {
+    #profesores-list {
+        overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+        max-height: 70vh; /* Establece una altura máxima */
+        padding-top: 10px;
+    }
 }
 
-.calidad-texto {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 20px;
+@media (max-width: 900px) {
+    #profesores-list {
+        overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+        max-height: 70vh; /* Establece una altura máxima */
+        padding-top: 10px;
+    }
 }
 
-.calidad {
-    font-size: 2em;
-    font-weight: bold;
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 4px;
-    margin-bottom: 5px;
+@media (max-width: 1000px) {
+    #profesores-list {
+        overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+        max-height: 70vh; /* Establece una altura máxima */
+        padding-top: 10px;
+    }
 }
 
-.calidad-alta {
-    background-color: #4CAF50;
+@media (max-width: 1200px) {
+    #profesores-list {
+        overflow-y: auto; /* Asegura que haya un desplazamiento vertical */
+        max-height: 70vh; /* Establece una altura máxima */
+        padding-top: 10px;
+    }
 }
 
-.calidad-media {
-    background-color: #FFEB3B;
-    color: #333;
-}
-
-.calidad-baja {
-    background-color: #F44336;
-}
-
-.calificaciones {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.info h2 a, .info p, .nombre-profesor-top {
-    margin: 0;
-    font-size: 22px;
-    color: #FF6600;
-    font-weight: bold;
-}
-
-.top-docentes h2 {
-    font-size: 1.8em;
-}
-
-.info p {
-    color: #666;
-    margin: 5px 0;
-    font-size: 18px;
-}
+    

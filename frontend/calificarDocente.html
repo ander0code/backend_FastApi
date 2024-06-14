@@ -172,163 +172,132 @@
 <!-- End Sidebar-->
 
 <main id="main" class="main">
-  <div class="container mt-5">
-    <h1 class="text-center mb-4">Calificar Docente</h1>
-    <form>
-        <div class="mb-4">
-            <label for="claseMateria" class="form-label">Clase/Materia</label>
-            <input type="text" class="form-control" id="claseMateria" placeholder="Clase/Materia">
-        </div>
-        <div class="mb-4">
-          <label class="form-label d-block">Claridad</label>
-          <div class="rating">
-              <input type="radio" id="claridad5" name="claridad" value="5" />
-              <label title="Excelente" for="claridad5">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="4" name="claridad" id="claridad4" type="radio" />
-              <label title="Muy bueno" for="claridad4">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="3" name="claridad" id="claridad3" type="radio" />
-              <label title="Bueno" for="claridad3">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="2" name="claridad" id="claridad2" type="radio" />
-              <label title="Regular" for="claridad2">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="1" name="claridad" id="claridad1" type="radio" />
-              <label title="Malo" for="claridad1">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-          </div>
+  <div class="container">
+    <h1>Calificación: <p class="NombreProfeCalificar"></p></h1>
+    <form class="calificar-form" id="calificar-form">
+      <div class="form-group">
+        <label for="curso-materia">Curso/Materia que enseñó</label>
+        <input type="text" id="curso-materia" name="curso-materia" required>
       </div>
+      <div class="form-group">
+        <label for="calidad">Califica a tu profesor</label>
+        <div class="estrellas" id="calidad" data-tipo="calidad" required>
+          <input type="radio" name="calidad" id="calidad-5" value="5" required>
+          <label for="calidad-5" data-descripcion="Excelente">&#9733;</label>
+          <input type="radio" name="calidad" id="calidad-4" value="4">
+          <label for="calidad-4" data-descripcion="Genial">&#9733;</label>
+          <input type="radio" name="calidad" id="calidad-3" value="3">
+          <label for="calidad-3" data-descripcion="Bueno">&#9733;</label>
+          <input type="radio" name="calidad" id="calidad-2" value="2">
+          <label for="calidad-2" data-descripcion="OK">&#9733;</label>
+          <input type="radio" name="calidad" id="calidad-1" value="1">
+          <label for="calidad-1" data-descripcion="Podría mejorar">&#9733;</label>
+        </div>
+        <p class="descripcion" id="descripcion-calidad"></p>
+      </div>
+      <div class="form-group">
+        <label for="dificultad">¿Qué tan difícil fue cursar con este profesor?</label>
+        <div class="estrellas" id="dificultad" data-tipo="dificultad" required>
+          <input type="radio" name="dificultad" id="dificultad-5" value="5" required>
+          <label for="dificultad-5" data-descripcion="Muy difícil">&#9733;</label>
+          <input type="radio" name="dificultad" id="dificultad-4" value="4">
+          <label for="dificultad-4" data-descripcion="Difícil">&#9733;</label>
+          <input type="radio" name="dificultad" id="dificultad-3" value="3">
+          <label for="dificultad-3" data-descripcion="Lo normal">&#9733;</label>
+          <input type="radio" name="dificultad" id="dificultad-2" value="2">
+          <label for="dificultad-2" data-descripcion="Fácil">&#9733;</label>
+          <input type="radio" name="dificultad" id="dificultad-1" value="1">
+          <label for="dificultad-1" data-descripcion="Muy fácil">&#9733;</label>
+        </div>
+        <p class="descripcion" id="descripcion-dificultad"></p>
+      </div>
+      <div class="form-group">
+        <label for="tomaria-denuevo">¿Volverías a tomar este curso?</label>
+        <div class="si-no" id="tomaria-denuevo" required>
+          <input type="radio" name="tomaria-denuevo" id="si" value="SI" required>
+          <label for="si">SI</label>
+          <input type="radio" name="tomaria-denuevo" id="no" value="NO">
+          <label for="no">NO</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="etiquetas">Seleccione hasta 3 etiquetas:</label>
+        <div class="etiquetas" id="etiquetas" aria-required="true">
+          <input type="checkbox" id="etiqueta-1" value="Exigente al Calificar"><label for="etiqueta-1">Exigente al Calificar</label>
+          <input type="checkbox" id="etiqueta-2" value="Experto en Herramientas Digitales"><label for="etiqueta-2">Experto en Herramientas Digitales</label>
+          <input type="checkbox" id="etiqueta-3" value="Gracioso"><label for="etiqueta-3">Gracioso</label>
+          <input type="checkbox" id="etiqueta-4" value="Da Buena Retroalimentación"><label for="etiqueta-4">Da Buena Retroalimentación</label>
+          <input type="checkbox" id="etiqueta-5" value="Tarea pesada"><label for="etiqueta-5">Tarea pesada</label>
+          <input type="checkbox" id="etiqueta-6" value="Prepárate para Leer"><label for="etiqueta-6">Prepárate para Leer</label>
+          <input type="checkbox" id="etiqueta-7" value="Hace Exámenes Sorpresa"><label for="etiqueta-7">Hace Exámenes Sorpresa</label>
+          <input type="checkbox" id="etiqueta-8" value="La Participación Importa"><label for="etiqueta-8">La Participación Importa</label>
+          <input type="checkbox" id="etiqueta-9" value="La Puntualidad Importa"><label for="etiqueta-9">La Puntualidad Importa</label>
+          <input type="checkbox" id="etiqueta-10" value="Respetado por los Estudiantes"><label for="etiqueta-10">Respetado por los Estudiantes</label>
+          <input type="checkbox" id="etiqueta-11" value="Inspiracional"><label for="etiqueta-11">Inspiracional</label>
+          <input type="checkbox" id="etiqueta-12" value="Las Clases son Largas"><label for="etiqueta-12">Las Clases son Largas</label>
+          <input type="checkbox" id="etiqueta-13" value="Da Nota Extra"><label for="etiqueta-13">Da Nota Extra</label>
+          <input type="checkbox" id="etiqueta-14" value="Pocos Exámenes"><label for="etiqueta-14">Pocos Exámenes</label>
+          <input type="checkbox" id="etiqueta-15" value="Muchos Exámenes"><label for="etiqueta-15">Muchos Exámenes</label>
+          <input type="checkbox" id="etiqueta-16" value="Aspectos de Calificación Claros"><label for="etiqueta-16">Aspectos de Calificación Claros</label>
+          <input type="checkbox" id="etiqueta-17" value="Brinda Apoyo"><label for="etiqueta-17">Brinda Apoyo</label>
+          <input type="checkbox" id="etiqueta-18" value="Deja Trabajos Largos"><label for="etiqueta-18">Deja Trabajos Largos</label>
+          <input type="checkbox" id="etiqueta-19" value="Clases Excelentes"><label for="etiqueta-19">Clases Excelentes</label>
+          <input type="checkbox" id="etiqueta-20" value="Los Exámenes son Difíciles"><label for="etiqueta-20">Los Exámenes son Difíciles</label>
+          <input type="checkbox" id="etiqueta-21" value="Proyectos Grupales"><label for="etiqueta-21">Proyectos Grupales</label>
+        </div>
+      </div>
+      <div class="form-group pautas">
+        <label>Pautas:</label>
+        <ul>
+          <li>Su calificación podría eliminarse si utiliza malas palabras o términos despectivos.</li>
+          <li>El comentario debe ser constructivo en favor de mejorar la calidad educativa.</li>
+          <li>¡No olvides revisar tu comentario antes de enviar!</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="comentario">Escribe una reseña o comentario:</label>
+        <textarea id="comentario" name="comentario" rows="5" required></textarea>
+      </div>
+      <div class="form-group">
+        <p>Al hacer click en “Enviar” reconozco que los datos pasan a propiedad de Forua y no serán subidos hasta pasar el control de calidad para mejorar el ambiente de los usuarios.</p>
+        <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
 
-      <div class="mb-4">
-          <label class="form-label d-block">Ayuda</label>
-          <div class="rating">
-              <input type="radio" id="ayuda5" name="ayuda" value="5" />
-              <label title="Excelente" for="ayuda5">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="4" name="ayuda" id="ayuda4" type="radio" />
-              <label title="Muy bueno" for="ayuda4">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="3" name="ayuda" id="ayuda3" type="radio" />
-              <label title="Bueno" for="ayuda3">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="2" name="ayuda" id="ayuda2" type="radio" />
-              <label title="Regular" for="ayuda2">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="1" name="ayuda" id="ayuda1" type="radio" />
-              <label title="Malo" for="ayuda1">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-          </div>
       </div>
-
-      <div class="mb-4">
-          <label class="form-label d-block">Facilidad</label>
-          <div class="rating">
-              <input type="radio" id="facilidad5" name="facilidad" value="5" />
-              <label title="Excelente" for="facilidad5">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="4" name="facilidad" id="facilidad4" type="radio" />
-              <label title="Muy bueno" for="facilidad4">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="3" name="facilidad" id="facilidad3" type="radio" />
-              <label title="Bueno" for="facilidad3">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="2" name="facilidad" id="facilidad2" type="radio" />
-              <label title="Regular" for="facilidad2">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-              <input value="1" name="facilidad" id="facilidad1" type="radio" />
-              <label title="Malo" for="facilidad1">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path>
-                  </svg>
-              </label>
-          </div>
-      </div>
-        <div class="mb-4">
-            <label class="form-label d-block">¿Lo recomiendas?</label>
-            <div class="btn-group" role="group">
-                <input type="radio" class="btn-check" name="recomienda" id="recomiendaSi" autocomplete="off">
-                <label class="btn btn-outline-primary" for="recomiendaSi">Sí</label>
-                <input type="radio" class="btn-check" name="recomienda" id="recomiendaNo" autocomplete="off">
-                <label class="btn btn-outline-primary" for="recomiendaNo">No</label>
-            </div>
-        </div>
-        <div class="mb-4">
-            <label class="form-label">Selecciona hasta 3 Etiquetas que Mejor Describan a Este Profesor</label>
-            <div class="d-flex flex-wrap">
-                <span class="badge bg-secondary m-1">CALIFICA DURO</span>
-                <span class="badge bg-secondary m-1">BARCO</span>
-                <span class="badge bg-secondary m-1">MUY CÓMICO</span>
-                <span class="badge bg-secondary m-1">DA BUENA RETROALIMENTACIÓN</span>
-                <span class="badge bg-secondary m-1">MUCHAS TAREAS</span>
-                <span class="badge bg-secondary m-1">PREPÁRATE PARA LEER</span>
-                <span class="badge bg-secondary m-1">HACE EXÁMENES SORPRESA</span>
-                <span class="badge bg-secondary m-1">LA PARTICIPACIÓN IMPORTA</span>
-                <span class="badge bg-secondary m-1">ASISTENCIA OBLIGATORIA</span>
-                <span class="badge bg-secondary m-1">RESPETADO POR LOS ESTUDIANTES</span>
-                <span class="badge bg-secondary m-1">INSPIRACIONAL</span>
-                <span class="badge bg-secondary m-1">LAS CLASES SON LARGAS</span>
-                <span class="badge bg-secondary m-1">DA CRÉDITO EXTRA</span>
-                <span class="badge bg-secondary m-1">POCOS EXÁMENES</span>
-                <span class="badge bg-secondary m-1">MUCHOS EXÁMENES</span>
-                <span class="badge bg-secondary m-1">ASPECTOS DE CALIFICACIÓN CLAROS</span>
-                <span class="badge bg-secondary m-1">BRINDA APOYO</span>
-                <span class="badge bg-secondary m-1">DEJA TRABAJOS LARGOS</span>
-                <span class="badge bg-secondary m-1">CLASES EXCELENTES</span>
-                <span class="badge bg-secondary m-1">LOS EXÁMENES SON DIFÍCILES</span>
-                <span class="badge bg-secondary m-1">MUCHOS PROYECTOS GRUPALES</span>
-                <span class="badge bg-secondary m-1">TOMARÍA SU CLASE OTRA VEZ</span>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-</div>
+  </div>
 </main>
 
-  
+<div class="modal fade" id="confirmarEnvioModal" tabindex="-1" aria-labelledby="confirmarEnvioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmarEnvioLabel">Confirmar Envío</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de enviar esta calificación?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmarEnvio">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="alert alert-warning d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-etiquetas-max">
+  Solo puedes seleccionar como máximo 3 etiquetas
+</div>
+<div class="alert alert-warning d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-etiquetas-min">
+  Debes seleccionar al menos una etiqueta
+</div>
+<div class="alert alert-danger d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-envio-fallido">
+  Por favor completar todo el formulario
+</div>
+
+<div class="alert alert-info d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-envio-exitoso">
+  ¡Calificación enviada! 😎
+</div>
 
 
 
@@ -355,6 +324,8 @@
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/StarsShow.js"></script>
+  <script src="./assets/js/califDoc.js"></script>
 
 
   <!--================PRUEBAS=============================

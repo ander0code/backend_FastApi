@@ -172,81 +172,61 @@
 <!-- End Sidebar-->
 
 <main id="main" class="main">
-  <div class="pagetitleDoc">
-    <h1>Nombre del Docente</h1>
-    <h2>Facultad</h2>
-  </div><!-- End Page Title -->
-
-  <section class="sectionDashboardDoc">
-    <div class="col-lg-12 order-lg-1">
-      <div class="card infoDocente">
-        <div class="card-body">
-          <div class="info-container">
-            <div class="info-left">
-              <h2 class="card-title">CALIDAD GENERAL</h2>
-              <p class="quality-score">8.3</p>
+  <div class="container">
+    <section class="profesor-resumen">
+        <div class="profesor-info">
+            <div class="promedio-container">
+                <p class="promedio"><strong></strong>/5</p>
+                <p id="num-calificaciones"></p>
             </div>
-            <div class="info-middle">
-              <p><strong><i class="fas fa-thumbs-up"></i> Lo Recomiendan</strong></p>
-              <p class="recommendation">83%</p>
-              <p><strong><i class="fas fa-tachometer-alt"></i> Nivel de Dificultad</strong></p>
-              <p class="difficulty">2.5</p>
+            <p class="nombre"><strong></strong></p>
+            <p class="facultad"></p>
+            <div class="porcentaje-dificultad">
+                <p class="porcentaje"><strong></strong> tomaría de nuevo el curso</p>
+                <p class="dificultad"><strong></strong> nivel de dificultad</p>
             </div>
-            <div class="info-right">
-              <h2 class="card-title">Etiquetas para este Profesor</h2>
-              <p class="tituloParrafo">Descubre cómo otros estudiantes describen a este profesor.</p>
-              <div class="tags">
-                <div class="tag-container">
-                  <span class="tag">Muy Cómico (25)</span>
-                  <span class="tag">Respetado por los Estudiantes (4)</span>
-                  <span class="tag">Tomaría su Clase Otra Vez (12)</span>
-                  <span class="tag">Clases Excelentes (13)</span>
-                  <span class="tag">Aspectos de Calificación Claros (7)</span>
-                  <span class="tag">Brinda Apoyo (7)</span>
-                  <span class="tag">La Participación Importa (3)</span>
-                  <span class="tag">Califica Duro (4)</span>
-                  <span class="tag">Inspiracional (1)</span>
-                  <span class="tag">Asistencia Obligatoria (2)</span>
-                  <span class="tag">Da Buena Retroalimentación (5)</span>
+            <a href=""><button class="calificar-btn">CALIFICAR</button></a>
+        </div>
+        <div class="clasificacion-etiquetas">
+            <div class="clasificacion">
+                <h2>CLASIFICACION</h2>
+                <table id="clasificacion-table">
+                    <tr>
+                        <td>EXCELENTE</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                    </tr>
+                    <tr>
+                        <td>GENIAL</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                    </tr>
+                    <tr>
+                        <td>BUENO</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                    </tr>
+                    <tr>
+                        <td>OK</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                    </tr>
+                    <tr>
+                        <td>PODRÍA MEJORAR</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="etiquetas">
+                <h2>ETIQUETAS</h2>
+                <div id="etiquetas-container" class="etiquetas-container">
+                    <!-- Las etiquetas se llenarán dinámicamente -->
                 </div>
-              </div>
             </div>
-          </div>
-          <button class="calificarButton"><i class="fas fa-pen"></i> <a class="clasificarText" href="/autenticacion/califDoc">Calificar Docente</a></button>
         </div>
-      </div>
+    </section>
 
-      <div class="card calificacionesEstudiantes">
-        <div class="card-body">
-          <h2 class="card-title">Calificaciones de Estudiantes</h2>
-          <div class="calificacion">
-            <div class="calificacion-header">
-              <p><strong><i class="fas fa-calendar-alt"></i> Fecha:</strong> 10/Mar/2024</p>
-            </div>
-            <div class="calificacion-body">
-              <div class="calificacion-left">
-                <p><strong>Calidad General</strong></p>
-                <p class="quality-score">9.0</p>
-                <p><strong>Facilidad</strong></p>
-                <p class="quality-score">6.0</p>
-              </div>
-              <div class="calificacion-right">
-                <p><strong><i class="fas fa-tags"></i> Etiquetas:</strong> 
-                  <span class="tag">Muy Cómico</span>, <span class="tag">Da Buena Retroalimentación</span>, <span class="tag">Tomaría su Clase Otra Vez</span>
-                </p>
-              </div>
-            </div>
-            <div class="calificacion-footer">
-              <p><i class="fas fa-thumbs-up"></i> 0 personas que les pareció útil</p>
-              <p><i class="fas fa-thumbs-down"></i> 0 personas que no les pareció útil</p>
-              <a href="#" class="reportar-link">reportar esta calificación</a>
-            </div>
-          </div>
-          <!-- Agregar más calificaciones aquí -->
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="calificaciones-estudiantes">
+        <h1>Calificación de estudiantes</h1>
+        <!-- Las calificaciones de los estudiantes se llenarán dinámicamente -->
+    </section>
+</div>
 </main>
 
   
@@ -277,6 +257,7 @@
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/infoDoc.js"></script>
 
 
   <!--================PRUEBAS=============================

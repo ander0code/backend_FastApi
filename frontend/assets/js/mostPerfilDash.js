@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const nombre = user[0].nombre || 'N/A';
             const lastName = user[0].last_Name || 'N/A';
             const carreer = user[0].carrera.etiquetaNombre || 'N/A';
-            const fotex = user[0].usuariofoto || './assets/img/defaultft.jpg';
+            const fotex = user[0].usuariofoto || './assets/img/defaultft.webp';
 
             console.log(`Nombre: ${nombre}, Apellido: ${lastName}, Carrera: ${carreer}, Foto: ${fotex}`); // Verificar valores
 

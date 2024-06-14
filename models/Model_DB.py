@@ -1,5 +1,6 @@
 from sqlalchemy import Column,Integer, String, Date, Enum, ForeignKey ,Boolean
 from sqlalchemy.orm import  relationship
+from sqlalchemy.dialects.mssql import JSON
 from config.base_connection import Base
 
 class UserData(Base):
@@ -157,7 +158,7 @@ class EtiquetaProfesores(Base):
     
     etiqueta_carreraV2 = relationship("EtiquetaCarrera", back_populates="etiqueta_profesores")
     calificaciones = relationship("Calificacion", back_populates="profesor")
-    
+       
 class Calificacion(Base):
     __tablename__ = 'calificacion' 
     id = Column(Integer, primary_key=True,autoincrement=True)
@@ -165,11 +166,13 @@ class Calificacion(Base):
     id_rol_PRO = Column(Integer,ForeignKey('etiqueta_profesor.id'),primary_key=True)
     ciclo = Column(Integer)
     nombreCurso = Column(String(250))
-    claridad = Column(Integer)
-    motivacion = Column(Integer)
-    etiquetas = Column(String(500))
-    recomendacion = Column(Boolean)    
+    calidad = Column(Integer)
+    dificultad = Column(Integer)
+    etiquetas = Column(JSON)
+    recomendacion = Column(Boolean)   
+    texto = Column(String(10000)) 
     
 
     student = relationship("UserData", back_populates="calificaciones")
     profesor = relationship("EtiquetaProfesores", back_populates="calificaciones")
+    
