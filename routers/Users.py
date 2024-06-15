@@ -1,4 +1,5 @@
 from fastapi import APIRouter,Depends,HTTPException
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case, desc
 from models import Model_DB
@@ -119,3 +120,28 @@ async def post_carrera(id_user: int, db: Session = Depends(get_db)) -> Any:
         raise HTTPException(status_code=404, detail="usuario inexistente")
     
     return resultados
+
+@user.post("/user_update_descripcion/{id_user}", response_model=None)
+async def update_user_description(id_user: int, user_update:Usuario_Schema.UserUpdateDescripcion , db: Session = Depends(get_db)) -> Any:
+    try:
+        user = db.query(Model_DB.User).filter(Model_DB.User.id == id_user).first()
+
+        if not user:
+            raise HTTPException(status_code=404, detail="Usuario inexistente")
+        
+        if user_update.AcercaDeMi is not None:
+            user.acerca_de_mi = user_update.AcercaDeMi
+
+        if user_update.PuntoDeVista is not None:
+            user.puntos_de_vista = user_update.PuntoDeVista
+
+
+        db.commit()
+        return {"message": "Usuario actualizado correctamente"}
+
+    except SQLAlchemyError as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Error en la base de datos: " + str(e))
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Error interno del servidor: " + str(e))
