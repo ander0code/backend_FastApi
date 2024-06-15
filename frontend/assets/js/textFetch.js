@@ -190,7 +190,7 @@ let autorURL = post.propietarioURL || '/autenticacion/perfils';
 let enlaceAutor = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a>`;
 
 // Actualizar el contenido del contenedor .question-meta con el nombre del autor enlazado y la fecha
-document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion ? new Date(post.fecha_Creacion).toLocaleDateString() : 'Fecha no disponible'}`;
+document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
 
 
     const voteCountElement = document.querySelector('.vote-count');
@@ -249,7 +249,7 @@ function displayPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
+        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
             
         `;
@@ -287,7 +287,7 @@ function displayAllPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${new Date(response.fecha_creacion).toLocaleDateString()}</p>
+        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
             
         `;

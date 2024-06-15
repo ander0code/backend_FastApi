@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newPopularPost.style.display = 'flex';
                 newPopularPost.id = '';
 
-                newPopularPost.querySelector('.activite-label').textContent = new Date(post.fecha_Creacion).toLocaleDateString();
+                newPopularPost.querySelector('.activite-label').textContent = `${post.fecha_Creacion}`;
                 newPopularPost.querySelector('.post-title').textContent = post.titulo;
                 newPopularPost.querySelector('.post-title').href = `/autenticacion/texto?post_id=${post.id}`;
                 newPopularPost.querySelector('.post-author').textContent = post.propietarioNombre;

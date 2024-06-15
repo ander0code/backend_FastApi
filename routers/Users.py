@@ -113,7 +113,7 @@ async def post_carrera(id_user: int, db: Session = Depends(get_db)) -> Any:
             Model_DB.User.id == Model_DB.Post.propietarioUserID
         ).filter(
             Model_DB.User.id == id_user
-        ).all()
+        ).order_by(desc(Model_DB.Post.id)).all()
 
     if not resultados:
         raise HTTPException(status_code=404, detail="usuario inexistente")
