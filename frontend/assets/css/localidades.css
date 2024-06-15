@@ -1,0 +1,221 @@
+#main {
+    padding: 0px;
+}
+
+.containerrr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerrr {
+    position: relative;
+    width: 100%; /* Reduce el ancho del header */
+    height: 150px; /* Mantén la altura del header */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px; /* Añade un margen inferior para separar del contenido principal */
+}
+
+.headerrr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: opacity 0.5s ease; /* Transición suave de la opacidad */
+}
+
+.headerrr img:hover {
+    opacity: 0.3; /* Cambia la opacidad al pasar el ratón */
+}
+
+.headerrr h1 {
+    font-family: "Sigmar One", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    margin: 0;
+    transition: transform 0.5s ease, font-size 0.5s ease; /* Transición suave del tamaño y posición */
+}
+
+.headerrr h1:hover {
+    transform: translate(-50%, -50%) scale(1.1); /* Agranda el texto al pasar el ratón */
+    font-size: 3.2em; /* Aumenta el tamaño de fuente al pasar el ratón */
+}
+
+.main-content {
+    display: flex;
+    width: 90%; /* Ajusta el ancho del contenido principal */
+    justify-content: space-between;
+}
+
+.content {
+    flex: 3; /* Ajusta el ancho de la columna izquierda */
+}
+
+.left-column {
+    flex: 2.5; /* Reduce el ancho de la columna izquierda */
+    margin-right: 20px; /* Añade un margen derecho para separar de la columna derecha */
+}
+
+.right-column {
+    flex: 1; /* Reduce el ancho de la columna derecha */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    top: 0;
+    right: 0;
+    align-items: center; /* Centra los elementos horizontalmente */
+    width: 20%; /* Establece el ancho de la columna derecha */
+    transition: width 0.5s ease; /* Transición suave del ancho */
+}
+
+.right-column:hover {
+    width: 25%; /* Aumenta el ancho al pasar el ratón */
+}
+
+.right-column h1 {
+    font-size: 1.5rem;
+    font-family: "Sigmar One", sans-serif;
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    width: 100%; /* Asegura que el contenedor tome todo el ancho disponible */
+    text-align: center; /* Asegura que el texto esté centrado */
+    transition: font-size 0.5s ease; /* Transición suave del tamaño de fuente */
+}
+
+.right-column h1:hover {
+    font-size: 1.7rem; /* Aumenta el tamaño de fuente al pasar el ratón */
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tabs a {
+    font-family: "Sigmar One", sans-serif;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave del fondo y transformación */
+}
+
+.tabs a:hover {
+    background-color: #ccc; /* Cambia el fondo al pasar el ratón */
+    transform: scale(1.05); /* Agranda el botón al pasar el ratón */
+}
+
+.posts .post {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease; /* Transición suave de la sombra */
+}
+
+.posts .post:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
+}
+
+.votes {
+    width: 60px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.info h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    transition: color 0.3s ease; /* Transición suave del color */
+}
+
+.info h2:hover {
+    color: #333; /* Cambia el color al pasar el ratón */
+}
+
+.info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.info .tag {
+    display: inline-block;
+    padding: 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave del fondo y transformación */
+}
+
+.info .tag:hover {
+    background-color: #ddd; /* Cambia el fondo al pasar el ratón */
+    transform: scale(1.1); /* Agranda el tag al pasar el ratón */
+}
+
+.info .meta {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-box {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave de la transformación y sombra */
+}
+
+.image-box:hover {
+    transform: scale(1.05); /* Agranda la caja al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: opacity 0.3s ease; /* Transición suave de la opacidad */
+}
+
+.image-box:hover img {
+    opacity: 0.7; /* Cambia la opacidad al pasar el ratón */
+}
+
+.image-box h3 {
+    font-family: "Sigmar One", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
