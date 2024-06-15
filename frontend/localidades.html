@@ -165,23 +165,27 @@
     </div>
     <div class="main-content">
         <div class="left-column">
-            <div class="tabs">
-                <a href="#" id="publicaciones-tab">Publicaciones</a>
-                <a href="#" id="calificaciones-tab">Calificaciones</a>
+            <div class="header-row">
+                <h2 id="publicaciones-title">Publicaciones</h2>
+                <button id="publicar-button">Publicar</button>
             </div>
             <div class="posts" id="publicaciones">
-                <div class="post">
-                    <div class="votes">45 <span>Votos</span></div>
-                    <div class="info">
-                        <h2>¿Cuál es el menú del día de hoy, Lunes 17?</h2>
-                        <p>por Max Anderson en 09/05/24</p>
-                        <p class="tag">Cafeteria</p>
-                        <div class="meta">
-                            <span>13 Respuestas</span>
-                            <span>50 Vistas</span>
-                        </div>
+              <div class="post">
+                <div class="votes">
+                    <span class="vote-count">45</span>
+                    <span class="vote-label">Votos</span>
+                </div>
+                <div class="info">
+                    <h2>¿Cuál es el menú del día de hoy, Lunes 17?</h2>
+                    <p>por Max Anderson en 09/05/24</p>
+                    <p class="tag">Cafeteria</p>
+                    <div class="meta">
+                        <span>13 Respuestas</span>
+                        <span>50 Vistas</span>
                     </div>
                 </div>
+            </div>
+            
                 <div class="post">
                     <div class="votes">7 <span>Votos</span></div>
                     <div class="info">
@@ -207,12 +211,9 @@
                     </div>
                 </div>
             </div>
-            <div class="hidden" id="calificaciones">
-                <p>Calificaciones content goes here.</p>
-            </div>
         </div>
         <div class="right-column">
-            <H1>Otros lugares</H1>
+            <h1>Otros lugares</h1>
             <div class="image-box" data-title="CAFETERIA" data-img="./assets/img/tata.png">
                 <img src="./assets/img/tata.png" alt="Cafeteria">
                 <h3>CAFETERIA</h3>
@@ -227,9 +228,34 @@
             </div>
         </div>
     </div>
+    <div class="hidden" id="publicar-form">
+        <h2>Crear Nueva Publicación</h2>
+        <form>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo">
+            <label for="contenido">Contenido:</label>
+            <textarea id="contenido" name="contenido"></textarea>
+            <button type="submit">Publicar</button>
+            <button type="button" id="cancelar-button">Cancelar</button>
+        </form>
+    </div>
 </div>
 </main><!-- End #main -->
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const publicarButton = document.getElementById("publicar-button");
+    const cancelarButton = document.getElementById("cancelar-button");
+    const publicarForm = document.getElementById("publicar-form");
+
+    publicarButton.addEventListener("click", function() {
+        publicarForm.style.display = "block";
+    });
+
+    cancelarButton.addEventListener("click", function() {
+        publicarForm.style.display = "none";
+    });
+});
+
 document.querySelectorAll('.image-box').forEach(box => {
     box.addEventListener('click', function() {
         const title = this.getAttribute('data-title');
@@ -238,18 +264,6 @@ document.querySelectorAll('.image-box').forEach(box => {
         document.getElementById('header-img').src = imgSrc;
     });
 });
-
-document.getElementById('publicaciones-tab').addEventListener('click', function() {
-    document.getElementById('publicaciones').classList.remove('hidden');
-    document.getElementById('calificaciones').classList.add('hidden');
-});
-
-document.getElementById('calificaciones-tab').addEventListener('click', function() {
-    document.getElementById('publicaciones').classList.add('hidden');
-    document.getElementById('calificaciones').classList.remove('hidden');
-});
-
-
 </script>
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">

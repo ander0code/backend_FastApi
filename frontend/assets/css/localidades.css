@@ -42,11 +42,6 @@
     transition: transform 0.5s ease, font-size 0.5s ease; /* Transición suave del tamaño y posición */
 }
 
-.headerrr h1:hover {
-    transform: translate(-50%, -50%) scale(1.1); /* Agranda el texto al pasar el ratón */
-    font-size: 3.2em; /* Aumenta el tamaño de fuente al pasar el ratón */
-}
-
 .main-content {
     display: flex;
     width: 90%; /* Ajusta el ancho del contenido principal */
@@ -71,68 +66,76 @@
     top: 0;
     right: 0;
     align-items: center; /* Centra los elementos horizontalmente */
-    width: 20%; /* Establece el ancho de la columna derecha */
-    transition: width 0.5s ease; /* Transición suave del ancho */
-}
-
-.right-column:hover {
-    width: 25%; /* Aumenta el ancho al pasar el ratón */
 }
 
 .right-column h1 {
-    font-size: 1.5rem;
-    font-family: "Sigmar One", sans-serif;
-    display: flex;
-    justify-content: center; /* Centra el texto horizontalmente */
-    width: 100%; /* Asegura que el contenedor tome todo el ancho disponible */
-    text-align: center; /* Asegura que el texto esté centrado */
-    transition: font-size 0.5s ease; /* Transición suave del tamaño de fuente */
+    font-family: "Sigmar One", sans-serif;;
+    font-size: 2rem;
 }
 
-.right-column h1:hover {
-    font-size: 1.7rem; /* Aumenta el tamaño de fuente al pasar el ratón */
-}
-
-.tabs {
+.header-row {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-.tabs a {
+#publicaciones-title {
     font-family: "Sigmar One", sans-serif;
-    text-decoration: none;
-    color: #333;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#publicar-button {
+    font-family: "Sigmar One", sans-serif;
     padding: 10px 20px;
-    background-color: #eee;
+    background-color: #0a57caa6;
+    border: none;
     border-radius: 5px;
+    color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave del fondo y transformación */
 }
 
-.tabs a:hover {
-    background-color: #ccc; /* Cambia el fondo al pasar el ratón */
+#publicar-button:hover {
+    background-color: #0a58ca; /* Cambia el fondo al pasar el ratón */
     transform: scale(1.05); /* Agranda el botón al pasar el ratón */
 }
 
-.posts .post {
+.post {
     display: flex;
     margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: box-shadow 0.3s ease; /* Transición suave de la sombra */
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave de la sombra y transformación */
+    background-color: #f5f5f5; /* Fondo más claro */
 }
 
-.posts .post:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra al pasar el ratón */
+.post:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el ratón */
+    transform: translateY(-5px); /* Eleva más la tarjeta al pasar el ratón */
 }
 
 .votes {
-    width: 60px;
+    width: 80px; /* Ancho mayor */
     text-align: center;
-    font-size: 1.2em;
-    color: #666;
+    font-size: 1.5em; /* Tamaño de fuente mayor */
+    color: #444; /* Color de texto más oscuro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vote-count {
+    font-weight: bold; /* Texto en negrita */
+    color: #28a745; /* Color verde para el conteo de votos */
+    font-size: 2em; /* Tamaño de fuente mayor para destacar */
+}
+
+.vote-label {
+    font-size: 0.9em; /* Tamaño de fuente mayor para la etiqueta */
+    color: #999; /* Color de texto gris claro */
 }
 
 .info {
@@ -141,40 +144,33 @@
 }
 
 .info h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.1em;
-    transition: color 0.3s ease; /* Transición suave del color */
-}
-
-.info h2:hover {
-    color: #333; /* Cambia el color al pasar el ratón */
+    font-size: 1.6em; /* Tamaño de fuente mayor */
+    margin: 0 0 10px;
+    color: #333; /* Color de texto más oscuro */
 }
 
 .info p {
-    margin: 5px 0;
+    margin: 0 0 10px; /* Mayor espacio inferior */
     color: #666;
+    font-size: 1.1em; /* Tamaño de fuente mayor */
 }
 
 .info .tag {
-    display: inline-block;
-    padding: 5px;
-    background-color: #eee;
-    border-radius: 5px;
-    font-size: 0.9em;
-    color: #333;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave del fondo y transformación */
-}
-
-.info .tag:hover {
-    background-color: #ddd; /* Cambia el fondo al pasar el ratón */
-    transform: scale(1.1); /* Agranda el tag al pasar el ratón */
+    font-size: 1em; /* Tamaño de fuente mayor */
+    color: #fff; /* Color de texto blanco */
+    background-color: #28a745; /* Fondo verde */
+    padding: 5px 10px; /* Espaciado interno mayor */
+    border-radius: 5px; /* Bordes más redondeados */
+    display: inline-block; /* Mostrar como bloque en línea */
 }
 
 .info .meta {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    font-size: 0.9em;
+    color: #999;
+    display: flex; /* Usar flexbox para la meta información */
+    gap: 10px; /* Espacio entre elementos */
 }
+
 
 .image-box {
     position: relative;
@@ -215,7 +211,41 @@
     font-size: 1.5em;
     margin: 0;
 }
-
 .hidden {
     display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
 }
+
+.hidden form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hidden label {
+    font-size: 1em;
+}
+
+.hidden input, .hidden textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hidden button {
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hidden button:hover {
+    background-color: #ccc;
+    transform: scale(1.05);
+}
+
