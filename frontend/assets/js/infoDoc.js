@@ -77,55 +77,92 @@ document.addEventListener('DOMContentLoaded', function() {
             comment.datos_ex.forEach(datos => { // Iterar sobre todos los comentarios
                 const calificacionDiv = document.createElement('div');
                 calificacionDiv.classList.add('calificacion');
-    
-                const calidadDificultadDiv = document.createElement('div');
-                calidadDificultadDiv.classList.add('calidad-dificultad');
-    
+        
+                const calidadDificultadContainer = document.createElement('div');
+                calidadDificultadContainer.classList.add('calidad-dificultad-container');
+        
                 const calidadDiv = document.createElement('div');
-                calidadDiv.classList.add('calidad');
-                calidadDiv.innerHTML = `<p class="label">CALIDAD</p><p class="valor">${datos.calidad}</p>`;
-    
+                calidadDiv.classList.add('calidad-resp');
+                
+                // Definir el color según el valor de calidad
+                let colorCalidad;
+                switch (datos.calidad) {
+                    case 5:
+                        colorCalidad = '#02B207'; // Verde
+                        break;
+                    case 4:
+                        colorCalidad = '#B2FF00'; // Lima
+                        break;
+                    case 3:
+                        colorCalidad = '#FFF300'; // Amarillo
+                        break;
+                    case 2:
+                        colorCalidad = '#FF5500'; // Naranja
+                        break;
+                    case 1:
+                        colorCalidad = '#FF0000'; // Rojo
+                        break;
+                    default:
+                        colorCalidad = '#b6b5b2'; // Gris por defecto
+                        break;
+                }
+        
+                calidadDiv.innerHTML = `
+                    <p class="label"><span>CALIDAD</span></p>
+                    <div class="valor-container valor-calidad" style="background-color: ${colorCalidad};">${datos.calidad}</div>
+                `;
+        
                 const dificultadDiv = document.createElement('div');
-                dificultadDiv.classList.add('dificultad');
-                dificultadDiv.innerHTML = `<p class="label">DIFICULTAD</p><p class="valor">${datos.dificultad}</p>`;
-    
-                calidadDificultadDiv.appendChild(calidadDiv);
-                calidadDificultadDiv.appendChild(dificultadDiv);
-    
+                dificultadDiv.classList.add('dificultad-resp');
+                dificultadDiv.innerHTML = `
+                    <p class="label"><span>DIFICULTAD</span></p>
+                    <div class="valor-container valor-dificultad">${datos.dificultad}</div>
+                `;
+        
+                calidadDificultadContainer.appendChild(calidadDiv);
+                calidadDificultadContainer.appendChild(dificultadDiv);
+        
+                const contenidoContainer = document.createElement('div');
+                contenidoContainer.classList.add('contenido-container');
+        
+                const fechaP = document.createElement('p');
+                fechaP.classList.add('fecha-comentario');
+                fechaP.textContent = datos.fecha || 'Fecha desconocida';
+        
                 const tomariaDenuevoP = document.createElement('p');
                 tomariaDenuevoP.classList.add('tomaria-denuevo');
                 tomariaDenuevoP.innerHTML = `<strong>Tomaría de nuevo:</strong> ${datos.recomendacion ? 'SI' : 'NO'}`;
-    
+        
                 const textoP = document.createElement('p');
+                textoP.classList.add('texto-comentario');
                 textoP.textContent = datos.texto;
-    
-                const fechaP = document.createElement('p');
-                fechaP.classList.add('fecha');
-                fechaP.textContent = 'Fecha desconocida';
-    
+        
+                contenidoContainer.appendChild(fechaP);
+                contenidoContainer.appendChild(tomariaDenuevoP);
+                contenidoContainer.appendChild(textoP);
+        
                 const etiquetasContainerDiv = document.createElement('div');
                 etiquetasContainerDiv.classList.add('etiquetas-container');
                 datos.etiquetas.forEach(etiqueta => {
                     const spanEtiqueta = document.createElement('span');
-                    spanEtiqueta.classList.add('etiqueta');
+                    spanEtiqueta.classList.add('etiqueta-resp');
                     spanEtiqueta.textContent = etiqueta;
                     etiquetasContainerDiv.appendChild(spanEtiqueta);
-    
+        
                     if (etiquetasMap[etiqueta]) {
                         etiquetasMap[etiqueta]++;
                     } else {
                         etiquetasMap[etiqueta] = 1;
                     }
                 });
-    
-                calificacionDiv.appendChild(calidadDificultadDiv);
-                calificacionDiv.appendChild(tomariaDenuevoP);
-                calificacionDiv.appendChild(textoP);
-                calificacionDiv.appendChild(fechaP);
-                calificacionDiv.appendChild(etiquetasContainerDiv);
-    
+        
+                contenidoContainer.appendChild(etiquetasContainerDiv);
+        
+                calificacionDiv.appendChild(calidadDificultadContainer);
+                calificacionDiv.appendChild(contenidoContainer);
+        
                 calificacionesEstudiantesSection.appendChild(calificacionDiv);
-    
+
                 // Clasificación
                 const calidad = datos.calidad;
                 if (calidad >= 4.5) {
