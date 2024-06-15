@@ -16,10 +16,6 @@ def get_db():
     finally:
         db.close()
 
-
-
-
-
 @post.post("/posts/{id_user}", response_model=Publicaciones.PostWithCurso)
 async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session = Depends(get_db)) -> Any:
 

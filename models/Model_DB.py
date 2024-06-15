@@ -84,6 +84,7 @@ class Vote(Base):
     mensajeID= Column(Integer, ForeignKey('post.id'), nullable=False)
     tipo_Voto= Column(Enum("POST", "NEG"), nullable=False)
     userID= Column(Integer, ForeignKey('user.id'), nullable=False)
+    fecha_creacion = Column(Date)
     
     user = relationship("User", back_populates="votes")
     post = relationship("Post", back_populates="votes")

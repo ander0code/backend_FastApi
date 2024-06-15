@@ -15,7 +15,7 @@ from models import Model_DB
 from config.base_connection import SessionLocal
 
 SECRETE_KEY = "AeDfZ7I7A1btH97zzDrlp4JKcaOqz2JH1HVRZscWYReB0QvdSk8UUE1m92x1IYv7"
-TOKEN_SECONDS_EXP = 500
+TOKEN_SECONDS_EXP = 5000000000
 
 def get_db():
     db = SessionLocal()
