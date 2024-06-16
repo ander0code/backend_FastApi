@@ -17,18 +17,12 @@ import time
 from fastapi import HTTPException
 
 def get_db():
-    reintentos = 3
-    retraso = 5
-    for _ in range(reintentos):
-        db = SessionLocal()
-        try:
-            yield db
-            return  # Salimos del bucle después de un yield exitoso
-        except OperationalError:
-            db.close()
-            time.sleep(retraso)
-    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
-
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
 @Profe.get("/get_profesores/{id_carrera}",response_model=List[Profesores.etiquetaprofeBase],
            description="Endpoint para obtener profesores por carrera. Acuerdate extraer primero el id de la carrera del usuario")
 def get_profes_prueba(id_carrera = int  ,db: Session = Depends(get_db) )-> Any:

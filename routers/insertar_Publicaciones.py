@@ -14,20 +14,12 @@ import time
 from sqlalchemy.exc import OperationalError
 import time
 from fastapi import HTTPException
-
 def get_db():
-    reintentos = 3
-    retraso = 5
-    for _ in range(reintentos):
-        db = SessionLocal()
-        try:
-            yield db
-            return  # Salimos del bucle después de un yield exitoso
-        except OperationalError:
-            db.close()
-            time.sleep(retraso)
-    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
-
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
         
 @post.post("/posts/{id_user}", response_model=Publicaciones.PostWithCurso)
 async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session = Depends(get_db)) -> Any:
