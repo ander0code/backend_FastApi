@@ -1,24 +1,36 @@
 from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError,OperationalError
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case, desc
 from models import Model_DB
 from Schemas import Publicaciones,Usuario_Schema
+import time
 
 from config.base_connection import SessionLocal
 from pydantic import EmailStr
 from typing import Any,List
 
+
 user = APIRouter()
 
 # Dependency
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
+
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-        
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
 @user.get("/users_nuevo/{email}",response_model=List[Usuario_Schema.UserBaseModel])
 def get_users_muevo( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
     resultados = db.query(

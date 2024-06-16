@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 import pytz
 from models import Model_DB
@@ -7,15 +7,28 @@ from config.base_connection import SessionLocal
 from typing import Any,List
 from datetime import datetime
 post = APIRouter()
+from sqlalchemy.exc import OperationalError
+import time
 
 # Dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
 
+def get_db():
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
+        
 @post.post("/posts/{id_user}", response_model=Publicaciones.PostWithCurso)
 async def create_post(id_user : int,post: Publicaciones.PostCreate, db: Session = Depends(get_db)) -> Any:
 
