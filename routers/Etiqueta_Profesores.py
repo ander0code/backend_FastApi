@@ -1,23 +1,34 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import func,desc
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError,OperationalError
 from sqlalchemy import Integer
 from models import Model_DB
 from Schemas import Profesores
 from config.base_connection import SessionLocal
 from typing import Any,List
+import time
 
 Profe = APIRouter()
 
 # Dependency
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
+
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-             
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
 @Profe.get("/get_profesores/{id_carrera}",response_model=List[Profesores.etiquetaprofeBase],
            description="Endpoint para obtener profesores por carrera. Acuerdate extraer primero el id de la carrera del usuario")
 def get_profes_prueba(id_carrera = int  ,db: Session = Depends(get_db) )-> Any:

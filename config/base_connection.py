@@ -1,4 +1,3 @@
-#conexion a data base
 from sqlalchemy import create_engine
 
 from sqlalchemy.orm import sessionmaker

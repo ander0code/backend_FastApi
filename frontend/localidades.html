@@ -121,7 +121,7 @@
       <form action="#" method="get" style="all: unset;">
         <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
             <i class="bi bi-person"></i>
-            <span>Ver y calificar localidades</span>
+            <span>Reseñas de Servicios Universitarios</span>
         </button>
       </form>
           <li class="nav-heading">Soporte</li>
@@ -163,94 +163,112 @@
         <img src="./assets/img/autonoma.jpg" alt="Localidades" id="header-img">
         <h1 id="header-title">LOCALIDADES</h1>
     </div>
-    <div class="main-content">
-        <div class="left-column">
-            <div class="tabs">
-                <a href="#" id="publicaciones-tab">Publicaciones</a>
-                <a href="#" id="calificaciones-tab">Calificaciones</a>
+    <div class="main-contentrrr">
+        <div class="left-columnrrr">
+            <div class="header-rowrrr">
+                <h2 id="publicaciones-title">Reseñas</h2>
+                <button id="publicar-button">Publicar</button>
             </div>
-            <div class="posts" id="publicaciones">
-                <div class="post">
-                    <div class="votes">45 <span>Votos</span></div>
-                    <div class="info">
-                        <h2>¿Cuál es el menú del día de hoy, Lunes 17?</h2>
-                        <p>por Max Anderson en 09/05/24</p>
-                        <p class="tag">Cafeteria</p>
-                        <div class="meta">
-                            <span>13 Respuestas</span>
-                            <span>50 Vistas</span>
+            <div class="posts-wrapperrrr">
+                <div class="postsrrr" id="publicaciones">
+                  <div class="postrrr">
+                    <div class="user-inforrr">
+                        <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photrrrr">
+                        <div class="user-detailsrrr">
+                            <div class="top-row">
+                                <div class="user-namerrr">Orlando Rivera</div>
+                                <div class="starsrrr">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">☆</span>
+                                </div>
+                            </div>
+                            <div class="user-reviewsrrr">3 Publicaciones</div>
+                            <div class="review-daterrr">Hace un mes</div>
                         </div>
                     </div>
-                </div>
-                <div class="post">
-                    <div class="votes">7 <span>Votos</span></div>
-                    <div class="info">
-                        <h2>¿Qué tan buena es la atención al estudiante?</h2>
-                        <p>por Felipe Diego en 09/05/24</p>
-                        <p class="tag">A. al estudiante</p>
-                        <div class="meta">
-                            <span>0 Respuestas</span>
-                            <span>30 Vistas</span>
+                    <div class="commentrrr">
+                        <p class="comment-text">
+                            La comida en el restaurante cumplió con las expectativas en términos de calidad...
+                        </p>
+                    </div>
+                    <div class="details-wrapperrrr collapsed">
+                        <div class="rating-detailsrrr">
+                            <div><span class="rating-labelrrr">Servicio:</span> Comí allí</div>
+                            <div><span class="rating-labelrrr">Tipo de comida:</span> Comida</div>
+                            <div><span class="rating-labelrrr">Precio por persona:</span> 40-50 PEN</div>
+                            <div><span class="rating-labelrrr">Comida:</span> 5</div>
+                            <div><span class="rating-labelrrr">Servicio:</span> 5</div>
+                            <div><span class="rating-labelrrr">Ambiente:</span> 4</div>
+                            <div><span class="rating-labelrrr">Platos recomendados:</span> Pollo A la Brasa</div>
                         </div>
                     </div>
+                    <button class="toggle-buttonrrr">Ver más</button>
+                </div>                
+                
                 </div>
-                <div class="post">
-                    <div class="votes">67 <span>Votos</span></div>
-                    <div class="info">
-                        <h2>¿Quién para bailar ballet?</h2>
-                        <p>por Felipe Diego en 09/05/24</p>
-                        <p class="tag">A. Match</p>
-                        <div class="meta">
-                            <span>15 Respuestas</span>
-                            <span>100 Vistas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden" id="calificaciones">
-                <p>Calificaciones content goes here.</p>
+                <div class="hiddenrrr" id="publicar-form">
+                  <h2>Crear Nueva Publicación</h2>
+                  <form class="formrrr">
+                      <label for="titulo" class="labelrrr">Título:</label>
+                      <input type="text" id="titulo" name="titulo" class="inputrrr">
+                      
+                      <label for="contenido" class="labelrrr">Contenido:</label>
+                      <textarea id="contenido" name="contenido" class="textarearrr"></textarea>
+                      
+                      <label for="calificacion" class="labelrrr">Calificación:</label>
+                      <div class="starsrrr">
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">☆</span>
+                      </div>
+                      
+                      <label for="servicio" class="labelrrr">Servicio:</label>
+                      <input type="text" id="servicio" name="servicio" class="inputrrr">
+                      
+                      <label for="tipo-comida" class="labelrrr">Tipo de comida:</label>
+                      <input type="text" id="tipo-comida" name="tipo-comida" class="inputrrr">
+                      
+                      <label for="precio" class="labelrrr">Precio por persona:</label>
+                      <input type="text" id="precio" name="precio" class="inputrrr">
+                      
+                      <label for="platos-recomendados" class="labelrrr">Platos recomendados:</label>
+                      <input type="text" id="platos-recomendados" name="platos-recomendados" class="inputrrr">
+                      
+                      <button type="submit" class="submit-buttonrrr">Publicar</button>
+                      <button type="button" id="cancelar-button" class="cancel-buttonrrr">Cancelar</button>
+                  </form>
+              </div>
+              
             </div>
         </div>
-        <div class="right-column">
-            <H1>Otros lugares</H1>
-            <div class="image-box" data-title="CAFETERIA" data-img="./assets/img/tata.png">
+        <div class="right-columnrrr" id="right-column">
+            <h1>UBICACIONES</h1>
+            <div class="image-boxrrr" data-title="CAFETERIA" data-img="./assets/img/tata.png" data-type="cafeteria">
                 <img src="./assets/img/tata.png" alt="Cafeteria">
                 <h3>CAFETERIA</h3>
             </div>
-            <div class="image-box" data-title="A. AL ESTUDIANTE" data-img="./assets/img/ate.png">
+            <div class="image-boxrrr" data-title="A. AL ESTUDIANTE" data-img="./assets/img/ate.png" data-type="estudiante">
                 <img src="./assets/img/ate.png" alt="A. al Estudiante">
                 <h3>A. AL ESTUDIANTE</h3>
             </div>
-            <div class="image-box" data-title="AUTONOMA MATCH" data-img="./assets/img/match.png">
+            <div class="image-boxrrr" data-title="AUTONOMA MATCH" data-img="./assets/img/match.png" data-type="match">
                 <img src="./assets/img/match.png" alt="Autonoma Match">
                 <h3>AUTONOMA MATCH</h3>
+            </div>
+            <div class="image-boxrrr hiddenrrr" id="localidades-box" data-title="LOCALIDADES" data-img="./assets/img/autonoma.jpg">
+                <img src="./assets/img/autonoma.jpg" alt="Localidades">
+                <h3>LOCALIDADES</h3>
             </div>
         </div>
     </div>
 </div>
+
 </main><!-- End #main -->
-<script>
-document.querySelectorAll('.image-box').forEach(box => {
-    box.addEventListener('click', function() {
-        const title = this.getAttribute('data-title');
-        const imgSrc = this.getAttribute('data-img');
-        document.getElementById('header-title').textContent = title;
-        document.getElementById('header-img').src = imgSrc;
-    });
-});
-
-document.getElementById('publicaciones-tab').addEventListener('click', function() {
-    document.getElementById('publicaciones').classList.remove('hidden');
-    document.getElementById('calificaciones').classList.add('hidden');
-});
-
-document.getElementById('calificaciones-tab').addEventListener('click', function() {
-    document.getElementById('publicaciones').classList.add('hidden');
-    document.getElementById('calificaciones').classList.remove('hidden');
-});
-
-
-</script>
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
     <div class="copyright">
@@ -274,6 +292,7 @@ document.getElementById('calificaciones-tab').addEventListener('click', function
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/pagina_frecuentes.js"></script>
+  <script src="./assets/js/localidades.js"></script>
   <!--================PRUEBAS==============================-->
 </body>
 

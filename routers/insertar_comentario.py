@@ -1,22 +1,35 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
 import pytz
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError,OperationalError
 from models import Model_DB
 from Schemas import Comentarios
 from config.base_connection import SessionLocal
 from typing import Any
 from datetime import datetime
+import time
 
 coment = APIRouter()
 
 # Dependency
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
+
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
+        
 
 @coment.post("/coment/{Post_id}/{id_user}", response_model=None)
 async def create_post(Post_id : int,id_user : int,comment: Comentarios.ComentariosInsert, db: Session = Depends(get_db)) -> Any:
@@ -40,6 +53,13 @@ async def create_post(Post_id : int,id_user : int,comment: Comentarios.Comentari
         db.add(nuevo_post)
         db.commit()
         db.refresh(nuevo_post)
+        
+        
+        recuento_comentarios_ = db.query(Model_DB.Comment).filter(Model_DB.Comment.publicacion_ID == Post_id).count()
+        print(recuento_comentarios_)
+        db.query(Model_DB.Post).filter(Model_DB.Post.id == Post_id).update({Model_DB.Post.recuento_comentarios: recuento_comentarios_})
+        db.commit()
+
         
         response = Comentarios.ComentariosResponse(
                 message="Comentario creado exitosamente",
