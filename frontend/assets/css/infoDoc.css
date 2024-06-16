@@ -28,943 +28,146 @@ body {
 }
 
 .promedio-container {
-  font-size: 3em;
+  font-size: 4em;
   color: #000;
+}
+
+.promedio span {
+  font-size: 0.5em;
 }
 
 .promedio-container p {
   margin: 0;
-}
-
-.nombre {
-  font-size: 1.5em;
-  color: #ff7a00;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.facultad {
-  font-size: 1.2em;
-  color: #555;
-  margin: 10px 0;
-}
-
-.porcentaje-dificultad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.porcentaje, .dificultad {
-  font-size: 1.2em;
-  color: #000;
-  margin: 5px 0;
-}
-
-.calificar-btn {
-  background-color: #ffa500;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.2em;
-  margin-top: 20px;
-}
-
-.calificar-btn:hover {
-  background-color: #e69500;
-}
-
-.clasificacion-etiquetas {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.clasificacion {
-  margin-bottom: 20px;
-}
-
-.clasificacion h2, .etiquetas h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  text-align: left;
-}
-
-td {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  font-size: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-.bar {
-  height: 20px;
-  background-color: #4caf50;
-  margin-right: 10px;
-  border-radius: 5px;
-}
-
-.etiquetas-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.etiqueta {
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
-
-.calificaciones-estudiantes {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.calificacion {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.calidad-dificultad {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.calidad {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100px;
-  text-align: center;
-}
-
-.dificultad {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  width: 50px;
-  text-align: center;
-}
-
-.calidad .label, .dificultad .label {
-  font-size: 0.8em;
-  color: #555;
-}
-
-.calidad .valor, .dificultad .valor {
-  font-size: 1.5em;
-  color: #000;
-  font-weight: bold;
-}
-
-.tomaria-denuevo {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.fecha {
-  text-align: right;
-  font-size: 0.9em;
-  color: #777;
-}
-
-.etiquetas-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.etiqueta {
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.profesor-resumen {
-  display: flex;
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profesor-info {
-  flex: 1;
-  text-align: center;
-  margin-right: 20px;
-}
-
-.promedio-container {
-  font-size: 3em;
-  color: #000;
-}
-
-.promedio-container p {
-  margin: 0;
-}
-
-.nombre {
-  font-size: 1.5em;
-  color: #ff7a00;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.facultad {
-  font-size: 1.2em;
-  color: #555;
-  margin: 10px 0;
-}
-
-.porcentaje-dificultad {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.porcentaje, .dificultad {
-  font-size: 1.2em;
-  color: #000;
-  margin: 0 10px;
-}
-
-.calificar-btn {
-  background-color: #ffa500;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.2em;
-  margin-top: 20px;
-}
-
-.calificar-btn:hover {
-  background-color: #e69500;
-}
-
-.clasificacion-etiquetas {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.clasificacion {
-  margin-bottom: 20px;
-}
-
-.clasificacion h2, .etiquetas h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  text-align: left;
-}
-
-td {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  font-size: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-td:first-child {
-  flex: 1;
-}
-
-.bar {
-  height: 20px;
-  background-color: #4caf50;
-  border-radius: 5px;
-}
-
-.etiquetas-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.etiqueta {
-  background-color: #003366;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
-
-.calificaciones-estudiantes {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.calificacion {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.calidad-dificultad {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.calidad, .dificultad {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100px;
-  text-align: center;
-}
-
-.calidad .label, .dificultad .label {
-  font-size: 0.8em;
-  color: #555;
-}
-
-.calidad .valor, .dificultad .valor {
-  font-size: 1.5em;
-  color: #000;
-  font-weight: bold;
-}
-
-.tomaria-denuevo {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.fecha {
-  text-align: right;
-  font-size: 0.9em;
-  color: #777;
-}
-
-.etiquetas-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.etiqueta {
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.profesor-resumen {
-  display: flex;
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profesor-info {
-  flex: 1;
-  text-align: center;
-  margin-right: 20px;
-}
-
-.promedio-container {
-  font-size: 3em;
-  color: #000;
-}
-
-.promedio-container p {
-  margin: 0;
-}
-
-.nombre {
-  font-size: 1.5em;
-  color: #ff7a00;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.facultad {
-  font-size: 1.2em;
-  color: #555;
-  margin: 10px 0;
-}
-
-.porcentaje-dificultad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.porcentaje, .dificultad {
-  font-size: 1.2em;
-  color: #000;
-  margin: 5px 0;
-}
-
-.calificar-btn {
-  background-color: #ffa500;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1.2em;
-  margin-top: 20px;
-}
-
-.calificar-btn:hover {
-  background-color: #e69500;
-}
-
-.clasificacion-etiquetas {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.clasificacion-container, .etiquetas-container {
-  margin-bottom: 20px;
-}
-
-.clasificacion-container h2, .etiquetas-container h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  text-align: left;
-}
-
-td {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  font-size: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-.bar {
-  height: 20px;
-  background-color: #4caf50;
-  margin-right: 10px;
-  border-radius: 5px;
-}
-
-.etiquetas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.etiqueta {
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-}
-
-.calificaciones-estudiantes {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.calificacion {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.calidad-dificultad {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.calidad, .dificultad {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100px;
-  text-align: center;
-}
-
-.calidad .label, .dificultad .label {
-  font-size: 0.8em;
-  color: #555;
-}
-
-.calidad .valor, .dificultad .valor {
-  font-size: 1.5em;
-  color: #000;
-  font-weight: bold;
-}
-
-.tomaria-denuevo {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.fecha {
-  text-align: right;
-  font-size: 0.9em;
-  color: #777;
-}
-
-.etiquetas-container {
-  margin-bottom: 20px;
-  background-color: #e0e0e048; /* Fondo gris claro */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.clasificacion-container {
-  margin-bottom: 20px;
-  background-color: #e0e0e048;/* Fondo gris claro */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.clasificacion-container h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  text-align: left;
-}
-
-td {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  font-size: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-.bar {
-  height: 20px;
-  background-color: #4caf50;
-  margin: 0 20px; /* Espacio a ambos lados de la barra */
-  border-radius: 5px;
-  flex: 1;
-}
-
-.count {
-  margin-left: 10px;
-}
-.clasificacion-container {
-  margin-bottom: 20px;
-  background-color: #e0e0e048; /* Fondo gris claro */
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.clasificacion-container h2 {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  text-align: left;
-}
-
-td {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  font-size: 1em;
-  border-bottom: 1px solid #ddd;
-}
-
-.rating {
-  margin-left: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-.bar {
-  height: 20px;
-  background-color: #4caf50;
-  margin: 0 20px; /* Espacio a ambos lados de la barra */
-  border-radius: 5px;
-  flex: 1;
-}
-
-.count {
-  margin-left: 10px;
-}
-
-/* Estilos para alinear los elementos dentro del contenedor de clasificación */
-#clasificacion-table td {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 5px; /* Espacio entre las filas */
-}
-
-#clasificacion-table .bar {
-  flex: 1;
-  margin-left: 10px; /* Espacio entre la barra y el conteo */
-}
-
-#clasificacion-table td {
-  display: flex;
-  align-items: center;
-}
-
-#clasificacion-table .bar {
-  flex: 1;
-  margin-left: 10px;
-}
-
-#clasificacion-table .count {
-  margin-left: auto;
-}
-/* Estilos para el título de clasificación y nombres de calificación */
-.clasificacion-container h2 {
-  font-size: 1.5em; /* Tamaño de fuente aumentado */
-  font-weight: bold; /* Texto en negrita */
-}
-
-#clasificacion-table td {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; /* Espacio adicional entre las filas */
-}
-
-#clasificacion-table .count {
-  margin-left: auto;
-}
-
-#clasificacion-table .rating {
-  font-weight: bold; /* Texto en negrita */
-}
-
-.clasificacion-container {
-  margin-top: 40px;
-}
-
-#clasificacion-table td {
-  display: flex;
-  align-items: center;
-}
-
-#clasificacion-table .bar {
-  flex: 1;
-  margin-left: 10px;
-  overflow: hidden; /* Recortar el exceso de la barra */
-}
-
-#clasificacion-table .count {
-  margin-left: auto;
-  min-width: 20px; /* Asegurar espacio para el conteo */
-}
-
-.etiquetas-container h2 {
-  font-size: 1.5em; /* Mismo tamaño que el título de clasificación */
-  font-weight: bold; /* Texto en negrita */
-}
-
-.etiquetas-container {
-  margin-bottom: 50px;
-}
-
-.etiqueta {
-  background-color: #1E3E7D; /* Color de fondo normal */
-  color: #fff; /* Color de texto */
-  font-weight: bold; /* Texto en negrita */
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Transiciones */
-}
-
-.etiqueta:hover {
-  background-color: #003366; /* Color de fondo al pasar el cursor */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el cursor */
-  transform: translateY(-5px); /* Levantar 5px */
-}
-
-.profesor-info {
-  flex: 1;
-  text-align: center;
-  margin-right: 10px; /* Reducir el margen derecho */
-}
-
-.promedio-container p,
-.nombre,
-.facultad,
-.porcentaje,
-.dificultad {
-  font-size: 1.4em; /* Reducir el tamaño de la fuente */
-}
-
-.calificar-btn {
-  font-size: 1em; /* Reducir el tamaño del botón */
-  padding: 8px 16px; /* Reducir el padding del botón */
-  margin-top: 10px; /* Reducir el margen superior del botón */
 }
 
 #num-calificaciones {
-  font-size: 0.4em; /* Reducir el tamaño de la fuente */
-  margin-top: 5px; /* Reducir el espacio superior */
-}
-
-.promedio strong{
-  font-size: 1em; /* Aumentar el tamaño del número de promedio */
-}
-
-.promedio span{
-  font-size: 0.5em; /* Aumentar el tamaño del número de promedio */
+  font-size: 1.2em;
+  color: #555;
+  margin: 10px 0;
 }
 
 .nombre {
-  font-size: 2em; /* Aumentar el tamaño del nombre */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agregar sombra a las letras */
+  font-size: 3em;
+  color: #ff7a00;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
-.calificar-btn {
-  width: 160px;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+.facultad {
+  font-size: 1.2em;
+  color: #555;
+  margin: 10px 0;
 }
 
 .porcentaje-dificultad {
   display: flex;
-  justify-content: space-between; /* Alinea porcentaje y dificultad horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  justify-content: space-around;
+  align-items: center;
   margin: 20px 0;
 }
 
 .porcentaje {
-  font-size: 0.8em; /* Ajustar el tamaño de la fuente del porcentaje */
-  display: flex;
-  flex-direction: column; /* Colocar el texto debajo del número */
-  align-items: center; /* Alinear horizontalmente */
-  flex: 1;
+  text-align: center;
+  font-size: 1.2em;
+  color: #000;
+  margin: 5px 0;
+}
+
+.dificultad {
+  text-align: center;
+  font-size: 1.2em;
+  color: #000;
+  margin: 5px 0;
 }
 
 .porcentaje strong {
-  font-size: 1.5em; /* Aumentar el tamaño del número en negrita */
-}
-
-.dificultad {
-  font-size: 1.2em; /* Ajustar el tamaño de la fuente de dificultad */
-  display: flex;
-  flex-direction: column; /* Colocar el texto debajo del número */
-  align-items: center; /* Alinear horizontalmente */
-  flex: 1;
-  border: none; /* Quitar el borde */
+  display: block;
+  font-size: 2em;
 }
 
 .dificultad strong {
-  font-size: 1.5em; /* Aumentar el tamaño del número en negrita */
+  display: block;
+  font-size: 2em;
 }
 
-.dificultad span {
-  font-size: 0.8em; /* Reducir el tamaño del texto "NIVEL DE DIFICULTAD" */
-}
-
-.porcentaje-dificultad {
-  display: flex;
-  justify-content: space-between; /* Align percentage and difficulty horizontally */
-  align-items: center; /* Center vertically */
-  margin: 20px 0;
-}
-
-.porcentaje,
-.dificultad {
-  font-size: 1.2em; /* Adjust the font size */
-  display: flex;
-  flex-direction: column; /* Place text below the number */
-  align-items: center; /* Align horizontally */
-  flex: 1;
-}
-
-.porcentaje strong,
-.dificultad strong {
-  font-size: 2.5em; /* Increase the size of the bold number */
-}
-
-.porcentaje span,
-.dificultad span {
-  font-size: 0.8em; /* Adjust the size of the descriptive text */
-}
-
-.dificultad {
-  border: none; /* Remove the border */
-}
-
-.calificaciones-estudiantes h2 {
-  font-size: 2em; /* Increase the font size */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
-  color: #333; /* Ensure the text color stands out */
-  margin-bottom: 20px; /* Add some space below the title */
-}
-
-/*CLASIFICACION ESTUDAINTES */
-.calificaciones-estudiantes {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.calificaciones-estudiantes h2 {
-  font-size: 2em; /* Aumenta el tamaño de la fuente */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Añade sombra al texto */
-  margin-bottom: 20px; /* Aumenta el espacio inferior */
-}
-
-.calificacion {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
-}
-
-.calidad-dificultad {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-
-.calidad, .dificultad {
-  background-color: #fff;
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 5px;
-  width: 100px;
-  text-align: center;
-}
-
-.calidad .label, .dificultad .label {
-  font-size: 0.8em;
-  color: #555;
-}
-
-.calidad .valor, .dificultad .valor {
-  font-size: 1.5em;
-  color: #000;
-  font-weight: bold;
-}
-
-.tomaria-denuevo {
+.porcentaje {
   font-size: 1.2em;
+  color: #000;
+  margin: 5px 0;
+}
+
+.dificultad {
+  font-size: 1.2em;
+  color: #000;
+  margin: 5px 0;
+}
+
+.calificar-btn {
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 20px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+.calificar-btn:hover {
+  background-color: #e69500;
+}
+
+.clasificacion-etiquetas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.clasificacion {
+  margin-bottom: 20px;
+}
+
+.clasificacion h2, .etiquetas h2 {
+  font-size: 1.2em;
+  color: #555;
   margin-bottom: 10px;
 }
 
-.fecha {
-  text-align: right;
-  font-size: 0.9em;
-  color: #777;
+.clasificacion-container, .etiquetas-container {
+  background-color: #ebebeb;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  text-align: left;
+}
+
+td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  font-size: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.bar {
+  height: 20px;
+  background-color: #4caf50;
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
 .etiquetas-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
+  justify-content: center;
 }
 
 .etiqueta {
@@ -975,115 +178,125 @@ td {
   font-size: 0.9em;
 }
 
-/*clasifacion estudiantes*/
 .calificaciones-estudiantes {
-  background: #fff;
-  margin-bottom: 20px;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.calificaciones-estudiantes h2 {
-  font-size: 2em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
 }
 
+
+
+/* Estilos para el contenedor de comentarios */
 .calificacion {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.calidad-dificultad {
+/* Estilos para la sección de calidad y dificultad */
+.calidad-resp {
+  margin-bottom: 10px;
+}
+
+.dificultad-resp {
+  margin-bottom: 10px;
+}
+
+.calidad-dificultad-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  max-width: 90px;
   margin-right: 20px;
 }
 
-.calidad, .dificultad {
-  text-align: center;
-  padding: 10px;
-  border-radius: 5px;
-  min-width: 50px;
-}
-
-.calidad {
-  background-color: #04fa3d;
-  border: 2px solid #04fa3d;
-  color: white;
-}
-
-.dificultad {
-  background-color: #f3f1f1;
-  border: 2px solid #ddd;
-  color: black;
-}
-
-.calidad .label, .dificultad .label {
-  font-size: 0.8em;
-  color: #555;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.calidad .valor, .dificultad .valor {
-  font-size: 1.5em;
-  font-weight: bold;
-  display: block;
-}
-
-.info-container {
+.contenido-container {
+  flex: 2;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
+/* Estilos para el contenedor de contenido */
 .tomaria-denuevo {
-  font-size: 1.2em;
   margin-bottom: 10px;
-}
-
-.texto {
-  flex-grow: 1;
-  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .fecha {
-  text-align: right;
-  font-size: 0.9em;
-  color: #777;
-  margin-left: auto;
+  font-style: italic;
+  margin-top: 10px;
 }
 
-.etiquetas-container {
+.texto-comentario {
+  margin: 5px 0;
+}
+
+.fecha-comentario {
+  font-style: italic;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px; /* Añade espacio arriba para separarlo de la info */
+  flex-direction: row-reverse;
 }
 
-.etiqueta {
-  background-color: #2C3E50;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8em; /* Tamaño de fuente más pequeño */
-  text-align: center;
-  max-width: 200px; /* Limita el ancho máximo */
+/* Estilos para las etiquetas */
+.etiquetas-container {
+  margin-top: 10px;
+  align-self: flex-end; /* Alinea el contenedor al final del eje vertical */
+}
+
+.etiqueta-resp {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 3px 8px;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
 }
 
 
+.label span{
+  font-size: 1em;
+}
 
+.valor-container {
+  padding: 15px 5px;
+  margin-bottom: 10px; /* Espacio entre los contenedores de valor */
+  padding: 15px 5px;
+}
 
+.valor-calidad {
+  background-color: #ffc107; /* Color de fondo para valor de calidad */
+  color: #ffffff; /* Color de texto para valor de calidad */
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.valor-dificultad {
+  background-color: #a2a4a7; /* Color de fondo para valor de dificultad */
+  color: #000000; /* Color de texto para valor de dificultad */
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}

@@ -176,79 +176,67 @@
     <section class="profesor-resumen">
         <div class="profesor-info">
             <div class="promedio-container">
-                <div class="rating-container">
-                    <p class="promedio"><strong>5.0</strong><span>/5</span></p> 
-                    <p id="num-calificaciones">Basado en 2 calificaciones</p>
+                <p class="promedio"><strong></strong><span>/5</span></p>
+            </div>
+            <p id="num-calificaciones"></p>
+            <p class="nombre"><strong></strong></p>
+            <p class="facultad"></p>
+            <div class="porcentaje-dificultad">
+                <div class="porcentaje">
+                    <strong></strong> tomaría de nuevo el curso
+                </div>
+                <div class="dificultad">
+                    <strong></strong> nivel de dificultad
                 </div>
             </div>
-            <p class="nombre"><strong>BENITES CASTILLO SANTIAGO MOISES</strong></p>
-            <p class="facultad">Psicología</p>
-            <div class="porcentaje-dificultad">
-              <div class="porcentaje">
-                  <strong>100%</strong>
-                  <span>tomaría de nuevo</span>
-              </div>
-              <div class="dificultad">
-                  <strong>5</strong>
-                  <span>nivel de dificultad</span>
-              </div>
-          </div>          
-            <a href=""><button class="calificar-btn">CALIFICAR</button></a>
+            <a href="#"><button class="calificar-btn">CALIFICAR</button></a>
         </div>
         <div class="clasificacion-etiquetas">
-          <div class="clasificacion-container">
-            <h2>CLASIFICACION</h2>
-            <table id="clasificacion-table">
-                <tr>
-                    <td>EXCELENTE <span class="rating">(5)</span>
-                        <div class="bar" style="width: 100%;"></div>
-                        <span class="count">2</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>GENIAL <span class="rating">(4)</span>
-                        <div class="bar" style="width: 0%;"></div>
-                        <span class="count">0</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>BUENO <span class="rating">(3)</span>
-                        <div class="bar" style="width: 0%;"></div>
-                        <span class="count">0</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>OK <span class="rating">(2)</span>
-                        <div class="bar" style="width: 0%;"></div>
-                        <span class="count">0</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PODRÍA MEJORAR <span class="rating">(1)</span>
-                        <div class="bar" style="width: 0%;"></div>
-                        <span class="count">0</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-              
-            <div class="etiquetas-container">
+            <div class="clasificacion">
+                <h2>CLASIFICACIÓN</h2>
+                <div class="clasificacion-container">
+                    <table id="clasificacion-table">
+                        <tr>
+                            <td>IMPRESIONANTE 5</td>
+                            <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                        </tr>
+                        <tr>
+                            <td>BUENO 4</td>
+                            <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                        </tr>
+                        <tr>
+                            <td>ACEPTABLE 3</td>
+                            <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                        </tr>
+                        <tr>
+                            <td>MALO 2</td>
+                            <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                        </tr>
+                        <tr>
+                            <td>HORRIBLE 1</td>
+                            <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="etiquetas">
                 <h2>ETIQUETAS</h2>
-                <div id="etiquetas" class="etiquetas">
-                    <span class="etiqueta">La Participación Importa (2)</span>
-                    <span class="etiqueta">La Puntualidad Importa (2)</span>
-                    <span class="etiqueta">Proyectos Grupales (2)</span>
+                <div id="etiquetas-container" class="etiquetas-container">
+                    <!-- Las etiquetas se llenarán dinámicamente -->
                 </div>
             </div>
         </div>
     </section>
-    <div class="calificaciones-estudiantes">
-      <h2>Clasificación Estudiantes</h2>
+
+    <section class="calificaciones-estudiantes">
+        <h1>Calificación de estudiantes</h1>
+        <!-- Las calificaciones de los estudiantes se llenarán dinámicamente -->
+    </section>
   </div>
-  
-  
-</div>
 </main>
+  
+
+
 
 
 <!-- End #main -->
@@ -280,7 +268,6 @@
   <!--================PRUEBAS=============================
      <script src="./assets/js/mostrarCursos.js"></script>=-->
 
- 
 </body>
 
 </html>

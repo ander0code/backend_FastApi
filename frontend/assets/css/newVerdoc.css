@@ -194,7 +194,7 @@ h1, h2 {
     }
     
     .top-docentes h2 {
-        font-size: 1em;
+        font-size: 2em;
     }
     
     .info p {
@@ -458,48 +458,6 @@ h1, h2 {
         max-height: 70vh; /* Establece una altura máxima */
         padding-top: 10px;
     }
-}
-
-/* 1. Añadir scroll solo para los top-profesores en el contenedor top-docentes */
-#top-docentes-container {
-    overflow-y: auto;
-    max-height: 400px; /* Ajusta esta altura según sea necesario */
-}
-
-/* 2. Reducir el tamaño de los elementos en el contenedor top-profesores */
-.top-profesor {
-    padding: 4px; /* Reducción del padding */
-}
-
-.calidad-texto,
-.calidad,
-.calificaciones,
-.info h2 a,
-.info p,
-.nombre-profesor-top {
-    font-size: 14px; /* Reducción del tamaño de la fuente */
-}
-
-/* 3. Alinear la altura del contenedor top-docentes con el contenedor docentes */
-#top-docentes-container {
-    height: 100%; /* Ajusta la altura para que coincida con la altura de docentes */
-}
-
-/* 3. Alinear la altura del contenedor top-docentes con el contenedor docentes */
-#top-docentes-container {
-    height: 100%; /* Ajusta la altura para que coincida con la altura de docentes */
-    max-height: 1100px; /* Ajusta la altura máxima si es necesario */
-}
-/* 3. Aumentar el tamaño y hacer negrita el texto del contenedor top-docentes */
-#top-docentes-container h2 {
-    font-size: 1.5em; /* Ajusta el tamaño del texto según sea necesario */
-    font-weight: bold; /* Hace negrita el texto */
-    margin-bottom: 22px;
-}
-/* 3. Aumentar el tamaño y hacer negrita el texto del título del contenedor docentes */
-#docentes-container h1 {
-    font-size: 2em; /* Ajusta el tamaño del texto según sea necesario */
-    font-weight: bold; /* Hace negrita el texto */
 }
 
     
