@@ -176,15 +176,23 @@
     <section class="profesor-resumen">
         <div class="profesor-info">
             <div class="promedio-container">
-                <p class="promedio"><strong></strong>/5</p>
-                <p id="num-calificaciones"></p>
+                <div class="rating-container">
+                    <p class="promedio"><strong>5.0</strong><span>/5</span></p> 
+                    <p id="num-calificaciones">Basado en 2 calificaciones</p>
+                </div>
             </div>
-            <p class="nombre"><strong></strong></p>
-            <p class="facultad"></p>
+            <p class="nombre"><strong>BENITES CASTILLO SANTIAGO MOISES</strong></p>
+            <p class="facultad">Psicología</p>
             <div class="porcentaje-dificultad">
-                <p class="porcentaje"><strong></strong> tomaría de nuevo el curso</p>
-                <p class="dificultad"><strong></strong> nivel de dificultad</p>
-            </div>
+              <div class="porcentaje">
+                  <strong>100%</strong>
+                  <span>tomaría de nuevo</span>
+              </div>
+              <div class="dificultad">
+                  <strong>5</strong>
+                  <span>nivel de dificultad</span>
+              </div>
+          </div>          
             <a href=""><button class="calificar-btn">CALIFICAR</button></a>
         </div>
         <div class="clasificacion-etiquetas">
@@ -215,23 +223,21 @@
             </div>
             <div class="etiquetas">
                 <h2>ETIQUETAS</h2>
-                <div id="etiquetas-container" class="etiquetas-container">
-                    <!-- Las etiquetas se llenarán dinámicamente -->
+                <div id="etiquetas" class="etiquetas">
+                    <span class="etiqueta">La Participación Importa (2)</span>
+                    <span class="etiqueta">La Puntualidad Importa (2)</span>
+                    <span class="etiqueta">Proyectos Grupales (2)</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="calificaciones-estudiantes">
-        <h1>Calificación de estudiantes</h1>
-        <!-- Las calificaciones de los estudiantes se llenarán dinámicamente -->
-    </section>
+    <div class="calificaciones-estudiantes">
+      <h2>Clasificación Estudiantes</h2>
+  </div>
+  
+  
 </div>
 </main>
-
-  
-
-
 
 
 <!-- End #main -->
