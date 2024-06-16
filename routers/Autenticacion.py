@@ -1,11 +1,13 @@
 from typing import Annotated
 from pydantic import EmailStr
 from datetime import datetime,timedelta,timezone
+
 from fastapi import APIRouter, Request ,Form , HTTPException,Cookie,Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse,RedirectResponse
 from  jose import jwt,JWTError
-
+from sqlalchemy.exc import OperationalError
+import time
 import uvicorn
 
 from typing import Any, Dict
@@ -15,15 +17,25 @@ from models import Model_DB
 from config.base_connection import SessionLocal
 
 SECRETE_KEY = "AeDfZ7I7A1btH97zzDrlp4JKcaOqz2JH1HVRZscWYReB0QvdSk8UUE1m92x1IYv7"
-TOKEN_SECONDS_EXP = 500
+TOKEN_SECONDS_EXP = 5000000000
+
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
 
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-        
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
 app = APIRouter()
 
 jinjatemplates = Jinja2Templates(directory="frontend")
