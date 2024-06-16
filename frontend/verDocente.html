@@ -175,51 +175,62 @@
 <main id="main" class="main">
   <section class="sectionDashboardDoc">
     <div class="container">
-      <div class="docentes" id="docentes-container">
-        <h1>DOCENTES</h1>
-        <input type="text" placeholder="Buscar" id="search-profesores" class="buscar">
-        <div id="profesores-list">
-          <!-- Aquí se cargarán los profesores -->
+        <div class="docentes" id="docentes-container">
+            <div id="docentes-header">
+                <h1>DOCENTES</h1>
+                <input type="text" placeholder="Buscar" id="search-profesores" class="buscar">
+            </div>
+            <div id="profesores-list">
+                <div class="profesor">
+                    <div class="calidad-container">
+                        <div class="calidad-texto"></div>
+                        <div class="calidad calidad-baja"></div>
+                        <div class="calificaciones"></div>
+                    </div>
+                    <div class="info">
+                        <h2 class="nombre-profesor"><a href=""></a></h2>
+                    </div>
+                </div>
+                <div class="profesor">
+                    <div class="calidad-container">
+                        <div class="calidad-texto"></div>
+                        <div class="calidad calidad-media"></div>
+                        <div class="calificaciones"></div>
+                    </div>
+                    <div class="info">
+                        <h2 class="nombre-profesor"><a href=""></a></h2>
+                    </div>
+                </div>
+                <!-- Agrega más profesores aquí -->
+            </div>
         </div>
-      </div>
-      <div class="top-docentes" id="top-docentes-container">
-        <h2>Top Docentes</h2>
-        <div class="top-profesor">
-          <div class="calidad-container">
-            <div class="calidad-texto">CALIDAD</div>
-            <div class="calidad calidad-baja">0</div>
-            <div class="calificaciones">9 CALIFICACIONES</div>
-          </div>
-          <div class="info">
-            <h2 class="nombre-profesor"><a href="">ARANA MEZA LUIS POMPEYO</a></h2>
-          </div>
+        <div class="top-docentes" id="top-docentes-container">
+            <h2>Top Docentes</h2>
+            <div class="top-profesor">
+                <div class="calidad-container">
+                    <div class="calidad-texto"></div>
+                    <div class="calidad calidad-baja"></div>
+                    <div class="calificaciones"></div>
+                </div>
+                <div class="info">
+                    <h2 class="nombre-profesor"><a href=""></a></h2>
+                </div>
+            </div>
+            <div class="top-profesor">
+                <div class="calidad-container">
+                    <div class="calidad-texto"></div>
+                    <div class="calidad calidad-media"></div>
+                    <div class="calificaciones"></div>
+                </div>
+                <div class="info">
+                    <h2 class="nombre-profesor"><a href=""></a></h2>
+                </div>
+            </div>
+            <!-- Agrega más top profesores aquí -->
         </div>
-        <div class="top-profesor">
-          <div class="calidad-container">
-            <div class="calidad-texto">CALIDAD</div>
-            <div class="calidad calidad-media">3.5</div>
-            <div class="calificaciones">9 CALIFICACIONES</div>
-          </div>
-          <div class="info">
-            <h2 class="nombre-profesor"><a href="">BAÑOS RAMOS JUAN CARLOS</a></h2>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- End #main -->
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

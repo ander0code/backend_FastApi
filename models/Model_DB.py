@@ -30,7 +30,6 @@ class User(Base):
     codigo_ID= Column(Integer, ForeignKey('user_Data.id'), nullable=False)
 
     etiqueta_usuario = relationship("EtiquetaUsuario", back_populates="user") 
-    historial_Post =  relationship("HistorialPost", back_populates="user")
     votes = relationship("Vote", back_populates="user")
     user_data = relationship("UserData", back_populates="user")
     comments = relationship("Comment", back_populates="user")
@@ -59,7 +58,6 @@ class Post(Base):
     descripcion= Column(String(1000000))
     
     etiquetas_publicacion = relationship("EtiquetasPublicacion",back_populates="post")
-    historial_Post =  relationship("HistorialPost", back_populates="post")
     votes = relationship("Vote", back_populates="post")
     comments = relationship("Comment", back_populates="post")
 
@@ -84,6 +82,7 @@ class Vote(Base):
     mensajeID= Column(Integer, ForeignKey('post.id'), nullable=False)
     tipo_Voto= Column(Enum("POST", "NEG"), nullable=False)
     userID= Column(Integer, ForeignKey('user.id'), nullable=False)
+    fecha_creacion = Column(Date)
     
     user = relationship("User", back_populates="votes")
     post = relationship("Post", back_populates="votes")
@@ -98,8 +97,6 @@ class HistorialPost(Base):
     titulo= Column(String(300))
     descripcion= Column(String(1000000))
     
-    user = relationship("User", back_populates="historial_Post")
-    post = relationship("Post", back_populates="historial_Post")
 
 class EtiquetaCarrera(Base):
     __tablename__ = 'etiqueta_carrera'
@@ -175,3 +172,4 @@ class Calificacion(Base):
 
     student = relationship("UserData", back_populates="calificaciones")
     profesor = relationship("EtiquetaProfesores", back_populates="calificaciones")
+    

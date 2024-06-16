@@ -176,52 +176,47 @@
     <section class="profesor-resumen">
         <div class="profesor-info">
             <div class="promedio-container">
-                <p class="promedio"><strong>5</strong>/5</p>
-                <p>Basado en 7 calificaciones</p>
+                <p class="promedio"><strong></strong>/5</p>
+                <p id="num-calificaciones"></p>
             </div>
-            <p class="nombre"><strong>ALVARADO GARCIA PAUL ALAN ARKIN</strong></p>
-            <p class="facultad">Psicología</p>
+            <p class="nombre"><strong></strong></p>
+            <p class="facultad"></p>
             <div class="porcentaje-dificultad">
-                <p class="porcentaje"><strong>100%</strong> tomaría de nuevo</p>
-                <p class="dificultad"><strong>5</strong> nivel de dificultad</p>
+                <p class="porcentaje"><strong></strong> tomaría de nuevo el curso</p>
+                <p class="dificultad"><strong></strong> nivel de dificultad</p>
             </div>
-            <a href="/autenticacion/califDoc/"><button class="calificar-btn">CALIFICAR</button></a>
+            <a href=""><button class="calificar-btn">CALIFICAR</button></a>
         </div>
         <div class="clasificacion-etiquetas">
             <div class="clasificacion">
                 <h2>CLASIFICACION</h2>
-                <table>
+                <table id="clasificacion-table">
                     <tr>
-                        <td>EXCELENTE 5</td>
-                        <td><div class="bar" style="width: 100%;"></div>7</td>
+                        <td>EXCELENTE</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
                     </tr>
                     <tr>
-                        <td>BUENO 4</td>
-                        <td><div class="bar" style="width: 57%;"></div>4</td>
+                        <td>GENIAL</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
                     </tr>
                     <tr>
-                        <td>ACEPTABLE 3</td>
-                        <td><div class="bar" style="width: 0%;"></div>0</td>
+                        <td>BUENO</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
                     </tr>
                     <tr>
-                        <td>CONFUSO 2</td>
-                        <td><div class="bar" style="width: 28%;"></div>2</td>
+                        <td>OK</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
                     </tr>
                     <tr>
-                        <td>MUY CONFUSO 1</td>
-                        <td><div class="bar" style="width: 14%;"></div>1</td>
+                        <td>PODRÍA MEJORAR</td>
+                        <td><div class="bar" style="width: 0%;"></div><span class="count"></span></td>
                     </tr>
                 </table>
             </div>
             <div class="etiquetas">
                 <h2>ETIQUETAS</h2>
-                <div class="etiquetas-container">
-                    <span class="etiqueta">Clases Excelentes</span>
-                    <span class="etiqueta">Brinda Apoyo</span>
-                    <span class="etiqueta">Muy Cómico</span>
-                    <span class="etiqueta">Respetado por sus estudiantes</span>
-                    <span class="etiqueta">Inspiracional</span>
-                    <span class="etiqueta">Da Buena Retroalimentación</span>
+                <div id="etiquetas-container" class="etiquetas-container">
+                    <!-- Las etiquetas se llenarán dinámicamente -->
                 </div>
             </div>
         </div>
@@ -229,29 +224,9 @@
 
     <section class="calificaciones-estudiantes">
         <h1>Calificación de estudiantes</h1>
-        <div class="calificacion">
-            <div class="calidad-dificultad">
-                <div class="calidad">
-                    <p class="label">CALIDAD</p>
-                    <p class="valor">5</p>
-                </div>
-                <div class="dificultad">
-                    <p class="label">DIFICULTAD</p>
-                    <p class="valor">4.0</p>
-                </div>
-            </div>
-            <p class="tomaria-denuevo"><strong>Tomaría de nuevo:</strong> SI</p>
-            <p>Buen profesor, tiene un gran método de enseñanza y hace las clases interactivas para no aburrir a sus alumnos, definitivamente repetiría.</p>
-            <p class="fecha">03/06/2024</p>
-            <div class="etiquetas-container">
-                <span class="etiqueta">Clases Excelentes</span>
-                <span class="etiqueta">Brinda Apoyo</span>
-            </div>
-        </div>
-        <!-- Más calificaciones de estudiantes -->
+        <!-- Las calificaciones de los estudiantes se llenarán dinámicamente -->
     </section>
 </div>
-
 </main>
 
   
@@ -282,6 +257,7 @@
   <!-----------------------------JAVASCRIPTS IMPORTANTES-->
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/infoDoc.js"></script>
 
 
   <!--================PRUEBAS=============================

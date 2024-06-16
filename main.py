@@ -3,10 +3,15 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 sys.path.append("..")
-from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores,insertar_Publicaciones,insertar_comentario
+from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profesores,insertar_Publicaciones,insertar_comentario,insert_Votos 
+
 
 
 app = FastAPI()
+app = FastAPI(
+    title="FORUA",
+    description="PROYECTO 3 Ciclo - Programacion Avanzada",
+    version="1.0.0")
 origins = [
     "http://localhost",
     "http://localhost:8000",
@@ -71,3 +76,4 @@ app.include_router(Publicaciones_Comentarios.post, tags=["Post"])
 app.include_router(Etiqueta_Profesores.Profe,tags=["Profe"])
 app.include_router(insertar_Publicaciones.post,tags=["PostInsert"])
 app.include_router(insertar_comentario.coment,tags=["ComentInsert"])
+app.include_router(insert_Votos.voto ,tags=["Votos"])

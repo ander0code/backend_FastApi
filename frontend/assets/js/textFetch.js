@@ -182,8 +182,16 @@ function displayPostDetails(postData) {
     profilePicElement.src = userImageURL;
 
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
-    document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
-    document.querySelector('.question-meta').textContent = `${post.propietarioNombre || 'Autor no disponible'} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
+document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
+
+// Crear el enlace para el nombre del autor
+let autorNombre = post.propietarioNombre || 'Autor no disponible';
+let autorURL = post.propietarioURL || '/autenticacion/perfils';
+let enlaceAutor = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a>`;
+
+// Actualizar el contenido del contenedor .question-meta con el nombre del autor enlazado y la fecha
+document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
+
 
     const voteCountElement = document.querySelector('.vote-count');
     voteCountElement.textContent = votos;
@@ -241,8 +249,9 @@ function displayPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
+        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
-            <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${response.fecha_creacion}</p>
+            
         `;
 
         commentElement.appendChild(voteButtons);
@@ -278,7 +287,7 @@ function displayAllPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
-        <p class="comment-meta">${response.UserData.nombre} ${response.UserData.last_Name} | ${response.fecha_creacion}</p>
+        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
             
         `;

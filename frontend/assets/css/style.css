@@ -579,7 +579,7 @@ button#preguntar-btn {
   margin-right: 4px;
   margin-bottom: 4px;
   border-radius: 3px;
-  font-size: 0.875rem;
+  font-size: 0.700rem;
 }
 
 @media (max-width: 1199px) {
@@ -1037,6 +1037,7 @@ section#profile-template {
   transition: all 0.3s;
   padding: 15px; /* Ajustar el relleno */
   overflow-y: auto;
+  font-weight: 600;
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 15px rgba(1, 41, 112, 0.1);
@@ -1124,13 +1125,19 @@ section#profile-template {
   margin-right: 7px; /* Ajustar el margen */
 }
 
+.sidebar-nav .nav-link span {
+  font-size: 14px;
+}
+
 .sidebar-nav .nav-link.collapsed {
   color: #214773;
   background: #fff;
+  font-size: 14px; /* Ajustar el tamaño del icono */
 }
 
 .sidebar-nav .nav-link.collapsed i {
   color: #214773;
+  font-size: 14px; /* Ajustar el tamaño del icono */
 }
 
 .sidebar-nav .nav-link:hover {
