@@ -41,6 +41,13 @@ async def create_post(Post_id : int,id_user : int,comment: Comentarios.Comentari
         db.commit()
         db.refresh(nuevo_post)
         
+        
+        recuento_comentarios_ = db.query(Model_DB.Comment).filter(Model_DB.Comment.publicacion_ID == Post_id).count()
+        print(recuento_comentarios_)
+        db.query(Model_DB.Post).filter(Model_DB.Post.id == Post_id).update({Model_DB.Post.recuento_comentarios: recuento_comentarios_})
+        db.commit()
+
+        
         response = Comentarios.ComentariosResponse(
                 message="Comentario creado exitosamente",
                 status="success"
