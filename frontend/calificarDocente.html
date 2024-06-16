@@ -10,6 +10,8 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+
+
   <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -185,35 +187,33 @@
       </div>
       <div class="form-group">
         <label for="calidad">Califica a tu profesor</label>
-        <div class="estrellas" id="calidad" data-tipo="calidad" required>
+        <div class="emojis" id="calidad" data-tipo="calidad" required>
           <input type="radio" name="calidad" id="calidad-5" value="5" required>
-          <label for="calidad-1" data-descripcion="Muy bueno"><i class="far fa-grin-stars"></i></label>
+          <label for="calidad-5" data-descripcion="Muy bueno"><i class="far fa-grin-stars"></i></label>
           <input type="radio" name="calidad" id="calidad-4" value="4">
-          <label for="calidad-1" data-descripcion="Bueno"><i class="far fa-smile"></i></label>
+          <label for="calidad-4" data-descripcion="Bueno"><i class="far fa-smile"></i></label>
           <input type="radio" name="calidad" id="calidad-3" value="3">
-          <label for="calidad-1" data-descripcion="Ok"><i class="far fa-meh"></i></label>
+          <label for="calidad-3" data-descripcion="Ok"><i class="far fa-meh"></i></label>
           <input type="radio" name="calidad" id="calidad-2" value="2">
-          <label for="calidad-1" data-descripcion="Mala"><i class="far fa-frown"></i></label>
-          <input type="radio" name="calidad" id="calidad-1" value="1" required>
-          <label for="calidad-1" data-descripcion="Muy mala"><i class="far fa-sad-cry"></i></label>
+          <label for="calidad-2" data-descripcion="Malo"><i class="far fa-face-frown-open"></i></label>
+          <input type="radio" name="calidad" id="calidad-1" value="1">
+          <label for="calidad-1" data-descripcion="Muy malo"><i class="far fa-angry "></i></label>
         </div>
-        <p class="descripcion" id="descripcion-calidad"></p>
       </div>
       <div class="form-group">
         <label for="dificultad">¿Qué tan difícil fue cursar con este profesor?</label>
-        <div class="estrellas" id="dificultad" data-tipo="dificultad" required>
-          <input type="radio" name="calidad" id="calidad-5" value="5" required>
-          <label for="calidad-1" data-descripcion="Muy facil"><i class="far fa-grin-stars"></i></label>
-          <input type="radio" name="calidad" id="calidad-4" value="4">
-          <label for="calidad-1" data-descripcion="Facil"><i class="far fa-smile"></i></label>
-          <input type="radio" name="calidad" id="calidad-3" value="3">
-          <label for="calidad-1" data-descripcion="Normal"><i class="far fa-meh"></i></label>
-          <input type="radio" name="calidad" id="calidad-2" value="2">
-          <label for="calidad-1" data-descripcion="Dificil"><i class="far fa-frown"></i></label>
-          <input type="radio" name="calidad" id="calidad-1" value="1" required>
-          <label for="calidad-1" data-descripcion="Muy dificil"><i class="far fa-sad-cry"></i></label>
+        <div class="emojis" id="dificultad" data-tipo="dificultad" required>
+          <input type="radio" name="dificultad" id="dificultad-5" value="5" required>
+          <label for="dificultad-5" data-descripcion="Muy facil"><i class="far fa-grin-stars"></i></label>
+          <input type="radio" name="dificultad" id="dificultad-4" value="4">
+          <label for="dificultad-4" data-descripcion="Facil"><i class="far fa-smile"></i></label>
+          <input type="radio" name="dificultad" id="dificultad-3" value="3">
+          <label for="dificultad-3" data-descripcion="Normal"><i class="far fa-meh"></i></label>
+          <input type="radio" name="dificultad" id="dificultad-2" value="2">
+          <label for="dificultad-2" data-descripcion="Dificil"><i class="far fa-face-frown-open"></i></label>
+          <input type="radio" name="dificultad" id="dificultad-1" value="1" required>
+          <label for="dificultad-1" data-descripcion="Muy dificil"><i class="far fa-angry "></i></label>
         </div>
-        <p class="descripcion" id="descripcion-dificultad"></p>
       </div>
       <div class="form-group">
         <label for="tomaria-denuevo">¿Volverías a tomar este curso?</label>
