@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Definir el color según el valor de calidad
                 let colorCalidad;
+                let textColor = '#000000'; // Color de texto predeterminado (negro)
                 switch (datos.calidad) {
                     case 5:
                         colorCalidad = '#02B207'; // Verde
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         break;
                     case 3:
                         colorCalidad = '#FFF300'; // Amarillo
+                        textColor = '#000000'; // Cambiar texto a negro para calidad 3
                         break;
                     case 2:
                         colorCalidad = '#FF5500'; // Naranja
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
                 calidadDiv.innerHTML = `
                     <p class="label"><span>CALIDAD</span></p>
-                    <div class="valor-container valor-calidad" style="background-color: ${colorCalidad};">${datos.calidad}</div>
+                    <div class="valor-container valor-calidad" style="background-color: ${colorCalidad}; color: ${textColor};">${datos.calidad}</div>
                 `;
         
                 const dificultadDiv = document.createElement('div');
@@ -163,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
                 calificacionesEstudiantesSection.appendChild(calificacionDiv);
 
+        
                 // Clasificación
                 const calidad = datos.calidad;
                 if (calidad >= 4.5) {
