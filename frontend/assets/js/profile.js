@@ -117,12 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="post-right">
                     <div class="post-header">
-                        <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
+                        <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}" class="delayed-link">${post.titulo || 'Título no disponible'}</a></div>
                         <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion || 'Fecha no disponible'}</div>
                     </div>
                     <div class="post-tags"></div>
                     <div class="post-footer">
-                        <a href="/autenticacion/texto?post_id=${post.id}" class="post-readmore">Seguir Leyendo <i class="bi bi-arrow-right"></i></a>
+                       <a href="/autenticacion/texto?post_id=${post.id}" class="post-readmore">Seguir Leyendo <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             `;
@@ -223,4 +223,37 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error al actualizar la descripción del usuario:', error);
         });
     }
+    const postContainer = document.getElementById('post-container');
+
+    // Función para manejar el bloqueo del enlace
+    function handleDelayedLinkClick(event) {
+        const link = event.target;
+
+        // Verificar si se hizo clic en un enlace diferido
+        if (link.classList.contains('delayed-link')) {
+            // Bloquear el enlace por 2 segundos
+            link.classList.add('disabled');
+            setTimeout(() => {
+                link.classList.remove('disabled');
+            }, 2000);
+        }
+    }
+    function handleRedirectButtonClick(event) {
+        const link = event.target.closest('.post-readmore');
+    
+        if (link) {
+            // Deshabilitar el enlace
+            link.disabled = true;
+    
+            // Volver a habilitar el enlace después de 2 segundos
+            link.classList.add('disabled');
+            setTimeout(() => {
+                link.classList.remove('disabled');
+            }, 2000);
+        }
+    }
+    postContainer.addEventListener('click', handleRedirectButtonClick);
+    
+    // Agregar el event listener al contenedor de posts
+    postContainer.addEventListener('click', handleDelayedLinkClick);
 });
