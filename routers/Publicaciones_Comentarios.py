@@ -22,8 +22,6 @@ def get_db():
     finally:
         db.close()
         
-        
-        
 @post.get("/postsFilter/{carrera_id}", response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
 

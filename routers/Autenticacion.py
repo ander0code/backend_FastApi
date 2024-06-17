@@ -29,6 +29,7 @@ def get_db():
         yield db
     finally:
         db.close()
+        
 app = APIRouter()
 
 jinjatemplates = Jinja2Templates(directory="frontend")
