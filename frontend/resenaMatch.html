@@ -36,7 +36,7 @@
 
   <!-- Template Main CSS File -->
   <link href="./assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/reseñaLoc.css">
+<link rel="stylesheet" href="./assets/css/resenaMatch.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -179,95 +179,106 @@
 
 <main id="main" class="main">
   <div class="container">
-    <h1>Cafetería: <p class="NombreProfeCalificar"></p></h1>
+    <h1 class="section-title">Autonoma Match:</h1>
+    <div class="profile-container">
+      <img src="./assets/img/defaultft.webp" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-details">
+        <div class="nombre-container">
+          <p class="NombreProfeCalificar">Edward Pittman</p>
+        </div>
+        <div class="carrera-container">
+          <p class="carrera">Derecho</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="section-title"></h2>
     <form class="calificar-form" id="calificar-form">
+  
+      <div class="form-group">
+        <div class="review-header">
+            <div class="review-title-container">
+                <label class="review-title" for="calificacion">Reseña sobre el lugar:</label>
+            </div>
+            <div class="estrellas-container">
+                <div class="estrellas" id="calificacion" data-tipo="calificacion" required>
+                    <input type="radio" name="calificacion" id="calificacion-5" value="5" required>
+                    <label for="calificacion-5" data-descripcion="Muy Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-4" value="4">
+                    <label for="calificacion-4" data-descripcion="Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-3" value="3">
+                    <label for="calificacion-3" data-descripcion="Ok">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-2" value="2">
+                    <label for="calificacion-2" data-descripcion="Mala">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-1" value="1">
+                    <label for="calificacion-1" data-descripcion="Muy Mala">&#9733;</label>
+                </div>
+                <div id="tooltip" class="tooltip"></div>
+            </div>
+        </div>
+      </div>
+    
       <div class="form-group">
         <div class="review-header">
           <div class="review-title-container">
-            <label class="review-title" for="calidad">Reseña sobre el lugar:</label>
+            <label class="review-title" for="instalaciones">Instalaciones:</label>
           </div>
           <div class="estrellas-container">
-            <div class="estrellas" id="calidad" data-tipo="calidad" required>
-              <input type="radio" name="calidad" id="calidad-5" value="5" required>
-              <label for="calidad-5" data-descripcion="Excelente">&#9733;</label>
-              <input type="radio" name="calidad" id="calidad-4" value="4">
-              <label for="calidad-4" data-descripcion="Genial">&#9733;</label>
-              <input type="radio" name="calidad" id="calidad-3" value="3">
-              <label for="calidad-3" data-descripcion="Bueno">&#9733;</label>
-              <input type="radio" name="calidad" id="calidad-2" value="2">
-              <label for="calidad-2" data-descripcion="OK">&#9733;</label>
-              <input type="radio" name="calidad" id="calidad-1" value="1">
-              <label for="calidad-1" data-descripcion="Podría mejorar">&#9733;</label>
+            <div class="estrellas" id="instalaciones" data-tipo="instalaciones" required>
+              <input type="radio" name="instalaciones" id="instalaciones-5" value="5" required>
+              <label for="instalaciones-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-4" value="4">
+              <label for="instalaciones-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-3" value="3">
+              <label for="instalaciones-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-2" value="2">
+              <label for="instalaciones-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-1" value="1">
+              <label for="instalaciones-1" data-descripcion="Muy Mala">&#9733;</label>
             </div>
           </div>
         </div>
-        <p class="descripcion" id="descripcion-calidad"></p>
       </div>
       <div class="form-group">
         <div class="review-header">
           <div class="review-title-container">
-            <label class="review-title" for="dificultad">comida:</label>
+            <label class="review-title" for="seguridad">Seguridad:</label>
           </div>
           <div class="estrellas-container">
-            <div class="estrellas" id="dificultad" data-tipo="dificultad" required>
-              <input type="radio" name="dificultad" id="dificultad-5" value="5" required>
-              <label for="dificultad-5" data-descripcion="Muy difícil">&#9733;</label>
-              <input type="radio" name="dificultad" id="dificultad-4" value="4">
-              <label for="dificultad-4" data-descripcion="Difícil">&#9733;</label>
-              <input type="radio" name="dificultad" id="dificultad-3" value="3">
-              <label for="dificultad-3" data-descripcion="Lo normal">&#9733;</label>
-              <input type="radio" name="dificultad" id="dificultad-2" value="2">
-              <label for="dificultad-2" data-descripcion="Fácil">&#9733;</label>
-              <input type="radio" name="dificultad" id="dificultad-1" value="1">
-              <label for="dificultad-1" data-descripcion="Muy fácil">&#9733;</label>
+            <div class="estrellas" id="seguridad" data-tipo="seguridad" required>
+              <input type="radio" name="seguridad" id="seguridad-5" value="5" required>
+              <label for="seguridad-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-4" value="4">
+              <label for="seguridad-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-3" value="3">
+              <label for="seguridad-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-2" value="2">
+              <label for="seguridad-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-1" value="1">
+              <label for="seguridad-1" data-descripcion="Muy Mala">&#9733;</label>
             </div>
           </div>
         </div>
-        <p class="descripcion" id="descripcion-dificultad"></p>
       </div>
       <div class="form-group">
         <div class="review-header">
           <div class="review-title-container">
-            <label class="review-title" for="ambiente">ambiente:</label>
+            <label class="review-title" for="horarios">Horarios:</label>
           </div>
           <div class="estrellas-container">
-            <div class="estrellas" id="ambiente" data-tipo="ambiente" required>
-              <input type="radio" name="ambiente" id="ambiente-5" value="5" required>
-              <label for="ambiente-5" data-descripcion="Excelente">&#9733;</label>
-              <input type="radio" name="ambiente" id="ambiente-4" value="4">
-              <label for="ambiente-4" data-descripcion="Genial">&#9733;</label>
-              <input type="radio" name="ambiente" id="ambiente-3" value="3">
-              <label for="ambiente-3" data-descripcion="Bueno">&#9733;</label>
-              <input type="radio" name="ambiente" id="ambiente-2" value="2">
-              <label for="ambiente-2" data-descripcion="OK">&#9733;</label>
-              <input type="radio" name="ambiente" id="ambiente-1" value="1">
-              <label for="ambiente-1" data-descripcion="Podría mejorar">&#9733;</label>
+            <div class="estrellas" id="horarios" data-tipo="horarios" required>
+              <input type="radio" name="horarios" id="horarios-5" value="5" required>
+              <label for="horarios-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-4" value="4">
+              <label for="horarios-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-3" value="3">
+              <label for="horarios-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-2" value="2">
+              <label for="horarios-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-1" value="1">
+              <label for="horarios-1" data-descripcion="Muy Mala">&#9733;</label>
             </div>
           </div>
         </div>
-        <p class="descripcion" id="descripcion-ambiente"></p>
-      </div>
-      <div class="form-group">
-        <div class="review-header">
-          <div class="review-title-container">
-            <label class="review-title" for="atencion">atencion:</label>
-          </div>
-          <div class="estrellas-container">
-            <div class="estrellas" id="atencion" data-tipo="atencion" required>
-              <input type="radio" name="atencion" id="atencion-5" value="5" required>
-              <label for="atencion-5" data-descripcion="Excelente">&#9733;</label>
-              <input type="radio" name="atencion" id="atencion-4" value="4">
-              <label for="atencion-4" data-descripcion="Genial">&#9733;</label>
-              <input type="radio" name="atencion" id="atencion-3" value="3">
-              <label for="atencion-3" data-descripcion="Bueno">&#9733;</label>
-              <input type="radio" name="atencion" id="atencion-2" value="2">
-              <label for="atencion-2" data-descripcion="OK">&#9733;</label>
-              <input type="radio" name="atencion" id="atencion-1" value="1">
-              <label for="atencion-1" data-descripcion="Podría mejorar">&#9733;</label>
-            </div>
-          </div>
-        </div>
-        <p class="descripcion" id="descripcion-atencion"></p>
       </div>
       <div class="form-group pautas">
         <label>Pautas:</label>
@@ -287,6 +298,8 @@
     </form>
   </div>
 </main>
+
+
 
 <div class="modal fade" id="confirmarEnvioModal" tabindex="-1" aria-labelledby="confirmarEnvioLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -346,7 +359,7 @@
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/StarsShow.js"></script>
-  <script src="./assets/js/reseñaLoc.js"></script>
+  <script src="./assets/js/resenaMatch.js"></script>
 
 
   <!--================PRUEBAS=============================

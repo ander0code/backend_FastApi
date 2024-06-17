@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>Forua</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+  <!-- Favicons -->
+  <link href="assets/img/logosago.webp" rel="icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!--Vendor CSS Files-->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="./assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/resenaAtencion.css">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
+        <img src="./assets/img/logosago2.webp" alt="forua">
+        <span class="d-none d-lg-block">ORUA</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-label="User Profile Menu">
+            <img src="" alt="Profile Picture" class="rounded-circle profile-img" id="profile-img">
+            <span class="d-none d-md-block dropdown-toggle ps-2 profile-name" id="profile-name"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
+            <li class="dropdown-header" id="profile-template">
+              <h6 id="profile-fullname">Nombre Completo</h6>
+              <span id="profile-carreer">Carrera</span>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/autenticacion/data_users" method="GET">
+                <button type="submit" class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-person"></i>
+                  <span>Mi Perfil</span>
+                </button>
+              </form>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="./users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Configuración de cuenta</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/autenticacion/preguntas_frecuentes">
+                <i class="bi bi-chat-left"></i>
+                <span>Mis preguntas</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/autenticacion/logout" method="post">
+                <button type="submit" class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Salir</span>
+                </button>
+            </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>    
+
+  </header>
+<!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/autenticacion/dashboard">
+                <i class="bi bi-grid"></i>
+                <span>Inicio</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        
+        
+        <!-- Filtro de Profesores -->
+        <li class="nav-heading">DOCENTES</li>
+        
+        <li class="nav-item">
+          <form action="/autenticacion/verdocentes" method="get" style="all: unset;">
+              <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                  <i class="bi bi-person"></i>
+                  <span>Ver y calificar docentes</span>
+              </button>
+          </form>
+      </li><!-- End Login Page Nav -->
+        
+        <template id="profesor-template">
+            <li>
+                <a href="#" class="profesor-option">
+                    <i class="bi bi-circle"></i><span></span>
+                </a>
+            </li>
+        </template>
+        
+        <li class="nav-heading">Soporte</li>
+        
+        <li class="nav-item">
+            <form action="/autenticacion/preguntas_frecuentes" method="GET">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-question-circle"></i>
+                    <span>Preguntas frecuentes</span>
+                </button>
+            </form>
+        </li><!-- End F.A.Q Page Nav -->
+        
+        <li class="nav-item">
+            <form action="/autenticacion/pagina_contactos" method="GET">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                    <i class="bi bi-envelope"></i>
+                    <span>Soporte</span>
+                </button>
+            </form>
+        </li><!-- End Contact Page Nav -->
+        
+        <li class="nav-item">
+            <form action="/autenticacion/logout" method="post" style="all: unset;">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Salir</span>
+                </button>
+            </form>
+        </li><!-- End Login Page Nav -->
+    </ul>
+</aside>
+
+<!-- End Sidebar-->
+
+<main id="main" class="main">
+  <div class="container">
+    <h1 class="section-title">Atencion al Estudiante:</h1>
+    <div class="profile-container">
+      <img src="./assets/img/defaultft.webp" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-details">
+        <div class="nombre-container">
+          <p class="NombreProfeCalificar">Edward Pittman</p>
+        </div>
+        <div class="carrera-container">
+          <p class="carrera">Derecho</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="section-title"></h2>
+    <form class="calificar-form" id="calificar-form">
+  
+      <div class="form-group">
+        <div class="review-header">
+            <div class="review-title-container">
+                <label class="review-title" for="calificacion">Reseña sobre el lugar:</label>
+            </div>
+            <div class="estrellas-container">
+                <div class="estrellas" id="calificacion" data-tipo="calificacion" required>
+                    <input type="radio" name="calificacion" id="calificacion-5" value="5" required>
+                    <label for="calificacion-5" data-descripcion="Muy Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-4" value="4">
+                    <label for="calificacion-4" data-descripcion="Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-3" value="3">
+                    <label for="calificacion-3" data-descripcion="Ok">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-2" value="2">
+                    <label for="calificacion-2" data-descripcion="Mala">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-1" value="1">
+                    <label for="calificacion-1" data-descripcion="Muy Mala">&#9733;</label>
+                </div>
+                <div id="tooltip" class="tooltip"></div>
+            </div>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="servicio">servicio:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="servicio" data-tipo="servicio" required>
+              <input type="radio" name="servicio" id="servicio-5" value="5" required>
+              <label for="servicio-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="servicio" id="servicio-4" value="4">
+              <label for="servicio-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="servicio" id="servicio-3" value="3">
+              <label for="servicio-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="servicio" id="servicio-2" value="2">
+              <label for="servicio-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="servicio" id="servicio-1" value="1">
+              <label for="servicio-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="facilidades">Facilidades:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="facilidades" data-tipo="facilidades" required>
+              <input type="radio" name="facilidades" id="facilidades-5" value="5" required>
+              <label for="facilidades-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="facilidades" id="facilidades-4" value="4">
+              <label for="facilidades-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="facilidades" id="facilidades-3" value="3">
+              <label for="facilidades-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="facilidades" id="facilidades-2" value="2">
+              <label for="facilidades-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="facilidades" id="facilidades-1" value="1">
+              <label for="facilidades-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="orientacion">Orientacion:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="orientacion" data-tipo="orientacion" required>
+              <input type="radio" name="orientacion" id="orientacion-5" value="5" required>
+              <label for="orientacion-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="orientacion" id="orientacion-4" value="4">
+              <label for="orientacion-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="orientacion" id="orientacion-3" value="3">
+              <label for="orientacion-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="orientacion" id="orientacion-2" value="2">
+              <label for="orientacion-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="orientacion" id="orientacion-1" value="1">
+              <label for="orientacion-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pautas">
+        <label>Pautas:</label>
+        <ul>
+          <li>Su reseña podría eliminarse si utiliza malas palabras o términos despectivos.</li>
+          <li>¡No olvides revisar tu comentario antes de enviar!</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="comentario">Comparte más sobre tu experiencia</label>
+        <textarea id="comentario" name="comentario" rows="5" required></textarea>
+      </div>
+      <div class="form-group">
+        <p>Al hacer clic en “Enviar” reconozco que los datos pasan a propiedad de Forua y no serán subidos hasta pasar el control de calidad para mejorar el ambiente de los usuarios.</p>
+        <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+
+
+<div class="modal fade" id="confirmarEnvioModal" tabindex="-1" aria-labelledby="confirmarEnvioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmarEnvioLabel">Confirmar Envío</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de enviar esta reseña?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmarEnvio">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-warning d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-etiquetas-max">
+  Solo puedes seleccionar como máximo 3 etiquetas
+</div>
+<div class="alert alert-warning d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-etiquetas-min">
+  Debes seleccionar al menos una etiqueta
+</div>
+<div class="alert alert-danger d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-envio-fallido">
+  Por favor completar todo el formulario
+</div>
+
+<div class="alert alert-info d-none fixed-top w-50 mx-auto mt-3" role="alert" id="alerta-envio-exitoso">
+  ¡Calificación enviada! 😎
+</div>
+
+
+
+<!-- End #main -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="./assets/vendor/echarts/echarts.min.js"></script>
+  <script src="./assets/vendor/quill/quill.js"></script>
+  <script src="./assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="./assets/vendor/php-email-form/validate.js"></script>
+
+  <!-----------------------------JAVASCRIPTS IMPORTANTES-->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/StarsShow.js"></script>
+  <script src="./assets/js/resenaAtencion.js"></script>
+
+
+  <!--================PRUEBAS=============================
+  <script src="./assets/js/mostrarCursos.js"></script>=-->
+
+
+</body>
+
+</html>
