@@ -1,0 +1,54 @@
+/* Style for the forms */
+.location-form {
+    margin: 10px 0;
+}
+
+/* Style for the buttons */
+.location-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Remove background */
+    border: none;
+    padding: 5px 10px;
+    width: 100%;
+    text-align: left;
+    font-size: 14px; /* Smaller font size */
+    color: #0a57caa6;
+    font-weight: 600;
+    transition: color 0.3s;
+    border-radius: 5px;
+}
+
+.location-button i {
+    margin-right: 10px;
+    font-size: 0.6em; /* Smaller icon size */
+}
+
+.location-button span {
+    flex-grow: 1;
+}
+
+/* Hover effect for buttons */
+.location-button:hover {
+    color: #0a58ca;
+}
+
+/* Style for icons */
+.bi {
+    font-size: 1em; /* General icon size adjustment */
+}
+
+/* Style for active links */
+.nav-link.active, .nav-link:hover {
+    background-color: #e9ecef;
+    color: #0a58ca;
+}
+
+/* Style for the collapse chevron */
+.nav-link .bi-chevron-down {
+    transition: transform 0.3s;
+}
+
+.nav-link.collapsed .bi-chevron-down {
+    transform: rotate(-90deg);
+}
