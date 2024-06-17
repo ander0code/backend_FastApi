@@ -83,138 +83,6 @@
     transform: scale(1.05);
 }
 
-.posts-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.post {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    padding: 20px; /* Aumentar un poco el padding */
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-    background-color: #f5f5f5;
-    max-width: 1200px;
-    margin: auto;
-    font-size: 1em; /* Tamaño de fuente moderado */
-}
-
-.post:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
-    background-color: #eaeaea;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Reducir el margen inferior */
-}
-
-.user-photo {
-    width: 50px; /* Tamaño reducido de la foto */
-    height: 50px; /* Tamaño reducido de la foto */
-    border-radius: 50%;
-    margin-right: 15px;
-    transition: transform 0.3s ease;
-}
-
-.user-photo:hover {
-    transform: rotate(360deg);
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.user-name {
-    font-weight: bold;
-    font-size: 1.1em; /* Tamaño moderado del nombre */
-    transition: color 0.3s ease;
-    margin-bottom: 5px; /* Reducir el margen inferior */
-}
-
-.user-name:hover {
-    color: #007bff;
-}
-
-.user-meta {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Añadir espacio entre los elementos */
-}
-
-.user-reviews {
-    font-size: 0.9em;
-    color: #777;
-    transition: color 0.3s ease;
-}
-
-.user-reviews:hover {
-    color: #333;
-}
-
-.stars {
-    display: flex;
-    font-size: 1.3em; /* Tamaño reducido de las estrellas */
-    color: #ffc107;
-    align-self: flex-start; /* Alinear al inicio */
-}
-
-.star {
-    margin-right: 2px; /* Aumentar el margen entre estrellas */
-    transition: transform 0.3s ease;
-}
-
-.star:hover {
-    transform: scale(1.2);
-}
-
-.review-date {
-    font-size: 0.9em;
-    color: #777;
-}
-
-.comment-text {
-    font-size: 1em; /* Tamaño moderado del texto del comentario */
-    color: #333;
-    transition: color 0.3s ease;
-}
-
-.comment-text:hover {
-    color: #007bff;
-}
-
-.details-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-}
-
-.details-wrapper.expanded {
-    max-height: 500px; /* Ajustar según sea necesario */
-    padding: 10px 0;
-}
-
-.rating-details {
-    display: flex;
-    flex-direction: column;
-    transition: opacity 0.3s ease;
-}
-
-.rating-details div {
-    margin-bottom: 5px;
-}
-
-.rating-label {
-    display: inline-block;
-    width: 150px;
-}
 
 .toggle-button {
     align-self: flex-start;
@@ -232,4 +100,168 @@
     transform: scale(1.05);
 }
 
+
+
+
+
+.posts-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .post {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    background-color: #f5f5f5;
+    max-width: 600px;
+    margin: auto;
+    font-size: 1em;
+    position: relative;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .post:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    background-color: #eaeaea;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .user-photo:hover {
+    transform: rotate(360deg);
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+  }
+  
+  .user-name:hover {
+    color: #007bff;
+  }
+  
+  .user-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+
+  
+  .stars {
+    display: flex;
+    font-size: 1.3em;
+    color: #ffc107;
+    align-self: flex-start;
+  }
+  
+  .star {
+    margin-right: 2px;
+    transition: transform 0.3s ease;
+  }
+  
+  .star:hover {
+    transform: scale(1.2);
+  }
+  
+  .review-date {
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .comment-text {
+    font-size: 1em;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .comment-text:hover {
+    color: #007bff;
+  }
+  
+  .details-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+  }
+  
+  .details-wrapper.expanded {
+    max-height: 500px;
+    padding: 10px 0;
+  }
+  
+  .rating-details {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+  }
+  
+  .rating-details div {
+    margin-bottom: 5px;
+  }
+  
+  .rating-label {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .toggle-button {
+    align-self: flex-start;
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .toggle-button:hover {
+    text-decoration: underline;
+  }
+
+  .like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.like-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
 
