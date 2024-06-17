@@ -57,30 +57,103 @@ textarea:focus {
   box-shadow: 0 0 8px rgba(255, 102, 0, 0.2);
 }
 
-.estrellas {
+
+
+.emojis {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   position: relative;
 }
 
-.estrellas input[type="radio"] {
+.emojis input[type="radio"] {
   display: none;
 }
 
-.estrellas label {
+.emojis label {
   font-size: 2em;
   color: #ccc;
   cursor: pointer;
   transition: color 0.2s;
   padding: 0 5px;
+  position: relative;
 }
 
-.estrellas input[type="radio"]:checked ~ label,
-.estrellas label:hover,
-.estrellas label:hover ~ label {
-  color: #ffcc00;
+/* Cambiar color al pasar el mouse sobre cada carita */
+label[for="calidad-1"]:hover,
+#calidad-1:checked + label[for="calidad-1"] {
+  color: #FF0000;
 }
+
+label[for="calidad-2"]:hover,
+#calidad-2:checked + label[for="calidad-2"] {
+  color: #FF5500;
+}
+
+label[for="calidad-3"]:hover,
+#calidad-3:checked + label[for="calidad-3"] {
+  color: #FFF300;
+}
+
+label[for="calidad-4"]:hover,
+#calidad-4:checked + label[for="calidad-4"] {
+  color: #B2FF00;
+}
+
+label[for="calidad-5"]:hover,
+#calidad-5:checked + label[for="calidad-5"] {
+  color: #02B207;
+}
+
+
+/* Cambiar color al pasar el mouse sobre cada carita */
+label[for="dificultad-1"]:hover,
+#dificultad-1:checked + label[for="dificultad-1"] {
+  color: #FF0000;
+}
+
+label[for="dificultad-2"]:hover,
+#dificultad-2:checked + label[for="dificultad-2"] {
+  color: #FF5500;
+}
+
+label[for="dificultad-3"]:hover,
+#dificultad-3:checked + label[for="dificultad-3"] {
+  color: #FFF300;
+}
+
+label[for="dificultad-4"]:hover,
+#dificultad-4:checked + label[for="dificultad-4"] {
+  color: #B2FF00;
+}
+
+label[for="dificultad-5"]:hover,
+#dificultad-5:checked + label[for="dificultad-5"] {
+  color: #02B207;
+}
+
+/* Mostrar la descripción solo cuando se pasa el mouse directamente sobre la carita */
+.emojis label:hover::after {
+  content: attr(data-descripcion);
+  position: absolute;
+  top: -2.5em; /* Ajusta este valor según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 0.2em 0.5em;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  font-size: 0.5em; /* Tamaño de fuente más pequeño para el tooltip */
+  z-index: 10;
+}
+
+
+
+
+
+
 
 .descripcion {
   text-align: center;

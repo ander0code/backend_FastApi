@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
 
   <title>Forua</title>
   <meta content="" name="description">
@@ -28,6 +31,9 @@
   <!-- Template Main CSS File -->
   <link href="./assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/faq.css">
+  <link rel="stylesheet" href="./assets/css/localidades.css">
+  <link rel="stylesheet" href="./assets/css/perfil.css">
+  <link rel="stylesheet" href="assets/css/filtro_locales.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -120,7 +126,36 @@
           <span>Inicio</span>
         </a>
       </li><!-- End Dashboard Nav -->
+      <li class="nav-heading">LOCALIZACIONES</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" id="locations-btn" data-bs-target="#locations-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-map"></i></i><span>Explorar</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="locations-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <form action="/autenticacion/atencionestudiante" method="GET" >
+                <button type="submit" class="location-button">
+                    <i class="bi bi-circle"></i><span>Atención al estudiante</span>
+                </button>
+            </form>
+        </li>
         
+            <li>
+                <form action="/autenticacion/cafeteria" method="GET" >
+                    <button type="submit" class="location-button">
+                        <i class="bi bi-circle"></i><span>Cafetería</span>
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="/autenticacion/match" method="GET"  >
+                    <button type="submit" class="location-button">
+                        <i class="bi bi-circle"></i><span>Autonoma Match</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </li>      
           <li class="nav-heading">Soporte</li>
           <li class="nav-item">
               <form action="/autenticacion/preguntas_frecuentes" method="GET">
@@ -138,6 +173,7 @@
                     <i class="bi bi-envelope"></i>
                     <span>Soporte</span>
                 </button>
+                
             </form>
         </li><!-- End Contact Page Nav -->
 
@@ -154,103 +190,67 @@
 </aside>
 
 <!-- End Sidebar-->
-  <main id="main" class="main">
-
-    <section class="section dashboard">
-      <section class="faq-section">
-        <div class="faq-row">
-          <div class="faq-col">
-            <div class="faq-card">
-              <div class="faq-card-body">
-                <h5 class="faq-card-title">Conócenos</h5>
-                <div class="faq-item">
-                  <h6>¿Qué es Forua?</h6>
-                  <p>Forua es un foro creado por alumnos de la autonoma que tiene como fin buscar la ayuda
-                    conjunta de todos, respondiendo y consultando preguntas varias que puedan tener.</p>
-                </div>
-                <div class="faq-item">
-                  <h6>¿Cómo funciona Forua?</h6>
-                  <p>El funcionamiento de Forua se basa casi en su totalidad por los alumnos, ya que ellos reflejan 
-                    su experiencia en ciertos temas y campos lo cual hace posible que este sitio pueda coexistir correctamente, ya 
-                    que sin alumnos que hayan pasado ya por ciertas circunstancias repetitivas no se prodrian responder las dudas
-                    que presenten otros usuarios.
-                  </p>
-                </div>
-                <div class="faq-item">
-                  <h6>¿A quiénes está dedicado Forua?</h6>
-                  <p>Por ahora, está dedicado exclusivamente a los estudiantes de la Universidad Autonoma del Perú.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="faq-col">
-            <div class="faq-card">
-              <div class="faq-card-body">
-                <h5 class="faq-card-title">Recomendaciones</h5>
-                <div class="faq-accordion" id="faq-group">
-                  <div class="faq-item">
-                    <button class="accordion-button" aria-expanded="false">
-                      <h6>¿Cómo puedo publicar una pregunta?</h6>
-                    </button>
-                    <div class="accordion-body">
-                      En el apartado principal, se encuentra un boton de color rojo en la parte superior derecha, en el cual con un solo click
-                      te manda directo al apartado de crear pregunta.
-                    </div>
-                  </div>
-                  <div class="faq-item">
-                    <button class="accordion-button" aria-expanded="false">
-                      <h6>¿Cómo respondo a una publicación existente?</h6>
-                    </button>
-                    <div class="accordion-body">
-                      Todo post o publicacion presenta un acceso mediante una flecha que te redirecciona a la pregunta con todos sus aspectos
-                      o en el caso de preguntas populares con solo hacerle click en el titulo bastaria.
-                    </div>
-                  </div>
-                  <div class="faq-item">
-                    <button class="accordion-button" aria-expanded="false">
-                      <h6>¿Qué tipo de contenido está prohibido en el foro?</h6>
-                    </button>
-                    <div class="accordion-body">
-                      Al ser un foro para estudiantes, y en el cual se puede calificar profesores, todo contenido no etico, violento, mal intencionado 
-                      o en doble sentido sera eliminado para permanecer el buen ambiente en el foro.
-                    </div>
-                  </div>
-                  <div class="faq-item">
-                    <button class="accordion-button" aria-expanded="false">
-                      <h6>¿Cómo personalizo mi perfil?</h6>
-                    </button>
-                    <div class="accordion-body">
-                      Simplemente con hacer click en tu foto de perfil o nombre, te saldra la opcion de manera emergente llamada "Mi perfil"
-                      en el cual te redirecciona a tu perfil y todo lo que conlleva, como publicaciones hechas por el usuario, descripciones y demas,
-                      en este apartado hay un boton de editar el cual te permita personalizar tu frase y descripcion.
-                    </div>
-                  </div>
-                  <div class="faq-item">
-                    <button class="accordion-button" aria-expanded="false">
-                      <h6>Tengo problemas para iniciar sesión, ¿qué debo hacer?</h6>
-                    </button>
-                    <div class="accordion-body">
-                      Se recomienda reiniciar el sitio, o colocar bien los datos en caso que sea un simple error de tipeo al momento de escribir el correo o contraseña,
-                      ya si no es ninguno de estas dos, les sugerimos comunicarse a soporte para su pronta ayuda. 
-                      - Numero de soporte : +51 990 903 235.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>      
-    </section>
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
+<main id="main" class="main">
+  <div class="containerrr">
+    <div class="headerrr" id="header">
+        <img src="./assets/img/autonoma.jpg" alt="Localidades" id="header-img">
+        <h1 id="header-title">LOCALIDADES</h1>
     </div>
-  </footer><!-- End Footer -->
+    <div class="main-content">
+        <div class="left-column">
+            <div class="header-row">
+                <h2 id="publicaciones-title">Reseñas</h2>
+                <button id="generar-resena-button"><a class="letraBotonLocal" href="#">Generar reseña</a></button>
+            </div>
+            <div class="posts-wrapper">
+                <div class="post">
+                    <div class="user-info">
+                        <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photo">
+                        <div class="user-details">
+                            <div class="user-name">Orlando Rivera</div>
+                            <div class="user-meta">
+                                <span class="user-reviews">3 Publicaciones</span>
+                                <span class="review-date">Hace un mes</span>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">☆</span>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <p class="comment-text">
+                            La comida en el restaurante cumplió con las expectativas en términos de calidad...
+                        </p>
+                    </div>
+                    <div class="details-wrapper collapsed">
+                        <div class="rating-details">
+                            <div><span class="rating-label">Servicio:</span> Comí allí</div>
+                            <div><span class="rating-label">Tipo de comida:</span> Comida</div>
+                            <div><span class="rating-label">Precio por persona:</span> 40-50 PEN</div>
+                            <div><span class="rating-label">Comida:</span> 5</div>
+                            <div><span class="rating-label">Servicio:</span> 5</div>
+                            <div><span class="rating-label">Ambiente:</span> 4</div>
+                            <div><span class="rating-label">Platos recomendados:</span> Pollo A la Brasa</div>
+                        </div>
+                    </div>
+                    <button class="toggle-button">Ver más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="copyright">
+    &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
+    </div>
+</footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -268,6 +268,8 @@
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/pagina_frecuentes.js"></script>
+  <script src="./assets/js/localidades.js"></script>
+  <script src="./assets/js/fitlrado-local.js"></script>
   <!--================PRUEBAS==============================-->
 </body>
 

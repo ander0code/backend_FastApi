@@ -73,42 +73,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 texto: commentText
             };
 
-            fetch(`http://127.0.0.1:8000/coment/${postId}/${userID}`, {
+            return fetch(`http://127.0.0.1:8000/coment/${postId}/${userID}`, {
                 method: 'POST',
                 headers: {
                     'accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(commentData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la respuesta del servidor');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Comentario publicado:', data);
-                commentTextArea.value = '';
-                addCommentButton.disabled = true;
-                localStorage.setItem('lastCommentTime', new Date().getTime());
-                alertBox.textContent = '¡Respuesta subida, podrás responder de nuevo en unos minutos!';
-                alertBox.classList.remove('d-none');
-                setTimeout(() => {
-                    alertBox.classList.add('d-none');
-                    addCommentButton.textContent = 'Subir comentario';
-                }, 3000);
-                fetchPostResponses(postId);
-            })
-            .catch(error => {
-                console.error('Error al publicar el comentario:', error);
-                alert('Hubo un problema al subir el comentario');
-                addCommentButton.disabled = false;
-                addCommentButton.textContent = 'Subir comentario';
             });
         })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Comentario publicado:', data);
+            commentTextArea.value = '';
+            addCommentButton.disabled = true;
+            localStorage.setItem('lastCommentTime', new Date().getTime());
+            alertBox.textContent = '¡Respuesta subida, podrás responder de nuevo en unos minutos!';
+            alertBox.classList.remove('d-none');
+            setTimeout(() => {
+                alertBox.classList.add('d-none');
+                addCommentButton.textContent = 'Subir comentario';
+            }, 3000);
+            fetchPostResponses(postId);
+        })
         .catch(error => {
-            console.error('Error al obtener el userID:', error);
+            console.error('Error al publicar el comentario:', error);
+            alert('Hubo un problema al subir el comentario');
+            addCommentButton.disabled = false;
+            addCommentButton.textContent = 'Subir comentario';
         });
     });
 
@@ -170,31 +167,20 @@ function fetchPostResponses(postId, showAllComments = false) {
 
 function displayPostDetails(postData) {
     const post = postData.post;
+    const postId = post.id; // Obtener el ID del post
     const votos = postData.votos.cantidad;
 
-    const profilePicElement = document.querySelector('.profile-pic');
-    let userImageURL = './assets/img/defaultft.webp'; // Establecer la imagen por defecto
-
-    if (postData.imgUser && postData.imgUser.foto) {
-        userImageURL = postData.imgUser.foto; // Usar la URL de la imagen del usuario si está disponible
-    }
-
-    profilePicElement.src = userImageURL;
-
+    document.querySelector('.profile-pic').src = postData.imgUser?.foto || './assets/img/defaultft.webp';
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
-document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
+    document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
 
-// Crear el enlace para el nombre del autor
-let autorNombre = post.propietarioNombre || 'Autor no disponible';
-let autorURL = post.propietarioURL || '/autenticacion/perfils';
-let enlaceAutor = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a>`;
-
-// Actualizar el contenido del contenedor .question-meta con el nombre del autor enlazado y la fecha
-document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
-
+    const autorNombre = post.propietarioNombre || 'Autor no disponible';
+    const autorURL = post.propietarioURL || '/autenticacion/perfils';
+    document.querySelector('.question-meta').innerHTML = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a> | ${post.fecha_Creacion || 'Fecha no disponible'}`;
 
     const voteCountElement = document.querySelector('.vote-count');
     voteCountElement.textContent = votos;
+    voteCountElement.setAttribute('data-current-vote', 0); // Inicialmente 0
 
     const tagsContainer = document.querySelector('.tagsPost');
     tagsContainer.innerHTML = '';
@@ -220,102 +206,138 @@ document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fe
         tagsContainer.appendChild(cursoTag);
     }
 
-    document.querySelector('.upvote').addEventListener('click', function() {
-        handleVote(voteCountElement, this, document.querySelector('.downvote'));
-    });
+    const userEmail = localStorage.getItem('email');
 
-    document.querySelector('.downvote').addEventListener('click', function() {
-        handleVote(voteCountElement, this, document.querySelector('.upvote'));
+    if (!userEmail) {
+        console.error('No se encontró el correo del usuario logueado');
+        return;
+    }
+
+    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(userData => {
+        if (userData.length === 0) {
+            console.error('No se encontró el usuario con el correo proporcionado');
+            return;
+        }
+        const userID = userData[0].id;
+
+        // Asegurarse de que los event listeners no se agreguen más de una vez
+        const upvoteButton = document.querySelector('.upvote');
+        const downvoteButton = document.querySelector('.downvote');
+
+        // Remover listeners antiguos, si los hay
+        upvoteButton.removeEventListener('click', handleUpvote);
+        downvoteButton.removeEventListener('click', handleDownvote);
+
+        // Añadir listeners
+        upvoteButton.addEventListener('click', handleUpvote);
+        downvoteButton.addEventListener('click', handleDownvote);
+
+        function handleUpvote() {
+            handleVote('POST', postId, userID, voteCountElement, 'UP');
+        }
+
+        function handleDownvote() {
+            handleVote('NEG', postId, userID, voteCountElement, 'DOWN');
+        }
+    })
+    .catch(error => {
+        console.error('Error al obtener el userID:', error);
     });
 }
 
+function handleVote(voteType, postId, userID, voteCountElement, direction) {
+    const currentVote = parseInt(voteCountElement.getAttribute('data-current-vote')) || 0;
+    let newVoteValue = 0;
+
+    if (direction === 'UP') {
+        newVoteValue = currentVote === 1 ? 0 : 1; // Cambiar a 0 si ya está en 1, de lo contrario a 1
+    } else if (direction === 'DOWN') {
+        newVoteValue = currentVote === -1 ? 0 : -1; // Cambiar a 0 si ya está en -1, de lo contrario a -1
+    }
+
+    const voteData = {
+        tipo_voto: voteType,
+        tipo_objeto: direction
+    };
+
+    console.log(`Enviando voto: ${JSON.stringify(voteData)} para el postId: ${postId} y userID: ${userID}`);
+
+    fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
+        method: 'POST',
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(voteData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(`Error en la respuesta del servidor: ${JSON.stringify(errorData)}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Voto registrado:', data);
+        voteCountElement.setAttribute('data-current-vote', newVoteValue);
+
+        let voteCount = parseInt(voteCountElement.textContent);
+        voteCount = voteCount - currentVote + newVoteValue; // Ajustar el contador basado en el nuevo voto
+        voteCountElement.textContent = voteCount;
+    })
+    .catch(error => {
+        console.error('Error al registrar el voto:', error);
+    });
+}
 
 function displayPostResponses(responseData) {
-    const commentsContainer = document.querySelector('.comments');
-    commentsContainer.innerHTML = '';
+    const responseList = document.querySelector('.responses-list');
+    responseList.innerHTML = '';
 
     responseData.forEach(response => {
-        const commentElement = document.createElement('div');
-        commentElement.className = 'comment';
-
-        const voteButtons = document.createElement('div');
-        voteButtons.className = 'votes';
-        voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+        const responseItem = document.createElement('div');
+        responseItem.className = 'response-item';
+        responseItem.innerHTML = `
+            <div class="response-content">
+                <p>${response.comentario.texto}</p>
+                <span class="response-author">${response.comentario.propietarioNombre}</span>
+                <span class="response-date">${response.comentario.fecha_Creacion}</span>
+            </div>
         `;
-
-        const commentInfo = document.createElement('div');
-        commentInfo.className = 'comment-info';
-        commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
-            <p class="comment-text">${response.texto}</p>
-            
-        `;
-
-        commentElement.appendChild(voteButtons);
-        commentElement.appendChild(commentInfo);
-        commentsContainer.appendChild(commentElement);
-
-        commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
-        });
-
-        commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
-        });
+        responseList.appendChild(responseItem);
     });
+
+    // Ocultar el botón de "Ver todas las respuestas" si hay menos de 4 respuestas
+    const viewAllCommentsButton = document.querySelector('.view-all-comments');
+    viewAllCommentsButton.style.display = responseData.length <= 3 ? 'none' : 'block';
 }
 
 function displayAllPostResponses(responseData) {
-    const commentsContainer = document.querySelector('.comments');
-    commentsContainer.innerHTML = '';
+    const responseList = document.querySelector('.responses-list');
+    responseList.innerHTML = '';
 
     responseData.forEach(response => {
-        const commentElement = document.createElement('div');
-        commentElement.className = 'comment';
-
-        const voteButtons = document.createElement('div');
-        voteButtons.className = 'votes';
-        voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+        const responseItem = document.createElement('div');
+        responseItem.className = 'response-item';
+        responseItem.innerHTML = `
+            <div class="response-content">
+                <p>${response.comentario.texto}</p>
+                <span class="response-author">${response.comentario.propietarioNombre}</span>
+                <span class="response-date">${response.comentario.fecha_Creacion}</span>
+            </div>
         `;
-
-        const commentInfo = document.createElement('div');
-        commentInfo.className = 'comment-info';
-        commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
-            <p class="comment-text">${response.texto}</p>
-            
-        `;
-
-        commentElement.appendChild(voteButtons);
-        commentElement.appendChild(commentInfo);
-        commentsContainer.appendChild(commentElement);
-
-        commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
-        });
-
-        commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
-        });
+        responseList.appendChild(responseItem);
     });
-}
 
-function handleVote(voteCountElement, clickedButton, otherButton) {
-    let voteCount = parseInt(voteCountElement.textContent);
-
-    if (clickedButton.classList.contains('upvote')) {
-        voteCount++;
-    } else {
-        voteCount--;
-    }
-
-    voteCountElement.textContent = voteCount;
-    clickedButton.disabled = true;
-    otherButton.disabled = false;
+    // Ocultar el botón de "Ver todas las respuestas" después de mostrar todas las respuestas
+    const viewAllCommentsButton = document.querySelector('.view-all-comments');
+    viewAllCommentsButton.style.display = 'none';
 }

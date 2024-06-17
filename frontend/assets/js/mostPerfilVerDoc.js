@@ -119,7 +119,7 @@ function displayTopDocentes(profesores) {
             return (b.datos_ex[0]?.calidad_total || 0) - (a.datos_ex[0]?.calidad_total || 0) ||
                    (b.datos_ex[0]?.dificultad_total || 0) - (a.datos_ex[0]?.dificultad_total || 0);
         })
-        .slice(0, 5); // Obtener solo los primeros 5 docentes
+        .slice(0, 3); // Obtener solo los primeros 5 docentes
 
     // Agregar el título "Top Docentes"
     const tituloTopDocentes = document.createElement('h2');

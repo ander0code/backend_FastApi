@@ -52,6 +52,7 @@ h6 {
 
 .logo img {
   max-height: 18px; /* Ajustar la altura máxima de la imagen */
+  margin-left: 10PX;
   margin-right: 3px; /* Ajustar el margen para la nueva escala */
 }
 
@@ -66,9 +67,7 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   height: 45px; /* Ajustar la altura del encabezado */
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
-  padding-left: 14px; /* Ajustar el relleno */
   display: flex;
   align-items: center;
 }
@@ -1032,7 +1031,7 @@ section#profile-template {
   top: 45px; /* Ajustar la posición superior */
   left: 0;
   bottom: 0;
-  width: 220px; /* Ajustar el ancho */
+  width: 260px; /* Ajustar el ancho */
   z-index: 996;
   transition: all 0.3s;
   padding: 15px; /* Ajustar el relleno */
@@ -1046,7 +1045,7 @@ section#profile-template {
 
 @media (max-width: 1199px) {
   .sidebar {
-    left: -220px; /* Ajustar la posición oculta */
+    left: -260px; /* Ajustar la posición oculta */
   }
 }
 
@@ -1063,7 +1062,7 @@ section#profile-template {
 @media (min-width: 1200px) {
   #main,
   #footer {
-    margin-left: 220px; /* Ajustar el margen izquierdo */
+    margin-left: 260px; /* Ajustar el margen izquierdo */
   }
 }
 
@@ -1080,7 +1079,7 @@ section#profile-template {
   }
 
   .toggle-sidebar .sidebar {
-    left: -220px; /* Ajustar la posición oculta */
+    left: -260px; /* Ajustar la posición oculta */
   }
 }
 
@@ -1111,7 +1110,7 @@ section#profile-template {
 .sidebar-nav .nav-link {
   display: flex;
   align-items: center;
-  font-size: 12px; /* Ajustar el tamaño de la fuente */
+  font-size: 14px; /* Ajustar el tamaño de la fuente */
   font-weight: 600;
   color: #214773;
   transition: 0.3;
@@ -1121,23 +1120,23 @@ section#profile-template {
 }
 
 .sidebar-nav .nav-link i {
-  font-size: 14px; /* Ajustar el tamaño del icono */
+  font-size: 16px; /* Ajustar el tamaño del icono */
   margin-right: 7px; /* Ajustar el margen */
 }
 
 .sidebar-nav .nav-link span {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .sidebar-nav .nav-link.collapsed {
   color: #214773;
   background: #fff;
-  font-size: 14px; /* Ajustar el tamaño del icono */
+  font-size: 16px; /* Ajustar el tamaño del icono */
 }
 
 .sidebar-nav .nav-link.collapsed i {
   color: #214773;
-  font-size: 14px; /* Ajustar el tamaño del icono */
+  font-size: 16px; /* Ajustar el tamaño del icono */
 }
 
 .sidebar-nav .nav-link:hover {
@@ -1167,7 +1166,7 @@ section#profile-template {
 .sidebar-nav .nav-content a {
   display: flex;
   align-items: center;
-  font-size: 11px; /* Ajustar el tamaño de la fuente */
+  font-size: 14px; /* Ajustar el tamaño de la fuente */
   font-weight: 600;
   color: #0a58ca;
   transition: 0.3;
@@ -1176,7 +1175,7 @@ section#profile-template {
 }
 
 .sidebar-nav .nav-content a i {
-  font-size: 5px; /* Ajustar el tamaño del icono */
+  font-size: 7px; /* Ajustar el tamaño del icono */
   margin-right: 7px; /* Ajustar el margen */
   line-height: 0;
   border-radius: 50%;
@@ -1190,6 +1189,7 @@ section#profile-template {
 .sidebar-nav .nav-content a.active i {
   background-color: #E4EDFF;
 }
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1913,4 +1913,8 @@ a.fw-bold.text-dark.post-title {
   width: 50%;
   max-width: 600px;
   height: auto;
+}
+
+button .letraBotonLocal {
+  color: #fff;
 }

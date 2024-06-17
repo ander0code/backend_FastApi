@@ -1,71 +1,111 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://127.0.0.1:8000/posts_nuevo/')
+    let posts = []; // Variable para almacenar los posts obtenidos
+  
+    // Función para obtener los posts y mostrarlos
+    const obtenerYMostrarPosts = () => {
+      fetch('http://127.0.0.1:8000/posts_nuevo/')
         .then(response => {
-            if (!response.ok) {
-                throw new Error('No se pudo obtener los posts');
-            }
-            return response.json();
+          if (!response.ok) {
+            throw new Error('No se pudo obtener los posts');
+          }
+          return response.json();
         })
-        .then(posts => {
-            const popularPostTemplate = document.getElementById('popular-post-template');
-            const popularPostsContainer = document.getElementById('popular-posts');
-
-            // Ordenar las publicaciones por popularidad (suma de conteo de favoritos y visitas)
-            posts.sort((a, b) => (b.post.conteo_favoritos + b.post.conteo_visitas) - (a.post.conteo_favoritos + a.post.conteo_visitas));
-
-            // Tomar las cinco publicaciones más populares
-            const topFivePosts = posts.slice(0, 5);
-
-            // Limpiar el contenedor antes de añadir nuevas publicaciones
-            popularPostsContainer.innerHTML = '';
-
-            // Crear y añadir las cinco publicaciones más populares
-            topFivePosts.forEach(item => {
-                const post = item.post;
-                const carrera = item.carrera;
-                const curso = item.curso;
-
-                const newPopularPost = popularPostTemplate.cloneNode(true);
-                newPopularPost.style.display = 'flex';
-                newPopularPost.id = '';
-
-                newPopularPost.querySelector('.activite-label').textContent = `${post.fecha_Creacion}`;
-                newPopularPost.querySelector('.post-title').textContent = post.titulo;
-                newPopularPost.querySelector('.post-title').href = `/autenticacion/texto?post_id=${post.id}`;
-                newPopularPost.querySelector('.post-author').textContent = post.propietarioNombre;
-
-                // Agregar etiquetas de carrera, ciclo y curso si están disponibles
-                const tagsContainer = newPopularPost.querySelector('.post-tags');
-                tagsContainer.innerHTML = ''; // Limpiar etiquetas anteriores
-                let hasTags = false;
-
-                if (carrera && carrera.etiquetaNombre) {
-                    const carreraTag = document.createElement('span');
-                    carreraTag.textContent = carrera.etiquetaNombre;
-                    tagsContainer.appendChild(carreraTag);
-                    hasTags = true;
-                }
-                if (curso && curso.ciclo !== null) {
-                    const cicloTag = document.createElement('span');
-                    cicloTag.textContent = `Ciclo ${curso.ciclo}`;
-                    tagsContainer.appendChild(cicloTag);
-                    hasTags = true;
-                }
-                if (curso && curso.nombre_curso) {
-                    const cursoTag = document.createElement('span');
-                    cursoTag.textContent = curso.nombre_curso;
-                    tagsContainer.appendChild(cursoTag);
-                    hasTags = true;
-                }
-
-                if (!hasTags) {
-                    const generalTag = document.createElement('span');
-                    generalTag.textContent = 'General';
-                    tagsContainer.appendChild(generalTag);
-                }
-
-                popularPostsContainer.appendChild(newPopularPost);
-            });
+        .then(data => {
+          posts = data; // Almacenar los posts en la variable posts
+  
+          // Ordenar los posts por defecto por recuento de comentarios
+          ordenarPosts('comentarios');
         })
         .catch(error => console.error('Error:', error));
-});
+    };
+  
+    // Función para ordenar los posts según el criterio seleccionado
+    const ordenarPosts = (criterio) => {
+      switch (criterio) {
+        case 'vistas':
+          posts.sort((a, b) => b.post.conteo_visitas - a.post.conteo_visitas);
+          break;
+        case 'votos':
+          posts.sort((a, b) => b.votos.cantidad - a.votos.cantidad);
+          break;
+        case 'comentarios':
+        default:
+          posts.sort((a, b) => b.post.recuento_comentarios - a.post.recuento_comentarios);
+          break;
+      }
+  
+      mostrarPosts();
+    };
+  
+    // Función para mostrar los primeros cinco posts en la sección de Publicaciones Populares
+    const mostrarPosts = () => {
+      const popularPostsContainer = document.getElementById('popular-posts');
+  
+      // Limpiar el contenedor antes de añadir nuevas publicaciones
+      popularPostsContainer.innerHTML = '';
+  
+      // Tomar las cinco publicaciones más relevantes
+      const topFivePosts = posts.slice(0, 5);
+  
+      // Iterar sobre los topFivePosts y crear elementos HTML para cada post
+      topFivePosts.forEach(item => {
+        const post = item.post;
+        const carrera = item.carrera || {};
+        const curso = item.curso || {};
+  
+        // Crear el elemento de publicación popular
+        const newPopularPost = document.createElement('div');
+        newPopularPost.classList.add('activity-item', 'd-flex', 'flex-column', 'p-2', 'mb-2', 'border');
+  
+        newPopularPost.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="activite-label">${post.fecha_Creacion}</span>
+            <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+          </div>
+          <div class="activity-content">
+            <a href="/autenticacion/texto?post_id=${post.id}" class="fw-bold text-dark post-title">${post.titulo}</a>
+            <div class="text-muted">por <span><a class="post-author" href="/autenticacion/perfil">${post.propietarioNombre}</a></span></div>
+            <div class="post-tags mt-2">
+              <!-- Las etiquetas se agregarán dinámicamente mediante JavaScript -->
+            </div>
+          </div>
+        `;
+  
+        // Agregar etiquetas de carrera y curso si están disponibles
+        const tagsContainer = newPopularPost.querySelector('.post-tags');
+        tagsContainer.innerHTML = ''; // Limpiar etiquetas anteriores
+        let hasTags = false;
+  
+        if (carrera.etiquetaNombre) {
+          const carreraTag = document.createElement('span');
+          carreraTag.textContent = carrera.etiquetaNombre;
+          tagsContainer.appendChild(carreraTag);
+          hasTags = true;
+        }
+        if (curso.nombre_curso) {
+          const cursoTag = document.createElement('span');
+          cursoTag.textContent = curso.nombre_curso;
+          tagsContainer.appendChild(cursoTag);
+          hasTags = true;
+        }
+  
+        if (!hasTags) {
+          const generalTag = document.createElement('span');
+          generalTag.textContent = 'General';
+          tagsContainer.appendChild(generalTag);
+        }
+  
+        // Agregar el nuevo post popular al contenedor
+        popularPostsContainer.appendChild(newPopularPost);
+      });
+    };
+  
+    // Función para manejar el cambio en el criterio de ordenación
+    window.ordenarPor = (criterio) => {
+      ordenarPosts(criterio);
+    };
+  
+    // Al cargar la página, obtener y mostrar los posts
+    obtenerYMostrarPosts();
+  });
+  

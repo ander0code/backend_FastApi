@@ -1,0 +1,267 @@
+#main {
+    padding: 0px;
+}
+
+.containerrr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerrr {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Ajustado para que esté más arriba */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.headerrr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.headerrr img:hover {
+    opacity: 0.3;
+}
+
+.headerrr h1 {
+    font-family: "Sigmar One", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    margin: 0;
+    transition: transform 0.5s ease, font-size 0.5s ease;
+}
+
+.main-content {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.left-column {
+    flex: 2.5;
+    margin-right: 20px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#publicaciones-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#generar-resena-button {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 20px;
+    background-color: #0a57caa6;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#generar-resena-button:hover {
+    background-color: #0a58ca;
+    transform: scale(1.05);
+}
+
+
+.toggle-button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+
+
+
+.posts-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .post {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    background-color: #f5f5f5;
+    max-width: 600px;
+    margin: auto;
+    font-size: 1em;
+    position: relative;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .post:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    background-color: #eaeaea;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .user-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .user-photo:hover {
+    transform: rotate(360deg);
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+  }
+  
+  .user-name:hover {
+    color: #007bff;
+  }
+  
+  .user-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+
+  
+  .stars {
+    display: flex;
+    font-size: 1.3em;
+    color: #ffc107;
+    align-self: flex-start;
+  }
+  
+  .star {
+    margin-right: 2px;
+    transition: transform 0.3s ease;
+  }
+  
+  .star:hover {
+    transform: scale(1.2);
+  }
+  
+  .review-date {
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  .comment-text {
+    font-size: 1em;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .comment-text:hover {
+    color: #007bff;
+  }
+  
+  .details-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+  }
+  
+  .details-wrapper.expanded {
+    max-height: 500px;
+    padding: 10px 0;
+  }
+  
+  .rating-details {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+  }
+  
+  .rating-details div {
+    margin-bottom: 5px;
+  }
+  
+  .rating-label {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .toggle-button {
+    align-self: flex-start;
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .toggle-button:hover {
+    text-decoration: underline;
+  }
+
+  .like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.like-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
