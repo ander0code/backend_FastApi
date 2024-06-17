@@ -141,4 +141,5 @@ function handleVote(voteType, postId, voteCountElement) {
     .catch(error => {
         console.error('Error al obtener el userID:', error);
     });
+    
 }
