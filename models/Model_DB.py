@@ -72,21 +72,27 @@ class Comment(Base):
     usuarioName = Column(String(45))
     fecha_creacion = Column(Date)
     
+    
     user = relationship("User", back_populates="comments")
     post = relationship("Post", back_populates="comments")
+    votes = relationship("Vote",back_populates="comments")
+    
     parent_comment = relationship("Comment", remote_side=[comentario_id])
 
 class Vote(Base):
     __tablename__ = 'votes'
     id= Column(Integer, primary_key=True,autoincrement=True)
     mensajeID= Column(Integer, ForeignKey('post.id'), nullable=False)
+    comentarioID = Column(Integer, ForeignKey("comments.comentario_id"), nullable=True)
     tipo_Voto= Column(Enum("POST", "NEG"), nullable=False)
+    tipo_objeto= Column(Enum("POST", "COMMENT", "CALIFI"), nullable=False)
     userID= Column(Integer, ForeignKey('user.id'), nullable=False)
     fecha_creacion = Column(Date)
     
     user = relationship("User", back_populates="votes")
     post = relationship("Post", back_populates="votes")
-
+    comments = relationship("Comment",back_populates="votes")
+    
 class HistorialPost(Base):
     __tablename__ = 'historial_Post'
     id= Column(Integer, primary_key=True,autoincrement=True)
