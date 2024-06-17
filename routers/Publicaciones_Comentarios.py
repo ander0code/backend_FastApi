@@ -16,20 +16,11 @@ import time
 from fastapi import HTTPException
 
 def get_db():
-    reintentos = 3
-    retraso = 5
-    for _ in range(reintentos):
-        db = SessionLocal()
-        try:
-            yield db
-            return  # Salimos del bucle después de un yield exitoso
-        except OperationalError:
-            db.close()
-            time.sleep(retraso)
-    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
-
-        
-        
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
         
 @post.get("/postsFilter/{carrera_id}", response_model=List[Publicaciones.PostWithCurso])
 async def post_carrera(carrera_id: int, db: Session = Depends(get_db)) -> Any:
