@@ -47,19 +47,22 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
+      <i class="bi bi-list toggle-sidebar-btn ms-2"></i>
       <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
         <img src="./assets/img/logosago2.webp" alt="forua" class="logo-img">
         <span class="d-none d-lg-block logo-text">ORUA</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn ms-2"></i>
+
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Buscar pregunta por título" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+    <div class="header">
+      <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+          <input type="text" name="query" placeholder="Buscar pregunta por título" title="Enter search keyword">
+          
+        </form>
+      </div><!-- End Search Bar -->
+    </div>    
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -255,10 +258,17 @@
           <form action="/autenticacion/verdocentes" method="get" style="all: unset;">
               <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
                   <i class="bi bi-person"></i>
-                  <span>Ver y calificar docentes</span>
+                  <span>Ver Docentes</span>
               </button>
           </form>
       </li><!-- End Login Page Nav -->
+      <li class="nav-heading">LOCALIZACIONES</li>
+        <form action="/autenticacion/localidades" method="get" style="all: unset;">
+          <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+            <i class="bi bi-map"></i>
+              <span>Descubrir</span>
+          </button>
+        </form>
         
         <template id="profesor-template">
             <li>
@@ -433,7 +443,7 @@
 
 
   <!--================PRUEBAS=============================
-     <script src="./assets/js/mostrarCursos.js"></script>=-->
+    <script src="./assets/js/mostrarCursos.js"></script>=-->
   <script src="./assets/js/filtrarPost.js"></script>
   <script src="./assets/js/buscarPregunta.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
