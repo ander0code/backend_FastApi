@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
+
+  <title>Forua</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/logosago.webp" rel="icon">
+  <!-- Favicons -->
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="./assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="./assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/faq.css">
+  <link rel="stylesheet" href="./assets/css/localidades.css">
+  <link rel="stylesheet" href="./assets/css/perfil.css">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
+        <img src="./assets/img/logosago2.webp" alt="forua">
+        <span class="d-none d-lg-block">ORUA</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-label="User Profile Menu">
+            <img src="" alt="Profile Picture" class="rounded-circle profile-img" id="profile-img">
+            <span class="d-none d-md-block dropdown-toggle ps-2 profile-name" id="profile-name"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
+            <li class="dropdown-header" id="profile-template">
+              <h6 id="profile-fullname">Nombre Completo</h6>
+              <span id="profile-carreer">Carrera</span>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/autenticacion/data_users" method="GET">
+                <button type="submit" class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-person"></i>
+                  <span>Mi Perfil</span>
+                </button>
+              </form>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="./users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Configuración de cuenta</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/autenticacion/preguntas_frecuentes">
+                <i class="bi bi-chat-left"></i>
+                <span>Mis preguntas</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/autenticacion/logout" method="post">
+                <button type="submit" class="dropdown-item d-flex align-items-center">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Salir</span>
+                </button>
+            </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>    
+
+  </header>
+<!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/autenticacion/dashboard">
+          <i class="bi bi-grid"></i>
+          <span>Inicio</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-heading">LOCALIZACIONES</li>
+      <form action="#" method="get" style="all: unset;">
+        <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+            <i class="bi bi-person"></i>
+            <span>Reseñas de Servicios Universitarios</span>
+        </button>
+      </form>
+          <li class="nav-heading">Soporte</li>
+          <li class="nav-item">
+              <form action="/autenticacion/preguntas_frecuentes" method="GET">
+                  <button type="submit" class="nav-link collapsed" style="background: none; border: none; cursor: pointer;">
+                      <i class="bi bi-question-circle"></i>
+                      <span>Preguntas frecuentes</span>
+                  </button>
+              </form>
+          </li><!-- End F.A.Q Page Nav -->
+
+
+          <li class="nav-item">
+            <form action="/autenticacion/pagina_contactos" method="GET">
+                <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                    <i class="bi bi-envelope"></i>
+                    <span>Soporte</span>
+                </button>
+            </form>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+          <form action="/autenticacion/logout" method="post" style="all: unset;">
+              <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
+                  <i class="bi bi-box-arrow-in-right"></i>
+                  <span>Salir</span>
+              </button>
+          </form>
+      </li><!-- End Login Page Nav -->
+      
+    </ul>
+</aside>
+
+<!-- End Sidebar-->
+<main id="main" class="main">
+  <div class="containerrr">
+    <div class="headerrr" id="header">
+        <img src="./assets/img/autonoma.jpg" alt="Localidades" id="header-img">
+        <h1 id="header-title">LOCALIDADES</h1>
+    </div>
+    <div class="main-contentrrr">
+        <div class="left-columnrrr">
+            <div class="header-rowrrr">
+                <h2 id="publicaciones-title">Reseñas</h2>
+                <button id="publicar-button">Publicar</button>
+            </div>
+            <div class="posts-wrapperrrr">
+                <div class="postsrrr" id="publicaciones">
+                  <div class="postrrr">
+                    <div class="user-inforrr">
+                        <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photrrrr">
+                        <div class="user-detailsrrr">
+                            <div class="top-row">
+                                <div class="user-namerrr">Orlando Rivera</div>
+                                <div class="starsrrr">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">☆</span>
+                                </div>
+                            </div>
+                            <div class="user-reviewsrrr">3 Publicaciones</div>
+                            <div class="review-daterrr">Hace un mes</div>
+                        </div>
+                    </div>
+                    <div class="commentrrr">
+                        <p class="comment-text">
+                            La comida en el restaurante cumplió con las expectativas en términos de calidad...
+                        </p>
+                    </div>
+                    <div class="details-wrapperrrr collapsed">
+                        <div class="rating-detailsrrr">
+                            <div><span class="rating-labelrrr">Servicio:</span> Comí allí</div>
+                            <div><span class="rating-labelrrr">Tipo de comida:</span> Comida</div>
+                            <div><span class="rating-labelrrr">Precio por persona:</span> 40-50 PEN</div>
+                            <div><span class="rating-labelrrr">Comida:</span> 5</div>
+                            <div><span class="rating-labelrrr">Servicio:</span> 5</div>
+                            <div><span class="rating-labelrrr">Ambiente:</span> 4</div>
+                            <div><span class="rating-labelrrr">Platos recomendados:</span> Pollo A la Brasa</div>
+                        </div>
+                    </div>
+                    <button class="toggle-buttonrrr">Ver más</button>
+                </div>                
+                
+                </div>
+                <div class="hiddenrrr" id="publicar-form">
+                  <h2>Crear Nueva Publicación</h2>
+                  <form class="formrrr">
+                      <label for="titulo" class="labelrrr">Título:</label>
+                      <input type="text" id="titulo" name="titulo" class="inputrrr">
+                      
+                      <label for="contenido" class="labelrrr">Contenido:</label>
+                      <textarea id="contenido" name="contenido" class="textarearrr"></textarea>
+                      
+                      <label for="calificacion" class="labelrrr">Calificación:</label>
+                      <div class="starsrrr">
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">☆</span>
+                      </div>
+                      
+                      <label for="servicio" class="labelrrr">Servicio:</label>
+                      <input type="text" id="servicio" name="servicio" class="inputrrr">
+                      
+                      <label for="tipo-comida" class="labelrrr">Tipo de comida:</label>
+                      <input type="text" id="tipo-comida" name="tipo-comida" class="inputrrr">
+                      
+                      <label for="precio" class="labelrrr">Precio por persona:</label>
+                      <input type="text" id="precio" name="precio" class="inputrrr">
+                      
+                      <label for="platos-recomendados" class="labelrrr">Platos recomendados:</label>
+                      <input type="text" id="platos-recomendados" name="platos-recomendados" class="inputrrr">
+                      
+                      <button type="submit" class="submit-buttonrrr">Publicar</button>
+                      <button type="button" id="cancelar-button" class="cancel-buttonrrr">Cancelar</button>
+                  </form>
+              </div>
+              
+            </div>
+        </div>
+        <div class="right-columnrrr" id="right-column">
+            <h1>UBICACIONES</h1>
+            <div class="image-boxrrr" data-title="CAFETERIA" data-img="./assets/img/tata.png" data-type="cafeteria">
+                <img src="./assets/img/tata.png" alt="Cafeteria">
+                <h3>CAFETERIA</h3>
+            </div>
+            <div class="image-boxrrr" data-title="A. AL ESTUDIANTE" data-img="./assets/img/ate.png" data-type="estudiante">
+                <img src="./assets/img/ate.png" alt="A. al Estudiante">
+                <h3>A. AL ESTUDIANTE</h3>
+            </div>
+            <div class="image-boxrrr" data-title="AUTONOMA MATCH" data-img="./assets/img/match.png" data-type="match">
+                <img src="./assets/img/match.png" alt="Autonoma Match">
+                <h3>AUTONOMA MATCH</h3>
+            </div>
+            <div class="image-boxrrr hiddenrrr" id="localidades-box" data-title="LOCALIDADES" data-img="./assets/img/autonoma.jpg">
+                <img src="./assets/img/autonoma.jpg" alt="Localidades">
+                <h3>LOCALIDADES</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="copyright">
+    &copy; Copyright <strong><span>Sago</span></strong>. Todos los derechos reservados
+    </div>
+</footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="./assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="./assets/vendor/echarts/echarts.min.js"></script>
+  <script src="./assets/vendor/quill/quill.js"></script>
+  <script src="./assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="./assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="./assets/vendor/php-email-form/validate.js"></script>
+
+  <!-----------------------------JAVASCRIPTS IMPORTANTES-->
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/mostPerfilDash.js"></script>
+  <script src="./assets/js/pagina_frecuentes.js"></script>
+  <script src="./assets/js/localidades.js"></script>
+  <!--================PRUEBAS==============================-->
+</body>
+
+</html>

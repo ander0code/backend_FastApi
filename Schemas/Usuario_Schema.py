@@ -25,3 +25,7 @@ class UserBaseModel(BaseModel):
 
     class Config:
         from_attributes = True
+        
+class UserUpdateDescripcion(BaseModel):
+    PuntoDeVista : Optional[str] = None
+    AcercaDeMi : Optional[str] = None

@@ -5,16 +5,30 @@ from models import Model_DB
 from Schemas import Publicaciones,Comentarios
 from config.base_connection import SessionLocal
 from typing import Any,List
+from sqlalchemy.exc import OperationalError
+import time
 
 post = APIRouter()
 
 # Dependency
+from sqlalchemy.exc import OperationalError
+import time
+from fastapi import HTTPException
+
 def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    reintentos = 3
+    retraso = 5
+    for _ in range(reintentos):
+        db = SessionLocal()
+        try:
+            yield db
+            return  # Salimos del bucle después de un yield exitoso
+        except OperationalError:
+            db.close()
+            time.sleep(retraso)
+    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
+
+        
         
         
 @post.get("/postsFilter/{carrera_id}", response_model=List[Publicaciones.PostWithCurso])
