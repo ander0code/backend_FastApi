@@ -1915,3 +1915,7 @@ a.fw-bold.text-dark.post-title {
   max-width: 600px;
   height: auto;
 }
+
+button .letraBotonLocal {
+  color: #fff;
+}

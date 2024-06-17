@@ -36,7 +36,7 @@
 
   <!-- Template Main CSS File -->
   <link href="./assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/califDoc.css">
+<link rel="stylesheet" href="./assets/css/resenaMatch.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -51,29 +51,21 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
-    <div class="d-flex align-items-center justify-content-between">
-      <i class="bi bi-list toggle-sidebar-btn ms-2"></i>
-      <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
-        <img src="./assets/img/logosago2.webp" alt="forua" class="logo-img">
-        <span class="d-none d-lg-block logo-text">ORUA</span>
-      </a>
 
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/autenticacion/dashboard" class="logo d-flex align-items-center">
+        <img src="./assets/img/logosago2.webp" alt="forua">
+        <span class="d-none d-lg-block">ORUA</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="header">
-      <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-          <input type="text" name="query" placeholder="Buscar pregunta por título" title="Enter search keyword">
-          
-        </form>
-      </div><!-- End Search Bar -->
-    </div>    
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-label="User Profile Menu">
-            <img loading="lazy" src="" alt="Profile Picture" class="rounded-circle profile-img" id="profile-img">
+            <img src="" alt="Profile Picture" class="rounded-circle profile-img" id="profile-img">
             <span class="d-none d-md-block dropdown-toggle ps-2 profile-name" id="profile-name"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" id="profile-container">
@@ -116,7 +108,8 @@
           </ul>
         </li>
       </ul>
-    </nav>
+    </nav>    
+
   </header>
 <!-- End Header -->
 
@@ -186,97 +179,127 @@
 
 <main id="main" class="main">
   <div class="container">
-    <h1>Calificación: <p class="NombreProfeCalificar"></p></h1>
+    <h1 class="section-title">Autonoma Match:</h1>
+    <div class="profile-container">
+      <img src="./assets/img/defaultft.webp" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-details">
+        <div class="nombre-container">
+          <p class="NombreProfeCalificar">Edward Pittman</p>
+        </div>
+        <div class="carrera-container">
+          <p class="carrera">Derecho</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="section-title"></h2>
     <form class="calificar-form" id="calificar-form">
+  
       <div class="form-group">
-        <label for="curso-materia">Curso/Materia que enseñó</label>
-        <input type="text" id="curso-materia" name="curso-materia" required>
+        <div class="review-header">
+            <div class="review-title-container">
+                <label class="review-title" for="calificacion">Reseña sobre el lugar:</label>
+            </div>
+            <div class="estrellas-container">
+                <div class="estrellas" id="calificacion" data-tipo="calificacion" required>
+                    <input type="radio" name="calificacion" id="calificacion-5" value="5" required>
+                    <label for="calificacion-5" data-descripcion="Muy Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-4" value="4">
+                    <label for="calificacion-4" data-descripcion="Buena">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-3" value="3">
+                    <label for="calificacion-3" data-descripcion="Ok">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-2" value="2">
+                    <label for="calificacion-2" data-descripcion="Mala">&#9733;</label>
+                    <input type="radio" name="calificacion" id="calificacion-1" value="1">
+                    <label for="calificacion-1" data-descripcion="Muy Mala">&#9733;</label>
+                </div>
+                <div id="tooltip" class="tooltip"></div>
+            </div>
+        </div>
       </div>
+    
       <div class="form-group">
-        <label for="calidad">Califica a tu profesor</label>
-        <div class="emojis" id="calidad" data-tipo="calidad" required>
-          <input type="radio" name="calidad" id="calidad-5" value="5" required>
-          <label for="calidad-5" data-descripcion="Muy bueno"><i class="far fa-grin-stars"></i></label>
-          <input type="radio" name="calidad" id="calidad-4" value="4">
-          <label for="calidad-4" data-descripcion="Bueno"><i class="far fa-smile"></i></label>
-          <input type="radio" name="calidad" id="calidad-3" value="3">
-          <label for="calidad-3" data-descripcion="Ok"><i class="far fa-meh"></i></label>
-          <input type="radio" name="calidad" id="calidad-2" value="2">
-          <label for="calidad-2" data-descripcion="Malo"><i class="far fa-face-frown-open"></i></label>
-          <input type="radio" name="calidad" id="calidad-1" value="1">
-          <label for="calidad-1" data-descripcion="Muy malo"><i class="far fa-angry "></i></label>
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="instalaciones">Instalaciones:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="instalaciones" data-tipo="instalaciones" required>
+              <input type="radio" name="instalaciones" id="instalaciones-5" value="5" required>
+              <label for="instalaciones-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-4" value="4">
+              <label for="instalaciones-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-3" value="3">
+              <label for="instalaciones-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-2" value="2">
+              <label for="instalaciones-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="instalaciones" id="instalaciones-1" value="1">
+              <label for="instalaciones-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="dificultad">¿Qué tan difícil fue cursar con este profesor?</label>
-        <div class="emojis" id="dificultad" data-tipo="dificultad" required>
-          <input type="radio" name="dificultad" id="dificultad-5" value="5" required>
-          <label for="dificultad-5" data-descripcion="Muy facil"><i class="far fa-grin-stars"></i></label>
-          <input type="radio" name="dificultad" id="dificultad-4" value="4">
-          <label for="dificultad-4" data-descripcion="Facil"><i class="far fa-smile"></i></label>
-          <input type="radio" name="dificultad" id="dificultad-3" value="3">
-          <label for="dificultad-3" data-descripcion="Normal"><i class="far fa-meh"></i></label>
-          <input type="radio" name="dificultad" id="dificultad-2" value="2">
-          <label for="dificultad-2" data-descripcion="Dificil"><i class="far fa-face-frown-open"></i></label>
-          <input type="radio" name="dificultad" id="dificultad-1" value="1" required>
-          <label for="dificultad-1" data-descripcion="Muy dificil"><i class="far fa-angry "></i></label>
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="seguridad">Seguridad:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="seguridad" data-tipo="seguridad" required>
+              <input type="radio" name="seguridad" id="seguridad-5" value="5" required>
+              <label for="seguridad-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-4" value="4">
+              <label for="seguridad-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-3" value="3">
+              <label for="seguridad-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-2" value="2">
+              <label for="seguridad-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="seguridad" id="seguridad-1" value="1">
+              <label for="seguridad-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="tomaria-denuevo">¿Volverías a tomar este curso?</label>
-        <div class="si-no" id="tomaria-denuevo" required>
-          <input type="radio" name="tomaria-denuevo" id="si" value="SI" required>
-          <label for="si">SI</label>
-          <input type="radio" name="tomaria-denuevo" id="no" value="NO">
-          <label for="no">NO</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="etiquetas">Seleccione hasta 3 etiquetas:</label>
-        <div class="etiquetas" id="etiquetas" aria-required="true">
-          <input type="checkbox" id="etiqueta-1" value="Exigente al Calificar"><label for="etiqueta-1">Exigente al Calificar</label>
-          <input type="checkbox" id="etiqueta-2" value="Experto en Herramientas Digitales"><label for="etiqueta-2">Experto en Herramientas Digitales</label>
-          <input type="checkbox" id="etiqueta-3" value="Gracioso"><label for="etiqueta-3">Gracioso</label>
-          <input type="checkbox" id="etiqueta-4" value="Da Buena Retroalimentación"><label for="etiqueta-4">Da Buena Retroalimentación</label>
-          <input type="checkbox" id="etiqueta-5" value="Tarea pesada"><label for="etiqueta-5">Tarea pesada</label>
-          <input type="checkbox" id="etiqueta-6" value="Prepárate para Leer"><label for="etiqueta-6">Prepárate para Leer</label>
-          <input type="checkbox" id="etiqueta-7" value="Hace Exámenes Sorpresa"><label for="etiqueta-7">Hace Exámenes Sorpresa</label>
-          <input type="checkbox" id="etiqueta-8" value="La Participación Importa"><label for="etiqueta-8">La Participación Importa</label>
-          <input type="checkbox" id="etiqueta-9" value="La Puntualidad Importa"><label for="etiqueta-9">La Puntualidad Importa</label>
-          <input type="checkbox" id="etiqueta-10" value="Respetado por los Estudiantes"><label for="etiqueta-10">Respetado por los Estudiantes</label>
-          <input type="checkbox" id="etiqueta-11" value="Inspiracional"><label for="etiqueta-11">Inspiracional</label>
-          <input type="checkbox" id="etiqueta-12" value="Las Clases son Largas"><label for="etiqueta-12">Las Clases son Largas</label>
-          <input type="checkbox" id="etiqueta-13" value="Da Nota Extra"><label for="etiqueta-13">Da Nota Extra</label>
-          <input type="checkbox" id="etiqueta-14" value="Pocos Exámenes"><label for="etiqueta-14">Pocos Exámenes</label>
-          <input type="checkbox" id="etiqueta-15" value="Muchos Exámenes"><label for="etiqueta-15">Muchos Exámenes</label>
-          <input type="checkbox" id="etiqueta-16" value="Aspectos de Calificación Claros"><label for="etiqueta-16">Aspectos de Calificación Claros</label>
-          <input type="checkbox" id="etiqueta-17" value="Brinda Apoyo"><label for="etiqueta-17">Brinda Apoyo</label>
-          <input type="checkbox" id="etiqueta-18" value="Deja Trabajos Largos"><label for="etiqueta-18">Deja Trabajos Largos</label>
-          <input type="checkbox" id="etiqueta-19" value="Clases Excelentes"><label for="etiqueta-19">Clases Excelentes</label>
-          <input type="checkbox" id="etiqueta-20" value="Los Exámenes son Difíciles"><label for="etiqueta-20">Los Exámenes son Difíciles</label>
-          <input type="checkbox" id="etiqueta-21" value="Proyectos Grupales"><label for="etiqueta-21">Proyectos Grupales</label>
+        <div class="review-header">
+          <div class="review-title-container">
+            <label class="review-title" for="horarios">Horarios:</label>
+          </div>
+          <div class="estrellas-container">
+            <div class="estrellas" id="horarios" data-tipo="horarios" required>
+              <input type="radio" name="horarios" id="horarios-5" value="5" required>
+              <label for="horarios-5" data-descripcion="Muy Buena">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-4" value="4">
+              <label for="horarios-4" data-descripcion="Buena">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-3" value="3">
+              <label for="horarios-3" data-descripcion="Ok">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-2" value="2">
+              <label for="horarios-2" data-descripcion="Mala">&#9733;</label>
+              <input type="radio" name="horarios" id="horarios-1" value="1">
+              <label for="horarios-1" data-descripcion="Muy Mala">&#9733;</label>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group pautas">
         <label>Pautas:</label>
         <ul>
-          <li>Su calificación podría eliminarse si utiliza malas palabras o términos despectivos.</li>
-          <li>El comentario debe ser constructivo en favor de mejorar la calidad educativa.</li>
+          <li>Su reseña podría eliminarse si utiliza malas palabras o términos despectivos.</li>
           <li>¡No olvides revisar tu comentario antes de enviar!</li>
         </ul>
       </div>
       <div class="form-group">
-        <label for="comentario">Escribe una reseña o comentario:</label>
+        <label for="comentario">Comparte más sobre tu experiencia</label>
         <textarea id="comentario" name="comentario" rows="5" required></textarea>
       </div>
       <div class="form-group">
-        <p>Al hacer click en “Enviar” reconozco que los datos pasan a propiedad de Forua y no serán subidos hasta pasar el control de calidad para mejorar el ambiente de los usuarios.</p>
+        <p>Al hacer clic en “Enviar” reconozco que los datos pasan a propiedad de Forua y no serán subidos hasta pasar el control de calidad para mejorar el ambiente de los usuarios.</p>
         <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
-
       </div>
     </form>
   </div>
 </main>
+
+
 
 <div class="modal fade" id="confirmarEnvioModal" tabindex="-1" aria-labelledby="confirmarEnvioLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -286,7 +309,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ¿Estás seguro de enviar esta calificación?
+        ¿Estás seguro de enviar esta reseña?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -336,7 +359,7 @@
   <script src="./assets/js/main.js"></script>
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/StarsShow.js"></script>
-  <script src="./assets/js/califDoc.js"></script>
+  <script src="./assets/js/resenaMatch.js"></script>
 
 
   <!--================PRUEBAS=============================
