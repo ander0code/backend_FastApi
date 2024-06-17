@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const post = item.post;
                 const carrera = item.carrera;
                 const curso = item.curso;
-                const votos = item.votos;
+                const votos = item.votos.cantidad;
 
                 const newPost = document.createElement('div');
                 newPost.classList.add('post-item');

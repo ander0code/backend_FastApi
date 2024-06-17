@@ -67,7 +67,6 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   height: 45px; /* Ajustar la altura del encabezado */
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
   display: flex;
   align-items: center;

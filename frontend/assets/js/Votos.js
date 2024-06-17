@@ -44,7 +44,9 @@ function displayPostDetails(postData) {
     const autorURL = post.propietarioURL || '/autenticacion/perfils';
     document.querySelector('.question-meta').innerHTML = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a> | ${post.fecha_Creacion || 'Fecha no disponible'}`;
 
-    document.querySelector('.vote-count').textContent = votos;
+    const voteCountElement = document.querySelector('.vote-count');
+    voteCountElement.textContent = votos;
+    voteCountElement.setAttribute('data-current-vote', 0); // Inicialmente 0
 
     const tagsContainer = document.querySelector('.tagsPost');
     tagsContainer.innerHTML = '';
@@ -70,16 +72,6 @@ function displayPostDetails(postData) {
         tagsContainer.appendChild(cursoTag);
     }
 
-    document.querySelector('.upvote').addEventListener('click', function() {
-        handleVote('POS', postId, document.querySelector('.vote-count'));
-    });
-
-    document.querySelector('.downvote').addEventListener('click', function() {
-        handleVote('NEG', postId, document.querySelector('.vote-count'));
-    });
-}
-
-function handleVote(voteType, postId, voteCountElement) {
     const userEmail = localStorage.getItem('email');
 
     if (!userEmail) {
@@ -101,44 +93,71 @@ function handleVote(voteType, postId, voteCountElement) {
         }
         const userID = userData[0].id;
 
-        const voteData = {
-            tipo_voto: voteType,
-            tipo_objeto: "POST"
-        };
+        // Asegurarse de que los event listeners no se agreguen más de una vez
+        const upvoteButton = document.querySelector('.upvote');
+        const downvoteButton = document.querySelector('.downvote');
 
-        console.log(`Enviando voto: ${JSON.stringify(voteData)} para el postId: ${postId} y userID: ${userID}`);
+        upvoteButton.removeEventListener('click', handleUpvote);
+        downvoteButton.removeEventListener('click', handleDownvote);
 
-        fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(voteData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(errorData => {
-                    throw new Error(`Error en la respuesta del servidor: ${JSON.stringify(errorData)}`);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Voto registrado:', data);
-            let voteCount = parseInt(voteCountElement.textContent);
-            if (voteType === 'POST') {
-                voteCount++;
-            } else {
-                voteCount--;
-            }
-            voteCountElement.textContent = voteCount;
-        })
-        .catch(error => {
-            console.error('Error al registrar el voto:', error);
-        });
+        upvoteButton.addEventListener('click', handleUpvote);
+        downvoteButton.addEventListener('click', handleDownvote);
+
+        function handleUpvote() {
+            handleVote('POST', postId, userID, voteCountElement, 'UP');
+        }
+
+        function handleDownvote() {
+            handleVote('POST', postId, userID, voteCountElement, 'DOWN');
+        }
     })
     .catch(error => {
         console.error('Error al obtener el userID:', error);
-    });   
+    });
+}
+
+function handleVote(voteType, postId, userID, voteCountElement, direction) {
+    const currentVote = parseInt(voteCountElement.getAttribute('data-current-vote')) || 0;
+    let newVoteValue = 0;
+
+    if (direction === 'UP') {
+        newVoteValue = currentVote === 1 ? 0 : 1; // Cambiar a 0 si ya está en 1, de lo contrario a 1
+    } else if (direction === 'DOWN') {
+        newVoteValue = currentVote === -1 ? 0 : -1; // Cambiar a 0 si ya está en -1, de lo contrario a -1
+    }
+
+    const voteData = {
+        tipo_voto: voteType,
+        tipo_objeto: direction
+    };
+
+    console.log(`Enviando voto: ${JSON.stringify(voteData)} para el postId: ${postId} y userID: ${userID}`);
+
+    fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
+        method: 'POST',
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(voteData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(`Error en la respuesta del servidor: ${JSON.stringify(errorData)}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Voto registrado:', data);
+        voteCountElement.setAttribute('data-current-vote', newVoteValue);
+
+        let voteCount = parseInt(voteCountElement.textContent);
+        voteCount = voteCount - currentVote + newVoteValue; // Ajustar el contador basado en el nuevo voto
+        voteCountElement.textContent = voteCount;
+    })
+    .catch(error => {
+        console.error('Error al registrar el voto:', error);
+    });
 }
