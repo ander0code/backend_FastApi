@@ -152,13 +152,13 @@ body {
 
 
 .buttonImgPosi {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 }
 
 .buttonImgNega {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     color: #007bff;
 }
 
@@ -176,6 +176,6 @@ body {
 
 .buttonImgNegaComment {
     padding: 5px;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
 }
