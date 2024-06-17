@@ -142,11 +142,6 @@ body {
   margin-top: 0;
 }
 
-.lista-datos li:hover {
-  background-color: #f0f0f0;
-  transform: translateX(10px);
-}
-
 .lista-datos li > .icono {
   margin-right: 1.5rem;
   font-size: 1.5rem;
