@@ -63,6 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     generalTag.textContent = 'General';
                     tagsContainer.appendChild(generalTag);
                 }
+                
+                const postTitleLink = newPopularPost.querySelector('.post-title');
+
+                postTitleLink.addEventListener('click', (event) => {
+                    if (postTitleLink.classList.contains('disabled')) {
+                        event.preventDefault(); // Evitar la redirección predeterminada solo si el enlace está deshabilitado
+                    } else {
+                        postTitleLink.classList.add('disabled');
+                        setTimeout(() => {
+                            postTitleLink.classList.remove('disabled');
+                        }, 2000); // 3 segundos
+                    }
+                });
 
                 popularPostsContainer.appendChild(newPopularPost);
             });

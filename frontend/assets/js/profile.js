@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="post-right">
                     <div class="post-header">
-                        <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}">${post.titulo || 'Título no disponible'}</a></div>
+                        <div class="post-title"><a href="/autenticacion/texto?post_id=${post.id}" class="delayed-link">${post.titulo || 'Título no disponible'}</a></div>
                         <div class="post-meta">por <span class="post-author"><a href="/users-profileOthers.html" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion || 'Fecha no disponible'}</div>
                     </div>
                     <div class="post-tags"></div>
@@ -155,4 +155,38 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
         console.error('Error:', error);
     });
+    const postContainer = document.getElementById('post-container');
+
+    // Función para manejar el bloqueo del enlace
+    function handleDelayedLinkClick(event) {
+        const link = event.target;
+
+        // Verificar si se hizo clic en un enlace diferido
+        if (link.classList.contains('delayed-link')) {
+            // Bloquear el enlace por 3 segundos
+            link.classList.add('disabled');
+            setTimeout(() => {
+                link.classList.remove('disabled');
+            }, 2000);
+        }
+    }
+    
+     // Función para manejar el bloqueo del botón en el enlace
+     function handleRedirectButtonClick(event) {
+        const button = event.target.closest('.redirect-button');
+
+        if (button) {
+            // Bloquear el botón por 2 segundos
+            button.disabled = true;
+            setTimeout(() => {
+                button.disabled = false;
+            }, 2000);
+        }
+    }
+
+    // Agregar el event listener al contenedor de posts
+    postContainer.addEventListener('click', handleRedirectButtonClick);
+
+    // Agregar el event listener al contenedor de posts
+    postContainer.addEventListener('click', handleDelayedLinkClick);
 });
