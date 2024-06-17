@@ -29,3 +29,4 @@ class UserBaseModel(BaseModel):
 class UserUpdateDescripcion(BaseModel):
     PuntoDeVista : Optional[str] = None
     AcercaDeMi : Optional[str] = None
+    
