@@ -17,18 +17,12 @@ import time
 from fastapi import HTTPException
 
 def get_db():
-    reintentos = 3
-    retraso = 5
-    for _ in range(reintentos):
-        db = SessionLocal()
-        try:
-            yield db
-            return  # Salimos del bucle después de un yield exitoso
-        except OperationalError:
-            db.close()
-            time.sleep(retraso)
-    raise HTTPException(status_code=500, detalle="No se pudo conectar a la base de datos después de varios intentos")
-
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
 @voto.post("/voto/{mensajeID}/{user_id}", response_model=None)
 async def create_post(mensajeID: int, user_id: int, comment: votos.VotosModel, db: Session = Depends(get_db)) -> Any:
     try:
