@@ -32,7 +32,7 @@
 }
 
 .headerrr h1 {
-    font-family: "Sigmar One", sans-serif;
+    font-family: Arial Black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -115,7 +115,7 @@
     padding: 20px;
     border-radius: 5px;
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     max-width: 600px;
     margin: auto;
     font-size: 1em;
