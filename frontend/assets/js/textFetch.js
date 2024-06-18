@@ -303,6 +303,7 @@ function displayAllPostResponses(responseData) {
     });
 }
 
+
 function handleVote(voteCountElement, clickedButton, otherButton) {
     let voteCount = parseInt(voteCountElement.textContent);
     const postId = document.querySelector('.question-title').dataset.postId; // Obtener postId del atributo data
