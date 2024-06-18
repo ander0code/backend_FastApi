@@ -151,16 +151,9 @@ body {
 }
 
 
-.buttonImgPosi {
-    width: 50px;
-    height: 50px;
-
-}
-
-.buttonImgNega {
-    width: 50px;
-    height: 50px;
-    color: #007bff;
+.like-deseleccionado, .dislike-deseleccionado, .like-seleccionado, .dislike-seleccionado {
+    width: 70px;
+    height: 70px;
 }
 
 .submitImg {
@@ -168,16 +161,3 @@ body {
     height: auto;
 }
 
-
-.buttonImgPosiComment {
-    padding: 5px;
-    width: 50px;
-    height: 50px;
-}
-
-.buttonImgNegaComment {
-    padding: 5px;
-    width: 50px;
-    height: 50px;
-
-}

@@ -240,9 +240,9 @@ function displayPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="like-deseleccionado" src="./assets/img/like-deseleccionado.png"></img></button>
             <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="dislike-deseleccionado" src="./assets/img/dislike-deseleccionado.png"></img></button>
         `;
 
         const commentInfo = document.createElement('div');
@@ -277,9 +277,9 @@ function displayAllPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="like-deseleccionado" src="./assets/img/like-deseleccionado.png"></img></button>
             <p class="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="dislike-deseleccionado" src="./assets/img/dislike-deseleccionado.png"></img></button>
         `;
 
         const commentInfo = document.createElement('div');
@@ -302,7 +302,6 @@ function displayAllPostResponses(responseData) {
         });
     });
 }
-
 
 function handleVote(voteCountElement, clickedButton, otherButton) {
     let voteCount = parseInt(voteCountElement.textContent);
@@ -355,25 +354,43 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
         .then(data => {
             console.log('Voto registrado:', data);
             if (clickedButton.classList.contains('upvote')) {
-                if (otherButton.classList.contains('downvoted')) {
-                    voteCount += 2; // Sumar 2 si se cambia de downvote a upvote
-                    otherButton.classList.remove('downvoted');
-                } else {
+                if (clickedButton.querySelector('img').classList.contains('like-deseleccionado')) {
+                    clickedButton.querySelector('img').src = './assets/img/like-seleccionado.png';
+                    clickedButton.querySelector('img').classList.remove('like-deseleccionado');
+                    clickedButton.querySelector('img').classList.add('like-seleccionado');
                     voteCount++; // Sumar 1 si es un nuevo upvote
-                }
-                clickedButton.classList.add('upvoted');
-            } else {
-                if (otherButton.classList.contains('upvoted')) {
-                    voteCount -= 2; // Restar 2 si se cambia de upvote a downvote
-                    otherButton.classList.remove('upvoted');
                 } else {
+                    clickedButton.querySelector('img').src = './assets/img/like-deseleccionado.png';
+                    clickedButton.querySelector('img').classList.remove('like-seleccionado');
+                    clickedButton.querySelector('img').classList.add('like-deseleccionado');
                     voteCount--; // Restar 1 si es un nuevo downvote
                 }
-                clickedButton.classList.add('downvoted');
+
+                if (otherButton.querySelector('img').classList.contains('dislike-seleccionado')) {
+                    otherButton.querySelector('img').src = './assets/img/dislike-deseleccionado.png';
+                    otherButton.querySelector('img').classList.remove('dislike-seleccionado');
+                    otherButton.querySelector('img').classList.add('dislike-deseleccionado');
+                }
+            } else {
+                if (clickedButton.querySelector('img').classList.contains('dislike-deseleccionado')) {
+                    clickedButton.querySelector('img').src = './assets/img/dislike-seleccionado.png';
+                    clickedButton.querySelector('img').classList.remove('dislike-deseleccionado');
+                    clickedButton.querySelector('img').classList.add('dislike-seleccionado');
+                    voteCount--; // Restar 1 si es un nuevo downvote
+                } else {
+                    clickedButton.querySelector('img').src = './assets/img/dislike-deseleccionado.png';
+                    clickedButton.querySelector('img').classList.remove('dislike-seleccionado');
+                    clickedButton.querySelector('img').classList.add('dislike-deseleccionado');
+                    voteCount++; // Sumar 1 si es un nuevo upvote
+                }
+
+                if (otherButton.querySelector('img').classList.contains('like-seleccionado')) {
+                    otherButton.querySelector('img').src = './assets/img/like-deseleccionado.png';
+                    otherButton.querySelector('img').classList.remove('like-seleccionado');
+                    otherButton.querySelector('img').classList.add('like-deseleccionado');
+                }
             }
             voteCountElement.textContent = voteCount;
-            clickedButton.disabled = true;
-            otherButton.disabled = false;
         })
         .catch(error => {
             console.error('Error al registrar el voto:', error);

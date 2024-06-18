@@ -187,8 +187,15 @@
             </ul>
           </div>
         </div>
-        <button class="profile-btn like-btn"><i class="bi bi-heart"></i></button>
-        <button class="profile-btn edit-btn" onclick="openEditModal()"><i class="bi bi-pencil-square"></i></button>
+        <button class="profile-btn like-btn">
+          <div class="like-icon-container">
+            <i class="bi bi-heart like-icon"></i>
+          </div>
+        </button>
+        <button class="profile-btn edit-btn" onclick="openEditModal()">
+          <div class="edit-text" id="editText">Editar</div>
+          <div class="edit-icon"><i class="bi bi-pencil-square"></i></div>
+        </button>
       </div>
       <div class="contenedor-metricas">
         <h3>Mis preguntas</h3>
@@ -218,7 +225,6 @@
     ¡Se actualizó frase y punto de vista! 😼
   </div>
 </main>
-
 
 
 

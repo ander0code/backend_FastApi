@@ -165,29 +165,61 @@ body {
   gap: 10px;
 }
 
-/* New CSS for buttons */
-.profile-btn {
+.profile-btn.like-btn {
   position: absolute;
   top: 10px;
-  background-color: #ffffff;
+  right: 0px;
+  background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.like-icon-container {
+  width: 80px; /* Ajustar el tamaño del contenedor según sea necesario */
+  height: 80px; /* Ajustar el tamaño del contenedor según sea necesario */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.like-icon {
+  font-size: 25px; /* Ajustar el tamaño del ícono según sea necesario */
+  color: #000; /* Color del ícono */
   transition: color 0.3s ease;
 }
 
-.profile-btn.like-btn {
-  right: 10px;
+.profile-btn.like-btn:hover .like-icon {
+  color: #ff0000; /* Cambiar color del ícono al pasar el mouse */
 }
 
+/* CSS para el botón Editar en la esquina inferior derecha */
 .profile-btn.edit-btn {
-  left: 10px;
+  position: absolute;
+  bottom: 10px; /* Ajustar la distancia desde abajo según sea necesario */
+  right: 10px; /* Ajustar la distancia desde la derecha según sea necesario */
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.profile-btn:hover {
-  color: #007BFF;
+.edit-text {
+  font-size: 14px; /* Tamaño del texto "Editar" */
+  margin-right: 5px; /* Espacio entre texto e ícono */
 }
 
+.edit-icon {
+  font-size: 20px; /* Tamaño del ícono */
+  color: #000; /* Color del ícono */
+  transition: color 0.3s ease;
+}
+
+.profile-btn.edit-btn:hover .edit-icon {
+  color: #007bff; /* Cambiar color del ícono al pasar el mouse */
+}
 /* CSS for Modal */
 .modal {
   display: none;
