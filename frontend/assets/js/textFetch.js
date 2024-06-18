@@ -356,18 +356,18 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
             console.log('Voto registrado:', data);
             if (clickedButton.classList.contains('upvote')) {
                 if (otherButton.classList.contains('downvoted')) {
-                    voteCount += 2; // Sumar 2 si se cambia de downvote a upvote
+                    
                     otherButton.classList.remove('downvoted');
                 } else {
-                    voteCount++; // Sumar 1 si es un nuevo upvote
+                    
                 }
                 clickedButton.classList.add('upvoted');
             } else {
                 if (otherButton.classList.contains('upvoted')) {
-                    voteCount -= 2; // Restar 2 si se cambia de upvote a downvote
+                    
                     otherButton.classList.remove('upvoted');
                 } else {
-                    voteCount--; // Restar 1 si es un nuevo downvote
+                    
                 }
                 clickedButton.classList.add('downvoted');
             }
