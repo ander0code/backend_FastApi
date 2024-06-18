@@ -10,3 +10,5 @@ class VotosModel(BaseModel):
 class VotosResponde(BaseModel):
     message: str
     status: str
+    cantidad : int
+    

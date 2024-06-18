@@ -1,10 +1,11 @@
 from fastapi import APIRouter,Depends,HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import func, case ,desc
 from sqlalchemy.exc import SQLAlchemyError,OperationalError
 from models import Model_DB
 from Schemas import votos
 from config.base_connection import SessionLocal
-from typing import Any
+from typing import Any,List
 import pytz
 from datetime import datetime
 import time
@@ -23,7 +24,7 @@ def get_db():
     finally:
         db.close()
         
-@voto.post("/voto/{mensajeID}/{user_id}", response_model=None)
+@voto.post("/voto/{mensajeID}/{user_id}", response_model=List[votos.VotosResponde])
 async def create_post(mensajeID: int, user_id: int, comment: votos.VotosModel, db: Session = Depends(get_db)) -> Any:
 
         tz = pytz.timezone('America/Lima')
@@ -54,7 +55,29 @@ async def create_post(mensajeID: int, user_id: int, comment: votos.VotosModel, d
                 voto_existente.tipo_Voto = comment.tipo_voto
                 db.commit()
                 event_voto = "se cambio el tipo de voto"
+                
 
-        return {"message": "Voto procesado correctamente", 
-                "evento" : f"{event_voto}"}
+        resultados = db.query(
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) - 
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label("votos")
+        ).join(
+            Model_DB.Post,
+            Model_DB.Post.id == Model_DB.Vote.mensajeID
+        ).filter(
+            Model_DB.Post.id == mensajeID
+        ).group_by(
+            Model_DB.Post.id,
+        ).first()
+        if resultados is None:
+            resultados = [0]  
+    
+        response = [
+            votos.VotosResponde(
+                    message=event_voto,
+                    status="success",
+                    cantidad= voto_cantidad
+                )
+                    for voto_cantidad in resultados
+                ]
+        return response
 
