@@ -150,3 +150,44 @@ async def update_user_description(id_user: int, user_update:Usuario_Schema.UserU
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail="Error interno del servidor: " + str(e))
+    
+      
+@user.get("/get_pag_user/{id}",response_model=List[Usuario_Schema.UserBaseModel])
+def get_pag_user( id_user = int ,db: Session = Depends(get_db) )-> Any:
+    resultados = db.query(
+        Model_DB.User,
+        Model_DB.EtiquetaCarrera,
+        Model_DB.UserData.codigo_std
+        ).join(
+            Model_DB.UserData, Model_DB.UserData.id == Model_DB.User.codigo_ID
+        ).join(
+            Model_DB.EtiquetaUsuario, Model_DB.EtiquetaUsuario.etiquetaUserID == Model_DB.User.id
+        ).join(
+            Model_DB.EtiquetaCarrera, Model_DB.EtiquetaCarrera.id_carrera == Model_DB.EtiquetaUsuario.etiquetaID
+        ).filter(
+            Model_DB.UserData.id == id_user
+        ).all()
+
+    if not resultados:
+        raise HTTPException(status_code=404, detail="buscando usuario por email: no existe")
+
+    response = [
+        Usuario_Schema.UserBaseModel(
+            id=user.id,
+            fecha_creación=user.fecha_creación,
+            nombre=user.nombre,
+            last_Name=user.last_Name,
+            acerca_de_mi=user.acerca_de_mi,
+            puntos_de_vista=user.puntos_de_vista,
+            votos_positivos=user.votos_positivos,
+            votos_negativos=user.votos_negativos,
+            usuariofoto=user.usuariofoto,
+            codigo_ID=user.codigo_ID,
+            codigo_user = codigo_usuario,
+            carrera=Usuario_Schema.EtiqetaCarreraBase(
+                etiquetaNombre=carrera.etiquetaNombre,
+            ) if carrera else None
+        )
+        for user, carrera ,codigo_usuario in resultados
+    ]
+    return response

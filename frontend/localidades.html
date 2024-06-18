@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="./assets/css/faq.css">
   <link rel="stylesheet" href="./assets/css/localidades.css">
   <link rel="stylesheet" href="./assets/css/perfil.css">
+  <link rel="stylesheet" href="assets/css/filtro_locales.css">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -126,12 +127,35 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-heading">LOCALIZACIONES</li>
-      <form action="#" method="get" style="all: unset;">
-        <button type="submit" class="nav-link collapsed" style="background: none; border: none; width: 100%; text-align: left;">
-          <i class="bi bi-map"></i>
-            <span>Descubrir</span>
-        </button>
-      </form>
+      <li class="nav-item">
+        <a class="nav-link collapsed" id="locations-btn" data-bs-target="#locations-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-map"></i></i><span>Explorar</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="locations-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <form action="/autenticacion/atencionestudiante" method="GET" >
+                <button type="submit" class="location-button">
+                    <i class="bi bi-circle"></i><span>Atención al estudiante</span>
+                </button>
+            </form>
+        </li>
+        
+            <li>
+                <form action="/autenticacion/cafeteria" method="GET" >
+                    <button type="submit" class="location-button">
+                        <i class="bi bi-circle"></i><span>Cafetería</span>
+                    </button>
+                </form>
+            </li>
+            <li>
+                <form action="/autenticacion/match" method="GET"  >
+                    <button type="submit" class="location-button">
+                        <i class="bi bi-circle"></i><span>Autonoma Match</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </li>      
           <li class="nav-heading">Soporte</li>
           <li class="nav-item">
               <form action="/autenticacion/preguntas_frecuentes" method="GET">
@@ -149,6 +173,7 @@
                     <i class="bi bi-envelope"></i>
                     <span>Soporte</span>
                 </button>
+                
             </form>
         </li><!-- End Contact Page Nav -->
 
@@ -171,106 +196,49 @@
         <img src="./assets/img/autonoma.jpg" alt="Localidades" id="header-img">
         <h1 id="header-title">LOCALIDADES</h1>
     </div>
-    <div class="main-contentrrr">
-        <div class="left-columnrrr">
-            <div class="header-rowrrr">
+    <div class="main-content">
+        <div class="left-column">
+            <div class="header-row">
                 <h2 id="publicaciones-title">Reseñas</h2>
-                <button id="publicar-button">Publicar</button>
+                <button id="generar-resena-button"><a class="letraBotonLocal" href="#">Generar reseña</a></button>
             </div>
-            <div class="posts-wrapperrrr">
-                <div class="postsrrr" id="publicaciones">
-                  <div class="postrrr">
-                    <div class="user-inforrr">
-                        <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photrrrr">
-                        <div class="user-detailsrrr">
-                            <div class="top-row">
-                                <div class="user-namerrr">Orlando Rivera</div>
-                                <div class="starsrrr">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">☆</span>
-                                </div>
+            <div class="posts-wrapper">
+                <div class="post">
+                    <div class="user-info">
+                        <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photo">
+                        <div class="user-details">
+                            <div class="user-name">Orlando Rivera</div>
+                            <div class="user-meta">
+                                <span class="user-reviews">3 Publicaciones</span>
+                                <span class="review-date">Hace un mes</span>
                             </div>
-                            <div class="user-reviewsrrr">3 Publicaciones</div>
-                            <div class="review-daterrr">Hace un mes</div>
+                        </div>
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">☆</span>
                         </div>
                     </div>
-                    <div class="commentrrr">
+                    <div class="comment">
                         <p class="comment-text">
                             La comida en el restaurante cumplió con las expectativas en términos de calidad...
                         </p>
                     </div>
-                    <div class="details-wrapperrrr collapsed">
-                        <div class="rating-detailsrrr">
-                            <div><span class="rating-labelrrr">Servicio:</span> Comí allí</div>
-                            <div><span class="rating-labelrrr">Tipo de comida:</span> Comida</div>
-                            <div><span class="rating-labelrrr">Precio por persona:</span> 40-50 PEN</div>
-                            <div><span class="rating-labelrrr">Comida:</span> 5</div>
-                            <div><span class="rating-labelrrr">Servicio:</span> 5</div>
-                            <div><span class="rating-labelrrr">Ambiente:</span> 4</div>
-                            <div><span class="rating-labelrrr">Platos recomendados:</span> Pollo A la Brasa</div>
+                    <div class="details-wrapper collapsed">
+                        <div class="rating-details">
+                            <div><span class="rating-label">Servicio:</span> Comí allí</div>
+                            <div><span class="rating-label">Tipo de comida:</span> Comida</div>
+                            <div><span class="rating-label">Precio por persona:</span> 40-50 PEN</div>
+                            <div><span class="rating-label">Comida:</span> 5</div>
+                            <div><span class="rating-label">Servicio:</span> 5</div>
+                            <div><span class="rating-label">Ambiente:</span> 4</div>
+                            <div><span class="rating-label">Platos recomendados:</span> Pollo A la Brasa</div>
                         </div>
                     </div>
-                    <button class="toggle-buttonrrr">Ver más</button>
-                </div>                
-                
+                    <button class="toggle-button">Ver más</button>
                 </div>
-                <div class="hiddenrrr" id="publicar-form">
-                  <h2>Crear Nueva Publicación</h2>
-                  <form class="formrrr">
-                      <label for="titulo" class="labelrrr">Título:</label>
-                      <input type="text" id="titulo" name="titulo" class="inputrrr">
-                      
-                      <label for="contenido" class="labelrrr">Contenido:</label>
-                      <textarea id="contenido" name="contenido" class="textarearrr"></textarea>
-                      
-                      <label for="calificacion" class="labelrrr">Calificación:</label>
-                      <div class="starsrrr">
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">☆</span>
-                      </div>
-                      
-                      <label for="servicio" class="labelrrr">Servicio:</label>
-                      <input type="text" id="servicio" name="servicio" class="inputrrr">
-                      
-                      <label for="tipo-comida" class="labelrrr">Tipo de comida:</label>
-                      <input type="text" id="tipo-comida" name="tipo-comida" class="inputrrr">
-                      
-                      <label for="precio" class="labelrrr">Precio por persona:</label>
-                      <input type="text" id="precio" name="precio" class="inputrrr">
-                      
-                      <label for="platos-recomendados" class="labelrrr">Platos recomendados:</label>
-                      <input type="text" id="platos-recomendados" name="platos-recomendados" class="inputrrr">
-                      
-                      <button type="submit" class="submit-buttonrrr">Publicar</button>
-                      <button type="button" id="cancelar-button" class="cancel-buttonrrr">Cancelar</button>
-                  </form>
-              </div>
-              
-            </div>
-        </div>
-        <div class="right-columnrrr" id="right-column">
-            <h1>UBICACIONES</h1>
-            <div class="image-boxrrr" data-title="CAFETERIA" data-img="./assets/img/tata.png" data-type="cafeteria">
-                <img src="./assets/img/tata.png" alt="Cafeteria">
-                <h3>CAFETERIA</h3>
-            </div>
-            <div class="image-boxrrr" data-title="A. AL ESTUDIANTE" data-img="./assets/img/ate.png" data-type="estudiante">
-                <img src="./assets/img/ate.png" alt="A. al Estudiante">
-                <h3>A. AL ESTUDIANTE</h3>
-            </div>
-            <div class="image-boxrrr" data-title="AUTONOMA MATCH" data-img="./assets/img/match.png" data-type="match">
-                <img src="./assets/img/match.png" alt="Autonoma Match">
-                <h3>AUTONOMA MATCH</h3>
-            </div>
-            <div class="image-boxrrr hiddenrrr" id="localidades-box" data-title="LOCALIDADES" data-img="./assets/img/autonoma.jpg">
-                <img src="./assets/img/autonoma.jpg" alt="Localidades">
-                <h3>LOCALIDADES</h3>
             </div>
         </div>
     </div>
@@ -301,6 +269,7 @@
   <script src="./assets/js/mostPerfilDash.js"></script>
   <script src="./assets/js/pagina_frecuentes.js"></script>
   <script src="./assets/js/localidades.js"></script>
+  <script src="./assets/js/fitlrado-local.js"></script>
   <!--================PRUEBAS==============================-->
 </body>
 
