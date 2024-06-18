@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (postId) {
         fetchPostDetails(postId);
         fetchPostResponses(postId);
+        document.querySelector('.question-title').dataset.postId = postId; // Almacenar postId en un atributo de data
     } else {
         console.error('No se proporcionó un ID de post en la URL');
     }
@@ -182,16 +183,15 @@ function displayPostDetails(postData) {
     profilePicElement.src = userImageURL;
 
     document.querySelector('.question-title').textContent = post.titulo || 'Título no disponible';
-document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
+    document.querySelector('.question-details').textContent = post.descripcion || 'No hay descripción';
 
-// Crear el enlace para el nombre del autor
-let autorNombre = post.propietarioNombre || 'Autor no disponible';
-let autorURL = post.propietarioURL || '/autenticacion/perfils';
-let enlaceAutor = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a>`;
+    // Crear el enlace para el nombre del autor
+    let autorNombre = post.propietarioNombre || 'Autor no disponible';
+    let autorURL = post.propietarioURL || '/autenticacion/perfils';
+    let enlaceAutor = `<a href="${autorURL}" class="goPerfil">${autorNombre}</a>`;
 
-// Actualizar el contenido del contenedor .question-meta con el nombre del autor enlazado y la fecha
-document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
-
+    // Actualizar el contenido del contenedor .question-meta con el nombre del autor enlazado y la fecha
+    document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fecha_Creacion || 'Fecha no disponible'}`;
 
     const voteCountElement = document.querySelector('.vote-count');
     voteCountElement.textContent = votos;
@@ -229,7 +229,6 @@ document.querySelector('.question-meta').innerHTML = `${enlaceAutor} | ${post.fe
     });
 }
 
-
 function displayPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
     commentsContainer.innerHTML = '';
@@ -249,9 +248,8 @@ function displayPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
+            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
-            
         `;
 
         commentElement.appendChild(voteButtons);
@@ -287,9 +285,8 @@ function displayAllPostResponses(responseData) {
         const commentInfo = document.createElement('div');
         commentInfo.className = 'comment-info';
         commentInfo.innerHTML = `
-        <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
+            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
             <p class="comment-text">${response.texto}</p>
-            
         `;
 
         commentElement.appendChild(voteButtons);
@@ -306,16 +303,84 @@ function displayAllPostResponses(responseData) {
     });
 }
 
+
 function handleVote(voteCountElement, clickedButton, otherButton) {
     let voteCount = parseInt(voteCountElement.textContent);
+    const postId = document.querySelector('.question-title').dataset.postId; // Obtener postId del atributo data
+    const userEmail = localStorage.getItem('email');
 
-    if (clickedButton.classList.contains('upvote')) {
-        voteCount++;
-    } else {
-        voteCount--;
+    if (!userEmail) {
+        console.error('No se encontró el correo del usuario logueado');
+        alert('Debes estar logueado para votar');
+        return;
     }
 
-    voteCountElement.textContent = voteCount;
-    clickedButton.disabled = true;
-    otherButton.disabled = false;
+    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(userData => {
+        if (userData.length === 0) {
+            console.error('No se encontró el usuario con el correo proporcionado');
+            return;
+        }
+        const userID = userData[0].id;
+        console.log('UserID obtenido:', userID);
+
+        const tipo_voto = clickedButton.classList.contains('upvote') ? 'POST' : 'NEG';
+        const tipo_objeto = 'POST';
+
+        const voteData = {
+            tipo_voto: tipo_voto,
+            tipo_objeto: tipo_objeto
+        };
+
+        fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(voteData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor al votar');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Voto registrado:', data);
+            if (clickedButton.classList.contains('upvote')) {
+                if (otherButton.classList.contains('downvoted')) {
+                    voteCount += 2; // Sumar 2 si se cambia de downvote a upvote
+                    otherButton.classList.remove('downvoted');
+                } else {
+                    voteCount++; // Sumar 1 si es un nuevo upvote
+                }
+                clickedButton.classList.add('upvoted');
+            } else {
+                if (otherButton.classList.contains('upvoted')) {
+                    voteCount -= 2; // Restar 2 si se cambia de upvote a downvote
+                    otherButton.classList.remove('upvoted');
+                } else {
+                    voteCount--; // Restar 1 si es un nuevo downvote
+                }
+                clickedButton.classList.add('downvoted');
+            }
+            voteCountElement.textContent = voteCount;
+            clickedButton.disabled = true;
+            otherButton.disabled = false;
+        })
+        .catch(error => {
+            console.error('Error al registrar el voto:', error);
+            alert('Hubo un problema al registrar el voto');
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener el userID:', error);
+    });
 }

@@ -1,35 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
+    // Función para obtener el user_id de la URL
+    function getUserIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id');
     }
 
-    const token = getCookie('access_token');
+    const userId = getUserIdFromUrl();
 
-    if (!token) {
-        console.error('No se encontró el token en las cookies');
+    if (!userId) {
+        console.error('No se encontró el user_id en la URL');
         return;
     }
 
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    const payload = JSON.parse(jsonPayload);
-
-    localStorage.setItem('email', payload.email);
-
-    console.log(`Email guardado en localStorage: ${payload.email}`);
-
-    const email = payload.email;
-
-    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(email)}`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
+    fetch(`http://127.0.0.1:8000/get_pag_user/{id}?id_user=${userId}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('No se pudo obtener el perfil del usuario');
@@ -44,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
             profileName2: document.getElementById('profile-name2'),
             aboutMe: document.getElementById('aboutme'),
             profileCareer: document.getElementById('profile-career'),
-            profileCycle: document.getElementById('profile-cycle'),
             profilePhrase: document.getElementById('profile-phrase'),
             profileID: document.getElementById('profile-id'),
             profileBirthdate: document.getElementById('profile-birthdate'),
@@ -58,10 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 lastName: user[0].last_Name || 'N/A',
                 acercaDeMi: user[0].acerca_de_mi || 'N/A',
                 carrera: user[0].carrera.etiquetaNombre || 'N/A',
-                ciclo: user[0].ciclo || 'N/A',
                 frase: user[0].puntos_de_vista || 'N/A',
                 codigoID: user[0].codigo_user || 'N/A',
-                fechaNacimiento: user[0].fecha_nacimiento || 'N/A',
+                fechaNacimiento: user[0].fecha_creación || 'N/A',
                 fotoUrl: user[0].usuariofoto || './assets/img/defaultft.webp'
             };
 
@@ -69,27 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
             profileElements.profileName2.textContent = `${userData.nombre} ${userData.lastName}`;
             profileElements.aboutMe.textContent = userData.acercaDeMi;
             profileElements.profileCareer.textContent = userData.carrera;
-            profileElements.profileCycle.textContent = userData.ciclo;
             profileElements.profilePhrase.textContent = userData.frase;
             profileElements.profileID.textContent = userData.codigoID;
             profileElements.profileBirthdate.textContent = userData.fechaNacimiento;
             profileElements.profilePhoto.src = userData.fotoUrl;
-
-            // Guardar el ID del usuario en una variable global para usarlo en la actualización
-            window.userId = userData.id;
-
-            // Rellenar el modal con la información actual del usuario
-            document.getElementById('editPhrase').value = userData.frase;
-            document.getElementById('editDescription').value = userData.acercaDeMi;
         } else {
             console.error('No se encontraron todos los elementos necesarios para reemplazar los datos del perfil');
         }
 
-        return fetch(`http://127.0.0.1:8000/posts/${user[0].id}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
+        return fetch(`http://127.0.0.1:8000/posts/${user[0].id}`);
     })
     .then(response => {
         if (!response.ok) {
@@ -161,66 +130,4 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
         console.error('Error:', error);
     });
-
-    // Funciones para abrir y cerrar el modal
-    window.openEditModal = function() {
-        document.getElementById('editModal').style.display = 'block';
-    }
-
-    window.closeEditModal = function() {
-        document.getElementById('editModal').style.display = 'none';
-    }
-
-    // Función para mostrar la alerta
-    function mostrarAlerta() {
-        const alerta = document.getElementById('custom-alerta');
-        alerta.classList.remove('d-none');
-        alerta.classList.add('show');
-        setTimeout(() => {
-            alerta.classList.remove('show');
-            alerta.classList.add('d-none');
-        }, 3000);
-    }
-
-    // Función para guardar los cambios
-    window.saveChanges = function() {
-        const editPhrase = document.getElementById('editPhrase').value;
-        const editDescription = document.getElementById('editDescription').value;
-
-        const data = {
-            PuntoDeVista: editPhrase,
-            AcercaDeMi: editDescription
-        };
-
-        fetch(`http://127.0.0.1:8000/user_update_descripcion/${window.userId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('No se pudo actualizar la descripción del usuario');
-            }
-            return response.json();
-        })
-        .then(updatedUser => {
-            console.log('Descripción del usuario actualizada:', updatedUser);
-            document.getElementById('profile-phrase').textContent = updatedUser.puntos_de_vista;
-            document.getElementById('aboutme').textContent = updatedUser.acerca_de_mi;
-
-            // Actualizar los campos del modal con los nuevos datos
-            document.getElementById('editPhrase').value = updatedUser.puntos_de_vista;
-            document.getElementById('editDescription').value = updatedUser.acerca_de_mi;
-
-            mostrarAlerta(); // Mostrar la alerta
-            closeEditModal(); // Cerrar el modal
-            location.reload(); // Recargar la página
-        })
-        .catch(error => {
-            console.error('Error al actualizar la descripción del usuario:', error);
-        });
-    }
 });
