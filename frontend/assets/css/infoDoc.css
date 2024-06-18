@@ -61,11 +61,10 @@ body {
 
 .porcentaje-dificultad {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  align-items: center; /* Centrar los elementos verticalmente */
   margin: 20px 0;
 }
-
 .porcentaje {
   text-align: center;
   font-size: 1.2em;
@@ -90,18 +89,12 @@ body {
   font-size: 2em;
 }
 
-.porcentaje {
-  font-size: 1.2em;
-  color: #000;
-  margin: 5px 0;
+.linea-vertical {
+  width: 3px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  margin: 0 50px; /* Reducir el espacio horizontal entre los elementos */
 }
-
-.dificultad {
-  font-size: 1.2em;
-  color: #000;
-  margin: 5px 0;
-}
-
 .calificar-btn {
   background-color: #ffa500;
   color: #fff;
@@ -186,8 +179,6 @@ td {
   margin-bottom: 20px;
 }
 
-
-
 /* Estilos para el contenedor de comentarios */
 .calificacion {
   display: flex;
@@ -269,7 +260,6 @@ td {
   display: flex;
   justify-content: center;
 }
-
 
 .label span{
   font-size: 1em;
