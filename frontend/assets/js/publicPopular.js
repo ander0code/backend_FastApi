@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="activity-content">
             <a href="/autenticacion/texto?post_id=${post.id}" class="fw-bold text-dark post-title">${post.titulo}</a>
-            <div class="text-muted">por <span><a class="post-author" href="/autenticacion/perfil">${post.propietarioNombre}</a></span></div>
+            <div class="post-meta">por <span class="post-author"><a href="/autenticacion/perfils?id=${post.propietarioUserID}" class="goPerfil">${post.propietarioNombre || 'Autor no disponible'}</a></span> el ${post.fecha_Creacion || 'Fecha no disponible'}</div>
             <div class="post-tags mt-2">
               <!-- Las etiquetas se agregarán dinámicamente mediante JavaScript -->
             </div>
