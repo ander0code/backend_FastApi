@@ -354,6 +354,7 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
         .then(data => {
             console.log('Voto registrado:', data);
             if (clickedButton.classList.contains('upvote')) {
+<<<<<<< HEAD
                 if (clickedButton.querySelector('img').classList.contains('like-deseleccionado')) {
                     clickedButton.querySelector('img').src = './assets/img/like-seleccionado.png';
                     clickedButton.querySelector('img').classList.remove('like-deseleccionado');
@@ -364,6 +365,21 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
                     clickedButton.querySelector('img').classList.remove('like-seleccionado');
                     clickedButton.querySelector('img').classList.add('like-deseleccionado');
                     voteCount--; // Restar 1 si es un nuevo downvote
+=======
+                if (otherButton.classList.contains('downvoted')) {
+                    
+                    otherButton.classList.remove('downvoted');
+                } else {
+                    
+                }
+                clickedButton.classList.add('upvoted');
+            } else {
+                if (otherButton.classList.contains('upvoted')) {
+                    
+                    otherButton.classList.remove('upvoted');
+                } else {
+                    
+>>>>>>> 87f322d0c021b4ab074ee39ce9d456020faee5e1
                 }
 
                 if (otherButton.querySelector('img').classList.contains('dislike-seleccionado')) {
