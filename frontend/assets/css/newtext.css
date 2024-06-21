@@ -161,3 +161,7 @@ body {
     height: auto;
 }
 
+.buttonImgPosiComment, .buttonImgNegaComment{
+    width: 70px;
+    height: 70px;
+}
