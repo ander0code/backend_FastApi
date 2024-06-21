@@ -6,29 +6,27 @@
   align-items: flex-start;
   gap: 40px;
   flex-wrap: wrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra aquí */
 }
 
-/* Columnas de preguntas frecuentes */
 .faq-col {
   flex: 1;
   max-width: 60%;
   box-sizing: border-box;
 }
 
-/* Tarjetas de preguntas frecuentes */
 .faq-card {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  overflow: hidden;
 }
 
-/* Cuerpo de las tarjetas de preguntas frecuentes */
-.faq-card-body {
+.faq-card-body-info {
   padding: 20px;
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Títulos de las tarjetas de preguntas frecuentes */
+
 .faq-card-title {
   font-family: "Arial", sans-serif;
   font-size: 28px;
@@ -37,7 +35,6 @@
   animation: fadeInLeft 1s ease-in-out;
 }
 
-/* Elementos de pregunta frecuente */
 .faq-item h6 {
   font-weight: bold;
   font-size: 20px;
@@ -45,98 +42,92 @@
   transition: color 0.3s ease;
 }
 
-/* Hover de elementos de pregunta frecuente */
 .faq-item h6:hover {
-  color: #007bff; /* Color celeste más oscuro al pasar el ratón */
+  color: #007bff;
 }
 
-/* Contenido de la pregunta frecuente */
 .faq-item p {
   font-size: 16px;
   color: #666;
   animation: fadeInUp 1s ease-in-out;
 }
 
-/* Acordeón de preguntas frecuentes */
-.faq-accordion .faq-item {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-}
+/* Otros estilos y animaciones permanecen igual */
 
-/* Último elemento del acordeón */
-.faq-accordion .faq-item:last-child {
-  border-bottom: none;
-}
-
-/* Botón del acordeón */
-.faq-accordion .accordion-button {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  padding: 0;
-  font-size: 18px;
-  cursor: pointer;
-  outline: none;
-  transition: color 0.3s ease;
-}
-
-/* Hover del botón del acordeón */
-.faq-accordion .accordion-button:hover h6 {
-  color: #0056b3; /* Color celeste más oscuro al pasar el ratón */
-}
-
-/* Título del acordeón cuando está expandido */
-.faq-accordion .accordion-button[aria-expanded="true"] h6 {
-  font-weight: bold;
-}
-
-/* Cuerpo del acordeón */
-.faq-accordion .accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-
-/* Cuerpo del acordeón cuando está activo */
-.faq-accordion .faq-item.active .accordion-body {
-  max-height: 500px;
-  opacity: 1;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-}
-
-/* Animación de desvanecimiento */
+/* Animaciones */
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
-/* Animación de desvanecimiento desde la izquierda */
 @keyframes fadeInLeft {
   from {
-      opacity: 0;
-      transform: translateX(-20px);
+    opacity: 0;
+    transform: translateX(-20px);
   }
   to {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-/* Animación de desvanecimiento desde abajo */
 @keyframes fadeInUp {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/*Experiencia*/
+
+.experiencia {
+  padding: 40px 40px 60px 40px;
+}
+
+.experiencia .columna {
+  padding: 20px;
+  border: 2px solid #8080804d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 0.2s ease-in;
+}
+
+.experiencia .columna:hover {
+  color: white;
+  background-color: #1b1b32;
+}
+
+.experiencia i {
+  font-size: 2.5rem;
+  color: #7ade30;
+  background-color: #0a0a23;
+  padding: 8px 19px;
+  border-radius: 50%;
+}
+
+.experiencia-titulo {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.badges-contenedor {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.badge {
+  margin: 5px;
 }
 
