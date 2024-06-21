@@ -191,6 +191,7 @@ function displayProfesores(profesores) {
             </div>
         `;
 
+        
         profesoresList.appendChild(profesorCard);
     });
 }
