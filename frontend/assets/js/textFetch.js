@@ -372,8 +372,8 @@ function handleVote(voteCountElement, clickedButton, otherButton, puntuacion) {
                 console.error('Elemento de conteo de votos no encontrado');
             }
 
-            // Recargar la página después de votar
-            window.location.reload();
+            clickedButton.disabled = true;
+            otherButton.disabled = false;
         })
         .catch(error => {
             console.error('Error al registrar el voto:', error);
