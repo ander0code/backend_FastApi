@@ -241,7 +241,7 @@ function displayPostResponses(responseData) {
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
             <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count">${response.puntuacion}</p>
+            <p class="vote-count" id="vote-count">${response.puntuacion}</p>
             <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
@@ -257,11 +257,11 @@ function displayPostResponses(responseData) {
         commentsContainer.appendChild(commentElement);
 
         commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
+            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.downvote'));
         });
-
+        
         commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
+            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.upvote'));
         });
     });
 }
@@ -278,7 +278,7 @@ function displayAllPostResponses(responseData) {
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
             <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count">${response.puntuacion}</p>
+            <p class="vote-count" id="vote-count">${response.puntuacion}</p>
             <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
@@ -294,18 +294,18 @@ function displayAllPostResponses(responseData) {
         commentsContainer.appendChild(commentElement);
 
         commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(this.nextElementSibling, this, commentElement.querySelector('.downvote'));
+            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.downvote'));
         });
-
+        
         commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(this.previousElementSibling, this, commentElement.querySelector('.upvote'));
+            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.upvote'));
         });
     });
 }
 
 
-function handleVote(voteCountElement, clickedButton, otherButton) {
-    let voteCount = parseInt(voteCountElement.textContent);
+function handleVote(voteCountElement, clickedButton, otherButton, puntuacion) {
+    const voteCount = parseInt(voteCountElement.textContent);
     const postId = document.querySelector('.question-title').dataset.postId; // Obtener postId del atributo data
     const userEmail = localStorage.getItem('email');
 
@@ -328,7 +328,6 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
             return;
         }
         const userID = userData[0].id;
-        console.log('UserID obtenido:', userID);
 
         const tipo_voto = clickedButton.classList.contains('upvote') ? 'POST' : 'NEG';
         const tipo_objeto = 'POST';
@@ -356,22 +355,23 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
             console.log('Voto registrado:', data);
             if (clickedButton.classList.contains('upvote')) {
                 if (otherButton.classList.contains('downvoted')) {
-                    voteCount += 2; // Sumar 2 si se cambia de downvote a upvote
                     otherButton.classList.remove('downvoted');
-                } else {
-                    voteCount++; // Sumar 1 si es un nuevo upvote
                 }
                 clickedButton.classList.add('upvoted');
             } else {
                 if (otherButton.classList.contains('upvoted')) {
-                    voteCount -= 2; // Restar 2 si se cambia de upvote a downvote
                     otherButton.classList.remove('upvoted');
-                } else {
-                    voteCount--; // Restar 1 si es un nuevo downvote
                 }
                 clickedButton.classList.add('downvoted');
             }
-            voteCountElement.textContent = voteCount;
+
+            // Verificar si se encuentra el elemento de conteo de votos
+            if (voteCountElement) {
+                voteCountElement.textContent = puntuacion;
+            } else {
+                console.error('Elemento de conteo de votos no encontrado');
+            }
+
             clickedButton.disabled = true;
             otherButton.disabled = false;
         })
