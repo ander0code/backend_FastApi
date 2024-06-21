@@ -1,32 +1,32 @@
-
-/* Filas de preguntas frecuentes */
 .faq-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
   flex-wrap: wrap;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra aquí */
 }
 
+/* Columnas de preguntas frecuentes */
 .faq-col {
   flex: 1;
   max-width: 60%;
   box-sizing: border-box;
 }
 
+/* Tarjetas de preguntas frecuentes */
 .faq-card {
   background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.faq-card-body-info {
+/* Cuerpo de las tarjetas de preguntas frecuentes */
+.faq-card-body {
   padding: 20px;
   animation: fadeIn 1s ease-in-out;
 }
 
-
+/* Títulos de las tarjetas de preguntas frecuentes */
 .faq-card-title {
   font-family: "Arial", sans-serif;
   font-size: 28px;
@@ -35,6 +35,7 @@
   animation: fadeInLeft 1s ease-in-out;
 }
 
+/* Elementos de pregunta frecuente */
 .faq-item h6 {
   font-weight: bold;
   font-size: 20px;
@@ -42,92 +43,157 @@
   transition: color 0.3s ease;
 }
 
+/* Hover de elementos de pregunta frecuente */
 .faq-item h6:hover {
-  color: #007bff;
+  color: #007bff; /* Color celeste más oscuro al pasar el ratón */
 }
 
+/* Contenido de la pregunta frecuente */
 .faq-item p {
   font-size: 16px;
   color: #666;
   animation: fadeInUp 1s ease-in-out;
 }
 
-/* Otros estilos y animaciones permanecen igual */
+/* Acordeón de preguntas frecuentes */
+.faq-accordion .faq-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
 
-/* Animaciones */
+/* Último elemento del acordeón */
+.faq-accordion .faq-item:last-child {
+  border-bottom: none;
+}
+
+/* Botón del acordeón */
+.faq-accordion .accordion-button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover del botón del acordeón */
+.faq-accordion .accordion-button:hover h6 {
+  color: #0056b3; /* Color celeste más oscuro al pasar el ratón */
+}
+
+/* Título del acordeón cuando está expandido */
+.faq-accordion .accordion-button[aria-expanded="true"] h6 {
+  font-weight: bold;
+}
+
+/* Cuerpo del acordeón */
+.faq-accordion .accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+/* Cuerpo del acordeón cuando está activo */
+.faq-accordion .faq-item.active .accordion-body {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+/* Animación de desvanecimiento */
 @keyframes fadeIn {
   from {
-    opacity: 0;
+      opacity: 0;
   }
   to {
-    opacity: 1;
+      opacity: 1;
   }
 }
 
+/* Animación de desvanecimiento desde la izquierda */
 @keyframes fadeInLeft {
   from {
-    opacity: 0;
-    transform: translateX(-20px);
+      opacity: 0;
+      transform: translateX(-20px);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+      opacity: 1;
+      transform: translateX(0);
   }
 }
 
+/* Animación de desvanecimiento desde abajo */
 @keyframes fadeInUp {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
   }
 }
 
-/*Experiencia*/
-
-.experiencia {
-  padding: 40px 40px 60px 40px;
+.testimonios {
+  padding: 40px 40px 80px 40px;
+  text-align: center; /* Añadido para centrar el título */
 }
 
-.experiencia .columna {
-  padding: 20px;
-  border: 2px solid #8080804d;
+.testimonios .seccion-titulo {
+  text-align: center; /* Añadido para centrar el título */
+}
+
+.testimonios .carousel {
+  max-width: 800px;
+  margin: 0 auto; /* Añadido para centrar el carrusel */
+}
+
+.carousel-item {
+  height: 500px;
+}
+
+.carousel-item .container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  transition: all 0.2s ease-in;
+  justify-content: center;
 }
 
-.experiencia .columna:hover {
-  color: white;
-  background-color: #1b1b32;
+.testimonio-imagen {
+  height: 150px;
+  width: 150px;
+  margin: 10px 10px 20px 10px;
 }
 
-.experiencia i {
-  font-size: 2.5rem;
-  color: #7ade30;
-  background-color: #0a0a23;
-  padding: 8px 19px;
-  border-radius: 50%;
-}
-
-.experiencia-titulo {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.badges-contenedor {
+.testimonio-texto {
+  max-width: 70%;
   font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0;
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
 }
 
-.badge {
-  margin: 5px;
+.testimonio-info {
+  font-weight: bold;
+  text-align: center;
 }
+
+.testimonio-info p {
+  margin-bottom: 0;
+}
+
+.testimonio-footer .cliente {
+  font-size: 1.2rem;
+}
+
+.testimonio-info .cargo {
+  font-size: 0.9rem;
+  color: #656060;
+}
+
 
