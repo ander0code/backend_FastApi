@@ -362,7 +362,7 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
                 }
                 clickedButton.classList.add('downvoted');
             }
-
+            //asasa
             // Actualizar solo el conteo de votos sin recargar la página
             if (voteCountElement) {
                 voteCountElement.textContent = data[0].cantidad; // Actualiza con la nueva cantidad de votos recibida del servidor
