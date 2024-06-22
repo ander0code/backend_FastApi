@@ -240,9 +240,9 @@ function displayPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count" id="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
+            <p class="vote-count" id="vote-count-${response.comentario_id}">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
         const commentInfo = document.createElement('div');
@@ -257,11 +257,11 @@ function displayPostResponses(responseData) {
         commentsContainer.appendChild(commentElement);
 
         commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.downvote'));
+            handleVote(commentElement.querySelector(`#vote-count-${response.comentario_id}`), this, commentElement.querySelector('.downvote'));
         });
-        
+
         commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.upvote'));
+            handleVote(commentElement.querySelector(`#vote-count-${response.comentario_id}`), this, commentElement.querySelector('.upvote'));
         });
     });
 }
@@ -278,7 +278,7 @@ function displayAllPostResponses(responseData) {
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
             <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count" id="Vote-count">${response.cantidad}</p>
+            <p class="vote-count" id="vote-count-${response.comentario_id}">${response.cantidad}</p>
             <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
