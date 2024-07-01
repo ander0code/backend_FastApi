@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const commentForm = document.querySelector('.comment-section');
     const commentTextArea = document.querySelector('.comment-input');
     const addCommentButton = document.querySelector('.comment-submit');
-    const alertBox = document.getElementById('custom-alerta');
-    const alertBox1 = document.getElementById('custom-alerta1');
 
     commentTextArea.addEventListener('input', function() {
         addCommentButton.disabled = commentTextArea.value.trim() === '';
@@ -34,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!userEmail) {
             console.error('No se encontró el correo del usuario logueado');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se encontró el correo del usuario logueado',
+            });
             return;
         }
 
@@ -44,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const fiveMinutes = 1 * 60 * 1000;
 
         if (lastCommentTime && currentTime - lastCommentTime < fiveMinutes) {
-            alertBox1.textContent = 'Por favor esperar 1 minuto para subir otra respuesta';
-            alertBox1.classList.remove('d-none');
-            setTimeout(() => {
-                alertBox1.classList.add('d-none');
-            }, 3000);
+            Swal.fire({
+                icon: 'warning',
+                title: 'Espera',
+                text: 'Por favor esperar 1 minuto para subir otra respuesta',
+            });
             return;
         }
 
@@ -65,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(userData => {
             if (userData.length === 0) {
                 console.error('No se encontró el usuario con el correo proporcionado');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se encontró el usuario con el correo proporcionado',
+                });
                 return;
             }
             const userID = userData[0].id;
@@ -93,17 +101,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 commentTextArea.value = '';
                 addCommentButton.disabled = true;
                 localStorage.setItem('lastCommentTime', new Date().getTime());
-                alertBox.textContent = '¡Respuesta subida, podrás responder de nuevo en unos minutos!';
-                alertBox.classList.remove('d-none');
-                setTimeout(() => {
-                    alertBox.classList.add('d-none');
-                    addCommentButton.textContent = 'Subir comentario';
-                }, 3000);
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Respuesta subida!',
+                    text: 'Podrás responder de nuevo en unos minutos',
+                });
+                addCommentButton.textContent = 'Subir comentario';
                 fetchPostResponses(postId);
             })
             .catch(error => {
                 console.error('Error al publicar el comentario:', error);
-                alert('Hubo un problema al subir el comentario');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al subir el comentario',
+                });
                 addCommentButton.disabled = false;
                 addCommentButton.textContent = 'Subir comentario';
             });
@@ -309,7 +321,11 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
 
     if (!userEmail) {
         console.error('No se encontró el correo del usuario logueado');
-        alert('Debes estar logueado para votar');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debes estar logueado para votar',
+        });
         return;
     }
 
@@ -323,6 +339,11 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
     .then(userData => {
         if (userData.length === 0) {
             console.error('No se encontró el usuario con el correo proporcionado');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se encontró el usuario con el correo proporcionado',
+            });
             return;
         }
         const userID = userData[0].id;
@@ -372,7 +393,11 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
         })
         .catch(error => {
             console.error('Error al registrar el voto:', error);
-            alert('Hubo un problema al registrar el voto');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un problema al registrar el voto',
+            });
         });
     })
     .catch(error => {
