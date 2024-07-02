@@ -250,13 +250,31 @@ async def post_x_post_id(
     db: Session = Depends(get_db)) -> Any:
     resultados = db.query(
         Model_DB.Comment ,
-        Model_DB.User
+        Model_DB.User,
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
     ).join(Model_DB.Post,
            Model_DB.Post.id == Model_DB.Comment.publicacion_ID
     ).join(Model_DB.User,
            Model_DB.User.id == Model_DB.Comment.userID
     ).filter(
         Model_DB.Comment.publicacion_ID == id_post
+    ).order_by(desc(Model_DB.Comment.comentario_id)).all()
+    
+    resultados = db.query(
+        Model_DB.Comment ,
+        Model_DB.User,
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'POST', 1), else_=0)) -
+        func.sum(case((Model_DB.Vote.tipo_Voto == 'NEG', 1), else_=0)).label('votos')
+    ).outerjoin(Model_DB.Vote,
+           Model_DB.Vote.comentarioID == Model_DB.Comment.comentario_id
+    ).join(Model_DB.User,
+           Model_DB.User.id == Model_DB.Comment.userID
+    ).filter(
+        Model_DB.Comment.publicacion_ID == id_post    
+    ).group_by(
+        Model_DB.Comment.comentario_id,
+        Model_DB.User.id
     ).order_by(desc(Model_DB.Comment.comentario_id)).all()
     
     if not resultados:
@@ -268,7 +286,7 @@ async def post_x_post_id(
             padre_comentario_id = comment.padre_comentario_id, 
             texto = comment.texto,
             comentario_id = comment.comentario_id,
-            puntuacion = comment.puntuacion,
+            puntuacion = voto,
             fecha_creacion = comment.fecha_creacion,
             userID = comment.userID,
             UserData = Comentarios.UserBase(
@@ -276,10 +294,9 @@ async def post_x_post_id(
                 last_Name= user.last_Name
             )
         )
-        for comment, user in resultados
+        for comment, user ,voto  in resultados
     ]
     return response
-
 
 @post.get("/posts_general", response_model=List[Publicaciones.PostWithCurso])
 async def post_general(
