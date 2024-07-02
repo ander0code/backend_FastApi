@@ -1,10 +1,9 @@
 from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.exc import SQLAlchemyError,OperationalError
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 from sqlalchemy import func, case, desc
 from models import Model_DB
 from Schemas import Publicaciones,Usuario_Schema
-import time
 
 from config.base_connection import SessionLocal
 from pydantic import EmailStr
@@ -12,11 +11,6 @@ from typing import Any,List
 
 
 user = APIRouter()
-
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
 
 def get_db():
     db = SessionLocal()

@@ -5,15 +5,9 @@ from models import Model_DB
 from Schemas import Publicaciones,Comentarios
 from config.base_connection import SessionLocal
 from typing import Any,List
-from sqlalchemy.exc import OperationalError
-import time
+
 
 post = APIRouter()
-
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
 
 def get_db():
     db = SessionLocal()

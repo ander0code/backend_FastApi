@@ -7,14 +7,10 @@ from Schemas import Comentarios
 from config.base_connection import SessionLocal
 from typing import Any
 from datetime import datetime
-import time
+
 
 coment = APIRouter()
 
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
 
 def get_db():
     db = SessionLocal()
