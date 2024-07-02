@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'warning',
                 title: 'Espera',
-                text: 'Por favor esperar 1 minuto para subir otra respuesta',
+                text: 'Por favor espera 1 minuto para subir otra respuesta',
             });
             return;
         }
@@ -166,20 +166,32 @@ function fetchPostResponses(postId, showAllComments = false) {
         })
         .then(responseData => {
             if (Array.isArray(responseData) && responseData.length > 0) {
+                const formattedResponses = responseData.map(response => ({
+                    comentario_id: response.comentario_id,
+                    texto: response.texto,
+                    puntuacion: response.puntuacion,
+                    fecha_Creacion: response.fecha_creacion,
+                    autorNombre: `${response.UserData.nombre} ${response.UserData.last_Name}`
+                }));
+
                 if (showAllComments) {
-                    displayAllPostResponses(responseData);
+                    displayAllPostResponses(formattedResponses);
                 } else {
-                    const limitedResponses = responseData.slice(0, 3); // Tomamos solo las primeras 3 respuestas
+                    const limitedResponses = formattedResponses.slice(0, 3); // Tomamos solo las primeras 3 respuestas
                     displayPostResponses(limitedResponses);
                 }
             } else {
                 console.error('No se encontraron respuestas para el post con el ID proporcionado');
+                displayPostResponses([]); // Asegurarse de limpiar los comentarios anteriores
             }
         })
         .catch(error => {
             console.error('Error al cargar las respuestas:', error);
+            displayPostResponses([]); // Mostrar mensajes de error de comentarios en lugar de dejar la sección vacía
         });
 }
+
+
 
 function displayPostDetails(postData) {
     const post = postData.post;
@@ -245,6 +257,13 @@ function displayPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
     commentsContainer.innerHTML = '';
 
+    if (responseData.length === 0) {
+        const noCommentsMessage = document.createElement('p');
+        noCommentsMessage.textContent = 'No hay comentarios disponibles para este post.';
+        commentsContainer.appendChild(noCommentsMessage);
+        return;
+    }
+
     responseData.forEach(response => {
         const commentElement = document.createElement('div');
         commentElement.className = 'comment';
@@ -252,31 +271,37 @@ function displayPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count" id="vote-count">${response.puntuacion}</p>
-            <button class="vote-button downvote" data-response-id"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></button>
+            <p class="vote-count" id="vote-count-${response.comentario_id}">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></button>
         `;
 
-        const commentInfo = document.createElement('div');
-        commentInfo.className = 'comment-info';
-        commentInfo.innerHTML = `
-            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
+        const commentContent = document.createElement('div');
+        commentContent.className = 'comment-content';
+        commentContent.innerHTML = `
+            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.autorNombre}</a> | ${response.fecha_Creacion}</p>
             <p class="comment-text">${response.texto}</p>
         `;
 
         commentElement.appendChild(voteButtons);
-        commentElement.appendChild(commentInfo);
+        commentElement.appendChild(commentContent);
         commentsContainer.appendChild(commentElement);
+    });
 
-        commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.downvote'));
+    // Asignar eventos de votación a los botones dentro de los comentarios
+    document.querySelectorAll('.comment .upvote').forEach(button => {
+        button.addEventListener('click', function() {
+            handleVoteComment(this, document.querySelector(`#vote-count-${this.dataset.responseId}`), document.querySelector(`#vote-count-${this.dataset.responseId}`).nextElementSibling);
         });
-        
-        commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector('.vote-count'), this, commentElement.querySelector('.upvote'));
+    });
+
+    document.querySelectorAll('.comment .downvote').forEach(button => {
+        button.addEventListener('click', function() {
+            handleVoteComment(this, document.querySelector(`#vote-count-${this.dataset.responseId}`), document.querySelector(`#vote-count-${this.dataset.responseId}`).previousElementSibling);
         });
     });
 }
+
 
 function displayAllPostResponses(responseData) {
     const commentsContainer = document.querySelector('.comments');
@@ -289,34 +314,40 @@ function displayAllPostResponses(responseData) {
         const voteButtons = document.createElement('div');
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
-            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count" id="Vote-count">${response.cantidad}</p>
-            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
+            <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></button>
+            <p class="vote-count" id="vote-count-${response.comentario_id}">${response.puntuacion}</p>
+            <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></button>
         `;
 
-        const commentInfo = document.createElement('div');
-        commentInfo.className = 'comment-info';
-        commentInfo.innerHTML = `
-            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.UserData.nombre} ${response.UserData.last_Name}</a> | ${response.fecha_creacion}</p>
+        const commentContent = document.createElement('div');
+        commentContent.className = 'comment-content';
+        commentContent.innerHTML = `
+            <p class="comment-meta"><a href="/autenticacion/perfils" class="goPerfil">${response.autorNombre}</a> | ${response.fecha_Creacion}</p>
             <p class="comment-text">${response.texto}</p>
         `;
 
         commentElement.appendChild(voteButtons);
-        commentElement.appendChild(commentInfo);
+        commentElement.appendChild(commentContent);
         commentsContainer.appendChild(commentElement);
+    });
 
-        commentElement.querySelector('.upvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector(`#vote-count-${response.comentario_id}`), this, commentElement.querySelector('.downvote'));
+    // Asignar eventos de votación a los botones dentro de los comentarios
+    document.querySelectorAll('.comment .upvote').forEach(button => {
+        button.addEventListener('click', function() {
+            handleVoteComment(this, document.querySelector(`#vote-count-${this.dataset.responseId}`), document.querySelector(`#vote-count-${this.dataset.responseId}`).nextElementSibling);
         });
+    });
 
-        commentElement.querySelector('.downvote').addEventListener('click', function() {
-            handleVote(commentElement.querySelector(`#vote-count-${response.comentario_id}`), this, commentElement.querySelector('.upvote'));
+    document.querySelectorAll('.comment .downvote').forEach(button => {
+        button.addEventListener('click', function() {
+            handleVoteComment(this, document.querySelector(`#vote-count-${this.dataset.responseId}`), document.querySelector(`#vote-count-${this.dataset.responseId}`).previousElementSibling);
         });
     });
 }
 
-function handleVote(voteCountElement, clickedButton, otherButton) {
-    const postId = document.querySelector('.question-title').dataset.postId; // Obtener postId del atributo data
+function handleVote(voteCountElement, currentButton, oppositeButton) {
+    const postId = document.querySelector('.question-title').dataset.postId;
+    const voteType = currentButton.classList.contains('upvote') ? 'POST' : 'NEG';
     const userEmail = localStorage.getItem('email');
 
     if (!userEmail) {
@@ -324,7 +355,7 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Debes estar logueado para votar',
+            text: 'No se encontró el correo del usuario logueado',
         });
         return;
     }
@@ -347,14 +378,7 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
             return;
         }
         const userID = userData[0].id;
-
-        const tipo_voto = clickedButton.classList.contains('upvote') ? 'POST' : 'NEG';
-        const tipo_objeto = 'POST';
-
-        const voteData = {
-            tipo_voto: tipo_voto,
-            tipo_objeto: tipo_objeto
-        };
+        console.log('UserID obtenido:', userID);
 
         fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
             method: 'POST',
@@ -362,42 +386,102 @@ function handleVote(voteCountElement, clickedButton, otherButton) {
                 'accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(voteData)
+            body: JSON.stringify({ tipo_voto: voteType, tipo_objeto: 'POST' })
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error en la respuesta del servidor al votar');
+                throw new Error('Error en la respuesta del servidor');
             }
             return response.json();
         })
         .then(data => {
             console.log('Voto registrado:', data);
-            if (clickedButton.classList.contains('upvote')) {
-                if (otherButton.classList.contains('downvoted')) {
-                    otherButton.classList.remove('downvoted');
-                }
-                clickedButton.classList.add('upvoted');
-            } else {
-                if (otherButton.classList.contains('upvoted')) {
-                    otherButton.classList.remove('upvoted');
-                }
-                clickedButton.classList.add('downvoted');
-            }
 
-            // Actualizar solo el conteo de votos sin recargar la página
-            if (voteCountElement) {
-                voteCountElement.textContent = data[0].cantidad; // Actualiza con la nueva cantidad de votos recibida del servidor
+            if (currentButton.classList.contains('voted')) {
+                voteCountElement.textContent = parseInt(voteCountElement.textContent) - 1;
             } else {
-                console.error('Elemento de conteo de votos no encontrado');
+                voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                if (oppositeButton.classList.contains('voted')) {
+                    voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                    oppositeButton.classList.remove('voted');
+                }
             }
+            currentButton.classList.toggle('voted');
         })
         .catch(error => {
             console.error('Error al registrar el voto:', error);
+        });
+    })
+    .catch(error => {
+        console.error('Error al obtener el userID:', error);
+    });
+}
+
+function handleVoteComment(button, voteCountElement, oppositeButton) {
+    const commentId = button.dataset.responseId;
+    const voteType = button.classList.contains('upvote') ? 'POST' : 'NEG';
+    const userEmail = localStorage.getItem('email');
+
+    if (!userEmail) {
+        console.error('No se encontró el correo del usuario logueado');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se encontró el correo del usuario logueado',
+        });
+        return;
+    }
+
+    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(userData => {
+        if (userData.length === 0) {
+            console.error('No se encontró el usuario con el correo proporcionado');
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Hubo un problema al registrar el voto',
+                text: 'No se encontró el usuario con el correo proporcionado',
             });
+            return;
+        }
+        const userID = userData[0].id;
+        console.log('UserID obtenido:', userID);
+
+        fetch(`http://127.0.0.1:8000/votoComment/${commentId}/${userID}`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ tipo_voto: voteType, tipo_objeto: 'COMMENT' })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Voto registrado:', data);
+
+            if (button.classList.contains('voted')) {
+                voteCountElement.textContent = parseInt(voteCountElement.textContent) - 1;
+            } else {
+                voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                if (oppositeButton.classList.contains('voted')) {
+                    voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                    oppositeButton.classList.remove('voted');
+                }
+            }
+            button.classList.toggle('voted');
+        })
+        .catch(error => {
+            console.error('Error al registrar el voto:', error);
         });
     })
     .catch(error => {
