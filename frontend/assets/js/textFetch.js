@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get('post_id');
+    
 
     if (postId) {
         fetchPostDetails(postId);
@@ -398,11 +399,11 @@ function handleVote(voteCountElement, currentButton, oppositeButton) {
             console.log('Voto registrado:', data);
 
             if (currentButton.classList.contains('voted')) {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent) - 1;
+                voteCountElement.textContent = parseInt(voteCountElement.textContent);
             } else {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                voteCountElement.textContent = parseInt(voteCountElement.textContent);
                 if (oppositeButton.classList.contains('voted')) {
-                    voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                    voteCountElement.textContent = parseInt(voteCountElement.textContent);
                     oppositeButton.classList.remove('voted');
                 }
             }
@@ -470,11 +471,11 @@ function handleVoteComment(button, voteCountElement, oppositeButton) {
             console.log('Voto registrado:', data);
 
             if (button.classList.contains('voted')) {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent) - 1;
+                voteCountElement.textContent = parseInt(voteCountElement.textContent);
             } else {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                voteCountElement.textContent = parseInt(voteCountElement.textContent);
                 if (oppositeButton.classList.contains('voted')) {
-                    voteCountElement.textContent = parseInt(voteCountElement.textContent) + 1;
+                    voteCountElement.textContent = parseInt(voteCountElement.textContent);
                     oppositeButton.classList.remove('voted');
                 }
             }
