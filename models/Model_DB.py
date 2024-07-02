@@ -179,3 +179,8 @@ class Calificacion(Base):
     student = relationship("UserData", back_populates="calificaciones")
     profesor = relationship("EtiquetaProfesores", back_populates="calificaciones")
     
+class Vistas(Base):
+    __tablename__ = 'vista' 
+    id = Column(Integer, primary_key=True,autoincrement=True)
+    id_user = Column(Integer)
+    id_post = Column(Integer)

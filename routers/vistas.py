@@ -1,14 +1,10 @@
-from fastapi import APIRouter,Depends,HTTPException
-from sqlalchemy.exc import SQLAlchemyError
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import func, case, desc
+from sqlalchemy.exc import SQLAlchemyError
 from models import Model_DB
 from Schemas import Vista_schema
-
 from config.base_connection import SessionLocal
-from typing import Any,List
-import pytz
-from datetime import datetime
+from typing import Any
 
 vista = APIRouter()
 
@@ -18,25 +14,29 @@ def get_db():
         yield db
     finally:
         db.close()
-        
-        
-@vista.post("/vistas/{id_post}", response_model=Vista_schema.Response)
-async def create_vista(id_post: int, db: Session = Depends(get_db)) -> Any:
+
+@vista.post("/vistas/{id_post}/{id_user}", response_model=Vista_schema.Response)
+async def create_vista(id_post: int, id_user: int, db: Session = Depends(get_db)) -> Any:
     try:
         vista = db.query(Model_DB.Post).filter(Model_DB.Post.id == id_post).first()
+        usuario_vista = db.query(Model_DB.Vistas).filter(
+            Model_DB.Vistas.id_user == id_user,
+            Model_DB.Vistas.id_post == id_post
+        ).first()
 
-        if not vista:
-            raise HTTPException(status_code=404, detail="Post inexistente")
-
-        vista.conteo_visitas += 1
-
-        db.commit()
-        evento = "vista agredada"
+        if usuario_vista:
+            evento = "El usuario ya visitó esta página"
+        else:
+            vista.conteo_visitas += 1
+            nueva_vista = Model_DB.Vistas(id_user=id_user, id_post=id_post)
+            db.add(nueva_vista)
+            db.commit()
+            evento = "Vista agregada"
 
         response = Vista_schema.Response(
-                vistas= vista.conteo_visitas,
-                event= evento,
-                response= "success"     
+            vistas=vista.conteo_visitas,
+            event=evento,
+            response="success"
         )
         return response
     except SQLAlchemyError as e:
