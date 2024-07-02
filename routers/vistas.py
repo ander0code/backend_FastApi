@@ -20,18 +20,22 @@ def get_db():
         db.close()
         
         
-@vista.post("/vistas/{id_post}", response_model=Vista_schema.Response)
-async def create_vista(id_post: int, db: Session = Depends(get_db)) -> Any:
+@vista.post("/vistas/{id_post}/{id_user}", response_model=Vista_schema.Response)
+async def create_vista(id_post_: int, id_user_ : int, db: Session = Depends(get_db)) -> Any:
     try:
-        vista = db.query(Model_DB.Post).filter(Model_DB.Post.id == id_post).first()
+        vista = db.query(Model_DB.Post).filter(Model_DB.Post.id == id_post_).first()
+        usuario_vista = db.query(Model_DB.Vistas).filter(Model_DB.Vistas.id_user == id_user_).first()
 
-        if not vista:
-            raise HTTPException(status_code=404, detail="Post inexistente")
+        if usuario_vista:
+            evento = "el usuario ya visito esta pagina"
 
-        vista.conteo_visitas += 1
-
-        db.commit()
-        evento = "vista agredada"
+        else :
+            vista.conteo_visitas += 1
+            nueva_vista = Model_DB.Vistas(id_user = id_user_ ,id_post = id_post_)
+            db.add(nueva_vista)
+            db.commit()
+            evento = "vista agredada"
+        
 
         response = Vista_schema.Response(
                 vistas= vista.conteo_visitas,
@@ -45,3 +49,4 @@ async def create_vista(id_post: int, db: Session = Depends(get_db)) -> Any:
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail="Error interno del servidor: " + str(e))
+    
