@@ -1,4 +1,4 @@
-from sqlalchemy import Column,Integer, String, Date, Enum, ForeignKey ,Boolean
+from sqlalchemy import Column,Integer, String, Date, Enum, ForeignKey ,Boolean ,Text
 from sqlalchemy.orm import  relationship
 from sqlalchemy.dialects.mssql import JSON
 from config.base_connection import Base
@@ -29,6 +29,7 @@ class User(Base):
     usuariofoto = Column(String(255))
     codigo_ID= Column(Integer, ForeignKey('user_Data.id'), nullable=False)
 
+    calificaciones = relationship("CalificacionServicio", back_populates="user")
     etiqueta_usuario = relationship("EtiquetaUsuario", back_populates="user") 
     votes = relationship("Vote", back_populates="user")
     user_data = relationship("UserData", back_populates="user")
@@ -178,3 +179,30 @@ class Vistas(Base):
     id = Column(Integer, primary_key=True,autoincrement=True)
     id_user = Column(Integer)
     id_post = Column(Integer)
+    
+    
+
+class Servicios(Base):
+    __tablename__ = 'servicios'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre_servicio = Column(String(45), nullable=False)
+    descripcion = Column(Text(10000))
+
+
+class CalificacionServicio(Base):
+    __tablename__ = 'calificacion_servicio'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    id_user = Column(Integer, ForeignKey('user.id'), nullable=False)
+    id_servicio = Column(Integer, ForeignKey('servicios.id'), nullable=False)
+    calificacion_general = Column(Integer)
+    puntuacion = Column(Integer)
+    calificacion_1 = Column(Integer)
+    calificacion_2 = Column(Integer)
+    calificacion_3 = Column(Integer)
+    resena = Column(Text(10000))
+    fecha_creacion = Column(Date, nullable=False)
+
+
+    user = relationship("User", back_populates="calificaciones")
+ 
+    servicio = relationship("Servicios")
