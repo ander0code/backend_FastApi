@@ -184,55 +184,21 @@
 <main id="main" class="main">
   <div class="containerrr">
     <div class="headerrr" id="header">
-        <img src="./assets/img/ate.png" alt="Localidades" id="header-img">
-        <h1 id="header-title">ATENCIÓN AL ESTUDIANTE</h1>
+      <img src="./assets/img/ate.png" alt="Localidades" id="header-img">
+      <h1 id="header-title">ATENCIÓN AL ESTUDIANTE</h1>
     </div>
     <div class="main-content">
-        <div class="left-column">
-            <div class="header-row">
-                <h2 id="publicaciones-title">Reseñas</h2>
-                <button id="generar-resena-button"><a class="letraBotonLocal" href="/autenticacion/resenaAtencion">Generar reseña</a></button>
-            </div>
-            <div class="posts-wrapper">
-              <div class="post">
-                  <div class="user-info">
-                      <img src="assets/img/foto-perfil1.webp" alt="Foto de usuario" class="user-photo">
-                      <div class="user-details">
-                          <div class="user-name">Max Anderson</div>
-                          <div class="user-meta">
-                              <span class="review-date">Hace un mes</span>
-                          </div>
-                      </div>
-                      <div class="stars">
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">★</span>
-                          <span class="star">☆</span>
-                      </div>
-                  </div>
-                  <div class="comment">
-                      <p class="comment-text">
-                          Me gusto su atencion y no me hicieron esperar tanto
-                      </p>
-                  </div>
-                  <div class="details-wrapper collapsed">
-                      <div class="rating-details">
-                          <div><span class="rating-label">Servicio:</span> 5</div>
-                          <div><span class="rating-label">Facilidades:</span> 5</div>
-                          <div><span class="rating-label">Orientacion:</span> 4</div>
-                      </div>
-                  </div>
-                  <button class="toggle-button">Ver más</button>
-                  <button class="like-button">
-                    <img src="assets/img/votoPosi.png" alt="Like" class="like-icon"> Like
-                </button>
-              </div>
-          </div>
+      <div class="left-column">
+        <div class="header-row">
+          <h2 id="publicaciones-title">Reseñas</h2>
+          <button id="generar-resena-button"><a class="letraBotonLocal" href="/autenticacion/resenaAtencion">Generar reseña</a></button>
         </div>
+        <div class="posts-wrapper" id="posts-wrapper">
+          <!-- Las reseñas se cargarán aquí dinámicamente -->
+        </div>
+      </div>
     </div>
-</div>
-
+  </div>
 </main><!-- End #main -->
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
@@ -259,6 +225,7 @@
   <script src="./assets/js/pagina_frecuentes.js"></script>
   <script src="./assets/js/localidades.js"></script>
   <script src="./assets/js/fitlrado-local.js"></script>
+  <script src="./assets/js/mostrarReAtencion.js"></script>
   <!--================PRUEBAS==============================-->
 </body>
 

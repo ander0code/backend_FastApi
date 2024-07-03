@@ -32,8 +32,7 @@ def get_servicios_id( id_servicio = int ,db: Session = Depends(get_db) )-> Any:
 
     response = [
         Servicio_Schema.Calificacion_Model(
-            
-            id=cali_servicio.id,
+
             id_user = cali_servicio.id_user,
             id_servicio = cali_servicio.id_servicio,
             calificacion_general = cali_servicio.calificacion_general,
