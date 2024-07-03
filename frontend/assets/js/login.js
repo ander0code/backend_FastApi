@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.login-form');
-    const alert = document.getElementById('custom-alert');
-    const successAlert = document.getElementById('custom-alerta');
     const submitButton = document.querySelector('.container-button');
 
     if (form && submitButton) {
@@ -50,19 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         function showAlert(message) {
-            alert.classList.remove('d-none');
-            alert.textContent = message;
-            setTimeout(() => {
-                alert.classList.add('d-none');
-            }, 2000); // Ocultar la alerta después de 2 segundos
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: message,
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
 
         function showSuccessAlert(message) {
-            successAlert.classList.remove('d-none');
-            successAlert.textContent = message;
-            setTimeout(() => {
-                successAlert.classList.add('d-none');
-            }, 2000); // Ocultar la alerta de éxito después de 1 segundo
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: message,
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
 
         // Usar el evento pageshow para restablecer el formulario al navegar hacia atrás

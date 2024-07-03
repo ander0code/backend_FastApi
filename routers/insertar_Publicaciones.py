@@ -7,13 +7,7 @@ from config.base_connection import SessionLocal
 from typing import Any,List
 from datetime import datetime
 post = APIRouter()
-from sqlalchemy.exc import OperationalError
-import time
 
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
 def get_db():
     db = SessionLocal()
     try:

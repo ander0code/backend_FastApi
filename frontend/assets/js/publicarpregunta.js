@@ -68,13 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para mostrar la alerta de éxito
     function showSuccessAlert(message, postId) {
-        const successAlert = document.getElementById('custom-alerta');
-        successAlert.textContent = message;
-        successAlert.classList.remove('d-none');
-        setTimeout(() => {
-            successAlert.classList.add('d-none');
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: message,
+            showConfirmButton: false,
+            timer: 1000
+        }).then(() => {
             window.location.href = `http://127.0.0.1:8000/autenticacion/texto?post_id=${postId}`;
-        }, 1000); // Ocultar la alerta después de 1 segundo y redirigir
+        });
     }
 
     // Función para publicar la pregunta
@@ -187,7 +189,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error al publicar la pregunta:', error);
-            alert('Hubo un problema al publicar la pregunta');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un problema al publicar la pregunta',
+                showConfirmButton: false,
+                timer: 2000
+            });
 
             // Volver a habilitar el botón y restaurar el texto original en caso de error
             botonPublicar.disabled = false;

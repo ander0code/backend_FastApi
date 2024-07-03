@@ -12,3 +12,5 @@ class VotosResponde(BaseModel):
     status: str
     cantidad : int
     
+    class Config:
+        from_attributes = True

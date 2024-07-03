@@ -19,10 +19,6 @@ from config.base_connection import SessionLocal
 SECRETE_KEY = "AeDfZ7I7A1btH97zzDrlp4JKcaOqz2JH1HVRZscWYReB0QvdSk8UUE1m92x1IYv7"
 TOKEN_SECONDS_EXP = 5000000000
 
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
-
 def get_db():
     db = SessionLocal()
     try:

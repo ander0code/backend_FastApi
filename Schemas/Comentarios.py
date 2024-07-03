@@ -11,7 +11,7 @@ class ComentariosBase(BaseModel):
     padre_comentario_id: Optional[int]
     texto: str
     comentario_id: Optional[int]
-    puntuacion: Optional[int]
+    puntuacion: int
     fecha_creacion: date
     userID: int
     UserData: UserBase

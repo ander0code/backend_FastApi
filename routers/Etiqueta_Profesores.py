@@ -11,10 +11,6 @@ import time
 
 Profe = APIRouter()
 
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
 
 def get_db():
     db = SessionLocal()

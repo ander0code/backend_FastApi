@@ -12,10 +12,7 @@ import time
 
 voto = APIRouter()
 
-# Dependency
-from sqlalchemy.exc import OperationalError
-import time
-from fastapi import HTTPException
+
 
 def get_db():
     db = SessionLocal()
@@ -82,7 +79,7 @@ async def create_voto_post(mensajeID: int, user_id: int, comment: votos.VotosMod
         return response
     
 
-@voto.post("/votoComment/{mensajeID}/{user_id}", response_model=List[votos.VotosResponde])
+@voto.post("/votoComment/{comentarioID}/{user_id}", response_model=List[votos.VotosResponde])
 async def create_voto_comment(comentarioID: int, user_id: int, comment: votos.VotosModel, db: Session = Depends(get_db)) -> Any:
 
         tz = pytz.timezone('America/Lima')

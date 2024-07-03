@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = getCookie('access_token');
 
     if (!token) {
-        console.error('No se encontró el token en las cookies');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se encontró el token en las cookies'
+        });
         return;
     }
 
@@ -82,7 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('editPhrase').value = userData.frase;
             document.getElementById('editDescription').value = userData.acercaDeMi;
         } else {
-            console.error('No se encontraron todos los elementos necesarios para reemplazar los datos del perfil');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se encontraron todos los elementos necesarios para reemplazar los datos del perfil'
+            });
         }
 
         return fetch(`http://127.0.0.1:8000/posts/${user[0].id}`, {
@@ -159,7 +167,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     })
     .catch(error => {
-        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: `Ocurrió un error: ${error.message}`
+        });
     });
 
     // Funciones para abrir y cerrar el modal
@@ -173,13 +185,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para mostrar la alerta
     function mostrarAlerta() {
-        const alerta = document.getElementById('custom-alerta');
-        alerta.classList.remove('d-none');
-        alerta.classList.add('show');
-        setTimeout(() => {
-            alerta.classList.remove('show');
-            alerta.classList.add('d-none');
-        }, 3000);
+        Swal.fire({
+            icon: 'success',
+            title: 'Cambios guardados',
+            text: 'La información se ha actualizado correctamente',
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
     }
 
     // Función para guardar los cambios
@@ -209,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(updatedUser => {
             console.log('Descripción del usuario actualizada:', updatedUser);
             document.getElementById('profile-phrase').textContent = updatedUser.puntos_de_vista;
-            document.getElementById('aboutme').textContent = updatedUser.acerca_de_mi;
+                        document.getElementById('aboutme').textContent = updatedUser.acerca_de_mi;
 
             // Actualizar los campos del modal con los nuevos datos
             document.getElementById('editPhrase').value = updatedUser.puntos_de_vista;
@@ -220,7 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
             location.reload(); // Recargar la página
         })
         .catch(error => {
-            console.error('Error al actualizar la descripción del usuario:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `Error al actualizar la descripción del usuario: ${error.message}`
+            });
         });
     }
 });

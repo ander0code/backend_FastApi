@@ -34,12 +34,6 @@ class User(Base):
     user_data = relationship("UserData", back_populates="user")
     comments = relationship("Comment", back_populates="user")
     
-    def __repr__(self):
-        return (f"<User(id={self.id}, nombre='{self.nombre}', last_name='{self.last_name}', "
-                f"fecha_creacion='{self.fecha_creación}', acerca_de_mi='{self.acerca_de_mi[:30]}...', "
-                f"puntos_de_vista='{self.puntos_de_vista[:30]}...', votos_positivos={self.votos_positivos}, "
-                f"votos_negativos={self.votos_negativos}, usuariofoto={self.usuariofoto}, "
-                f"codigo_ID={self.codigo_ID})>")
     
 class Post(Base):
     __tablename__ = 'post'
@@ -179,3 +173,8 @@ class Calificacion(Base):
     student = relationship("UserData", back_populates="calificaciones")
     profesor = relationship("EtiquetaProfesores", back_populates="calificaciones")
     
+class Vistas(Base):
+    __tablename__ = 'vista' 
+    id = Column(Integer, primary_key=True,autoincrement=True)
+    id_user = Column(Integer)
+    id_post = Column(Integer)
