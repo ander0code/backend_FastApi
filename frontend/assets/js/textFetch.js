@@ -399,11 +399,11 @@ function handleVote(voteCountElement, currentButton, oppositeButton) {
             console.log('Voto registrado:', data);
 
             if (currentButton.classList.contains('voted')) {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                voteCountElement.textContent = parseInt(data[0].cantidad);
             } else {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                voteCountElement.textContent = parseInt(data[0].cantidad);
                 if (oppositeButton.classList.contains('voted')) {
-                    voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                    voteCountElement.textContent = parseInt(data[0].cantidad);
                     oppositeButton.classList.remove('voted');
                 }
             }
@@ -471,11 +471,11 @@ function handleVoteComment(button, voteCountElement, oppositeButton) {
             console.log('Voto registrado:', data);
 
             if (button.classList.contains('voted')) {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                voteCountElement.textContent = parseInt(data[0].cantidad);
             } else {
-                voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                voteCountElement.textContent = parseInt(data[0].cantidad);
                 if (oppositeButton.classList.contains('voted')) {
-                    voteCountElement.textContent = parseInt(voteCountElement.textContent);
+                    voteCountElement.textContent = parseInt(data[0].cantidad);
                     oppositeButton.classList.remove('voted');
                 }
             }
