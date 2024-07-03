@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultCarreraText = 'Carrera';
     const defaultCicloText = 'Ciclo';
     const defaultCursoText = 'Curso';
+     // Variables para paginación
+     const postsPerPage = 7;
+     let currentPosts = [];
+     let currentPage = 1;
 
     let selectedCarrera = null;
     let selectedCiclo = null;
@@ -165,7 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(posts => {
-                displayPosts(posts);
+                currentPosts = posts; // Guardar los posts actuales para la paginación
+                currentPage = 1; // Reiniciar la página actual al obtener nuevos posts
+                displayPosts(); // Mostrar los posts en la página
+                setupPagination(); // Configurar la paginación
             })
             .catch(error => {
                 console.error('Error al obtener los posts:', error);
@@ -218,7 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(posts => {
-                displayPosts(posts);
+                currentPosts = posts; // Guardar los posts actuales para la paginación
+                currentPage = 1; // Reiniciar la página actual al obtener nuevos posts
+                displayPosts(); // Mostrar los posts en la página
+                setupPagination(); // Configurar la paginación
             })
             .catch(error => {
                 console.error('Error al obtener los posts:', error);
@@ -327,14 +337,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
             postContainer.innerHTML = '';
     
-            if (!Array.isArray(posts) || posts.length === 0) {
+            if (!Array.isArray(currentPosts) || currentPosts.length === 0) {
                 notfoundContainer.style.display = 'block';
                 postContainer.style.display = 'none';
             } else {
                 notfoundContainer.style.display = 'none';
                 postContainer.style.display = 'block';
     
-                posts.forEach(item => {
+                // Calcular el rango de posts a mostrar según la página actual
+                const startIndex = (currentPage - 1) * postsPerPage;
+                const endIndex = startIndex + postsPerPage;
+                const postsToShow = currentPosts.slice(startIndex, endIndex);
+    
+                postsToShow.forEach(item => {
                     const post = item.post;
                     const carrera = item.carrera;
                     const curso = item.curso;
@@ -417,5 +432,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 text: 'Error al obtener el usuario logueado',
             });
         });
+    }
+    function setupPagination() {
+        const paginationContainer = document.getElementById('pagination-container');
+        paginationContainer.innerHTML = '';
+
+        const pageCount = Math.ceil(currentPosts.length / postsPerPage);
+        if (pageCount > 1) {
+            for (let i = 1; i <= pageCount; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    displayPosts();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(pageButton);
+            }
+        }
     }
 });    

@@ -36,3 +36,17 @@
     margin-right: 15px;
 }
 
+
+.pagination-container  {
+    color: #e4571b;
+    border: 1px solid #e4571b;
+    padding: 6px 12px;
+    margin: 0 3px;
+    text-decoration: none;
+}
+
+.pagination-container {
+    background-color: #e4571b;
+    border-color: #e4571b;
+    color: #fff;
+}

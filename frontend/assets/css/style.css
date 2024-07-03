@@ -1918,3 +1918,28 @@ a.fw-bold.text-dark.post-title {
 button .letraBotonLocal {
   color: #fff;
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  background-color: #3498db; /* Celeste */
+  color: #ffffff; /* Blanco */
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-container button:hover {
+  background-color: #2980b9; /* Cambio de tono de celeste al hacer hover */
+}
+
+.pagination-container button.active {
+  background-color: #2980b9; /* Color activo para indicar la página actual */
+}
