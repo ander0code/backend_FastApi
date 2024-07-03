@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const enviarBtn = document.getElementById("enviarBtn");
-    
 
     // Get logged in user's email from localStorage
     const userEmail = localStorage.getItem("email");
@@ -20,12 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         const userId = userData[0].id;
-      
 
         // Aquí asumimos que tienes el ID del servicio de alguna manera
         const idServicio = 1;
 
-        
         // Event listener for enviarBtn click
         enviarBtn.addEventListener("click", function () {
             // Validate form
@@ -34,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const facilidades = document.querySelector('input[name="facilidades"]:checked');
             const orientacion = document.querySelector('input[name="orientacion"]:checked');
             const comentario = document.getElementById("comentario").value.trim();
+            
 
             if (!calificacion || !servicio || !facilidades || !orientacion || comentario === "") {
                 alert("Por favor completa todos los campos requeridos.");
@@ -42,14 +40,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Prepare data for POST request
             const postData = {
+                "id": 0, // Este campo se puede omitir si el backend lo genera automáticamente
                 "id_user": userId,
                 "id_servicio": idServicio,
                 "calificacion_general": parseInt(calificacion.value),
+                "puntuacion": parseInt(calificacion.value), // puntuacion igual a calificacion_general
                 "calificacion_1": parseInt(servicio.value),
                 "calificacion_2": parseInt(facilidades.value),
                 "calificacion_3": parseInt(orientacion.value),
                 "resena": comentario,
-                "fecha_creacion": new Date().toISOString() // Añadir fecha de creación
+                "fecha_creacion": new Date().toISOString().split('T')[0] // Convertir a YYYY-MM-DD
             };
 
             // Confirm submission
@@ -62,8 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     body: JSON.stringify(postData)
                 })
-                .then(response => {
-                    if (response.ok) {
+                .then(response => response.json().then(data => ({status: response.status, body: data})))
+                .then(({status, body}) => {
+                    console.log('Response Status:', status);
+                    console.log('Response Body:', body);
+                    if (status === 200) {
                         alert("Reseña enviada exitosamente");
                         // Redirigir a la página deseada o actualizar la interfaz
                     } else {

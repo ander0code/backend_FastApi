@@ -12,8 +12,8 @@ class Insert_Cali_Model(BaseModel):
 
 class Calificacion_Model(Insert_Cali_Model):
     
-    id : int
     id_user : int
+    nombre : str
     id_servicio : int 
     fecha_creacion : date
     

@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func, case, desc
 from models import Model_DB
 from Schemas import Servicio_Schema
+import pytz
+from datetime import datetime
 
 from config.base_connection import SessionLocal
 from pydantic import EmailStr
@@ -48,10 +50,24 @@ def get_servicios_id( id_servicio = int ,db: Session = Depends(get_db) )-> Any:
     ]
     return response
 
-@serv.post("/put_servicios_id",response_model=List[Servicio_Schema.Response])
-def put_servicios_id(cali_servicio :  Servicio_Schema.Calificacion_Model, db: Session = Depends(get_db))-> Any:
+@serv.post("/put_servicios_id/{user_id}",response_model=List[Servicio_Schema.Response])
+def put_servicios_id(user_id: int,cali_servicio :  Servicio_Schema.Calificacion_Model, db: Session = Depends(get_db))-> Any:
+
+    tz = pytz.timezone('America/Lima')
+    fecha_actual_peru = datetime.now(tz)
+    fecha_formateada = fecha_actual_peru.strftime('%Y-%m-%d')
+
+    nombre_ = db.query(
+        Model_DB.User.nombre
+        ).filter(Model_DB.User.id == user_id).first()
+    apellido_ = db.query(
+        Model_DB.User.last_Name
+        ).filter(Model_DB.User.id == user_id).first()
+        
 
     new_cali = Model_DB.CalificacionServicio(
+        
+        # falta arreglar
         
             id_user = cali_servicio.id_user,
             id_servicio = cali_servicio.id_servicio,
@@ -60,7 +76,8 @@ def put_servicios_id(cali_servicio :  Servicio_Schema.Calificacion_Model, db: Se
             calificacion_1 = cali_servicio.calificacion_1,
             calificacion_2 = cali_servicio.calificacion_2,
             calificacion_3 = cali_servicio.calificacion_3,
-            resena = cali_servicio.resena
+            resena = cali_servicio.resena,
+            fecha_creacion =  fecha_formateada
             
         )
     db.add(new_cali)
