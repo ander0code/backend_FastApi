@@ -278,7 +278,7 @@ function displayAllPostResponses(responseData) {
         voteButtons.className = 'votes';
         voteButtons.innerHTML = `
             <button class="vote-button upvote" data-response-id="${response.comentario_id}"><img class="buttonImgPosiComment" src="./assets/img/votoPosi.png"></img></button>
-            <p class="vote-count" id="vote-count-${response.comentario_id}">${response.cantidad}</p>
+            <p class="vote-count" id="vote-countt-${response.comentario_id}">${response.cantidad}</p>
             <button class="vote-button downvote" data-response-id="${response.comentario_id}"><img class="buttonImgNegaComment" src="./assets/img/votoNega.png"></img></button>
         `;
 
