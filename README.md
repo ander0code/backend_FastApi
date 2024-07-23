@@ -23,7 +23,7 @@ Forua es un foro universitario con múltiples funciones para sellar tu experienc
 - **Bibliotecas:** FastAPI principalmente, SQLALCHEMY, Pydantic y Jose.
 - **Control de Versiones:** Git y GitHub para la colaboración y el control del proyecto.
 - **IDE:** Visual Studio Code
-## 🙍‍♂️ colaboradores
+## 🙍‍♂️ Colaboradores
 
 - **Deyvi Sanchez** - IvyedSG
 - **Angel Choquehuanca** - Angel-ChF
