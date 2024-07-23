@@ -35,4 +35,4 @@ Forua es un foro universitario con múltiples funciones para sellar tu experienc
 
 1. **Clona el Repositorio:**
    ```bash
-    https://github.com/IvyedSG/Challenge-Conversor-de-monedas.git](https://github.com/ander0code/backend_FastApi.git)
+    https://github.com/ander0code/backend_FastApi.git
