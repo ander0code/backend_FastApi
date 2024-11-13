@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchProfesorDetails(id) {
-        return fetch(`http://127.0.0.1:8000/get_profesores_ID/${id}`, {
+        return fetch(`https://fastapi-340032812084.us-central1.run.app/get_profesores_ID/${id}`, {
             headers: {
                 'accept': 'application/json'
             }
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchProfesorComments(id) {
-        return fetch(`http://127.0.0.1:8000/get_comments_profesores/${id}`, {
+        return fetch(`https://fastapi-340032812084.us-central1.run.app/get_comments_profesores/${id}`, {
             headers: {
                 'accept': 'application/json'
             }

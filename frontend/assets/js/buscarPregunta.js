@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = searchInput.value.trim().toLowerCase();
 
         if (query) {
-            fetch(`http://127.0.0.1:8000/posts_nuevo/`)
+            fetch(`https://fastapi-340032812084.us-central1.run.app/posts_nuevo/`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('No se pudo obtener los posts');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para obtener y mostrar todos los posts al cargar la página
     function fetchAndDisplayAllPosts() {
-        fetch('http://127.0.0.1:8000/posts_nuevo/')
+        fetch('https://fastapi-340032812084.us-central1.run.app/posts_nuevo/')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('No se pudo obtener los posts');

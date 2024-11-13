@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = payload.email;
 
-    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(email)}`, {
+    fetch(`https://fastapi-340032812084.us-central1.run.app/${encodeURIComponent(email)}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

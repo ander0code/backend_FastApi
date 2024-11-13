@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = payload.email; 
 
-    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(email)}`, {
+    fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(email)}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchProfesores(carreraId) {
-    const url = `http://127.0.0.1:8000/get_profesores/${carreraId}%7D`;
+    const url = `https://fastapi-340032812084.us-central1.run.app/get_profesores/${carreraId}%7D`;
     console.log(`Fetching profesores from URL: ${url}`);
 
     fetch(url)

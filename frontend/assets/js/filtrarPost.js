@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const url = `http://127.0.0.1:8000/curso/${selectedCarrera}/${selectedCiclo}`;
+        const url = `https://fastapi-340032812084.us-central1.run.app/curso/${selectedCarrera}/${selectedCiclo}`;
         console.log(`Fetching cursos from URL: ${url}`);
 
         fetch(url)
@@ -146,9 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let url;
         if (selectedCarrera === 'null') {
             // Si la selección es "General", se usa el endpoint específico para posts generales
-            url = `http://127.0.0.1:8000/posts_general`;
+            url = `https://fastapi-340032812084.us-central1.run.app/posts_general`;
         } else {
-            url = `http://127.0.0.1:8000/postsFilter/${selectedCarrera}`;
+            url = `https://fastapi-340032812084.us-central1.run.app/postsFilter/${selectedCarrera}`;
             if (selectedCiclo) {
                 url += `/${selectedCiclo}`;
                 if (selectedCurso) {
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para obtener y mostrar todos los posts
     function fetchAndDisplayAllPosts() {
-        fetch('http://127.0.0.1:8000/posts_nuevo/')
+        fetch('https://fastapi-340032812084.us-central1.run.app/posts_nuevo/')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('No se pudo obtener los posts');
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
-        fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(userEmail)}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json'
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const userId = userData[0].id;
     
-            const url = `http://127.0.0.1:8000/vistas/${postId}/${userId}`;
+            const url = `https://fastapi-340032812084.us-central1.run.app/vistas/${postId}/${userId}`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
-        fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/${encodeURIComponent(userEmail)}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json'

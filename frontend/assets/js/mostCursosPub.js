@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cursoSelect = document.getElementById('curso');
 
     function fetchCursos(carreraId, ciclo) {
-        fetch(`http://127.0.0.1:8000/curso/${carreraId}/${ciclo}`)
+        fetch(`https://fastapi-340032812084.us-central1.run.app/curso/${carreraId}/${ciclo}`)
             .then(response => response.json())
             .then(data => {
                 // Limpiar las opciones anteriores

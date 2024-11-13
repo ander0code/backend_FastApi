@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const url = `http://127.0.0.1:8000/curso/${selectedCarrera}/${selectedCiclo}`;
+        const url = `https://fastapi-340032812084.us-central1.run.app/curso/${selectedCarrera}/${selectedCiclo}`;
         console.log(`Fetching cursos from URL: ${url}`);
 
         fetch(url)

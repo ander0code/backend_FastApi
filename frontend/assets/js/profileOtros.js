@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    fetch(`http://127.0.0.1:8000/get_pag_user/{id}?id_user=${userId}`)
+    fetch(`https://fastapi-340032812084.us-central1.run.app/{id}?id_user=${userId}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('No se pudo obtener el perfil del usuario');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('No se encontraron todos los elementos necesarios para reemplazar los datos del perfil');
         }
 
-        return fetch(`http://127.0.0.1:8000/posts/${user[0].id}`);
+        return fetch(`https://fastapi-340032812084.us-central1.run.app/posts/${user[0].id}`);
     })
     .then(response => {
         if (!response.ok) {

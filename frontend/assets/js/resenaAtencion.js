@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userEmail = localStorage.getItem("email");
 
     // Get user's ID using the provided endpoint
-    fetch(`http://127.0.0.1:8000/users_nuevo/${userEmail}`)
+    fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${userEmail}`)
         .then(response => response.json())
         .then(userData => {
             const userId = userData[0].id;
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("idProfesor:", idProfesor);
 
             // Get profesor's information using the provided endpoint
-            fetch(`http://127.0.0.1:8000/get_profesores_ID/${idProfesor}`)
+            fetch(`https://fastapi-340032812084.us-central1.run.app/get_profesores_ID/${idProfesor}`)
                 .then(response => response.json())
                 .then(profesorData => {
                     const profesor = profesorData[0];
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Event listener for confirmarEnvioBtn click
                         confirmarEnvioBtn.addEventListener("click", function () {
                             // Insert calificacion using the provided endpoint
-                            fetch(`http://127.0.0.1:8000/Insert_Calificacion/${userId}/${idProfesor}`, {
+                            fetch(`https://fastapi-340032812084.us-central1.run.app/Insert_Calificacion/${userId}/${idProfesor}`, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
