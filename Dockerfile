@@ -1,5 +1,5 @@
 # Usa una imagen ligera de Python
-FROM python:3.11-slim
+FROM python:3.11
 
 # Establece un directorio de trabajo
 WORKDIR /app
@@ -8,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     pkg-config \
+    libmysqlclient-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Copia el archivo de dependencias
