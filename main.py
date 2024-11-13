@@ -7,7 +7,6 @@ from routers import Autenticacion,Publicaciones_Comentarios,Users,Etiqueta_Profe
 
 
 
-app = FastAPI()
 app = FastAPI(
     title="FORUA",
     description="PROYECTO 3 Ciclo - Programacion Avanzada",
@@ -15,9 +14,9 @@ app = FastAPI(
 origins = [
     "http://localhost",
     "http://localhost:8000",
-    "http://127.0.0.1:5501",  # Cambia este puerto según tu servidor de desarrollo
+    "http://127.0.0.1:5501", 
     "http://127.0.0.1:5500"
-    # Agrega aquí las URLs de los orígenes permitidos
+
 ]
 app.add_middleware(
     CORSMiddleware,

@@ -8,7 +8,7 @@ class UserData(Base):
     id= Column(Integer, primary_key=True,autoincrement=True)
     fecha_creación = Column(Date, nullable=False)
     location= Column(String(10))
-    email= Column(String(45), nullable=False, unique=True)
+    email= Column(String(100), nullable=False, unique=True)
     passwordHash= Column(String(45), nullable=False)
     rol= Column(Enum("MOD", "STD","PRO"), nullable=False)
     codigo_std = Column(Integer)

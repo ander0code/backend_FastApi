@@ -18,8 +18,10 @@ def get_db():
         yield db
     finally:
         db.close()
+        
 @user.get("/users_nuevo/{email}",response_model=List[Usuario_Schema.UserBaseModel])
 def get_users_muevo( email = EmailStr ,db: Session = Depends(get_db) )-> Any:
+    print(email)
     resultados = db.query(
         Model_DB.User,
         Model_DB.EtiquetaCarrera,
