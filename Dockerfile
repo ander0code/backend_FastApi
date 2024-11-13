@@ -1,27 +1,19 @@
-# Usa una imagen ligera de Python
+# Usa la imagen ligera de Python
 FROM python:3.11
 
-# Establece un directorio de trabajo
+# Configura el directorio de trabajo
 WORKDIR /app
 
-# Instala las dependencias del sistema
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    pkg-config \
-    libmysqlclient-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Instala dependencias del sistema (si necesitas algo adicional)
+RUN apt-get update && apt-get install -y gcc && apt-get clean
 
-# Copia el archivo de dependencias
+# Copia los requisitos y la aplicación
 COPY requirements.txt .
-
-# Instala las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copia todo el contenido del proyecto al contenedor
 COPY . .
 
-# Exponer el puerto para la aplicación
+# Exponer el puerto donde correrá la app
 EXPOSE 8000
 
-# Ejecutar la aplicación usando uvicorn
+# Ejecutar la aplicación
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
