@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addCommentButton.disabled = true;
         addCommentButton.textContent = 'Subiendo comentario...';
 
-        fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(userEmail)}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json'
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 texto: commentText
             };
 
-            fetch(`http://127.0.0.1:8000/coment/${postId}/${userID}`, {
+            fetch(`https://fastapi-340032812084.us-central1.run.app/coment/${postId}/${userID}`, {
                 method: 'POST',
                 headers: {
                     'accept': 'application/json',
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchPostDetails(postId) {
-    const url = `http://127.0.0.1:8000/posts_x_postid/${postId}`;
+    const url = `https://fastapi-340032812084.us-central1.run.app/posts_x_postid/${postId}`;
     
     fetch(url)
         .then(response => {
@@ -156,7 +156,7 @@ function fetchPostDetails(postId) {
 }
 
 function fetchPostResponses(postId, showAllComments = false) {
-    const url = `http://127.0.0.1:8000/comentario_x_idPost/${postId}`;
+    const url = `https://fastapi-340032812084.us-central1.run.app/comentario_x_idPost/${postId}`;
 
     fetch(url)
         .then(response => {
@@ -361,7 +361,7 @@ function handleVote(voteCountElement, currentButton, oppositeButton) {
         return;
     }
 
-    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+    fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(userEmail)}`, {
         method: 'GET',
         headers: {
             'accept': 'application/json'
@@ -381,7 +381,7 @@ function handleVote(voteCountElement, currentButton, oppositeButton) {
         const userID = userData[0].id;
         console.log('UserID obtenido:', userID);
 
-        fetch(`http://127.0.0.1:8000/voto/${postId}/${userID}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/voto/${postId}/${userID}`, {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
@@ -433,7 +433,7 @@ function handleVoteComment(button, voteCountElement, oppositeButton) {
         return;
     }
 
-    fetch(`http://127.0.0.1:8000/users_nuevo/${encodeURIComponent(userEmail)}`, {
+    fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(userEmail)}`, {
         method: 'GET',
         headers: {
             'accept': 'application/json'
@@ -453,7 +453,7 @@ function handleVoteComment(button, voteCountElement, oppositeButton) {
         const userID = userData[0].id;
         console.log('UserID obtenido:', userID);
 
-        fetch(`http://127.0.0.1:8000/votoComment/${commentId}/${userID}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/votoComment/${commentId}/${userID}`, {
             method: 'POST',
             headers: {
                 'accept': 'application/json',

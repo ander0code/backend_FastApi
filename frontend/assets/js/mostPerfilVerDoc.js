@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchProfesores(carreraId) {
-    const url = `http://127.0.0.1:8000/get_profesores/${carreraId}}`;
+    const url = `https://fastapi-340032812084.us-central1.run.app/get_profesores/${carreraId}}`;
 
     console.log(`Obteniendo profesores desde la URL: ${url}`);
 

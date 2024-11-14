@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        return fetch(`http://127.0.0.1:8000/posts/${user[0].id}`, {
+        return fetch(`https://fastapi-340032812084.us-central1.run.app/posts/${user[0].id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             AcercaDeMi: editDescription
         };
 
-        fetch(`http://127.0.0.1:8000/user_update_descripcion/${window.userId}`, {
+        fetch(`https://fastapi-340032812084.us-central1.run.app/user_update_descripcion/${window.userId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
