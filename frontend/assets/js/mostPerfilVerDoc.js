@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const email = payload.email;
 
-    fetch(`https://fastapi-340032812084.us-central1.run.app/${encodeURIComponent(email)}`, {
+    fetch(`https://fastapi-340032812084.us-central1.run.app/users_nuevo/${encodeURIComponent(email)}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
